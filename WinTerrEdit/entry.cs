@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WinTerrEdit
@@ -16,6 +19,7 @@ namespace WinTerrEdit
         public string playerName = "";
         public int invSelectedIndex = 0;
         crypto cr = new crypto();
+        public bool isSaved = true;
 
         public entry()
         {
@@ -28,7 +32,13 @@ namespace WinTerrEdit
             {
                 cbItem.Items.Add(itm.name);
             }
+            foreach(itemPrefix ipf in ih.globalItemPrefixes)
+            {
+                cbPrefixes.Items.Add(ipf.name);
+            }
             cbItem.SelectedIndex = 0;
+            cbPrefixes.SelectedIndex = 0;
+            nudQuant.MouseWheel += new MouseEventHandler(this.ScrollHandlerFunction);
         }
         public void loadData(string path)
         {
@@ -85,25 +95,40 @@ namespace WinTerrEdit
                 {
                     inventory.Clear();
                     loadData(dlg.FileName);
+                    gbInvHold.Enabled = true;
+                    gb_slot.Enabled = true;
                 }
             }
-            this.Text = "WinTerrEdit | " + playerName;
+            this.Text = "WinTerrEdit | \"" + playerName + "\"";
 
             for(int i = 0; i < 50; i++)
             {
                 pbCollection[i].Image = inventory[i].item.icon;
             }
+
+            btnSave.Enabled = true;
+            invSelectedIndex = 0;
+            updateInvDisplay();
         }
        
         public void updateInvDisplay()
         {
             cbItem.SelectedItem = inventory[invSelectedIndex].item.name;
             nudQuant.Value = inventory[invSelectedIndex].quantity;
+            cbPrefixes.SelectedItem = inventory[invSelectedIndex].prefix.name;
+            gb_slot.Text = "Slot " + (invSelectedIndex + 1);
         }
 
         private void btnSetItem_Click(object sender, EventArgs e)
         {
-            inventory[invSelectedIndex].item = ih.searchByName(cbItem.SelectedItem.ToString());
+            if(cbItem.SelectedIndex.ToString() != "")
+            {
+                inventory[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
+            }
+            if(cbPrefixes.SelectedItem.ToString() != "")
+            {
+                inventory[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
+            }
             inventory[invSelectedIndex].quantity = (int)nudQuant.Value;
             for (int i = 0; i < 50; i++)
             {
@@ -111,255 +136,12 @@ namespace WinTerrEdit
             }
         }
 
-        //yes, there are 50 click events down there
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void item_Click(object sender, EventArgs e)
         {
-            invSelectedIndex = 0; updateInvDisplay();
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 1; updateInvDisplay();
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 2; updateInvDisplay();
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 3; updateInvDisplay();
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 4; updateInvDisplay();
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 5; updateInvDisplay();
-        }
-
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 6; updateInvDisplay();
-        }
-
-        private void pictureBox8_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 7; updateInvDisplay();
-        }
-
-        private void pictureBox9_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 8; updateInvDisplay();
-        }
-
-        private void pictureBox10_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 9; updateInvDisplay();
-        }
-
-        private void pictureBox11_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 10; updateInvDisplay();
-        }
-
-        private void pictureBox12_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 11; updateInvDisplay();
-        }
-
-        private void pictureBox13_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 12; updateInvDisplay();
-        }
-
-        private void pictureBox14_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 13; updateInvDisplay();
-        }
-
-        private void pictureBox15_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 14; updateInvDisplay();
-        }
-
-        private void pictureBox16_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 15; updateInvDisplay();
-        }
-
-        private void pictureBox17_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 16; updateInvDisplay();
-        }
-
-        private void pictureBox18_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 17; updateInvDisplay();
-        }
-
-        private void pictureBox19_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 18; updateInvDisplay();
-        }
-
-        private void pictureBox20_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 19; updateInvDisplay();
-        }
-
-        private void pictureBox21_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 20; updateInvDisplay();
-        }
-
-        private void pictureBox22_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 21; updateInvDisplay();
-        }
-
-        private void pictureBox23_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 22; updateInvDisplay();
-        }
-
-        private void pictureBox24_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 23; updateInvDisplay();
-        }
-
-        private void pictureBox25_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 24; updateInvDisplay();
-        }
-
-        private void pictureBox26_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 25; updateInvDisplay();
-        }
-
-        private void pictureBox27_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 26; updateInvDisplay();
-        }
-
-        private void pictureBox28_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 27; updateInvDisplay();
-        }
-
-        private void pictureBox29_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 28; updateInvDisplay();
-        }
-
-        private void pictureBox30_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 29; updateInvDisplay();
-        }
-
-        private void pictureBox31_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 30; updateInvDisplay();
-        }
-
-        private void pictureBox32_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 31; updateInvDisplay();
-        }
-
-        private void pictureBox33_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 32; updateInvDisplay();
-        }
-
-        private void pictureBox34_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 33; updateInvDisplay();
-        }
-
-        private void pictureBox35_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 34; updateInvDisplay();
-        }
-
-        private void pictureBox36_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 35; updateInvDisplay();
-        }
-
-        private void pictureBox37_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 36; updateInvDisplay();
-        }
-
-        private void pictureBox38_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 37; updateInvDisplay();
-        }
-
-        private void pictureBox39_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 38; updateInvDisplay();
-        }
-
-        private void pictureBox40_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 39; updateInvDisplay();
-        }
-
-        private void pictureBox41_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 40; updateInvDisplay();
-        }
-
-        private void pictureBox42_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 41; updateInvDisplay();
-        }
-
-        private void pictureBox43_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 42; updateInvDisplay();
-        }
-
-        private void pictureBox44_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 43; updateInvDisplay();
-        }
-
-        private void pictureBox45_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 44; updateInvDisplay();
-        }
-
-        private void pictureBox46_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 45; updateInvDisplay();
-        }
-
-        private void pictureBox47_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 46; updateInvDisplay();
-        }
-
-        private void pictureBox48_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 47; updateInvDisplay();
-        }
-
-        private void pictureBox49_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 48; updateInvDisplay();
-        }
-
-        private void pictureBox50_Click(object sender, EventArgs e)
-        {
-            invSelectedIndex = 49; updateInvDisplay();
+            string elementName = (sender as PictureBox).Name;
+            string[] npart = elementName.Split(new string[] { "Box" }, StringSplitOptions.None);
+            invSelectedIndex = Int32.Parse(npart[1]) - 1;
+            updateInvDisplay();
         }
 
         public List<Byte> reEncode()
@@ -398,6 +180,109 @@ namespace WinTerrEdit
                 {
                     string savepath = dlg.FileName;
                     cr.encryptAndSave(reEncode().ToArray(), savepath);
+                    isSaved = true;
+                }
+            }
+        }
+
+        private void item_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+            base.OnPaint(e);
+        }
+
+        private void gb_slot_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbItem.SelectedIndex.ToString() != "")
+                {
+                    inventory[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
+                }
+                for (int i = 0; i < 50; i++)
+                {
+                    pbCollection[i].Image = inventory[i].item.icon;
+                }
+                isSaved = false;
+            }
+            catch
+            {
+                
+            }
+        }
+
+        private void cbPrefixes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbPrefixes.SelectedItem.ToString() != "")
+                {
+                    inventory[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
+                }
+                for (int i = 0; i < 50; i++)
+                {
+                    pbCollection[i].Image = inventory[i].item.icon;
+                }
+                isSaved = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void nudQuant_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                inventory[invSelectedIndex].quantity = (int)nudQuant.Value;
+                for (int i = 0; i < 50; i++)
+                {
+                    pbCollection[i].Image = inventory[i].item.icon;
+                }
+                isSaved = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void ScrollHandlerFunction(object sender, MouseEventArgs e)
+        {
+            HandledMouseEventArgs handledArgs = e as HandledMouseEventArgs;
+            handledArgs.Handled = true;
+            if (handledArgs.Delta > 0)
+            {
+                nudQuant.Value += 1;
+            }
+            else
+            {
+                if(nudQuant.Value != 0)
+                {
+                    nudQuant.Value += -1;
+                }
+            }
+        }
+
+        private void onClose(object sender, FormClosingEventArgs e)
+        {
+            if (isSaved)
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                e.Cancel = true;
+                closeWarn cw = new closeWarn();
+                if(cw.ShowDialog() == DialogResult.OK) 
+                {
+                    Environment.Exit(0);
                 }
             }
         }

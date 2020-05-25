@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>rainbowBrick.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="closeWarn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="closeWarn.Designer.cs">
+      <DependentUpon>closeWarn.cs</DependentUpon>
+    </Compile>
     <Compile Include="crypto.cs" />
     <Compile Include="entry.cs">
       <SubType>Form</SubType>
@@ -57,6 +66,9 @@
     <Compile Include="itemHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="closeWarn.resx">
+      <DependentUpon>closeWarn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="entry.resx">
       <DependentUpon>entry.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,7 +95,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data.txt" />
+    <EmbeddedResource Include="itemIDs.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="itemPrefixes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="rainbowBrick.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

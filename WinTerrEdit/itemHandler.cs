@@ -18,13 +18,15 @@ namespace WinTerrEdit
     public class itemHandler
     {
         public List<baseItem> globalTerrariaItems = new List<baseItem> { };
+        public List<itemPrefix> globalItemPrefixes = new List<itemPrefix> { };
         public Init intialize = new Init();
 
         public itemHandler(bool load)
         {
             if (load)
             {
-                globalTerrariaItems = intialize.load();
+                globalTerrariaItems = intialize.loaditemIDs();
+                globalItemPrefixes = intialize.loadItemPrefixes();
             }
         }
         public int resolveEncodedData(int b1, int b2)
@@ -44,7 +46,7 @@ namespace WinTerrEdit
             }
             return new List<int> { inp, count256 };
         }
-        public baseItem searchByID(int id)
+        public baseItem searchItemByID(int id)
         {
             foreach (baseItem i in globalTerrariaItems)
             {
@@ -55,7 +57,7 @@ namespace WinTerrEdit
             }
             return globalTerrariaItems[0];
         }
-        public baseItem searchByName(string name)
+        public baseItem searchItemByName(string name)
         {
             foreach (baseItem i in globalTerrariaItems)
             {
@@ -66,27 +68,54 @@ namespace WinTerrEdit
             }
             return globalTerrariaItems[0];
         }
+
+        public itemPrefix searchPrefixByID(int id)
+        {
+            foreach (itemPrefix i in globalItemPrefixes)
+            {
+                if (i.ID == id)
+                {
+                    return i;
+                }
+            }
+            return globalItemPrefixes[0];
+        }
+
+        public itemPrefix searchPrefixByName(string name)
+        {
+            foreach (itemPrefix i in globalItemPrefixes)
+            {
+                if (i.name == name)
+                {
+                    return i;
+                }
+            }
+            return globalItemPrefixes[0];
+        }
     }
     public class invItem
     {
         public baseItem item { get; set; }
         public int quantity { get; set; }
-        public int modifier { get; set; }
+        public itemPrefix prefix { get; set; }
         
         public invItem(List<int> terrData, itemHandler handler)
         {
             int id = handler.resolveEncodedData(terrData[0], terrData[1]);
-            item = handler.searchByID(id);
+            item = handler.searchItemByID(id);
             quantity = handler.resolveEncodedData(terrData[4], terrData[5]);
-            modifier = terrData[8];
+            prefix = handler.searchPrefixByID(terrData[8]);
         }
 
         //returns the inventory item as a set of 10 bytes for reinserting into raw data
         public List<Byte> recompile(itemHandler handler)
         {
+            Random r = new Random();
+
             List<Byte> final = new List<Byte> { };
             List<int> encodedItem = handler.encodeData(item.ID);
             List<int> encodedQuant = handler.encodeData(quantity);
+            //bytes 2, 3, 6, 7 and 9 seem to make the item dissapear if they are anything other than 0x00
             final.Add((byte)encodedItem[0]);
             final.Add((byte)encodedItem[1]);
             final.Add(0x00);
@@ -95,7 +124,7 @@ namespace WinTerrEdit
             final.Add((byte)encodedQuant[1]);
             final.Add(0x00);
             final.Add(0x00);
-            final.Add((byte)modifier);
+            final.Add((byte)prefix.ID);
             final.Add(0x00);
             return final;
         }
@@ -118,6 +147,17 @@ namespace WinTerrEdit
             {
                 this.icon = new Bitmap(ms);
             }
+        }
+    }
+    public class itemPrefix
+    {
+        public int ID { get; }
+        public string name { get; }
+
+        public itemPrefix(int ID, string name)
+        {
+            this.ID = ID;
+            this.name = name;
         }
     }
 }
