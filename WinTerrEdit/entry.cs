@@ -27,7 +27,7 @@ namespace WinTerrEdit
         }
         private void Entry_Load(object sender, EventArgs e)
         {
-            pbCollection.AddRange(new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18, pictureBox19, pictureBox20, pictureBox21, pictureBox22, pictureBox23, pictureBox24, pictureBox25, pictureBox26, pictureBox27, pictureBox28, pictureBox29, pictureBox30, pictureBox31, pictureBox32, pictureBox33, pictureBox34, pictureBox35, pictureBox36, pictureBox37, pictureBox38, pictureBox39, pictureBox40, pictureBox41, pictureBox42, pictureBox43, pictureBox44, pictureBox45, pictureBox46, pictureBox47, pictureBox48, pictureBox49, pictureBox50 });
+            pbCollection.AddRange(new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18, pictureBox19, pictureBox20, pictureBox21, pictureBox22, pictureBox23, pictureBox24, pictureBox25, pictureBox26, pictureBox27, pictureBox28, pictureBox29, pictureBox30, pictureBox31, pictureBox32, pictureBox33, pictureBox34, pictureBox35, pictureBox36, pictureBox37, pictureBox38, pictureBox39, pictureBox40, pictureBox41, pictureBox42, pictureBox43, pictureBox44, pictureBox45, pictureBox46, pictureBox47, pictureBox48, pictureBox49, pictureBox50 }); //lol
             foreach(baseItem itm in ih.globalTerrariaItems)
             {
                 cbItem.Items.Add(itm.name);
@@ -117,6 +117,10 @@ namespace WinTerrEdit
             nudQuant.Value = inventory[invSelectedIndex].quantity;
             cbPrefixes.SelectedItem = inventory[invSelectedIndex].prefix.name;
             gb_slot.Text = "Slot " + (invSelectedIndex + 1);
+            for (int i = 0; i < 50; i++)
+            {
+                pbCollection[i].Image = inventory[i].item.icon;
+            }
         }
 
         private void btnSetItem_Click(object sender, EventArgs e)
@@ -151,7 +155,6 @@ namespace WinTerrEdit
             foreach (invItem iv in inventory)
             {
                 List<Byte> tmp = iv.recompile(ih);
-                Console.WriteLine(string.Join(",", tmp));
                 foreach (byte b in tmp)
                 {
                     buffer.Add(b);
@@ -187,8 +190,14 @@ namespace WinTerrEdit
 
         private void item_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-            base.OnPaint(e);
+            string elementName = (sender as PictureBox).Name;
+            string[] npart = elementName.Split(new string[] { "Box" }, StringSplitOptions.None);
+            int tmp = Int32.Parse(npart[1]) - 1;
+
+            if(tmp == invSelectedIndex)
+            {
+                e.Graphics.DrawRectangle(Pens.Red, 0, 0, 31, 31);
+            }
         }
 
         private void gb_slot_Enter(object sender, EventArgs e)
