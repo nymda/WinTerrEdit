@@ -89,6 +89,33 @@
             this.label1 = new System.Windows.Forms.Label();
             this.nudQuant = new System.Windows.Forms.NumericUpDown();
             this.cbItem = new System.Windows.Forms.ComboBox();
+            this.gbPlayer = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.nudManaMax = new System.Windows.Forms.NumericUpDown();
+            this.nudManaCur = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.nudHealthMax = new System.Windows.Forms.NumericUpDown();
+            this.nudHealthCur = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.shoesPnl = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pantsPnl = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.undershirtPnl = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.shirtPnl = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.eyesPnl = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.skinPnl = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.hairPnl = new System.Windows.Forms.Panel();
+            this.liveTB = new System.Windows.Forms.TextBox();
+            this.colourSelecter = new System.Windows.Forms.ColorDialog();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -142,11 +169,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gb_slot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuant)).BeginInit();
+            this.gbPlayer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(405, 12);
+            this.btnLoad.Location = new System.Drawing.Point(587, 12);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(196, 23);
             this.btnLoad.TabIndex = 0;
@@ -157,7 +189,7 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(405, 41);
+            this.btnSave.Location = new System.Drawing.Point(587, 41);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(196, 23);
             this.btnSave.TabIndex = 1;
@@ -218,7 +250,7 @@
             this.gbInvHold.Controls.Add(this.pictureBox2);
             this.gbInvHold.Controls.Add(this.pictureBox1);
             this.gbInvHold.Enabled = false;
-            this.gbInvHold.Location = new System.Drawing.Point(12, 12);
+            this.gbInvHold.Location = new System.Drawing.Point(194, 12);
             this.gbInvHold.Name = "gbInvHold";
             this.gbInvHold.Size = new System.Drawing.Size(387, 214);
             this.gbInvHold.TabIndex = 2;
@@ -834,7 +866,7 @@
             this.gb_slot.Controls.Add(this.nudQuant);
             this.gb_slot.Controls.Add(this.cbItem);
             this.gb_slot.Enabled = false;
-            this.gb_slot.Location = new System.Drawing.Point(405, 72);
+            this.gb_slot.Location = new System.Drawing.Point(587, 72);
             this.gb_slot.Name = "gb_slot";
             this.gb_slot.Size = new System.Drawing.Size(196, 154);
             this.gb_slot.TabIndex = 50;
@@ -905,17 +937,312 @@
             this.cbItem.TabIndex = 0;
             this.cbItem.SelectedIndexChanged += new System.EventHandler(this.cbItem_SelectedIndexChanged);
             // 
+            // gbPlayer
+            // 
+            this.gbPlayer.Controls.Add(this.label14);
+            this.gbPlayer.Controls.Add(this.label15);
+            this.gbPlayer.Controls.Add(this.nudManaMax);
+            this.gbPlayer.Controls.Add(this.nudManaCur);
+            this.gbPlayer.Controls.Add(this.label13);
+            this.gbPlayer.Controls.Add(this.label12);
+            this.gbPlayer.Controls.Add(this.nudHealthMax);
+            this.gbPlayer.Controls.Add(this.nudHealthCur);
+            this.gbPlayer.Controls.Add(this.label11);
+            this.gbPlayer.Controls.Add(this.tbName);
+            this.gbPlayer.Controls.Add(this.label10);
+            this.gbPlayer.Controls.Add(this.shoesPnl);
+            this.gbPlayer.Controls.Add(this.label9);
+            this.gbPlayer.Controls.Add(this.pantsPnl);
+            this.gbPlayer.Controls.Add(this.label8);
+            this.gbPlayer.Controls.Add(this.undershirtPnl);
+            this.gbPlayer.Controls.Add(this.label7);
+            this.gbPlayer.Controls.Add(this.shirtPnl);
+            this.gbPlayer.Controls.Add(this.label6);
+            this.gbPlayer.Controls.Add(this.eyesPnl);
+            this.gbPlayer.Controls.Add(this.label5);
+            this.gbPlayer.Controls.Add(this.skinPnl);
+            this.gbPlayer.Controls.Add(this.label4);
+            this.gbPlayer.Controls.Add(this.hairPnl);
+            this.gbPlayer.Enabled = false;
+            this.gbPlayer.Location = new System.Drawing.Point(12, 12);
+            this.gbPlayer.Name = "gbPlayer";
+            this.gbPlayer.Size = new System.Drawing.Size(176, 214);
+            this.gbPlayer.TabIndex = 51;
+            this.gbPlayer.TabStop = false;
+            this.gbPlayer.Text = "Player";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(96, 70);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(18, 13);
+            this.label14.TabIndex = 61;
+            this.label14.Text = " / ";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 70);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.TabIndex = 60;
+            this.label15.Text = "Mana:";
+            // 
+            // nudManaMax
+            // 
+            this.nudManaMax.Location = new System.Drawing.Point(120, 68);
+            this.nudManaMax.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nudManaMax.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudManaMax.Name = "nudManaMax";
+            this.nudManaMax.Size = new System.Drawing.Size(40, 20);
+            this.nudManaMax.TabIndex = 59;
+            this.nudManaMax.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudManaMax.ValueChanged += new System.EventHandler(this.nudManaMax_ValueChanged);
+            // 
+            // nudManaCur
+            // 
+            this.nudManaCur.Location = new System.Drawing.Point(50, 68);
+            this.nudManaCur.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nudManaCur.Name = "nudManaCur";
+            this.nudManaCur.Size = new System.Drawing.Size(40, 20);
+            this.nudManaCur.TabIndex = 58;
+            this.nudManaCur.ValueChanged += new System.EventHandler(this.nudManaCur_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(96, 44);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 13);
+            this.label13.TabIndex = 57;
+            this.label13.Text = " / ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 44);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(41, 13);
+            this.label12.TabIndex = 56;
+            this.label12.Text = "Health:";
+            // 
+            // nudHealthMax
+            // 
+            this.nudHealthMax.Location = new System.Drawing.Point(120, 42);
+            this.nudHealthMax.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nudHealthMax.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudHealthMax.Name = "nudHealthMax";
+            this.nudHealthMax.Size = new System.Drawing.Size(40, 20);
+            this.nudHealthMax.TabIndex = 55;
+            this.nudHealthMax.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudHealthMax.ValueChanged += new System.EventHandler(this.nudHealthMax_ValueChanged);
+            // 
+            // nudHealthCur
+            // 
+            this.nudHealthCur.Location = new System.Drawing.Point(50, 42);
+            this.nudHealthCur.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.nudHealthCur.Name = "nudHealthCur";
+            this.nudHealthCur.Size = new System.Drawing.Size(40, 20);
+            this.nudHealthCur.TabIndex = 54;
+            this.nudHealthCur.ValueChanged += new System.EventHandler(this.nudHealthCur_ValueChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 13);
+            this.label11.TabIndex = 53;
+            this.label11.Text = "Name:";
+            // 
+            // tbName
+            // 
+            this.tbName.Location = new System.Drawing.Point(50, 16);
+            this.tbName.Name = "tbName";
+            this.tbName.ReadOnly = true;
+            this.tbName.Size = new System.Drawing.Size(115, 20);
+            this.tbName.TabIndex = 52;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(99, 183);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Shoes:";
+            // 
+            // shoesPnl
+            // 
+            this.shoesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.shoesPnl.Location = new System.Drawing.Point(145, 183);
+            this.shoesPnl.Name = "shoesPnl";
+            this.shoesPnl.Size = new System.Drawing.Size(20, 20);
+            this.shoesPnl.TabIndex = 12;
+            this.shoesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(102, 157);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Pants:";
+            // 
+            // pantsPnl
+            // 
+            this.pantsPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pantsPnl.Location = new System.Drawing.Point(145, 157);
+            this.pantsPnl.Name = "pantsPnl";
+            this.pantsPnl.Size = new System.Drawing.Size(20, 20);
+            this.pantsPnl.TabIndex = 10;
+            this.pantsPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(81, 131);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Undershirt:";
+            // 
+            // undershirtPnl
+            // 
+            this.undershirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.undershirtPnl.Location = new System.Drawing.Point(145, 131);
+            this.undershirtPnl.Name = "undershirtPnl";
+            this.undershirtPnl.Size = new System.Drawing.Size(20, 20);
+            this.undershirtPnl.TabIndex = 8;
+            this.undershirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(108, 105);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Shirt:";
+            // 
+            // shirtPnl
+            // 
+            this.shirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.shirtPnl.Location = new System.Drawing.Point(145, 105);
+            this.shirtPnl.Name = "shirtPnl";
+            this.shirtPnl.Size = new System.Drawing.Size(20, 20);
+            this.shirtPnl.TabIndex = 6;
+            this.shirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 183);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Eyes:";
+            // 
+            // eyesPnl
+            // 
+            this.eyesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.eyesPnl.Location = new System.Drawing.Point(44, 183);
+            this.eyesPnl.Name = "eyesPnl";
+            this.eyesPnl.Size = new System.Drawing.Size(20, 20);
+            this.eyesPnl.TabIndex = 4;
+            this.eyesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 157);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Skin:";
+            // 
+            // skinPnl
+            // 
+            this.skinPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.skinPnl.Location = new System.Drawing.Point(44, 157);
+            this.skinPnl.Name = "skinPnl";
+            this.skinPnl.Size = new System.Drawing.Size(20, 20);
+            this.skinPnl.TabIndex = 2;
+            this.skinPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 131);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Hair:";
+            // 
+            // hairPnl
+            // 
+            this.hairPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.hairPnl.Location = new System.Drawing.Point(44, 131);
+            this.hairPnl.Name = "hairPnl";
+            this.hairPnl.Size = new System.Drawing.Size(20, 20);
+            this.hairPnl.TabIndex = 0;
+            this.hairPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // liveTB
+            // 
+            this.liveTB.Location = new System.Drawing.Point(12, 242);
+            this.liveTB.Name = "liveTB";
+            this.liveTB.Size = new System.Drawing.Size(771, 20);
+            this.liveTB.TabIndex = 62;
+            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 233);
+            this.ClientSize = new System.Drawing.Size(792, 234);
+            this.Controls.Add(this.liveTB);
+            this.Controls.Add(this.gbPlayer);
             this.Controls.Add(this.gb_slot);
             this.Controls.Add(this.gbInvHold);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnLoad);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "entry";
             this.Text = "WinTerrEdit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onClose);
@@ -974,7 +1301,14 @@
             this.gb_slot.ResumeLayout(false);
             this.gb_slot.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuant)).EndInit();
+            this.gbPlayer.ResumeLayout(false);
+            this.gbPlayer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1040,6 +1374,33 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudQuant;
         private System.Windows.Forms.ComboBox cbItem;
+        private System.Windows.Forms.GroupBox gbPlayer;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel shoesPnl;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel pantsPnl;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel undershirtPnl;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel shirtPnl;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel eyesPnl;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel skinPnl;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel hairPnl;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown nudManaMax;
+        private System.Windows.Forms.NumericUpDown nudManaCur;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown nudHealthMax;
+        private System.Windows.Forms.NumericUpDown nudHealthCur;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.TextBox liveTB;
+        private System.Windows.Forms.ColorDialog colourSelecter;
     }
 }
 
