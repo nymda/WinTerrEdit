@@ -8,7 +8,7 @@ Supports editing inventory items:
   -Item prefix (large, mythical, etc)
   
 Supports editing stats:    
-  -Current health
+  -Current health    
   -Maximum health    
   -Current mana    
   -Maximum mana    
