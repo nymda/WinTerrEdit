@@ -13,7 +13,7 @@ Supports editing stats:
   -Current mana    
   -Maximum mana    
   
-Supports editing colours:
+Supports editing colours:    
   -Hair colour    
   -Skin colour    
   -eye colour    
