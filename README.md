@@ -1,5 +1,5 @@
 # WinTerrEdit
-GUI based terraria inventory editor.    
+GUI based terraria inventory / player editer.    
 Made for the latest version (1.4.0.4)    
 
 Supports editing inventory items:    
