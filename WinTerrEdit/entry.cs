@@ -189,7 +189,6 @@ namespace WinTerrEdit
 
             liveTB.Text = string.Join(",", rawDecrypted);
 
-
             btnSave.Enabled = true;
             invSelectedIndex = 0;
             updateInvDisplay();
@@ -360,6 +359,16 @@ namespace WinTerrEdit
                     pbCollection[i].Image = inventory[i].item.icon;
                 }
                 isSaved = false;
+                if(inventory[invSelectedIndex].quantity == 0 && inventory[invSelectedIndex].item.name != "Empty")
+                {
+                    inventory[invSelectedIndex].quantity += 1;
+                    nudQuant.Value += 1;
+                }
+                if(inventory[invSelectedIndex].item.name == "Empty")
+                {
+                    inventory[invSelectedIndex].quantity = 0;
+                    nudQuant.Value = 0;
+                }
             }
             catch
             {
