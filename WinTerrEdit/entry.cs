@@ -419,7 +419,10 @@ namespace WinTerrEdit
             handledArgs.Handled = true;
             if (handledArgs.Delta > 0)
             {
-                (sender as NumericUpDown).Value += 1;
+                if ((sender as NumericUpDown).Value != 999)
+                {
+                    (sender as NumericUpDown).Value += 1;
+                }
             }
             else
             {
