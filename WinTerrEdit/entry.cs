@@ -485,6 +485,7 @@ namespace WinTerrEdit
         private void nudManaCur_ValueChanged(object sender, EventArgs e)
         {
             playerMana[0] = (int)nudManaCur.Value;
+            playerMana[0] = (int)nudManaCur.Value;
         }
 
         private void nudManaMax_ValueChanged(object sender, EventArgs e)
