@@ -187,8 +187,6 @@ namespace WinTerrEdit
                 pbCollection[i].Image = inventory[i].item.icon;
             }
 
-            liveTB.Text = string.Join(",", rawDecrypted);
-
             btnSave.Enabled = true;
             invSelectedIndex = 0;
             updateInvDisplay();

@@ -83,6 +83,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gb_slot = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.cbPrefixes = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -114,9 +115,7 @@
             this.skinPnl = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.hairPnl = new System.Windows.Forms.Panel();
-            this.liveTB = new System.Windows.Forms.TextBox();
             this.colourSelecter = new System.Windows.Forms.ColorDialog();
-            this.btnClear = new System.Windows.Forms.Button();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -179,7 +178,7 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(587, 12);
+            this.btnLoad.Location = new System.Drawing.Point(203, 12);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(196, 23);
             this.btnLoad.TabIndex = 0;
@@ -190,7 +189,7 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(587, 41);
+            this.btnSave.Location = new System.Drawing.Point(203, 43);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(196, 23);
             this.btnSave.TabIndex = 1;
@@ -251,7 +250,7 @@
             this.gbInvHold.Controls.Add(this.pictureBox2);
             this.gbInvHold.Controls.Add(this.pictureBox1);
             this.gbInvHold.Enabled = false;
-            this.gbInvHold.Location = new System.Drawing.Point(194, 12);
+            this.gbInvHold.Location = new System.Drawing.Point(12, 232);
             this.gbInvHold.Name = "gbInvHold";
             this.gbInvHold.Size = new System.Drawing.Size(387, 214);
             this.gbInvHold.TabIndex = 2;
@@ -868,13 +867,24 @@
             this.gb_slot.Controls.Add(this.nudQuant);
             this.gb_slot.Controls.Add(this.cbItem);
             this.gb_slot.Enabled = false;
-            this.gb_slot.Location = new System.Drawing.Point(587, 72);
+            this.gb_slot.Location = new System.Drawing.Point(203, 72);
             this.gb_slot.Name = "gb_slot";
             this.gb_slot.Size = new System.Drawing.Size(196, 154);
             this.gb_slot.TabIndex = 50;
             this.gb_slot.TabStop = false;
             this.gb_slot.Text = "Slot";
             this.gb_slot.Enter += new System.EventHandler(this.gb_slot_Enter);
+            // 
+            // btnClear
+            // 
+            this.btnClear.ForeColor = System.Drawing.Color.Red;
+            this.btnClear.Location = new System.Drawing.Point(133, 11);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(52, 20);
+            this.btnClear.TabIndex = 63;
+            this.btnClear.Text = "CLEAR";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // cbPrefixes
             // 
@@ -1224,30 +1234,11 @@
             this.hairPnl.TabIndex = 0;
             this.hairPnl.Click += new System.EventHandler(this.colourSelecter_Click);
             // 
-            // liveTB
-            // 
-            this.liveTB.Location = new System.Drawing.Point(12, 242);
-            this.liveTB.Name = "liveTB";
-            this.liveTB.Size = new System.Drawing.Size(771, 20);
-            this.liveTB.TabIndex = 62;
-            // 
-            // btnClear
-            // 
-            this.btnClear.ForeColor = System.Drawing.Color.Red;
-            this.btnClear.Location = new System.Drawing.Point(133, 11);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(52, 20);
-            this.btnClear.TabIndex = 63;
-            this.btnClear.Text = "CLEAR";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 234);
-            this.Controls.Add(this.liveTB);
+            this.ClientSize = new System.Drawing.Size(408, 456);
             this.Controls.Add(this.gbPlayer);
             this.Controls.Add(this.gb_slot);
             this.Controls.Add(this.gbInvHold);
@@ -1321,7 +1312,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1412,7 +1402,6 @@
         private System.Windows.Forms.NumericUpDown nudHealthCur;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.TextBox liveTB;
         private System.Windows.Forms.ColorDialog colourSelecter;
         private System.Windows.Forms.Button btnClear;
     }
