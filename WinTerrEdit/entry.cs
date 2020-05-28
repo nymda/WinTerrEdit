@@ -372,7 +372,7 @@ namespace WinTerrEdit
             }
             catch
             {
-                
+
             }
         }
 
@@ -487,6 +487,13 @@ namespace WinTerrEdit
         private void nudManaMax_ValueChanged(object sender, EventArgs e)
         {
             playerMana[1] = (int)nudManaMax.Value;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            cbItem.SelectedItem = "Empty";
+            cbPrefixes.SelectedItem = "None";
+            nudQuant.Value = 0;
         }
     }
 }

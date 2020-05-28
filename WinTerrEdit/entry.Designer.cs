@@ -116,6 +116,7 @@
             this.hairPnl = new System.Windows.Forms.Panel();
             this.liveTB = new System.Windows.Forms.TextBox();
             this.colourSelecter = new System.Windows.Forms.ColorDialog();
+            this.btnClear = new System.Windows.Forms.Button();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -859,6 +860,7 @@
             // 
             // gb_slot
             // 
+            this.gb_slot.Controls.Add(this.btnClear);
             this.gb_slot.Controls.Add(this.cbPrefixes);
             this.gb_slot.Controls.Add(this.label3);
             this.gb_slot.Controls.Add(this.label2);
@@ -1229,6 +1231,17 @@
             this.liveTB.Size = new System.Drawing.Size(771, 20);
             this.liveTB.TabIndex = 62;
             // 
+            // btnClear
+            // 
+            this.btnClear.ForeColor = System.Drawing.Color.Red;
+            this.btnClear.Location = new System.Drawing.Point(133, 11);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(52, 20);
+            this.btnClear.TabIndex = 63;
+            this.btnClear.Text = "CLEAR";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1401,6 +1414,7 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox liveTB;
         private System.Windows.Forms.ColorDialog colourSelecter;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
