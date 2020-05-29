@@ -174,6 +174,17 @@ namespace WinTerrEdit
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
+                    //reset variables
+                    rawDecrypted = new List<Byte> { };
+                    playerName = "";
+                    inventory = new List<invItem> { };
+                    playerHealth = new List<int> { };
+                    playerMana = new List<int> { };
+                    playerColours = new List<Color> { };
+                    nameEndOffset = 0;
+                    invSelectedIndex = 0;
+                    isSaved = true;
+
                     inventory.Clear();
                     loadData(dlg.FileName);
                     gbInvHold.Enabled = true;
@@ -496,6 +507,15 @@ namespace WinTerrEdit
             cbItem.SelectedItem = "Empty";
             cbPrefixes.SelectedItem = "None";
             nudQuant.Value = 0;
+        }
+
+        private void entry_kDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.A)
+            {
+                about ab = new about();
+                ab.Show();
+            }
         }
     }
 }
