@@ -237,6 +237,8 @@ namespace WinTerrEdit
                 pbCollection[i].Image = inventory[i].item.icon;
             }
 
+            tbRaw.Text = string.Join(",", rawDecrypted);
+
             btnSave.Enabled = true;
             invSelectedIndex = 0;
             updateInvDisplay();
