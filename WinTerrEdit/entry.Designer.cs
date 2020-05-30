@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(entry));
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -116,6 +117,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.hairPnl = new System.Windows.Forms.Panel();
             this.colourSelecter = new System.Windows.Forms.ColorDialog();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.itemLV = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -1309,11 +1313,35 @@
             this.hairPnl.TabIndex = 0;
             this.hairPnl.Click += new System.EventHandler(this.colourSelecter_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // itemLV
+            // 
+            this.itemLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.itemLV.Enabled = false;
+            this.itemLV.HideSelection = false;
+            this.itemLV.Location = new System.Drawing.Point(405, 12);
+            this.itemLV.Name = "itemLV";
+            this.itemLV.Size = new System.Drawing.Size(262, 434);
+            this.itemLV.TabIndex = 52;
+            this.itemLV.UseCompatibleStateImageBehavior = false;
+            this.itemLV.ItemActivate += new System.EventHandler(this.lb_activ);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Item";
+            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 456);
+            this.ClientSize = new System.Drawing.Size(679, 456);
+            this.Controls.Add(this.itemLV);
             this.Controls.Add(this.gbPlayer);
             this.Controls.Add(this.gb_slot);
             this.Controls.Add(this.gbInvHold);
@@ -1482,6 +1510,9 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.ColorDialog colourSelecter;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ListView itemLV;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
 

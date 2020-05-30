@@ -29,20 +29,49 @@ namespace WinTerrEdit
         public int invSelectedIndex = 0;
         crypto cr = new crypto();
         public bool isSaved = true;
+        public loading ld;
 
         public entry()
         {
             InitializeComponent();
+            new Thread(new ThreadStart(delegate
+            {
+                Application.Run(ld = new loading(ih.globalTerrariaItems.Count()));
+            })).Start();
         }
         private void Entry_Load(object sender, EventArgs e)
         {
             pbCollection.AddRange(new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18, pictureBox19, pictureBox20, pictureBox21, pictureBox22, pictureBox23, pictureBox24, pictureBox25, pictureBox26, pictureBox27, pictureBox28, pictureBox29, pictureBox30, pictureBox31, pictureBox32, pictureBox33, pictureBox34, pictureBox35, pictureBox36, pictureBox37, pictureBox38, pictureBox39, pictureBox40, pictureBox41, pictureBox42, pictureBox43, pictureBox44, pictureBox45, pictureBox46, pictureBox47, pictureBox48, pictureBox49, pictureBox50 }); //lol
             pnCollection.AddRange(new List<Panel> { hairPnl, skinPnl, eyesPnl, shirtPnl, undershirtPnl, pantsPnl, shoesPnl });
-            foreach(baseItem itm in ih.globalTerrariaItems)
+            int cnt = 0;
+            itemLV.View = View.Details;
+            itemLV.Columns[0].Width = itemLV.Width - 25;
+            imageList1.ImageSize = new Size(32, 32);
+            itemLV.SmallImageList = imageList1;
+            itemLV.BeginUpdate();
+            foreach (baseItem itm in ih.globalTerrariaItems)
             {
                 cbItem.Items.Add(itm.name);
+                imageList1.Images.Add(itm.icon);
+                ListViewItem item = new ListViewItem();
+                item.Text = itm.name;
+                item.ImageIndex = cnt;
+                itemLV.Items.Add(item);
+                this.Invoke(new MethodInvoker(delegate ()
+                {
+                    ld.increase();
+                }));
+                cnt++;
             }
-            foreach(itemPrefix ipf in ih.globalItemPrefixes)
+            itemLV.Sorting = SortOrder.Ascending;
+            itemLV.Sort();
+            itemLV.EndUpdate();
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                ld.Close();
+            }));
+            this.Focus();
+            foreach (itemPrefix ipf in ih.globalItemPrefixes)
             {
                 cbPrefixes.Items.Add(ipf.name);
             }
@@ -190,6 +219,7 @@ namespace WinTerrEdit
                     gbInvHold.Enabled = true;
                     gbPlayer.Enabled = true;
                     gb_slot.Enabled = true;
+                    itemLV.Enabled = true;
                 }
             }
 
@@ -516,6 +546,11 @@ namespace WinTerrEdit
                 about ab = new about();
                 ab.Show();
             }
+        }
+
+        private void lb_activ(object sender, EventArgs e)
+        {
+            cbItem.SelectedItem = itemLV.SelectedItems[0].Text;
         }
     }
 }
