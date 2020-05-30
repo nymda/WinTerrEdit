@@ -21,10 +21,11 @@ namespace WinTerrEdit
             this.itemCount = itemCount;
         }
 
-        public void increase()
+        public void increase(string txt)
         {
             setCount++;
             progressBar1.Value = setCount;
+            label1.Text = "Extracted: " + txt;
         }
     }
 }

@@ -120,6 +120,8 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.itemLV = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gbItems = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -178,11 +180,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).BeginInit();
+            this.gbItems.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(203, 12);
+            this.btnLoad.Location = new System.Drawing.Point(471, 10);
             this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(196, 22);
@@ -194,7 +197,7 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(203, 43);
+            this.btnSave.Location = new System.Drawing.Point(471, 41);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(196, 22);
@@ -256,7 +259,7 @@
             this.gbInvHold.Controls.Add(this.pictureBox2);
             this.gbInvHold.Controls.Add(this.pictureBox1);
             this.gbInvHold.Enabled = false;
-            this.gbInvHold.Location = new System.Drawing.Point(12, 232);
+            this.gbInvHold.Location = new System.Drawing.Point(280, 230);
             this.gbInvHold.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbInvHold.Name = "gbInvHold";
             this.gbInvHold.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -925,7 +928,7 @@
             this.gb_slot.Controls.Add(this.nudQuant);
             this.gb_slot.Controls.Add(this.cbItem);
             this.gb_slot.Enabled = false;
-            this.gb_slot.Location = new System.Drawing.Point(203, 72);
+            this.gb_slot.Location = new System.Drawing.Point(471, 70);
             this.gb_slot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gb_slot.Name = "gb_slot";
             this.gb_slot.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1041,7 +1044,7 @@
             this.gbPlayer.Controls.Add(this.hairPnl);
             this.gbPlayer.Enabled = false;
             this.gbPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPlayer.Location = new System.Drawing.Point(12, 12);
+            this.gbPlayer.Location = new System.Drawing.Point(280, 10);
             this.gbPlayer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbPlayer.Name = "gbPlayer";
             this.gbPlayer.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1323,25 +1326,44 @@
             // 
             this.itemLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.itemLV.Enabled = false;
             this.itemLV.HideSelection = false;
-            this.itemLV.Location = new System.Drawing.Point(405, 12);
+            this.itemLV.Location = new System.Drawing.Point(6, 15);
             this.itemLV.Name = "itemLV";
-            this.itemLV.Size = new System.Drawing.Size(262, 434);
+            this.itemLV.Size = new System.Drawing.Size(250, 388);
             this.itemLV.TabIndex = 52;
             this.itemLV.UseCompatibleStateImageBehavior = false;
             this.itemLV.ItemActivate += new System.EventHandler(this.lb_activ);
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Item";
+            this.columnHeader1.Text = "Items:";
+            // 
+            // gbItems
+            // 
+            this.gbItems.Controls.Add(this.textBox1);
+            this.gbItems.Controls.Add(this.itemLV);
+            this.gbItems.Enabled = false;
+            this.gbItems.Location = new System.Drawing.Point(12, 12);
+            this.gbItems.Name = "gbItems";
+            this.gbItems.Size = new System.Drawing.Size(262, 432);
+            this.gbItems.TabIndex = 53;
+            this.gbItems.TabStop = false;
+            this.gbItems.Text = "Items";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 406);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(250, 20);
+            this.textBox1.TabIndex = 53;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 456);
-            this.Controls.Add(this.itemLV);
+            this.ClientSize = new System.Drawing.Size(682, 455);
+            this.Controls.Add(this.gbItems);
             this.Controls.Add(this.gbPlayer);
             this.Controls.Add(this.gb_slot);
             this.Controls.Add(this.gbInvHold);
@@ -1353,7 +1375,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "entry";
-            this.Text = "WinTerrEdit | [A] About";
+            this.Text = "WinTerrEdit | [F1] About";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onClose);
             this.Load += new System.EventHandler(this.Entry_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entry_kDown);
@@ -1417,6 +1439,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
+            this.gbItems.ResumeLayout(false);
+            this.gbItems.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1513,6 +1537,8 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ListView itemLV;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.GroupBox gbItems;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

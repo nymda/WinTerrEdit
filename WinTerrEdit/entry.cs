@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -23,6 +25,7 @@ namespace WinTerrEdit
         public List<int> playerMana = new List<int> { };
         public List<Color> playerColours = new List<Color> { }; //hair, skin, eyes, shirt, undershirt, pants, shoes
 
+        public List<ListViewItem> lvis = new List<ListViewItem> { };
         public List<Panel> pnCollection = new List<Panel> { };
         public List<PictureBox> pbCollection = new List<PictureBox> { };
         public int nameEndOffset = 0;
@@ -57,9 +60,10 @@ namespace WinTerrEdit
                 item.Text = itm.name;
                 item.ImageIndex = cnt;
                 itemLV.Items.Add(item);
+                lvis.Add(item);
                 this.Invoke(new MethodInvoker(delegate ()
                 {
-                    ld.increase();
+                    ld.increase(itm.name);
                 }));
                 cnt++;
             }
@@ -70,7 +74,12 @@ namespace WinTerrEdit
             {
                 ld.Close();
             }));
-            this.Focus();
+
+            //just show the fucking form to the user
+            User32.AllowSetForegroundWindow((uint)Process.GetCurrentProcess().Id);
+            User32.SetForegroundWindow(Handle);
+            User32.ShowWindow(Handle, User32.SW_SHOWNORMAL);
+
             foreach (itemPrefix ipf in ih.globalItemPrefixes)
             {
                 cbPrefixes.Items.Add(ipf.name);
@@ -219,7 +228,7 @@ namespace WinTerrEdit
                     gbInvHold.Enabled = true;
                     gbPlayer.Enabled = true;
                     gb_slot.Enabled = true;
-                    itemLV.Enabled = true;
+                    gbItems.Enabled = true;
                 }
             }
 
@@ -541,7 +550,7 @@ namespace WinTerrEdit
 
         private void entry_kDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.A)
+            if(e.KeyCode == Keys.F1)
             {
                 about ab = new about();
                 ab.Show();
@@ -551,6 +560,40 @@ namespace WinTerrEdit
         private void lb_activ(object sender, EventArgs e)
         {
             cbItem.SelectedItem = itemLV.SelectedItems[0].Text;
+        }
+
+        public static class User32
+        {
+            public const int SW_HIDE = 0;
+            public const int SW_SHOW = 5;
+            public const int SW_SHOWNORMAL = 1;
+            public const int SW_SHOWMAXIMIZED = 3;
+            public const int SW_RESTORE = 9;
+
+            [DllImport("user32.dll")]
+            public static extern bool SetForegroundWindow(IntPtr hWnd);
+            [DllImport("user32.dll")]
+            public static extern bool AllowSetForegroundWindow(uint dwProcessId);
+            [DllImport("user32.dll")]
+            public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox1.Text != "")
+            {
+                var results = lvis.Where(x => x.Text.ToLower().Contains(textBox1.Text)).ToList();
+                itemLV.Items.Clear();
+                foreach (var i in results)
+                {
+                    itemLV.Items.Add(i);
+                }
+            }
+            else
+            {
+                itemLV.Items.Clear();
+                itemLV.Items.AddRange(lvis.ToArray());
+            }
         }
     }
 }
