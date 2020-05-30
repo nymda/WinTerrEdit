@@ -1328,9 +1328,9 @@
             this.itemLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.itemLV.HideSelection = false;
-            this.itemLV.Location = new System.Drawing.Point(6, 15);
+            this.itemLV.Location = new System.Drawing.Point(6, 17);
             this.itemLV.Name = "itemLV";
-            this.itemLV.Size = new System.Drawing.Size(250, 388);
+            this.itemLV.Size = new System.Drawing.Size(250, 386);
             this.itemLV.TabIndex = 52;
             this.itemLV.UseCompatibleStateImageBehavior = false;
             this.itemLV.ItemActivate += new System.EventHandler(this.lb_activ);
@@ -1345,9 +1345,9 @@
             this.gbItems.Controls.Add(this.textBox1);
             this.gbItems.Controls.Add(this.itemLV);
             this.gbItems.Enabled = false;
-            this.gbItems.Location = new System.Drawing.Point(12, 12);
+            this.gbItems.Location = new System.Drawing.Point(12, 10);
             this.gbItems.Name = "gbItems";
-            this.gbItems.Size = new System.Drawing.Size(262, 432);
+            this.gbItems.Size = new System.Drawing.Size(262, 434);
             this.gbItems.TabIndex = 53;
             this.gbItems.TabStop = false;
             this.gbItems.Text = "Items";
