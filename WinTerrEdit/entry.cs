@@ -582,11 +582,15 @@ namespace WinTerrEdit
         {
             if(textBox1.Text != "")
             {
-                var results = lvis.Where(x => x.Text.ToLower().Contains(textBox1.Text)).ToList();
-                itemLV.Items.Clear();
-                foreach (var i in results)
+                //dont bother performing search on 1 or 2 characters
+                if(textBox1.Text.Length > 2)
                 {
-                    itemLV.Items.Add(i);
+                    var results = lvis.Where(x => x.Text.ToLower().Contains(textBox1.Text)).ToList();
+                    itemLV.Items.Clear();
+                    foreach (var i in results)
+                    {
+                        itemLV.Items.Add(i);
+                    }
                 }
             }
             else

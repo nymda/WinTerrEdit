@@ -122,6 +122,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbItems = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -1340,6 +1341,7 @@
             // 
             // gbItems
             // 
+            this.gbItems.Controls.Add(this.lblSearch);
             this.gbItems.Controls.Add(this.textBox1);
             this.gbItems.Controls.Add(this.itemLV);
             this.gbItems.Enabled = false;
@@ -1352,11 +1354,20 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 406);
+            this.textBox1.Location = new System.Drawing.Point(56, 406);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 20);
+            this.textBox1.Size = new System.Drawing.Size(200, 20);
             this.textBox1.TabIndex = 53;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(6, 408);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(44, 13);
+            this.lblSearch.TabIndex = 54;
+            this.lblSearch.Text = "Search:";
             // 
             // entry
             // 
@@ -1539,6 +1550,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.GroupBox gbItems;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblSearch;
     }
 }
 
