@@ -1488,6 +1488,7 @@
             this.pictureBox51.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox51.TabIndex = 1;
             this.pictureBox51.TabStop = false;
+            this.pictureBox51.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox52
             // 
@@ -1499,6 +1500,7 @@
             this.pictureBox52.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox52.TabIndex = 2;
             this.pictureBox52.TabStop = false;
+            this.pictureBox52.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox53
             // 
@@ -1510,6 +1512,7 @@
             this.pictureBox53.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox53.TabIndex = 3;
             this.pictureBox53.TabStop = false;
+            this.pictureBox53.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox54
             // 
@@ -1521,6 +1524,7 @@
             this.pictureBox54.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox54.TabIndex = 4;
             this.pictureBox54.TabStop = false;
+            this.pictureBox54.Click += new System.EventHandler(this.item_Click);
             // 
             // gbAmmo
             // 
@@ -1546,6 +1550,7 @@
             this.pictureBox55.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox55.TabIndex = 4;
             this.pictureBox55.TabStop = false;
+            this.pictureBox55.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox56
             // 
@@ -1557,6 +1562,7 @@
             this.pictureBox56.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox56.TabIndex = 3;
             this.pictureBox56.TabStop = false;
+            this.pictureBox56.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox57
             // 
@@ -1568,6 +1574,7 @@
             this.pictureBox57.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox57.TabIndex = 2;
             this.pictureBox57.TabStop = false;
+            this.pictureBox57.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox58
             // 
@@ -1579,6 +1586,7 @@
             this.pictureBox58.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox58.TabIndex = 1;
             this.pictureBox58.TabStop = false;
+            this.pictureBox58.Click += new System.EventHandler(this.item_Click);
             // 
             // gbDye
             // 
@@ -1608,6 +1616,7 @@
             this.pictureBox59.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox59.TabIndex = 5;
             this.pictureBox59.TabStop = false;
+            this.pictureBox59.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox60
             // 
@@ -1619,6 +1628,7 @@
             this.pictureBox60.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox60.TabIndex = 6;
             this.pictureBox60.TabStop = false;
+            this.pictureBox60.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox61
             // 
@@ -1630,6 +1640,7 @@
             this.pictureBox61.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox61.TabIndex = 7;
             this.pictureBox61.TabStop = false;
+            this.pictureBox61.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox62
             // 
@@ -1641,6 +1652,7 @@
             this.pictureBox62.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox62.TabIndex = 8;
             this.pictureBox62.TabStop = false;
+            this.pictureBox62.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox63
             // 
@@ -1652,6 +1664,7 @@
             this.pictureBox63.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox63.TabIndex = 9;
             this.pictureBox63.TabStop = false;
+            this.pictureBox63.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox64
             // 
@@ -1663,6 +1676,7 @@
             this.pictureBox64.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox64.TabIndex = 10;
             this.pictureBox64.TabStop = false;
+            this.pictureBox64.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox65
             // 
@@ -1674,6 +1688,7 @@
             this.pictureBox65.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox65.TabIndex = 11;
             this.pictureBox65.TabStop = false;
+            this.pictureBox65.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox66
             // 
@@ -1685,6 +1700,7 @@
             this.pictureBox66.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox66.TabIndex = 12;
             this.pictureBox66.TabStop = false;
+            this.pictureBox66.Click += new System.EventHandler(this.item_Click);
             // 
             // groupBox1
             // 
@@ -1714,6 +1730,7 @@
             this.pictureBox67.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox67.TabIndex = 12;
             this.pictureBox67.TabStop = false;
+            this.pictureBox67.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox68
             // 
@@ -1725,6 +1742,7 @@
             this.pictureBox68.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox68.TabIndex = 11;
             this.pictureBox68.TabStop = false;
+            this.pictureBox68.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox69
             // 
@@ -1736,6 +1754,7 @@
             this.pictureBox69.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox69.TabIndex = 10;
             this.pictureBox69.TabStop = false;
+            this.pictureBox69.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox70
             // 
@@ -1747,6 +1766,7 @@
             this.pictureBox70.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox70.TabIndex = 9;
             this.pictureBox70.TabStop = false;
+            this.pictureBox70.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox71
             // 
@@ -1758,6 +1778,7 @@
             this.pictureBox71.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox71.TabIndex = 8;
             this.pictureBox71.TabStop = false;
+            this.pictureBox71.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox72
             // 
@@ -1769,6 +1790,7 @@
             this.pictureBox72.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox72.TabIndex = 7;
             this.pictureBox72.TabStop = false;
+            this.pictureBox72.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox73
             // 
@@ -1780,6 +1802,7 @@
             this.pictureBox73.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox73.TabIndex = 6;
             this.pictureBox73.TabStop = false;
+            this.pictureBox73.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox74
             // 
@@ -1791,6 +1814,7 @@
             this.pictureBox74.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox74.TabIndex = 5;
             this.pictureBox74.TabStop = false;
+            this.pictureBox74.Click += new System.EventHandler(this.item_Click);
             // 
             // groupBox2
             // 
@@ -1820,6 +1844,7 @@
             this.pictureBox75.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox75.TabIndex = 12;
             this.pictureBox75.TabStop = false;
+            this.pictureBox75.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox76
             // 
@@ -1831,6 +1856,7 @@
             this.pictureBox76.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox76.TabIndex = 11;
             this.pictureBox76.TabStop = false;
+            this.pictureBox76.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox77
             // 
@@ -1842,6 +1868,7 @@
             this.pictureBox77.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox77.TabIndex = 10;
             this.pictureBox77.TabStop = false;
+            this.pictureBox77.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox78
             // 
@@ -1853,6 +1880,7 @@
             this.pictureBox78.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox78.TabIndex = 9;
             this.pictureBox78.TabStop = false;
+            this.pictureBox78.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox79
             // 
@@ -1864,6 +1892,7 @@
             this.pictureBox79.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox79.TabIndex = 8;
             this.pictureBox79.TabStop = false;
+            this.pictureBox79.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox80
             // 
@@ -1875,6 +1904,7 @@
             this.pictureBox80.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox80.TabIndex = 7;
             this.pictureBox80.TabStop = false;
+            this.pictureBox80.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox81
             // 
@@ -1886,6 +1916,7 @@
             this.pictureBox81.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox81.TabIndex = 6;
             this.pictureBox81.TabStop = false;
+            this.pictureBox81.Click += new System.EventHandler(this.item_Click);
             // 
             // pictureBox82
             // 
@@ -1897,6 +1928,7 @@
             this.pictureBox82.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox82.TabIndex = 5;
             this.pictureBox82.TabStop = false;
+            this.pictureBox82.Click += new System.EventHandler(this.item_Click);
             // 
             // entry
             // 
