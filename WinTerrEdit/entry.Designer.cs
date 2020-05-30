@@ -1449,7 +1449,7 @@
             // gbRaw
             // 
             this.gbRaw.Controls.Add(this.tbRaw);
-            this.gbRaw.Location = new System.Drawing.Point(12, 450);
+            this.gbRaw.Location = new System.Drawing.Point(12, 463);
             this.gbRaw.Name = "gbRaw";
             this.gbRaw.Size = new System.Drawing.Size(823, 50);
             this.gbRaw.TabIndex = 54;
@@ -1902,7 +1902,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 510);
+            this.ClientSize = new System.Drawing.Size(852, 455);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbDye);
