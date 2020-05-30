@@ -580,18 +580,14 @@ namespace WinTerrEdit
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if(textBox1.Text != "")
+            if(textBox1.Text.Length > 2)
             {
-                //dont bother performing search on 1 or 2 characters
-                if(textBox1.Text.Length > 2)
+                var results = lvis.Where(x => x.Text.ToLower().Contains(textBox1.Text)).ToList();
+                itemLV.Items.Clear();
+                foreach (var i in results)
                 {
-                    var results = lvis.Where(x => x.Text.ToLower().Contains(textBox1.Text)).ToList();
-                    itemLV.Items.Clear();
-                    foreach (var i in results)
-                    {
-                        itemLV.Items.Add(i);
-                    }
-                }
+                    itemLV.Items.Add(i);
+                }         
             }
             else
             {
