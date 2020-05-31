@@ -123,8 +123,6 @@
             this.gbItems = new System.Windows.Forms.GroupBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.gbRaw = new System.Windows.Forms.GroupBox();
-            this.tbRaw = new System.Windows.Forms.TextBox();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -184,7 +182,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).BeginInit();
             this.gbItems.SuspendLayout();
-            this.gbRaw.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLoad
@@ -1372,30 +1369,11 @@
             this.textBox1.TabIndex = 53;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // gbRaw
-            // 
-            this.gbRaw.Controls.Add(this.tbRaw);
-            this.gbRaw.Location = new System.Drawing.Point(12, 451);
-            this.gbRaw.Name = "gbRaw";
-            this.gbRaw.Size = new System.Drawing.Size(655, 50);
-            this.gbRaw.TabIndex = 54;
-            this.gbRaw.TabStop = false;
-            this.gbRaw.Text = "Raw";
-            // 
-            // tbRaw
-            // 
-            this.tbRaw.Location = new System.Drawing.Point(9, 19);
-            this.tbRaw.Name = "tbRaw";
-            this.tbRaw.ReadOnly = true;
-            this.tbRaw.Size = new System.Drawing.Size(640, 20);
-            this.tbRaw.TabIndex = 0;
-            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 509);
-            this.Controls.Add(this.gbRaw);
+            this.ClientSize = new System.Drawing.Size(683, 453);
             this.Controls.Add(this.gbItems);
             this.Controls.Add(this.gbPlayer);
             this.Controls.Add(this.gb_slot);
@@ -1408,7 +1386,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "entry";
-            this.Text = "WinTerrEdit | [F1] About";
+            this.Text = "WinTerrEdit | [F1] About | [F2] Raw";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onClose);
             this.Load += new System.EventHandler(this.Entry_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entry_kDown);
@@ -1474,8 +1452,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
             this.gbItems.ResumeLayout(false);
             this.gbItems.PerformLayout();
-            this.gbRaw.ResumeLayout(false);
-            this.gbRaw.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1575,8 +1551,6 @@
         private System.Windows.Forms.GroupBox gbItems;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblSearch;
-        private System.Windows.Forms.GroupBox gbRaw;
-        private System.Windows.Forms.TextBox tbRaw;
     }
 }
 

@@ -68,6 +68,12 @@
     <Compile Include="entry.Designer.cs">
       <DependentUpon>entry.cs</DependentUpon>
     </Compile>
+    <Compile Include="hexView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="hexView.Designer.cs">
+      <DependentUpon>hexView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Init.cs" />
     <Compile Include="itemHandler.cs" />
     <Compile Include="loading.cs">
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="entry.resx">
       <DependentUpon>entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hexView.resx">
+      <DependentUpon>hexView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loading.resx">
       <DependentUpon>loading.cs</DependentUpon>

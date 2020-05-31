@@ -25,7 +25,12 @@ namespace WinTerrEdit
         {
             setCount++;
             progressBar1.Value = setCount;
-            label1.Text = "Extracted: " + txt;
+            label1.Text = string.Format("({0}/{1} items loaded)", setCount, itemCount);
+        }
+
+        private void loading_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

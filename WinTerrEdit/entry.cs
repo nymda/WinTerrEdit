@@ -29,7 +29,7 @@ namespace WinTerrEdit
         public List<Panel> pnCollection = new List<Panel> { };
         public List<PictureBox> pbCollection = new List<PictureBox> { };
         public int nameEndOffset = 0;
-        public int invSelectedIndex = 0;
+        public int invSelectedIndex = -1;
         crypto cr = new crypto();
         public bool isSaved = true;
         public loading ld;
@@ -235,8 +235,6 @@ namespace WinTerrEdit
             {
                 pbCollection[i].Image = inventory[i].item.icon;
             }
-
-            tbRaw.Text = string.Join(",", rawDecrypted);
 
             btnSave.Enabled = true;
             invSelectedIndex = 0;
@@ -555,6 +553,11 @@ namespace WinTerrEdit
             {
                 about ab = new about();
                 ab.Show();
+            }
+            if(e.KeyCode == Keys.F2)
+            {
+                hexView hx = new hexView(rawDecrypted.ToArray());
+                hx.Show();
             }
         }
 
