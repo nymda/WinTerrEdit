@@ -52,21 +52,21 @@ namespace WinTerrEdit
             imageList1.ImageSize = new Size(32, 32);
             itemLV.SmallImageList = imageList1;
             itemLV.BeginUpdate();
+            Stopwatch st = new Stopwatch();
+            st.Start();
             foreach (baseItem itm in ih.globalTerrariaItems)
             {
                 cbItem.Items.Add(itm.name);
                 imageList1.Images.Add(itm.icon);
-                ListViewItem item = new ListViewItem();
-                item.Text = itm.name;
-                item.ImageIndex = cnt;
-                itemLV.Items.Add(item);
-                lvis.Add(item);
-                this.Invoke(new MethodInvoker(delegate ()
-                {
-                    ld.increase(itm.name);
-                }));
+                ListViewItem tmp = new ListViewItem();
+                tmp.Text = itm.name;
+                tmp.ImageIndex = cnt;
+                itemLV.Items.Add(tmp);
+                lvis.Add(tmp);
                 cnt++;
             }
+            st.Stop();
+            Console.WriteLine("load took " + st.Elapsed);
             itemLV.Sorting = SortOrder.Ascending;
             itemLV.Sort();
             itemLV.EndUpdate();

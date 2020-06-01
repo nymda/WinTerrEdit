@@ -12,25 +12,33 @@ namespace WinTerrEdit
 {
     public partial class loading : Form
     {
-        public int setCount = 0;
-        public int itemCount = 0;
+        public string str = "Loading assets";
+        public string add = "";
+        int count = 0;
         public loading(int itemCount)
         {
             InitializeComponent();
-            progressBar1.Maximum = itemCount;
-            this.itemCount = itemCount;
-        }
-
-        public void increase(string txt)
-        {
-            setCount++;
-            progressBar1.Value = setCount;
-            label1.Text = string.Format("({0}/{1} items loaded)", setCount, itemCount);
         }
 
         private void loading_Load(object sender, EventArgs e)
         {
+            timer1.Start();
+        }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(count == 4)
+            {
+                count = 0;
+            }
+            StringBuilder tmp = new StringBuilder();
+            tmp.Append(str);
+            if(count > 0)
+            {
+                tmp.Append('.', count);
+            }
+            label1.Text = tmp.ToString();
+            count++;
         }
     }
 }
