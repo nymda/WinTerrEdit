@@ -45,6 +45,7 @@
             this.tbOut.Location = new System.Drawing.Point(12, 12);
             this.tbOut.Multiline = true;
             this.tbOut.Name = "tbOut";
+            this.tbOut.ReadOnly = true;
             this.tbOut.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbOut.Size = new System.Drawing.Size(500, 541);
             this.tbOut.TabIndex = 1;

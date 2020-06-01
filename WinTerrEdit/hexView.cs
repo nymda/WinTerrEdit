@@ -14,13 +14,16 @@ namespace WinTerrEdit
     {
         public byte[] data;
         public string output;
-        public hexView(byte[] data)
+        public int NEO;
+        public hexView(byte[] data, int NEO)
         {
             InitializeComponent();
             this.data = data;
+            this.NEO = NEO;
         }
         private void hexView_Load(object sender, EventArgs e)
         {
+            this.Text = "hexView | NEO @ " + NEO;
             update();
         }
 
@@ -33,6 +36,7 @@ namespace WinTerrEdit
         {
             if (rbInt.Checked)
             {
+                cbConstSize.Enabled = true;
                 if (!cbConstSize.Checked)
                 {
                     output = string.Join(",", data);
@@ -56,10 +60,12 @@ namespace WinTerrEdit
             }
             if (rbHex.Checked)
             {
+                cbConstSize.Enabled = false;
                 output = BitConverter.ToString(data);
             }
             if (rbStr.Checked)
             {
+                cbConstSize.Enabled = false;
                 StringBuilder sb = new StringBuilder();
                 List<Char> tmpChar = new List<Char> { };
                 foreach(byte b in data)

@@ -556,7 +556,7 @@ namespace WinTerrEdit
             }
             if(e.KeyCode == Keys.F2)
             {
-                hexView hx = new hexView(rawDecrypted.ToArray());
+                hexView hx = new hexView(rawDecrypted.ToArray(), nameEndOffset);
                 hx.Show();
             }
         }
