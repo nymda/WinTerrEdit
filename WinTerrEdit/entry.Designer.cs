@@ -123,6 +123,8 @@
             this.gbItems = new System.Windows.Forms.GroupBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.gbMisc = new System.Windows.Forms.GroupBox();
+            this.btnUnlockAll = new System.Windows.Forms.Button();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -182,6 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).BeginInit();
             this.gbItems.SuspendLayout();
+            this.gbMisc.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLoad
@@ -1369,11 +1372,33 @@
             this.textBox1.TabIndex = 53;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // gbMisc
+            // 
+            this.gbMisc.Controls.Add(this.btnUnlockAll);
+            this.gbMisc.Location = new System.Drawing.Point(12, 450);
+            this.gbMisc.Name = "gbMisc";
+            this.gbMisc.Size = new System.Drawing.Size(655, 52);
+            this.gbMisc.TabIndex = 54;
+            this.gbMisc.TabStop = false;
+            this.gbMisc.Text = "Journey mode";
+            // 
+            // btnUnlockAll
+            // 
+            this.btnUnlockAll.Enabled = false;
+            this.btnUnlockAll.Location = new System.Drawing.Point(9, 19);
+            this.btnUnlockAll.Name = "btnUnlockAll";
+            this.btnUnlockAll.Size = new System.Drawing.Size(116, 23);
+            this.btnUnlockAll.TabIndex = 0;
+            this.btnUnlockAll.Text = "Unlock All Research";
+            this.btnUnlockAll.UseVisualStyleBackColor = true;
+            this.btnUnlockAll.Click += new System.EventHandler(this.btnUnlockAll_Click);
+            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 453);
+            this.ClientSize = new System.Drawing.Size(683, 514);
+            this.Controls.Add(this.gbMisc);
             this.Controls.Add(this.gbItems);
             this.Controls.Add(this.gbPlayer);
             this.Controls.Add(this.gb_slot);
@@ -1452,6 +1477,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
             this.gbItems.ResumeLayout(false);
             this.gbItems.PerformLayout();
+            this.gbMisc.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1551,6 +1577,8 @@
         private System.Windows.Forms.GroupBox gbItems;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.GroupBox gbMisc;
+        private System.Windows.Forms.Button btnUnlockAll;
     }
 }
 

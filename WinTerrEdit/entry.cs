@@ -6,6 +6,7 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -24,6 +25,9 @@ namespace WinTerrEdit
         public List<int> playerHealth = new List<int> { };
         public List<int> playerMana = new List<int> { };
         public List<Color> playerColours = new List<Color> { }; //hair, skin, eyes, shirt, undershirt, pants, shoes
+
+        //only populated if unlock all is used
+        public List<Byte> unlockAllData = new List<Byte> { };
 
         public List<ListViewItem> lvis = new List<ListViewItem> { };
         public List<Panel> pnCollection = new List<Panel> { };
@@ -278,6 +282,39 @@ namespace WinTerrEdit
             updateInvDisplay();
         }
 
+        private void btnUnlockAll_Click(object sender, EventArgs e)
+        {
+            bool skip = true;
+            unlockAllData.Add(178);
+            unlockAllData.Add(19);
+            unlockAllData.Add(0);
+            unlockAllData.Add(0);
+            unlockAllData.Add(11);
+            foreach (baseItem bi in ih.globalTerrariaItems)
+            {
+                if (skip)
+                {
+                    skip = false;
+                }
+                else
+                {
+                    string name = bi.name_internal;
+                    List<Byte> fin = new List<Byte> { };
+                    foreach (char c in name)
+                    {
+                        fin.Add((byte)c);
+                    }
+                    fin.Add(100);
+                    fin.Add(0);
+                    fin.Add(0);
+                    fin.Add(0);
+                    fin.Add(0);
+                    unlockAllData.AddRange(fin);
+                    Console.WriteLine(name);
+                }
+            }
+        }
+
         public List<Byte> reEncode()
         {
             List<Byte> buffer = new List<Byte> { };
@@ -354,6 +391,15 @@ namespace WinTerrEdit
             {
                 save[i] = buffer[extCount];
                 extCount++;
+            }
+
+            int unlockAllBeginOffser = nameEndOffset + 2557;
+            save.InsertRange(unlockAllBeginOffser, unlockAllData);
+
+            //insert padding
+            while(save.Count() % 16 != 0)
+            {
+                save.Add(0);
             }
 
             return save;
