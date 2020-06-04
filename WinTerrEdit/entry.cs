@@ -225,6 +225,7 @@ namespace WinTerrEdit
                     nameEndOffset = 0;
                     invSelectedIndex = 0;
                     isSaved = true;
+                    unlockAllData = new List<Byte> { };
 
                     inventory.Clear();
                     loadData(dlg.FileName);
@@ -284,35 +285,7 @@ namespace WinTerrEdit
 
         private void btnUnlockAll_Click(object sender, EventArgs e)
         {
-            bool skip = true;
-            unlockAllData.Add(178);
-            unlockAllData.Add(19);
-            unlockAllData.Add(0);
-            unlockAllData.Add(0);
-            unlockAllData.Add(11);
-            foreach (baseItem bi in ih.globalTerrariaItems)
-            {
-                if (skip)
-                {
-                    skip = false;
-                }
-                else
-                {
-                    string name = bi.name_internal;
-                    List<Byte> fin = new List<Byte> { };
-                    foreach (char c in name)
-                    {
-                        fin.Add((byte)c);
-                    }
-                    fin.Add(100);
-                    fin.Add(0);
-                    fin.Add(0);
-                    fin.Add(0);
-                    fin.Add(0);
-                    unlockAllData.AddRange(fin);
-                    Console.WriteLine(name);
-                }
-            }
+            //todo
         }
 
         public List<Byte> reEncode()
