@@ -68,6 +68,7 @@
     <Compile Include="entry.Designer.cs">
       <DependentUpon>entry.cs</DependentUpon>
     </Compile>
+    <Compile Include="gamemodes.cs" />
     <Compile Include="hexView.cs">
       <SubType>Form</SubType>
     </Compile>

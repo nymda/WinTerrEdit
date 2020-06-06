@@ -15,11 +15,13 @@ namespace WinTerrEdit
         public byte[] data;
         public string output;
         public int NEO;
-        public hexView(byte[] data, int NEO)
+        List<List<int>> invDat = new List<List<int>> { };
+        public hexView(List<List<int>> invDat, byte[] data, int NEO)
         {
             InitializeComponent();
             this.data = data;
             this.NEO = NEO;
+            this.invDat = invDat;
         }
         private void hexView_Load(object sender, EventArgs e)
         {
@@ -81,6 +83,35 @@ namespace WinTerrEdit
                     }
                 }
                 output = string.Join("", tmpChar);
+            }
+            if (rbInv.Checked)
+            {
+                if (cbConstSize.Checked)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (List<int> i in invDat)
+                    {
+                        foreach (int b in i)
+                        {
+                            string tmp = b.ToString();
+                            int neg = 3 - tmp.Length;
+                            if (neg > 0){ sb.Append('0', neg); }
+                            sb.Append(tmp);
+                            sb.Append(",");
+                        }
+                        sb.Append(Environment.NewLine);
+                    }
+                    output = sb.ToString();
+                }
+                else
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (List<int> i in invDat)
+                    {
+                        sb.AppendLine(string.Join(",", i));
+                    }
+                    output = sb.ToString();
+                }          
             }
             tbOut.Text = output;
         }

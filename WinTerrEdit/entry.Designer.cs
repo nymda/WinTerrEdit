@@ -125,6 +125,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.gbMisc = new System.Windows.Forms.GroupBox();
             this.btnUnlockAll = new System.Windows.Forms.Button();
+            this.lblGm = new System.Windows.Forms.Label();
+            this.btnUnlockBeastery = new System.Windows.Forms.Button();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -1022,6 +1024,7 @@
             // 
             // gbPlayer
             // 
+            this.gbPlayer.Controls.Add(this.lblGm);
             this.gbPlayer.Controls.Add(this.label14);
             this.gbPlayer.Controls.Add(this.label15);
             this.gbPlayer.Controls.Add(this.nudManaMax);
@@ -1374,13 +1377,14 @@
             // 
             // gbMisc
             // 
+            this.gbMisc.Controls.Add(this.btnUnlockBeastery);
             this.gbMisc.Controls.Add(this.btnUnlockAll);
             this.gbMisc.Location = new System.Drawing.Point(12, 450);
             this.gbMisc.Name = "gbMisc";
             this.gbMisc.Size = new System.Drawing.Size(655, 52);
             this.gbMisc.TabIndex = 54;
             this.gbMisc.TabStop = false;
-            this.gbMisc.Text = "Journey mode";
+            this.gbMisc.Text = "Misc";
             // 
             // btnUnlockAll
             // 
@@ -1392,6 +1396,25 @@
             this.btnUnlockAll.Text = "Unlock All Research";
             this.btnUnlockAll.UseVisualStyleBackColor = true;
             this.btnUnlockAll.Click += new System.EventHandler(this.btnUnlockAll_Click);
+            // 
+            // lblGm
+            // 
+            this.lblGm.AutoSize = true;
+            this.lblGm.Location = new System.Drawing.Point(6, 97);
+            this.lblGm.Name = "lblGm";
+            this.lblGm.Size = new System.Drawing.Size(65, 13);
+            this.lblGm.TabIndex = 62;
+            this.lblGm.Text = "[gamemode]";
+            // 
+            // btnUnlockBeastery
+            // 
+            this.btnUnlockBeastery.Enabled = false;
+            this.btnUnlockBeastery.Location = new System.Drawing.Point(131, 19);
+            this.btnUnlockBeastery.Name = "btnUnlockBeastery";
+            this.btnUnlockBeastery.Size = new System.Drawing.Size(116, 23);
+            this.btnUnlockBeastery.TabIndex = 1;
+            this.btnUnlockBeastery.Text = "Unlock All Beastery";
+            this.btnUnlockBeastery.UseVisualStyleBackColor = true;
             // 
             // entry
             // 
@@ -1579,6 +1602,8 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.GroupBox gbMisc;
         private System.Windows.Forms.Button btnUnlockAll;
+        private System.Windows.Forms.Label lblGm;
+        private System.Windows.Forms.Button btnUnlockBeastery;
     }
 }
 

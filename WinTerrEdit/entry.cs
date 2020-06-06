@@ -15,12 +15,16 @@ namespace WinTerrEdit
 {
     public partial class entry : Form
     {
+        //general stuff
         itemHandler ih = new itemHandler(true);
         public List<Byte> rawDecrypted = new List<Byte> { };
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Terraria/Players";
 
-        //live modifyable variables
+        //static player variables
         public string playerName = "";
+        public gamemodes.gamemode playerMode;
+
+        //modifiable player variables
         public List<invItem> inventory = new List<invItem> { };
         public List<int> playerHealth = new List<int> { };
         public List<int> playerMana = new List<int> { };
@@ -29,6 +33,9 @@ namespace WinTerrEdit
         //only populated if unlock all is used
         public List<Byte> unlockAllData = new List<Byte> { };
 
+        //other
+        public int additionOffset = 0;
+        public List<List<int>> debugInvData = new List<List<int>> { };
         public List<ListViewItem> lvis = new List<ListViewItem> { };
         public List<Panel> pnCollection = new List<Panel> { };
         public List<PictureBox> pbCollection = new List<PictureBox> { };
@@ -119,11 +126,24 @@ namespace WinTerrEdit
                 }
             }
 
+            playerMode = (gamemodes.gamemode)decrypted[nameEndOffset];
+
+            lblGm.Text = playerMode.ToString();
+
             playerName = nameBuild.ToString();
 
             tbName.Text = playerName;
 
-            int InvDataBeginOffset = nameEndOffset + 211;
+            if(playerMode == gamemodes.gamemode.Classic)
+            {
+                additionOffset = 0;
+            }
+            else
+            {
+                additionOffset = 2;
+            }
+
+            int InvDataBeginOffset = nameEndOffset + (211 + additionOffset);
             int InvDataEndOffset = InvDataBeginOffset + 500;
 
             int extCounter = 0;
@@ -137,6 +157,7 @@ namespace WinTerrEdit
                 {
                     invItem iv = new invItem(invTmp, ih);
                     inventory.Add(iv);
+                    debugInvData.Add(invTmp);
                     invTmp = new List<int> { };
                     extCounter = 0;
                 }
@@ -226,8 +247,19 @@ namespace WinTerrEdit
                     invSelectedIndex = 0;
                     isSaved = true;
                     unlockAllData = new List<Byte> { };
-
+                    debugInvData = new List<List<int>> { };
                     inventory.Clear();
+
+                    FileInfo fi = new FileInfo(dlg.FileName);
+                    if(fi.Length > 5000)
+                    {
+                        this.Text = "WinTerrEdit | [F1] About | [F2] Raw (Warn: Large PLR file)";
+                    }
+                    else
+                    {
+                        this.Text = "WinTerrEdit | [F1] About | [F2] Raw";
+                    }
+
                     loadData(dlg.FileName);
                     gbInvHold.Enabled = true;
                     gbPlayer.Enabled = true;
@@ -330,7 +362,7 @@ namespace WinTerrEdit
             buffer.Add(0x00);
             buffer.Add(0x00);
 
-            int dataBeginOffset = nameEndOffset + 211;
+            int dataBeginOffset = nameEndOffset + (211 + additionOffset);
             int dataEndOffset = dataBeginOffset + 500;
             int extCount = 0;
 
@@ -575,7 +607,7 @@ namespace WinTerrEdit
             }
             if(e.KeyCode == Keys.F2)
             {
-                hexView hx = new hexView(rawDecrypted.ToArray(), nameEndOffset);
+                hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset);
                 hx.Show();
             }
         }
