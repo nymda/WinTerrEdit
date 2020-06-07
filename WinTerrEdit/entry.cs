@@ -134,15 +134,6 @@ namespace WinTerrEdit
 
             tbName.Text = playerName;
 
-            if(playerMode == gamemodes.gamemode.Classic)
-            {
-                additionOffset = 0;
-            }
-            else
-            {
-                additionOffset = 2;
-            }
-
             int InvDataBeginOffset = nameEndOffset + (211 + additionOffset);
             int InvDataEndOffset = InvDataBeginOffset + 500;
 
@@ -161,6 +152,38 @@ namespace WinTerrEdit
                     invTmp = new List<int> { };
                     extCounter = 0;
                 }
+            }
+
+            bool needExtraOffset = ih.calcByteOffset(debugInvData);
+            if (needExtraOffset)
+            {
+                additionOffset = 2;
+                inventory = new List<invItem> { };
+                debugInvData = new List<List<int>> { };
+
+                InvDataBeginOffset = nameEndOffset + (211 + additionOffset);
+                InvDataEndOffset = InvDataBeginOffset + 500;
+
+                extCounter = 0;
+
+                invTmp = new List<int> { };
+                for (int i = InvDataBeginOffset; i < InvDataEndOffset; i++)
+                {
+                    extCounter++;
+                    invTmp.Add(decrypted[i]);
+                    if (extCounter == 10)
+                    {
+                        invItem iv = new invItem(invTmp, ih);
+                        inventory.Add(iv);
+                        debugInvData.Add(invTmp);
+                        invTmp = new List<int> { };
+                        extCounter = 0;
+                    }
+                }
+            }
+            else
+            {
+                additionOffset = 0;
             }
 
             int ColourDataBeginOffset = nameEndOffset + 40;

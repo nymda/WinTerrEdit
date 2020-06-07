@@ -92,6 +92,31 @@ namespace WinTerrEdit
             }
             return globalItemPrefixes[0];
         }
+
+        public bool calcByteOffset(List<List<int>> invDat)
+        {
+            int additor = 0;
+
+            foreach(List<int> invchunk in invDat)
+            {
+                additor += invchunk[2];
+                additor += invchunk[3];
+                additor += invchunk[6];
+                additor += invchunk[7];
+                additor += invchunk[9];
+            }
+
+            Console.WriteLine(additor);
+
+            if(additor == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
     public class invItem
     {
