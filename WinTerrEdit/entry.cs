@@ -44,6 +44,7 @@ namespace WinTerrEdit
         crypto cr = new crypto();
         public bool isSaved = true;
         public loading ld;
+        public bool needExtraOffset;
 
         public entry()
         {
@@ -152,7 +153,7 @@ namespace WinTerrEdit
             }
 
             //test if the +2 byte offset is needed
-            bool needExtraOffset = ih.calcByteOffset(debugInvData);
+            needExtraOffset = ih.calcByteOffset(debugInvData);
             if (needExtraOffset)
             {
                 additionOffset = 2;
@@ -657,7 +658,7 @@ namespace WinTerrEdit
             }
             if(e.KeyCode == Keys.F2)
             {
-                hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset);
+                hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, needExtraOffset);
                 hx.Show();
             }
         }
