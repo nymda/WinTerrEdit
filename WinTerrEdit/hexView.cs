@@ -25,7 +25,7 @@ namespace WinTerrEdit
         }
         private void hexView_Load(object sender, EventArgs e)
         {
-            this.Text = "hexView | NEO @ " + NEO;
+            this.Text = "Debug | NEO @ " + NEO;
             update();
         }
 
@@ -112,6 +112,47 @@ namespace WinTerrEdit
                     }
                     output = sb.ToString();
                 }          
+            }
+            if (rbHyb.Checked)
+            {
+                byte[] printables = new byte[] { (byte)'a', (byte)'b', (byte)'c', (byte)'d', (byte)'e', (byte)'f', (byte)'g', (byte)'h', (byte)'i', (byte)'j', (byte)'k', (byte)'l', (byte)'m', (byte)'n', (byte)'o', (byte)'p', (byte)'q', (byte)'r', (byte)'s', (byte)'t', (byte)'u', (byte)'v', (byte)'w', (byte)'x', (byte)'y', (byte)'z', (byte)'A', (byte)'B', (byte)'C', (byte)'D', (byte)'E', (byte)'F', (byte)'G', (byte)'H', (byte)'I', (byte)'J', (byte)'K', (byte)'L', (byte)'M', (byte)'N', (byte)'O', (byte)'P', (byte)'Q', (byte)'R', (byte)'S', (byte)'T', (byte)'U', (byte)'V', (byte)'W', (byte)'X', (byte)'Y', (byte)'Z' };
+                if (cbConstSize.Checked)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (byte b in data)
+                    {
+                        if (printables.Contains(b))
+                        {
+                            sb.Append("_" + (char)b + "_,");
+                        }
+                        else
+                        {
+                            string tmpStr = b.ToString();
+                            int neg = 3 - tmpStr.Length;
+                            if (neg > 0) { sb.Append('0', neg); }
+                            sb.Append(tmpStr);
+                            sb.Append(",");
+                        }
+                    }
+                    output = sb.ToString();
+                }
+                else
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (byte b in data)
+                    {
+                        if (printables.Contains(b))
+                        {
+                            sb.Append((char)b);
+                        }
+                        else
+                        {
+                            sb.Append(b);
+                        }
+                        sb.Append(',');
+                    }
+                    output = sb.ToString();
+                }
             }
             tbOut.Text = output;
         }

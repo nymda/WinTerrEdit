@@ -15,8 +15,5 @@ namespace WinTerrEdit
             HardCore = 2,
             Journey = 3
         }
-
-
-
     }
 }

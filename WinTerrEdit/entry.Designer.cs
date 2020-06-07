@@ -92,6 +92,7 @@
             this.nudQuant = new System.Windows.Forms.NumericUpDown();
             this.cbItem = new System.Windows.Forms.ComboBox();
             this.gbPlayer = new System.Windows.Forms.GroupBox();
+            this.lblGm = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.nudManaMax = new System.Windows.Forms.NumericUpDown();
@@ -123,10 +124,6 @@
             this.gbItems = new System.Windows.Forms.GroupBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.gbMisc = new System.Windows.Forms.GroupBox();
-            this.btnUnlockAll = new System.Windows.Forms.Button();
-            this.lblGm = new System.Windows.Forms.Label();
-            this.btnUnlockBeastery = new System.Windows.Forms.Button();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -186,7 +183,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).BeginInit();
             this.gbItems.SuspendLayout();
-            this.gbMisc.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLoad
@@ -998,7 +994,7 @@
             this.nudQuant.Location = new System.Drawing.Point(6, 118);
             this.nudQuant.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudQuant.Maximum = new decimal(new int[] {
-            999,
+            25535,
             0,
             0,
             0});
@@ -1014,6 +1010,7 @@
             // 
             // cbItem
             // 
+            this.cbItem.Enabled = false;
             this.cbItem.FormattingEnabled = true;
             this.cbItem.Location = new System.Drawing.Point(6, 37);
             this.cbItem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1060,6 +1057,15 @@
             this.gbPlayer.TabStop = false;
             this.gbPlayer.Text = "Player";
             // 
+            // lblGm
+            // 
+            this.lblGm.AutoSize = true;
+            this.lblGm.Location = new System.Drawing.Point(6, 105);
+            this.lblGm.Name = "lblGm";
+            this.lblGm.Size = new System.Drawing.Size(40, 13);
+            this.lblGm.TabIndex = 62;
+            this.lblGm.Text = "Mode: ";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1083,7 +1089,7 @@
             this.nudManaMax.Location = new System.Drawing.Point(120, 69);
             this.nudManaMax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudManaMax.Maximum = new decimal(new int[] {
-            999,
+            250,
             0,
             0,
             0});
@@ -1107,7 +1113,7 @@
             this.nudManaCur.Location = new System.Drawing.Point(50, 69);
             this.nudManaCur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudManaCur.Maximum = new decimal(new int[] {
-            999,
+            250,
             0,
             0,
             0});
@@ -1139,7 +1145,7 @@
             this.nudHealthMax.Location = new System.Drawing.Point(120, 43);
             this.nudHealthMax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudHealthMax.Maximum = new decimal(new int[] {
-            999,
+            500,
             0,
             0,
             0});
@@ -1163,7 +1169,7 @@
             this.nudHealthCur.Location = new System.Drawing.Point(50, 43);
             this.nudHealthCur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudHealthCur.Maximum = new decimal(new int[] {
-            999,
+            500,
             0,
             0,
             0});
@@ -1375,53 +1381,11 @@
             this.textBox1.TabIndex = 53;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // gbMisc
-            // 
-            this.gbMisc.Controls.Add(this.btnUnlockBeastery);
-            this.gbMisc.Controls.Add(this.btnUnlockAll);
-            this.gbMisc.Location = new System.Drawing.Point(12, 450);
-            this.gbMisc.Name = "gbMisc";
-            this.gbMisc.Size = new System.Drawing.Size(655, 52);
-            this.gbMisc.TabIndex = 54;
-            this.gbMisc.TabStop = false;
-            this.gbMisc.Text = "Misc";
-            // 
-            // btnUnlockAll
-            // 
-            this.btnUnlockAll.Enabled = false;
-            this.btnUnlockAll.Location = new System.Drawing.Point(9, 19);
-            this.btnUnlockAll.Name = "btnUnlockAll";
-            this.btnUnlockAll.Size = new System.Drawing.Size(116, 23);
-            this.btnUnlockAll.TabIndex = 0;
-            this.btnUnlockAll.Text = "Unlock All Research";
-            this.btnUnlockAll.UseVisualStyleBackColor = true;
-            this.btnUnlockAll.Click += new System.EventHandler(this.btnUnlockAll_Click);
-            // 
-            // lblGm
-            // 
-            this.lblGm.AutoSize = true;
-            this.lblGm.Location = new System.Drawing.Point(6, 97);
-            this.lblGm.Name = "lblGm";
-            this.lblGm.Size = new System.Drawing.Size(65, 13);
-            this.lblGm.TabIndex = 62;
-            this.lblGm.Text = "[gamemode]";
-            // 
-            // btnUnlockBeastery
-            // 
-            this.btnUnlockBeastery.Enabled = false;
-            this.btnUnlockBeastery.Location = new System.Drawing.Point(131, 19);
-            this.btnUnlockBeastery.Name = "btnUnlockBeastery";
-            this.btnUnlockBeastery.Size = new System.Drawing.Size(116, 23);
-            this.btnUnlockBeastery.TabIndex = 1;
-            this.btnUnlockBeastery.Text = "Unlock All Beastery";
-            this.btnUnlockBeastery.UseVisualStyleBackColor = true;
-            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 514);
-            this.Controls.Add(this.gbMisc);
+            this.ClientSize = new System.Drawing.Size(683, 456);
             this.Controls.Add(this.gbItems);
             this.Controls.Add(this.gbPlayer);
             this.Controls.Add(this.gb_slot);
@@ -1434,7 +1398,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "entry";
-            this.Text = "WinTerrEdit | [F1] About | [F2] Raw";
+            this.Text = "WinTerrEdit | [F1] About | [F2] Debug";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onClose);
             this.Load += new System.EventHandler(this.Entry_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entry_kDown);
@@ -1500,7 +1464,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
             this.gbItems.ResumeLayout(false);
             this.gbItems.PerformLayout();
-            this.gbMisc.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1600,10 +1563,7 @@
         private System.Windows.Forms.GroupBox gbItems;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblSearch;
-        private System.Windows.Forms.GroupBox gbMisc;
-        private System.Windows.Forms.Button btnUnlockAll;
         private System.Windows.Forms.Label lblGm;
-        private System.Windows.Forms.Button btnUnlockBeastery;
     }
 }
 

@@ -34,8 +34,8 @@
             this.rbHex = new System.Windows.Forms.RadioButton();
             this.rbStr = new System.Windows.Forms.RadioButton();
             this.cbConstSize = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.rbInv = new System.Windows.Forms.RadioButton();
+            this.rbHyb = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // tbOut
@@ -107,20 +107,12 @@
             this.cbConstSize.UseVisualStyleBackColor = true;
             this.cbConstSize.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlText;
-            this.panel1.Location = new System.Drawing.Point(159, 559);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 15);
-            this.panel1.TabIndex = 6;
-            // 
             // rbInv
             // 
             this.rbInv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbInv.AutoSize = true;
             this.rbInv.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbInv.Location = new System.Drawing.Point(168, 559);
+            this.rbInv.Location = new System.Drawing.Point(212, 559);
             this.rbInv.Name = "rbInv";
             this.rbInv.Size = new System.Drawing.Size(44, 15);
             this.rbInv.TabIndex = 7;
@@ -128,13 +120,26 @@
             this.rbInv.UseVisualStyleBackColor = true;
             this.rbInv.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
             // 
+            // rbHyb
+            // 
+            this.rbHyb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rbHyb.AutoSize = true;
+            this.rbHyb.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbHyb.Location = new System.Drawing.Point(162, 559);
+            this.rbHyb.Name = "rbHyb";
+            this.rbHyb.Size = new System.Drawing.Size(44, 15);
+            this.rbHyb.TabIndex = 8;
+            this.rbHyb.Text = "HYB";
+            this.rbHyb.UseVisualStyleBackColor = true;
+            this.rbHyb.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
+            // 
             // hexView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 583);
+            this.Controls.Add(this.rbHyb);
             this.Controls.Add(this.rbInv);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.cbConstSize);
             this.Controls.Add(this.rbStr);
             this.Controls.Add(this.rbHex);
@@ -142,7 +147,7 @@
             this.Controls.Add(this.tbOut);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "hexView";
-            this.Text = "hexView";
+            this.Text = "Debug";
             this.Load += new System.EventHandler(this.hexView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -155,7 +160,7 @@
         private System.Windows.Forms.RadioButton rbHex;
         private System.Windows.Forms.RadioButton rbStr;
         private System.Windows.Forms.CheckBox cbConstSize;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton rbInv;
+        private System.Windows.Forms.RadioButton rbHyb;
     }
 }

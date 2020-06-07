@@ -128,7 +128,7 @@ namespace WinTerrEdit
 
             playerMode = (gamemodes.gamemode)decrypted[nameEndOffset];
 
-            lblGm.Text = playerMode.ToString();
+            lblGm.Text = "Mode: " + playerMode.ToString();
 
             playerName = nameBuild.ToString();
 
@@ -250,16 +250,6 @@ namespace WinTerrEdit
                     debugInvData = new List<List<int>> { };
                     inventory.Clear();
 
-                    FileInfo fi = new FileInfo(dlg.FileName);
-                    if(fi.Length > 5000)
-                    {
-                        this.Text = "WinTerrEdit | [F1] About | [F2] Raw (Warn: Large PLR file)";
-                    }
-                    else
-                    {
-                        this.Text = "WinTerrEdit | [F1] About | [F2] Raw";
-                    }
-
                     loadData(dlg.FileName);
                     gbInvHold.Enabled = true;
                     gbPlayer.Enabled = true;
@@ -313,11 +303,6 @@ namespace WinTerrEdit
             string[] npart = elementName.Split(new string[] { "Box" }, StringSplitOptions.None);
             invSelectedIndex = Int32.Parse(npart[1]) - 1;
             updateInvDisplay();
-        }
-
-        private void btnUnlockAll_Click(object sender, EventArgs e)
-        {
-            //todo
         }
 
         public List<Byte> reEncode()
@@ -401,7 +386,7 @@ namespace WinTerrEdit
             int unlockAllBeginOffser = nameEndOffset + 2557;
             save.InsertRange(unlockAllBeginOffser, unlockAllData);
 
-            //insert padding
+            //insert padding if needed
             while(save.Count() % 16 != 0)
             {
                 save.Add(0);
@@ -423,6 +408,8 @@ namespace WinTerrEdit
                     string savepath = dlg.FileName;
                     cr.encryptAndSave(reEncode().ToArray(), savepath);
                     isSaved = true;
+                    saveNotifier sn = new saveNotifier();
+                    sn.ShowDialog();
                 }
             }
         }
@@ -515,18 +502,57 @@ namespace WinTerrEdit
         {
             HandledMouseEventArgs handledArgs = e as HandledMouseEventArgs;
             handledArgs.Handled = true;
-            if (handledArgs.Delta > 0)
+            NumericUpDown _sender = (sender as NumericUpDown);
+
+            if (_sender.Name.Contains("Mana"))
             {
-                if ((sender as NumericUpDown).Value != 999)
+                if (handledArgs.Delta > 0)
                 {
-                    (sender as NumericUpDown).Value += 1;
+                    if (_sender.Value <= 249)
+                    {
+                        _sender.Value += 1;
+                    }
+                }
+                else
+                {
+                    if (_sender.Value > 0)
+                    {
+                        _sender.Value += -1;
+                    }
+                }
+            }
+            else if (_sender.Name.Contains("Health"))
+            {
+                if (handledArgs.Delta > 0)
+                {
+                    if (_sender.Value <= 499)
+                    {
+                        _sender.Value += 1;
+                    }
+                }
+                else
+                {
+                    if (_sender.Value > 0)
+                    {
+                        _sender.Value += -1;
+                    }
                 }
             }
             else
             {
-                if((sender as NumericUpDown).Value != 0)
+                if (handledArgs.Delta > 0)
                 {
-                    (sender as NumericUpDown).Value += -1;
+                    if (_sender.Value <= 25534)
+                    {
+                        _sender.Value += 1;
+                    }
+                }
+                else
+                {
+                    if (_sender.Value > 0)
+                    {
+                        _sender.Value += -1;
+                    }
                 }
             }
         }
