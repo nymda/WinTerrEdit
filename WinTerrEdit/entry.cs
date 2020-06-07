@@ -139,7 +139,39 @@ namespace WinTerrEdit
 
             int extCounter = 0;
 
+            //initial inventory data load
             List<int> invTmp = new List<int> { };
+            for (int i = InvDataBeginOffset; i < InvDataEndOffset; i++)
+            {
+                extCounter++;
+                invTmp.Add(decrypted[i]);
+                if (extCounter == 10)
+                {
+                    debugInvData.Add(invTmp);
+                }
+            }
+
+            //test if the +2 byte offset is needed
+            bool needExtraOffset = ih.calcByteOffset(debugInvData);
+            if (needExtraOffset)
+            {
+                additionOffset = 2;
+            }
+            else
+            {
+                additionOffset = 0;
+            }
+
+            //actually load the data
+            inventory = new List<invItem> { };
+            debugInvData = new List<List<int>> { };
+
+            InvDataBeginOffset = nameEndOffset + (211 + additionOffset);
+            InvDataEndOffset = InvDataBeginOffset + 500;
+
+            extCounter = 0;
+
+            invTmp = new List<int> { };
             for (int i = InvDataBeginOffset; i < InvDataEndOffset; i++)
             {
                 extCounter++;
@@ -152,38 +184,6 @@ namespace WinTerrEdit
                     invTmp = new List<int> { };
                     extCounter = 0;
                 }
-            }
-
-            bool needExtraOffset = ih.calcByteOffset(debugInvData);
-            if (needExtraOffset)
-            {
-                additionOffset = 2;
-                inventory = new List<invItem> { };
-                debugInvData = new List<List<int>> { };
-
-                InvDataBeginOffset = nameEndOffset + (211 + additionOffset);
-                InvDataEndOffset = InvDataBeginOffset + 500;
-
-                extCounter = 0;
-
-                invTmp = new List<int> { };
-                for (int i = InvDataBeginOffset; i < InvDataEndOffset; i++)
-                {
-                    extCounter++;
-                    invTmp.Add(decrypted[i]);
-                    if (extCounter == 10)
-                    {
-                        invItem iv = new invItem(invTmp, ih);
-                        inventory.Add(iv);
-                        debugInvData.Add(invTmp);
-                        invTmp = new List<int> { };
-                        extCounter = 0;
-                    }
-                }
-            }
-            else
-            {
-                additionOffset = 0;
             }
 
             int ColourDataBeginOffset = nameEndOffset + 40;
@@ -260,6 +260,7 @@ namespace WinTerrEdit
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     //reset variables
+                    additionOffset = 0;
                     rawDecrypted = new List<Byte> { };
                     playerName = "";
                     inventory = new List<invItem> { };

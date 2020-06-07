@@ -63,7 +63,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "about";
-            this.Text = "about | Release 1.0.1";
+            this.Text = "about | Release 1.0.3";
             this.ResumeLayout(false);
             this.PerformLayout();
 

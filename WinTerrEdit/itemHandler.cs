@@ -96,9 +96,18 @@ namespace WinTerrEdit
         public bool calcByteOffset(List<List<int>> invDat)
         {
             int additor = 0;
+            bool foundItem = false;
 
             foreach(List<int> invchunk in invDat)
             {
+                foreach(int i in invchunk)
+                {
+                    if(i != 0)
+                    {
+                        foundItem = true;
+                    }
+                }
+
                 additor += invchunk[2];
                 additor += invchunk[3];
                 additor += invchunk[6];
@@ -108,6 +117,10 @@ namespace WinTerrEdit
 
             Console.WriteLine(additor);
 
+            if (!foundItem)
+            {
+                return true;
+            }
             if(additor == 0)
             {
                 return false;
