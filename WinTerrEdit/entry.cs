@@ -23,6 +23,7 @@ namespace WinTerrEdit
         //static player variables
         public string playerName = "";
         public gamemodes.gamemode playerMode;
+        public int versionCode;
 
         //modifiable player variables
         public List<invItem> inventory = new List<invItem> { };
@@ -34,7 +35,7 @@ namespace WinTerrEdit
         public List<Byte> unlockAllData = new List<Byte> { };
 
         //other
-        public int additionOffset = 0;
+        public int inventoryOffset;
         public List<List<int>> debugInvData = new List<List<int>> { };
         public List<ListViewItem> lvis = new List<ListViewItem> { };
         public List<Panel> pnCollection = new List<Panel> { };
@@ -44,7 +45,6 @@ namespace WinTerrEdit
         crypto cr = new crypto();
         public bool isSaved = true;
         public loading ld;
-        public bool needExtraOffset;
 
         public entry()
         {
@@ -109,6 +109,8 @@ namespace WinTerrEdit
             byte[] decrypted = cr.decryptFile(path);
             rawDecrypted = decrypted.ToList();
 
+            versionCode = ih.resolveEncodedData(decrypted[0], decrypted[1]);
+
             byte[] printables = new byte[] { 0x27, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x5c, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5c, 0x5d, 0x5e, 0x5f, 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e };
             int startpos = 25;
 
@@ -135,44 +137,21 @@ namespace WinTerrEdit
 
             tbName.Text = playerName;
 
-            int InvDataBeginOffset = nameEndOffset + (211 + additionOffset);
+            if(versionCode < 230)
+            {
+                inventoryOffset = 211;
+            }
+            else
+            {
+                inventoryOffset = 213;
+            }
+
+            int InvDataBeginOffset = nameEndOffset + inventoryOffset;
             int InvDataEndOffset = InvDataBeginOffset + 500;
 
             int extCounter = 0;
 
-            //initial inventory data load
             List<int> invTmp = new List<int> { };
-            for (int i = InvDataBeginOffset; i < InvDataEndOffset; i++)
-            {
-                extCounter++;
-                invTmp.Add(decrypted[i]);
-                if (extCounter == 10)
-                {
-                    debugInvData.Add(invTmp);
-                }
-            }
-
-            //test if the +2 byte offset is needed
-            needExtraOffset = ih.calcByteOffset(debugInvData);
-            if (needExtraOffset)
-            {
-                additionOffset = 2;
-            }
-            else
-            {
-                additionOffset = 0;
-            }
-
-            //actually load the data
-            inventory = new List<invItem> { };
-            debugInvData = new List<List<int>> { };
-
-            InvDataBeginOffset = nameEndOffset + (211 + additionOffset);
-            InvDataEndOffset = InvDataBeginOffset + 500;
-
-            extCounter = 0;
-
-            invTmp = new List<int> { };
             for (int i = InvDataBeginOffset; i < InvDataEndOffset; i++)
             {
                 extCounter++;
@@ -261,7 +240,6 @@ namespace WinTerrEdit
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     //reset variables
-                    additionOffset = 0;
                     rawDecrypted = new List<Byte> { };
                     playerName = "";
                     inventory = new List<invItem> { };
@@ -372,7 +350,7 @@ namespace WinTerrEdit
             buffer.Add(0x00);
             buffer.Add(0x00);
 
-            int dataBeginOffset = nameEndOffset + (211 + additionOffset);
+            int dataBeginOffset = nameEndOffset + inventoryOffset;
             int dataEndOffset = dataBeginOffset + 500;
             int extCount = 0;
 
@@ -654,12 +632,12 @@ namespace WinTerrEdit
             if(e.KeyCode == Keys.F1)
             {
                 about ab = new about();
-                ab.Show();
+                ab.ShowDialog();
             }
             if(e.KeyCode == Keys.F2)
             {
-                hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, needExtraOffset);
-                hx.Show();
+                hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, versionCode);
+                hx.ShowDialog();
             }
         }
 

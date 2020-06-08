@@ -16,25 +16,18 @@ namespace WinTerrEdit
         public string output;
         public int NEO;
         List<List<int>> invDat = new List<List<int>> { };
-        public bool legacy = false;
-        public hexView(List<List<int>> invDat, byte[] data, int NEO, bool legacy)
+        public int versionCode;
+        public hexView(List<List<int>> invDat, byte[] data, int NEO, int versionCode)
         {
             InitializeComponent();
             this.data = data;
             this.NEO = NEO;
             this.invDat = invDat;
-            this.legacy = legacy;
+            this.versionCode = versionCode;
         }
         private void hexView_Load(object sender, EventArgs e)
         {
-            if (legacy)
-            {
-                this.Text = "Debug | NEO @ " + NEO + " | After 1.4.0.5";
-            }
-            else
-            {
-                this.Text = "Debug | NEO @ " + NEO + " | Before 1.4.0.5";
-            }
+            this.Text = "| NEO " + NEO + " | VERS " + versionCode + " |";   
             update();
         }
 
