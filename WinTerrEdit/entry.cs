@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -19,6 +16,7 @@ namespace WinTerrEdit
         itemHandler ih = new itemHandler(true);
         public List<Byte> rawDecrypted = new List<Byte> { };
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Terraria/Players";
+        public string lastReadPlrPath = "";
 
         //static player variables
         public string playerName = "";
@@ -56,6 +54,7 @@ namespace WinTerrEdit
         }
         private void Entry_Load(object sender, EventArgs e)
         {
+            btnReload.UseCompatibleTextRendering = true;
             pbCollection.AddRange(new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18, pictureBox19, pictureBox20, pictureBox21, pictureBox22, pictureBox23, pictureBox24, pictureBox25, pictureBox26, pictureBox27, pictureBox28, pictureBox29, pictureBox30, pictureBox31, pictureBox32, pictureBox33, pictureBox34, pictureBox35, pictureBox36, pictureBox37, pictureBox38, pictureBox39, pictureBox40, pictureBox41, pictureBox42, pictureBox43, pictureBox44, pictureBox45, pictureBox46, pictureBox47, pictureBox48, pictureBox49, pictureBox50 }); //lol
             pnCollection.AddRange(new List<Panel> { hairPnl, skinPnl, eyesPnl, shirtPnl, undershirtPnl, pantsPnl, shoesPnl });
             int cnt = 0;
@@ -140,7 +139,6 @@ namespace WinTerrEdit
 
             playerMode = (gamemodes.gamemode)decrypted[nameEndOffset];
 
-            lblGm.Text = "Mode: " + playerMode.ToString();
 
             playerName = nameBuild.ToString();
 
@@ -262,6 +260,8 @@ namespace WinTerrEdit
                     debugInvData = new List<List<int>> { };
                     inventory.Clear();
 
+                    lastReadPlrPath = dlg.FileName;
+
                     loadData(dlg.FileName);
                     gbInvHold.Enabled = true;
                     gbPlayer.Enabled = true;
@@ -279,7 +279,37 @@ namespace WinTerrEdit
             invSelectedIndex = 0;
             updateInvDisplay();
         }
-       
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            rawDecrypted = new List<Byte> { };
+            playerName = "";
+            inventory = new List<invItem> { };
+            playerHealth = new List<int> { };
+            playerMana = new List<int> { };
+            playerColours = new List<Color> { };
+            nameEndOffset = 0;
+            invSelectedIndex = 0;
+            isSaved = true;
+            unlockAllData = new List<Byte> { };
+            debugInvData = new List<List<int>> { };
+            inventory.Clear();
+
+            loadData(lastReadPlrPath);
+            gbInvHold.Enabled = true;
+            gbPlayer.Enabled = true;
+            gb_slot.Enabled = true;
+            gbItems.Enabled = true;
+
+            for (int i = 0; i < 50; i++)
+            {
+                pbCollection[i].Image = inventory[i].item.icon;
+            }
+
+            btnSave.Enabled = true;
+            invSelectedIndex = 0;
+            updateInvDisplay();
+        }
         public void updateInvDisplay()
         {
             cbItem.SelectedItem = inventory[invSelectedIndex].item.name;
