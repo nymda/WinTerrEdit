@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -17,6 +19,8 @@ namespace WinTerrEdit
         public List<Byte> rawDecrypted = new List<Byte> { };
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Terraria/Players";
         public string lastReadPlrPath = "";
+
+        public string currentFileHash = "";
 
         //static player variables
         public string playerName = "";
@@ -54,6 +58,12 @@ namespace WinTerrEdit
         }
         private void Entry_Load(object sender, EventArgs e)
         {
+            ToolTip baseTT = new ToolTip();
+            baseTT.ShowAlways = true;
+            baseTT.SetToolTip(btnLoad, "Open .PLR file");
+            baseTT.SetToolTip(btnReload, "Reload the last .PLR file");
+            baseTT.SetToolTip(btnSave, "Save the currently open .PLR file (and overwrite the origional)");
+
             btnReload.UseCompatibleTextRendering = true;
             pbCollection.AddRange(new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18, pictureBox19, pictureBox20, pictureBox21, pictureBox22, pictureBox23, pictureBox24, pictureBox25, pictureBox26, pictureBox27, pictureBox28, pictureBox29, pictureBox30, pictureBox31, pictureBox32, pictureBox33, pictureBox34, pictureBox35, pictureBox36, pictureBox37, pictureBox38, pictureBox39, pictureBox40, pictureBox41, pictureBox42, pictureBox43, pictureBox44, pictureBox45, pictureBox46, pictureBox47, pictureBox48, pictureBox49, pictureBox50 }); //lol
             pnCollection.AddRange(new List<Panel> { hairPnl, skinPnl, eyesPnl, shirtPnl, undershirtPnl, pantsPnl, shoesPnl });
@@ -105,6 +115,13 @@ namespace WinTerrEdit
         }
         public void loadData(string path)
         {
+            if (cbAutoReload.Checked)
+            {
+                autoFunctionTimer.Start();
+            }
+
+            currentFileHash = calcMd5OfOpenFile();
+
             byte[] decrypted = cr.decryptFile(path);
             rawDecrypted = decrypted.ToList();
 
@@ -267,6 +284,7 @@ namespace WinTerrEdit
                     gbPlayer.Enabled = true;
                     gb_slot.Enabled = true;
                     gbItems.Enabled = true;
+                    btnReload.Enabled = true;
                 }
             }
 
@@ -439,27 +457,29 @@ namespace WinTerrEdit
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
-            isSaved = true;
-            saveNotifier sn = new saveNotifier();
-            sn.ShowDialog();
-        }
-
-        private void BtnSaveAs_Click(object sender, EventArgs e)
-        {
-            using (SaveFileDialog dlg = new SaveFileDialog())
+            if (cbOverwrite.Checked)
             {
-                dlg.InitialDirectory = playerfolder;
-                dlg.Title = "Save player file";
-                dlg.Filter = "Terraria player | *.plr";
-
-                if (dlg.ShowDialog() == DialogResult.OK)
+                cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
+                isSaved = true;
+                saveNotifier sn = new saveNotifier();
+                sn.ShowDialog();
+            }
+            else
+            {
+                using (SaveFileDialog dlg = new SaveFileDialog())
                 {
-                    string savepath = dlg.FileName;
-                    cr.encryptAndSave(reEncode().ToArray(), savepath);
-                    isSaved = true;
-                    saveNotifier sn = new saveNotifier();
-                    sn.ShowDialog();
+                    dlg.InitialDirectory = playerfolder;
+                    dlg.Title = "Save player file";
+                    dlg.Filter = "Terraria player | *.plr";
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        string savepath = dlg.FileName;
+                        cr.encryptAndSave(reEncode().ToArray(), savepath);
+                        isSaved = true;
+                        saveNotifier sn = new saveNotifier();
+                        sn.ShowDialog();
+                    }
                 }
             }
         }
@@ -724,6 +744,87 @@ namespace WinTerrEdit
             {
                 itemLV.Items.Clear();
                 itemLV.Items.AddRange(lvis.ToArray());
+            }
+        }
+
+        public string calcMd5OfOpenFile()
+        {
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = File.OpenRead(lastReadPlrPath))
+                {
+                    return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToLower();
+                }
+            }
+        }
+
+        //method for automatically reloading the latest file
+        private void autoFunctionTimer_Tick(object sender, EventArgs e)
+        {
+            string tmp = calcMd5OfOpenFile();
+
+            if (tmp != currentFileHash)
+            {
+                rawDecrypted = new List<Byte> { };
+                playerName = "";
+                inventory = new List<invItem> { };
+                playerHealth = new List<int> { };
+                playerMana = new List<int> { };
+                playerColours = new List<Color> { };
+                nameEndOffset = 0;
+                invSelectedIndex = 0;
+                isSaved = true;
+                unlockAllData = new List<Byte> { };
+                debugInvData = new List<List<int>> { };
+                inventory.Clear();
+
+                loadData(lastReadPlrPath);
+                gbInvHold.Enabled = true;
+                gbPlayer.Enabled = true;
+                gb_slot.Enabled = true;
+                gbItems.Enabled = true;
+
+                for (int i = 0; i < 50; i++)
+                {
+                    pbCollection[i].Image = inventory[i].item.icon;
+                }
+
+                btnSave.Enabled = true;
+                invSelectedIndex = 0;
+                updateInvDisplay();
+
+                currentFileHash = tmp;
+            }
+            else
+            {
+                //do shit all
+            }
+        }
+
+        private void cbAutoReload_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAutoReload.Checked)
+            {
+                if(lastReadPlrPath != "")
+                {
+                    autoFunctionTimer.Start();
+                }
+            }
+            else
+            {
+                autoFunctionTimer.Stop();
+            }
+        }
+
+        private void cbOverwrite_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbOverwrite.Checked)
+            {
+                btnSave.Text = "Save and overwrite";
+            }
+            else
+            {
+                btnSave.Text = "Save as...";
             }
         }
     }
