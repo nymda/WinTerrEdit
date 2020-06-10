@@ -439,6 +439,14 @@ namespace WinTerrEdit
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
+            isSaved = true;
+            saveNotifier sn = new saveNotifier();
+            sn.ShowDialog();
+        }
+
+        private void BtnSaveAs_Click(object sender, EventArgs e)
+        {
             using (SaveFileDialog dlg = new SaveFileDialog())
             {
                 dlg.InitialDirectory = playerfolder;

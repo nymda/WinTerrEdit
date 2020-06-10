@@ -73,6 +73,7 @@
             this.gbItems = new System.Windows.Forms.GroupBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.BtnSaveAs = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
             this.pictureBox41 = new System.Windows.Forms.PictureBox();
             this.pictureBox42 = new System.Windows.Forms.PictureBox();
@@ -202,7 +203,7 @@
             this.btnSave.Location = new System.Drawing.Point(471, 41);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(196, 22);
+            this.btnSave.Size = new System.Drawing.Size(151, 22);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -721,10 +722,21 @@
             this.textBox1.TabIndex = 53;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // BtnSaveAs
+            // 
+            this.BtnSaveAs.Enabled = false;
+            this.BtnSaveAs.Location = new System.Drawing.Point(628, 41);
+            this.BtnSaveAs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnSaveAs.Name = "BtnSaveAs";
+            this.BtnSaveAs.Size = new System.Drawing.Size(39, 22);
+            this.BtnSaveAs.TabIndex = 55;
+            this.BtnSaveAs.Text = "SA";
+            this.BtnSaveAs.UseVisualStyleBackColor = true;
+            this.BtnSaveAs.Click += new System.EventHandler(this.BtnSaveAs_Click);
+            // 
             // btnReload
             // 
             this.btnReload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReload.Image = global::WinTerrEdit.Properties.Resources.crappyreload3;
             this.btnReload.Location = new System.Drawing.Point(628, 13);
             this.btnReload.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReload.Name = "btnReload";
@@ -1389,6 +1401,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 456);
+            this.Controls.Add(this.BtnSaveAs);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.gbItems);
             this.Controls.Add(this.gbPlayer);
@@ -1568,6 +1581,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Button BtnSaveAs;
     }
 }
 
