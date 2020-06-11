@@ -129,7 +129,8 @@ namespace WinTerrEdit
 
             if(versionCode > 512)
             {
-                this.Text = "WinTerrEdit | [F1] About | [F2] Debug **DAMAGED PLR**";
+                this.Text = "WinTerrEdit | [F1] About | [F2] Debug **DAMAGED HEADER**";
+                throw new Exception("Invalid PLR header data");
             }
             else
             {
@@ -263,28 +264,36 @@ namespace WinTerrEdit
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    //reset variables
-                    rawDecrypted = new List<Byte> { };
-                    playerName = "";
-                    inventory = new List<invItem> { };
-                    playerHealth = new List<int> { };
-                    playerMana = new List<int> { };
-                    playerColours = new List<Color> { };
-                    nameEndOffset = 0;
-                    invSelectedIndex = 0;
-                    isSaved = true;
-                    unlockAllData = new List<Byte> { };
-                    debugInvData = new List<List<int>> { };
-                    inventory.Clear();
+                    try
+                    {
+                        //reset variables
+                        rawDecrypted = new List<Byte> { };
+                        playerName = "";
+                        inventory = new List<invItem> { };
+                        playerHealth = new List<int> { };
+                        playerMana = new List<int> { };
+                        playerColours = new List<Color> { };
+                        nameEndOffset = 0;
+                        invSelectedIndex = 0;
+                        isSaved = true;
+                        unlockAllData = new List<Byte> { };
+                        debugInvData = new List<List<int>> { };
+                        inventory.Clear();
 
-                    lastReadPlrPath = dlg.FileName;
+                        lastReadPlrPath = dlg.FileName;
 
-                    loadData(dlg.FileName);
-                    gbInvHold.Enabled = true;
-                    gbPlayer.Enabled = true;
-                    gb_slot.Enabled = true;
-                    gbItems.Enabled = true;
-                    btnReload.Enabled = true;
+                        loadData(dlg.FileName);
+                        gbInvHold.Enabled = true;
+                        gbPlayer.Enabled = true;
+                        gb_slot.Enabled = true;
+                        gbItems.Enabled = true;
+                        btnReload.Enabled = true;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("There was an issue loading this player. It may be corrupted or invalid.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
             }
 
