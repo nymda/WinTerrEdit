@@ -749,12 +749,20 @@ namespace WinTerrEdit
 
         public string calcMd5OfOpenFile()
         {
-            using (var md5 = MD5.Create())
+            try
             {
-                using (var stream = File.OpenRead(lastReadPlrPath))
+                using (var md5 = MD5.Create())
                 {
-                    return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToLower();
+                    using (var stream = File.OpenRead(lastReadPlrPath))
+                    {
+                        return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToLower();
+                    }
                 }
+            }
+            catch
+            {
+                //rarely throws IO error if WinTerrEdit reading the file and Terraria writing to the file happens at the same time.
+                return currentFileHash;
             }
         }
 
