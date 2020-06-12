@@ -20,6 +20,9 @@ namespace WinTerrEdit
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Terraria/Players";
         public string lastReadPlrPath = "";
 
+        public bool useOverwriteFile = false;
+        public bool useAutoReloadFile = false;
+
         public string currentFileHash = "";
 
         //static player variables
@@ -115,7 +118,7 @@ namespace WinTerrEdit
         }
         public void loadData(string path)
         {
-            if (cbAutoReload.Checked)
+            if (useAutoReloadFile)
             {
                 autoFunctionTimer.Start();
             }
@@ -129,12 +132,7 @@ namespace WinTerrEdit
 
             if(versionCode > 512)
             {
-                this.Text = "WinTerrEdit | [F1] About | [F2] Debug **DAMAGED HEADER**";
                 throw new Exception("Invalid PLR header data");
-            }
-            else
-            {
-                this.Text = "WinTerrEdit | [F1] About | [F2] Debug";
             }
 
             byte[] printables = new byte[] { 0x27, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x5c, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5c, 0x5d, 0x5e, 0x5f, 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e };
@@ -297,11 +295,6 @@ namespace WinTerrEdit
                 }
             }
 
-            for(int i = 0; i < 50; i++)
-            {
-                pbCollection[i].Image = inventory[i].item.icon;
-            }
-
             btnSave.Enabled = true;
             invSelectedIndex = 0;
             updateInvDisplay();
@@ -339,13 +332,23 @@ namespace WinTerrEdit
         }
         public void updateInvDisplay()
         {
-            cbItem.SelectedItem = inventory[invSelectedIndex].item.name;
-            nudQuant.Value = inventory[invSelectedIndex].quantity;
-            cbPrefixes.SelectedItem = inventory[invSelectedIndex].prefix.name;
-            gb_slot.Text = "Slot " + (invSelectedIndex + 1);
-            for (int i = 0; i < 50; i++)
+            try
             {
-                pbCollection[i].Image = inventory[i].item.icon;
+                cbItem.SelectedItem = inventory[invSelectedIndex].item.name;
+                nudQuant.Value = inventory[invSelectedIndex].quantity;
+                cbPrefixes.SelectedItem = inventory[invSelectedIndex].prefix.name;
+                gb_slot.Text = "Slot " + (invSelectedIndex + 1);
+                for (int i = 0; i < 50; i++)
+                {
+                    pbCollection[i].Image = inventory[i].item.icon;
+                }
+            }
+            catch
+            {
+                cbItem.SelectedItem = ih.globalTerrariaItems[0].name;
+                nudQuant.Value = 0;
+                cbPrefixes.SelectedItem = ih.globalItemPrefixes[0].name;
+                gb_slot.Text = "Slot 0";
             }
         }
 
@@ -466,7 +469,7 @@ namespace WinTerrEdit
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (cbOverwrite.Checked)
+            if (useOverwriteFile)
             {
                 cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
                 isSaved = true;
@@ -712,6 +715,27 @@ namespace WinTerrEdit
             }
             if(e.KeyCode == Keys.F2)
             {
+                Settings st = new Settings(useOverwriteFile, useAutoReloadFile);
+                if(st.ShowDialog() == DialogResult.OK)
+                {
+                    useOverwriteFile = st.useOverwriteFile;
+                    useAutoReloadFile = st.useAutoReloadFile;
+
+                    if (useAutoReloadFile)
+                    {
+                        if (lastReadPlrPath != "")
+                        {
+                            autoFunctionTimer.Start();
+                        }
+                    }
+                    else
+                    {
+                        autoFunctionTimer.Stop();
+                    }
+                }
+            }
+            if(e.KeyCode == Keys.F3)
+            {
                 hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, versionCode);
                 hx.ShowDialog();
             }
@@ -780,6 +804,10 @@ namespace WinTerrEdit
         {
             string tmp = calcMd5OfOpenFile();
 
+            Console.WriteLine("CURR: " + tmp);
+            Console.WriteLine("SAVE: " + currentFileHash);
+            Console.WriteLine("");
+
             if (tmp != currentFileHash)
             {
                 rawDecrypted = new List<Byte> { };
@@ -815,33 +843,6 @@ namespace WinTerrEdit
             else
             {
                 //do shit all
-            }
-        }
-
-        private void cbAutoReload_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbAutoReload.Checked)
-            {
-                if(lastReadPlrPath != "")
-                {
-                    autoFunctionTimer.Start();
-                }
-            }
-            else
-            {
-                autoFunctionTimer.Stop();
-            }
-        }
-
-        private void cbOverwrite_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbOverwrite.Checked)
-            {
-                btnSave.Text = "Save and overwrite";
-            }
-            else
-            {
-                btnSave.Text = "Save as...";
             }
         }
     }

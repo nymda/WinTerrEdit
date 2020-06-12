@@ -125,9 +125,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnReload = new System.Windows.Forms.Button();
             this.autoFunctionTimer = new System.Windows.Forms.Timer(this.components);
-            this.gbMisc = new System.Windows.Forms.GroupBox();
-            this.cbAutoReload = new System.Windows.Forms.CheckBox();
-            this.cbOverwrite = new System.Windows.Forms.CheckBox();
             this.gbInvHold.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -187,7 +184,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).BeginInit();
             this.gbItems.SuspendLayout();
-            this.gbMisc.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLoad
@@ -209,7 +205,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(196, 22);
             this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save and overwrite";
+            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -1395,49 +1391,11 @@
             this.autoFunctionTimer.Interval = 1000;
             this.autoFunctionTimer.Tick += new System.EventHandler(this.autoFunctionTimer_Tick);
             // 
-            // gbMisc
-            // 
-            this.gbMisc.Controls.Add(this.cbOverwrite);
-            this.gbMisc.Controls.Add(this.cbAutoReload);
-            this.gbMisc.Location = new System.Drawing.Point(12, 450);
-            this.gbMisc.Name = "gbMisc";
-            this.gbMisc.Size = new System.Drawing.Size(655, 42);
-            this.gbMisc.TabIndex = 56;
-            this.gbMisc.TabStop = false;
-            this.gbMisc.Text = "Settings / Misc";
-            // 
-            // cbAutoReload
-            // 
-            this.cbAutoReload.AutoSize = true;
-            this.cbAutoReload.Checked = true;
-            this.cbAutoReload.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbAutoReload.Location = new System.Drawing.Point(9, 19);
-            this.cbAutoReload.Name = "cbAutoReload";
-            this.cbAutoReload.Size = new System.Drawing.Size(80, 17);
-            this.cbAutoReload.TabIndex = 0;
-            this.cbAutoReload.Text = "Auto reload";
-            this.cbAutoReload.UseVisualStyleBackColor = true;
-            this.cbAutoReload.CheckedChanged += new System.EventHandler(this.cbAutoReload_CheckedChanged);
-            // 
-            // cbOverwrite
-            // 
-            this.cbOverwrite.AutoSize = true;
-            this.cbOverwrite.Checked = true;
-            this.cbOverwrite.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbOverwrite.Location = new System.Drawing.Point(95, 19);
-            this.cbOverwrite.Name = "cbOverwrite";
-            this.cbOverwrite.Size = new System.Drawing.Size(87, 17);
-            this.cbOverwrite.TabIndex = 1;
-            this.cbOverwrite.Text = "Overwrite file";
-            this.cbOverwrite.UseVisualStyleBackColor = true;
-            this.cbOverwrite.CheckedChanged += new System.EventHandler(this.cbOverwrite_CheckedChanged);
-            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 500);
-            this.Controls.Add(this.gbMisc);
+            this.ClientSize = new System.Drawing.Size(683, 457);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.gbItems);
             this.Controls.Add(this.gbPlayer);
@@ -1451,7 +1409,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "entry";
-            this.Text = "WinTerrEdit | [F1] About | [F2] Debug";
+            this.Text = "WinTerrEdit | [F1] About | [F2] Settings | [F3] Debug";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onClose);
             this.Load += new System.EventHandler(this.Entry_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entry_kDown);
@@ -1517,8 +1475,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
             this.gbItems.ResumeLayout(false);
             this.gbItems.PerformLayout();
-            this.gbMisc.ResumeLayout(false);
-            this.gbMisc.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1620,9 +1576,6 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Timer autoFunctionTimer;
-        private System.Windows.Forms.GroupBox gbMisc;
-        private System.Windows.Forms.CheckBox cbAutoReload;
-        private System.Windows.Forms.CheckBox cbOverwrite;
     }
 }
 
