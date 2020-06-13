@@ -1008,6 +1008,7 @@
             0,
             0});
             this.nudQuant.ValueChanged += new System.EventHandler(this.nudQuant_ValueChanged);
+            this.nudQuant.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ndq_keydown);
             // 
             // cbItem
             // 

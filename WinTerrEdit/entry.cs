@@ -19,10 +19,8 @@ namespace WinTerrEdit
         public List<Byte> rawDecrypted = new List<Byte> { };
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Terraria/Players";
         public string lastReadPlrPath = "";
-
         public bool useOverwriteFile = false;
         public bool useAutoReloadFile = false;
-
         public string currentFileHash = "";
 
         //static player variables
@@ -35,6 +33,9 @@ namespace WinTerrEdit
         public List<int> playerHealth = new List<int> { };
         public List<int> playerMana = new List<int> { };
         public List<Color> playerColours = new List<Color> { }; //hair, skin, eyes, shirt, undershirt, pants, shoes
+
+        public invItem copyBuffer;
+        public int copyIndex = -1;
 
         //only populated if unlock all is used
         public List<Byte> unlockAllData = new List<Byte> { };
@@ -499,7 +500,11 @@ namespace WinTerrEdit
             string[] npart = elementName.Split(new string[] { "Box" }, StringSplitOptions.None);
             int tmp = Int32.Parse(npart[1]) - 1;
 
-            if(tmp == invSelectedIndex)
+            if(tmp == copyIndex)
+            {
+                e.Graphics.DrawRectangle(Pens.Blue, 0, 0, 31, 31);
+            }
+            else if (tmp == invSelectedIndex)
             {
                 e.Graphics.DrawRectangle(Pens.Red, 0, 0, 31, 31);
             }
@@ -699,7 +704,7 @@ namespace WinTerrEdit
         private void btnClear_Click(object sender, EventArgs e)
         {
             cbItem.SelectedItem = "Empty";
-            cbPrefixes.SelectedItem = "None";
+            cbPrefixes.SelectedIndex = 0;
             nudQuant.Value = 0;
         }
 
@@ -735,6 +740,36 @@ namespace WinTerrEdit
             {
                 hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, versionCode);
                 hx.ShowDialog();
+            }
+            if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
+            {
+                copyBuffer = inventory[invSelectedIndex];
+                copyIndex = invSelectedIndex;
+                updateInvDisplay();
+            }
+            if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
+            {
+                if(copyBuffer != null)
+                {
+                    cbItem.SelectedItem = copyBuffer.item.name;
+                    cbPrefixes.SelectedItem = copyBuffer.prefix.name;
+                    nudQuant.Value = copyBuffer.quantity;
+                    updateInvDisplay();
+                }
+            }
+            if(e.KeyCode == Keys.Escape)
+            {
+                copyIndex = -1;
+                copyBuffer = null;
+                updateInvDisplay();
+            }
+        }
+
+        private void ndq_keydown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
+            {
+                e.SuppressKeyPress = true;
             }
         }
 
