@@ -455,9 +455,6 @@ namespace WinTerrEdit
                 extCount++;
             }
 
-            int unlockAllBeginOffser = nameEndOffset + 2557;
-            save.InsertRange(unlockAllBeginOffser, unlockAllData);
-
             //insert padding if needed
             while(save.Count() % 16 != 0)
             {
