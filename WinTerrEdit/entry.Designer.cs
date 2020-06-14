@@ -33,6 +33,14 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbInvHold = new System.Windows.Forms.GroupBox();
+            this.pictureBox58 = new System.Windows.Forms.PictureBox();
+            this.pictureBox57 = new System.Windows.Forms.PictureBox();
+            this.pictureBox56 = new System.Windows.Forms.PictureBox();
+            this.pictureBox55 = new System.Windows.Forms.PictureBox();
+            this.pictureBox54 = new System.Windows.Forms.PictureBox();
+            this.pictureBox53 = new System.Windows.Forms.PictureBox();
+            this.pictureBox52 = new System.Windows.Forms.PictureBox();
+            this.pictureBox51 = new System.Windows.Forms.PictureBox();
             this.pictureBox41 = new System.Windows.Forms.PictureBox();
             this.pictureBox42 = new System.Windows.Forms.PictureBox();
             this.pictureBox43 = new System.Windows.Forms.PictureBox();
@@ -91,17 +99,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.nudQuant = new System.Windows.Forms.NumericUpDown();
             this.cbItem = new System.Windows.Forms.ComboBox();
-            this.gbPlayer = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.nudManaMax = new System.Windows.Forms.NumericUpDown();
-            this.nudManaCur = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.nudHealthMax = new System.Windows.Forms.NumericUpDown();
-            this.nudHealthCur = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
+            this.gbColour = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.shoesPnl = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -116,6 +114,16 @@
             this.skinPnl = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.hairPnl = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.nudManaMax = new System.Windows.Forms.NumericUpDown();
+            this.nudManaCur = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.nudHealthMax = new System.Windows.Forms.NumericUpDown();
+            this.nudHealthCur = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbName = new System.Windows.Forms.TextBox();
             this.colourSelecter = new System.Windows.Forms.ColorDialog();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.itemLV = new System.Windows.Forms.ListView();
@@ -125,7 +133,20 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnReload = new System.Windows.Forms.Button();
             this.autoFunctionTimer = new System.Windows.Forms.Timer(this.components);
+            this.gbPlayer = new System.Windows.Forms.GroupBox();
+            this.gbMaximumMana = new System.Windows.Forms.Button();
+            this.btnMaxHealth = new System.Windows.Forms.Button();
+            this.gbFillMana = new System.Windows.Forms.Button();
+            this.btnHeal = new System.Windows.Forms.Button();
             this.gbInvHold.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox51)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
@@ -178,17 +199,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gb_slot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuant)).BeginInit();
-            this.gbPlayer.SuspendLayout();
+            this.gbColour.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).BeginInit();
             this.gbItems.SuspendLayout();
+            this.gbPlayer.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(471, 13);
+            this.btnLoad.Location = new System.Drawing.Point(564, 13);
             this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(151, 22);
@@ -200,7 +222,7 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(471, 41);
+            this.btnSave.Location = new System.Drawing.Point(564, 41);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(196, 22);
@@ -211,6 +233,14 @@
             // 
             // gbInvHold
             // 
+            this.gbInvHold.Controls.Add(this.pictureBox58);
+            this.gbInvHold.Controls.Add(this.pictureBox57);
+            this.gbInvHold.Controls.Add(this.pictureBox56);
+            this.gbInvHold.Controls.Add(this.pictureBox55);
+            this.gbInvHold.Controls.Add(this.pictureBox54);
+            this.gbInvHold.Controls.Add(this.pictureBox53);
+            this.gbInvHold.Controls.Add(this.pictureBox52);
+            this.gbInvHold.Controls.Add(this.pictureBox51);
             this.gbInvHold.Controls.Add(this.pictureBox41);
             this.gbInvHold.Controls.Add(this.pictureBox42);
             this.gbInvHold.Controls.Add(this.pictureBox43);
@@ -266,10 +296,114 @@
             this.gbInvHold.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbInvHold.Name = "gbInvHold";
             this.gbInvHold.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbInvHold.Size = new System.Drawing.Size(387, 214);
+            this.gbInvHold.Size = new System.Drawing.Size(480, 214);
             this.gbInvHold.TabIndex = 2;
             this.gbInvHold.TabStop = false;
             this.gbInvHold.Text = "Inventory";
+            // 
+            // pictureBox58
+            // 
+            this.pictureBox58.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox58.Location = new System.Drawing.Point(436, 134);
+            this.pictureBox58.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox58.Name = "pictureBox58";
+            this.pictureBox58.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox58.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox58.TabIndex = 57;
+            this.pictureBox58.TabStop = false;
+            this.pictureBox58.Click += new System.EventHandler(this.item_Click);
+            this.pictureBox58.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // pictureBox57
+            // 
+            this.pictureBox57.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox57.Location = new System.Drawing.Point(436, 95);
+            this.pictureBox57.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox57.Name = "pictureBox57";
+            this.pictureBox57.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox57.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox57.TabIndex = 56;
+            this.pictureBox57.TabStop = false;
+            this.pictureBox57.Click += new System.EventHandler(this.item_Click);
+            this.pictureBox57.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // pictureBox56
+            // 
+            this.pictureBox56.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox56.Location = new System.Drawing.Point(436, 57);
+            this.pictureBox56.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox56.Name = "pictureBox56";
+            this.pictureBox56.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox56.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox56.TabIndex = 55;
+            this.pictureBox56.TabStop = false;
+            this.pictureBox56.Click += new System.EventHandler(this.item_Click);
+            this.pictureBox56.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // pictureBox55
+            // 
+            this.pictureBox55.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox55.Location = new System.Drawing.Point(436, 19);
+            this.pictureBox55.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox55.Name = "pictureBox55";
+            this.pictureBox55.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox55.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox55.TabIndex = 54;
+            this.pictureBox55.TabStop = false;
+            this.pictureBox55.Click += new System.EventHandler(this.item_Click);
+            this.pictureBox55.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // pictureBox54
+            // 
+            this.pictureBox54.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox54.Location = new System.Drawing.Point(398, 134);
+            this.pictureBox54.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox54.Name = "pictureBox54";
+            this.pictureBox54.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox54.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox54.TabIndex = 53;
+            this.pictureBox54.TabStop = false;
+            this.pictureBox54.Click += new System.EventHandler(this.item_Click);
+            this.pictureBox54.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // pictureBox53
+            // 
+            this.pictureBox53.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox53.Location = new System.Drawing.Point(398, 95);
+            this.pictureBox53.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox53.Name = "pictureBox53";
+            this.pictureBox53.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox53.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox53.TabIndex = 52;
+            this.pictureBox53.TabStop = false;
+            this.pictureBox53.Click += new System.EventHandler(this.item_Click);
+            this.pictureBox53.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // pictureBox52
+            // 
+            this.pictureBox52.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox52.Location = new System.Drawing.Point(398, 57);
+            this.pictureBox52.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox52.Name = "pictureBox52";
+            this.pictureBox52.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox52.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox52.TabIndex = 51;
+            this.pictureBox52.TabStop = false;
+            this.pictureBox52.Click += new System.EventHandler(this.item_Click);
+            this.pictureBox52.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // pictureBox51
+            // 
+            this.pictureBox51.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pictureBox51.Location = new System.Drawing.Point(398, 19);
+            this.pictureBox51.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox51.Name = "pictureBox51";
+            this.pictureBox51.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox51.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox51.TabIndex = 50;
+            this.pictureBox51.TabStop = false;
+            this.pictureBox51.Click += new System.EventHandler(this.item_Click);
+            this.pictureBox51.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
             // 
             // pictureBox41
             // 
@@ -931,7 +1065,7 @@
             this.gb_slot.Controls.Add(this.nudQuant);
             this.gb_slot.Controls.Add(this.cbItem);
             this.gb_slot.Enabled = false;
-            this.gb_slot.Location = new System.Drawing.Point(471, 70);
+            this.gb_slot.Location = new System.Drawing.Point(564, 70);
             this.gb_slot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gb_slot.Name = "gb_slot";
             this.gb_slot.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1021,47 +1155,170 @@
             this.cbItem.TabIndex = 0;
             this.cbItem.SelectedIndexChanged += new System.EventHandler(this.cbItem_SelectedIndexChanged);
             // 
-            // gbPlayer
+            // gbColour
             // 
-            this.gbPlayer.Controls.Add(this.label14);
-            this.gbPlayer.Controls.Add(this.label15);
-            this.gbPlayer.Controls.Add(this.nudManaMax);
-            this.gbPlayer.Controls.Add(this.nudManaCur);
-            this.gbPlayer.Controls.Add(this.label13);
-            this.gbPlayer.Controls.Add(this.label12);
-            this.gbPlayer.Controls.Add(this.nudHealthMax);
-            this.gbPlayer.Controls.Add(this.nudHealthCur);
-            this.gbPlayer.Controls.Add(this.label11);
-            this.gbPlayer.Controls.Add(this.tbName);
-            this.gbPlayer.Controls.Add(this.label10);
-            this.gbPlayer.Controls.Add(this.shoesPnl);
-            this.gbPlayer.Controls.Add(this.label9);
-            this.gbPlayer.Controls.Add(this.pantsPnl);
-            this.gbPlayer.Controls.Add(this.label8);
-            this.gbPlayer.Controls.Add(this.undershirtPnl);
-            this.gbPlayer.Controls.Add(this.label7);
-            this.gbPlayer.Controls.Add(this.shirtPnl);
-            this.gbPlayer.Controls.Add(this.label6);
-            this.gbPlayer.Controls.Add(this.eyesPnl);
-            this.gbPlayer.Controls.Add(this.label5);
-            this.gbPlayer.Controls.Add(this.skinPnl);
-            this.gbPlayer.Controls.Add(this.label4);
-            this.gbPlayer.Controls.Add(this.hairPnl);
-            this.gbPlayer.Enabled = false;
-            this.gbPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbPlayer.Location = new System.Drawing.Point(280, 10);
-            this.gbPlayer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbPlayer.Name = "gbPlayer";
-            this.gbPlayer.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbPlayer.Size = new System.Drawing.Size(176, 214);
-            this.gbPlayer.TabIndex = 51;
-            this.gbPlayer.TabStop = false;
-            this.gbPlayer.Text = "Player";
+            this.gbColour.Controls.Add(this.label10);
+            this.gbColour.Controls.Add(this.shoesPnl);
+            this.gbColour.Controls.Add(this.label9);
+            this.gbColour.Controls.Add(this.pantsPnl);
+            this.gbColour.Controls.Add(this.label8);
+            this.gbColour.Controls.Add(this.undershirtPnl);
+            this.gbColour.Controls.Add(this.label7);
+            this.gbColour.Controls.Add(this.shirtPnl);
+            this.gbColour.Controls.Add(this.label6);
+            this.gbColour.Controls.Add(this.eyesPnl);
+            this.gbColour.Controls.Add(this.label5);
+            this.gbColour.Controls.Add(this.skinPnl);
+            this.gbColour.Controls.Add(this.label4);
+            this.gbColour.Controls.Add(this.hairPnl);
+            this.gbColour.Enabled = false;
+            this.gbColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbColour.Location = new System.Drawing.Point(280, 10);
+            this.gbColour.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbColour.Name = "gbColour";
+            this.gbColour.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbColour.Size = new System.Drawing.Size(104, 214);
+            this.gbColour.TabIndex = 51;
+            this.gbColour.TabStop = false;
+            this.gbColour.Text = "Colour";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 95);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Shoes:";
+            // 
+            // shoesPnl
+            // 
+            this.shoesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.shoesPnl.Location = new System.Drawing.Point(70, 95);
+            this.shoesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.shoesPnl.Name = "shoesPnl";
+            this.shoesPnl.Size = new System.Drawing.Size(20, 20);
+            this.shoesPnl.TabIndex = 12;
+            this.shoesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 69);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Pants:";
+            // 
+            // pantsPnl
+            // 
+            this.pantsPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pantsPnl.Location = new System.Drawing.Point(70, 69);
+            this.pantsPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pantsPnl.Name = "pantsPnl";
+            this.pantsPnl.Size = new System.Drawing.Size(20, 20);
+            this.pantsPnl.TabIndex = 10;
+            this.pantsPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 43);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Undershirt:";
+            // 
+            // undershirtPnl
+            // 
+            this.undershirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.undershirtPnl.Location = new System.Drawing.Point(70, 43);
+            this.undershirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.undershirtPnl.Name = "undershirtPnl";
+            this.undershirtPnl.Size = new System.Drawing.Size(20, 20);
+            this.undershirtPnl.TabIndex = 8;
+            this.undershirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Shirt:";
+            // 
+            // shirtPnl
+            // 
+            this.shirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.shirtPnl.Location = new System.Drawing.Point(70, 17);
+            this.shirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.shirtPnl.Name = "shirtPnl";
+            this.shirtPnl.Size = new System.Drawing.Size(20, 20);
+            this.shirtPnl.TabIndex = 6;
+            this.shirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 175);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Eyes:";
+            // 
+            // eyesPnl
+            // 
+            this.eyesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.eyesPnl.Location = new System.Drawing.Point(70, 175);
+            this.eyesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.eyesPnl.Name = "eyesPnl";
+            this.eyesPnl.Size = new System.Drawing.Size(20, 20);
+            this.eyesPnl.TabIndex = 4;
+            this.eyesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 149);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Skin:";
+            // 
+            // skinPnl
+            // 
+            this.skinPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.skinPnl.Location = new System.Drawing.Point(70, 149);
+            this.skinPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.skinPnl.Name = "skinPnl";
+            this.skinPnl.Size = new System.Drawing.Size(20, 20);
+            this.skinPnl.TabIndex = 2;
+            this.skinPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 123);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Hair:";
+            // 
+            // hairPnl
+            // 
+            this.hairPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.hairPnl.Location = new System.Drawing.Point(70, 123);
+            this.hairPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.hairPnl.Name = "hairPnl";
+            this.hairPnl.Size = new System.Drawing.Size(20, 20);
+            this.hairPnl.TabIndex = 0;
+            this.hairPnl.Click += new System.EventHandler(this.colourSelecter_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(96, 70);
+            this.label14.Location = new System.Drawing.Point(98, 70);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(18, 13);
             this.label14.TabIndex = 61;
@@ -1070,7 +1327,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 70);
+            this.label15.Location = new System.Drawing.Point(8, 68);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(37, 13);
             this.label15.TabIndex = 60;
@@ -1102,7 +1359,7 @@
             // 
             // nudManaCur
             // 
-            this.nudManaCur.Location = new System.Drawing.Point(50, 69);
+            this.nudManaCur.Location = new System.Drawing.Point(52, 69);
             this.nudManaCur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudManaCur.Maximum = new decimal(new int[] {
             250,
@@ -1117,7 +1374,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(96, 44);
+            this.label13.Location = new System.Drawing.Point(98, 44);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(18, 13);
             this.label13.TabIndex = 57;
@@ -1126,7 +1383,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 44);
+            this.label12.Location = new System.Drawing.Point(8, 42);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(41, 13);
             this.label12.TabIndex = 56;
@@ -1158,7 +1415,7 @@
             // 
             // nudHealthCur
             // 
-            this.nudHealthCur.Location = new System.Drawing.Point(50, 43);
+            this.nudHealthCur.Location = new System.Drawing.Point(52, 43);
             this.nudHealthCur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudHealthCur.Maximum = new decimal(new int[] {
             500,
@@ -1173,7 +1430,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 19);
+            this.label11.Location = new System.Drawing.Point(8, 17);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 13);
             this.label11.TabIndex = 53;
@@ -1181,145 +1438,12 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(50, 17);
+            this.tbName.Location = new System.Drawing.Point(52, 17);
             this.tbName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbName.Name = "tbName";
             this.tbName.ReadOnly = true;
-            this.tbName.Size = new System.Drawing.Size(115, 20);
+            this.tbName.Size = new System.Drawing.Size(108, 20);
             this.tbName.TabIndex = 52;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(99, 183);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 13);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Shoes:";
-            // 
-            // shoesPnl
-            // 
-            this.shoesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.shoesPnl.Location = new System.Drawing.Point(145, 183);
-            this.shoesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.shoesPnl.Name = "shoesPnl";
-            this.shoesPnl.Size = new System.Drawing.Size(20, 20);
-            this.shoesPnl.TabIndex = 12;
-            this.shoesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(102, 157);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Pants:";
-            // 
-            // pantsPnl
-            // 
-            this.pantsPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pantsPnl.Location = new System.Drawing.Point(145, 157);
-            this.pantsPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pantsPnl.Name = "pantsPnl";
-            this.pantsPnl.Size = new System.Drawing.Size(20, 20);
-            this.pantsPnl.TabIndex = 10;
-            this.pantsPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(81, 131);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Undershirt:";
-            // 
-            // undershirtPnl
-            // 
-            this.undershirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.undershirtPnl.Location = new System.Drawing.Point(145, 131);
-            this.undershirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.undershirtPnl.Name = "undershirtPnl";
-            this.undershirtPnl.Size = new System.Drawing.Size(20, 20);
-            this.undershirtPnl.TabIndex = 8;
-            this.undershirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(108, 105);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Shirt:";
-            // 
-            // shirtPnl
-            // 
-            this.shirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.shirtPnl.Location = new System.Drawing.Point(145, 105);
-            this.shirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.shirtPnl.Name = "shirtPnl";
-            this.shirtPnl.Size = new System.Drawing.Size(20, 20);
-            this.shirtPnl.TabIndex = 6;
-            this.shirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 183);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Eyes:";
-            // 
-            // eyesPnl
-            // 
-            this.eyesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.eyesPnl.Location = new System.Drawing.Point(44, 183);
-            this.eyesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.eyesPnl.Name = "eyesPnl";
-            this.eyesPnl.Size = new System.Drawing.Size(20, 20);
-            this.eyesPnl.TabIndex = 4;
-            this.eyesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 157);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Skin:";
-            // 
-            // skinPnl
-            // 
-            this.skinPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.skinPnl.Location = new System.Drawing.Point(44, 157);
-            this.skinPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.skinPnl.Name = "skinPnl";
-            this.skinPnl.Size = new System.Drawing.Size(20, 20);
-            this.skinPnl.TabIndex = 2;
-            this.skinPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 131);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Hair:";
-            // 
-            // hairPnl
-            // 
-            this.hairPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.hairPnl.Location = new System.Drawing.Point(44, 131);
-            this.hairPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.hairPnl.Name = "hairPnl";
-            this.hairPnl.Size = new System.Drawing.Size(20, 20);
-            this.hairPnl.TabIndex = 0;
-            this.hairPnl.Click += new System.EventHandler(this.colourSelecter_Click);
             // 
             // imageList1
             // 
@@ -1378,7 +1502,7 @@
             this.btnReload.Enabled = false;
             this.btnReload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReload.Image = global::WinTerrEdit.Properties.Resources.crappyreload;
-            this.btnReload.Location = new System.Drawing.Point(628, 13);
+            this.btnReload.Location = new System.Drawing.Point(721, 13);
             this.btnReload.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(39, 22);
@@ -1392,14 +1516,82 @@
             this.autoFunctionTimer.Interval = 1000;
             this.autoFunctionTimer.Tick += new System.EventHandler(this.autoFunctionTimer_Tick);
             // 
+            // gbPlayer
+            // 
+            this.gbPlayer.Controls.Add(this.gbMaximumMana);
+            this.gbPlayer.Controls.Add(this.btnMaxHealth);
+            this.gbPlayer.Controls.Add(this.gbFillMana);
+            this.gbPlayer.Controls.Add(this.btnHeal);
+            this.gbPlayer.Controls.Add(this.tbName);
+            this.gbPlayer.Controls.Add(this.label14);
+            this.gbPlayer.Controls.Add(this.label11);
+            this.gbPlayer.Controls.Add(this.nudHealthCur);
+            this.gbPlayer.Controls.Add(this.label15);
+            this.gbPlayer.Controls.Add(this.nudHealthMax);
+            this.gbPlayer.Controls.Add(this.label12);
+            this.gbPlayer.Controls.Add(this.nudManaMax);
+            this.gbPlayer.Controls.Add(this.label13);
+            this.gbPlayer.Controls.Add(this.nudManaCur);
+            this.gbPlayer.Enabled = false;
+            this.gbPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbPlayer.Location = new System.Drawing.Point(390, 10);
+            this.gbPlayer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbPlayer.Name = "gbPlayer";
+            this.gbPlayer.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbPlayer.Size = new System.Drawing.Size(168, 214);
+            this.gbPlayer.TabIndex = 52;
+            this.gbPlayer.TabStop = false;
+            this.gbPlayer.Text = "Player";
+            // 
+            // gbMaximumMana
+            // 
+            this.gbMaximumMana.Location = new System.Drawing.Point(11, 179);
+            this.gbMaximumMana.Name = "gbMaximumMana";
+            this.gbMaximumMana.Size = new System.Drawing.Size(149, 23);
+            this.gbMaximumMana.TabIndex = 64;
+            this.gbMaximumMana.Text = "Maximum mana";
+            this.gbMaximumMana.UseVisualStyleBackColor = true;
+            this.gbMaximumMana.Click += new System.EventHandler(this.gbMaximumMana_Click);
+            // 
+            // btnMaxHealth
+            // 
+            this.btnMaxHealth.Location = new System.Drawing.Point(11, 152);
+            this.btnMaxHealth.Name = "btnMaxHealth";
+            this.btnMaxHealth.Size = new System.Drawing.Size(149, 23);
+            this.btnMaxHealth.TabIndex = 63;
+            this.btnMaxHealth.Text = "Maximum health";
+            this.btnMaxHealth.UseVisualStyleBackColor = true;
+            this.btnMaxHealth.Click += new System.EventHandler(this.btnMaxHealth_Click);
+            // 
+            // gbFillMana
+            // 
+            this.gbFillMana.Location = new System.Drawing.Point(11, 123);
+            this.gbFillMana.Name = "gbFillMana";
+            this.gbFillMana.Size = new System.Drawing.Size(149, 23);
+            this.gbFillMana.TabIndex = 62;
+            this.gbFillMana.Text = "Fill mana";
+            this.gbFillMana.UseVisualStyleBackColor = true;
+            this.gbFillMana.Click += new System.EventHandler(this.gbFillMana_Click);
+            // 
+            // btnHeal
+            // 
+            this.btnHeal.Location = new System.Drawing.Point(11, 96);
+            this.btnHeal.Name = "btnHeal";
+            this.btnHeal.Size = new System.Drawing.Size(149, 23);
+            this.btnHeal.TabIndex = 55;
+            this.btnHeal.Text = "Heal";
+            this.btnHeal.UseVisualStyleBackColor = true;
+            this.btnHeal.Click += new System.EventHandler(this.btnHeal_Click);
+            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 457);
+            this.ClientSize = new System.Drawing.Size(773, 457);
+            this.Controls.Add(this.gbPlayer);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.gbItems);
-            this.Controls.Add(this.gbPlayer);
+            this.Controls.Add(this.gbColour);
             this.Controls.Add(this.gb_slot);
             this.Controls.Add(this.gbInvHold);
             this.Controls.Add(this.btnSave);
@@ -1415,6 +1607,14 @@
             this.Load += new System.EventHandler(this.Entry_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entry_kDown);
             this.gbInvHold.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox51)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
@@ -1468,14 +1668,16 @@
             this.gb_slot.ResumeLayout(false);
             this.gb_slot.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuant)).EndInit();
-            this.gbPlayer.ResumeLayout(false);
-            this.gbPlayer.PerformLayout();
+            this.gbColour.ResumeLayout(false);
+            this.gbColour.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
             this.gbItems.ResumeLayout(false);
             this.gbItems.PerformLayout();
+            this.gbPlayer.ResumeLayout(false);
+            this.gbPlayer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1542,7 +1744,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudQuant;
         private System.Windows.Forms.ComboBox cbItem;
-        private System.Windows.Forms.GroupBox gbPlayer;
+        private System.Windows.Forms.GroupBox gbColour;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel shoesPnl;
         private System.Windows.Forms.Label label9;
@@ -1577,6 +1779,19 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Timer autoFunctionTimer;
+        private System.Windows.Forms.PictureBox pictureBox58;
+        private System.Windows.Forms.PictureBox pictureBox57;
+        private System.Windows.Forms.PictureBox pictureBox56;
+        private System.Windows.Forms.PictureBox pictureBox55;
+        private System.Windows.Forms.PictureBox pictureBox54;
+        private System.Windows.Forms.PictureBox pictureBox53;
+        private System.Windows.Forms.PictureBox pictureBox52;
+        private System.Windows.Forms.PictureBox pictureBox51;
+        private System.Windows.Forms.GroupBox gbPlayer;
+        private System.Windows.Forms.Button gbMaximumMana;
+        private System.Windows.Forms.Button btnMaxHealth;
+        private System.Windows.Forms.Button gbFillMana;
+        private System.Windows.Forms.Button btnHeal;
     }
 }
 
