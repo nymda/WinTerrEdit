@@ -146,8 +146,8 @@ namespace WinTerrEdit
             StringBuilder nameBuild = new StringBuilder();
 
             for (int i = startpos; i < 51; i++)
-            {
-                if (printables.Contains(decrypted[i]))
+            {       
+                if (!char.IsControl((char)decrypted[i]))
                 {
                     nameBuild.Append(Encoding.ASCII.GetString(new byte[] { decrypted[i] }));
                 }
