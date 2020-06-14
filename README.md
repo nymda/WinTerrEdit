@@ -1,12 +1,12 @@
 ![](https://i.imgur.com/5B977EX.png)
 
 ### Features
--Edit players inventory
--Edit players coins / ammo
--Edit players colours 
--Edit health and mana
--Standalone EXE, no dependencies
--Detect and reload if the save is changed by terraria
+-Edit players inventory    
+-Edit players coins / ammo    
+-Edit players colours     
+-Edit health and mana    
+-Standalone EXE, no dependencies    
+-Detect and reload if the save is changed by terraria    
 
 ### Screenshots
 ![](https://i.imgur.com/h0m1NFu.png)    
