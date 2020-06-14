@@ -845,6 +845,12 @@ namespace WinTerrEdit
                 copyBuffer = null;
                 updateInvDisplay();
             }
+            if(e.KeyCode == Keys.Delete)
+            {
+                cbItem.SelectedItem = "Empty";
+                cbPrefixes.SelectedIndex = 0;
+                nudQuant.Value = 0;
+            }
         }
 
         private void ndq_keydown(object sender, KeyEventArgs e)
@@ -917,10 +923,6 @@ namespace WinTerrEdit
         private void autoFunctionTimer_Tick(object sender, EventArgs e)
         {
             string tmp = calcMd5OfOpenFile();
-
-            Console.WriteLine("CURR: " + tmp);
-            Console.WriteLine("SAVE: " + currentFileHash);
-            Console.WriteLine("");
 
             if (tmp != currentFileHash)
             {
