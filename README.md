@@ -1,23 +1,16 @@
-# WinTerrEdit
-GUI based terraria inventory / player editer.    
-Made for the latest version (1.4.0.4/5)    
+![](https://i.imgur.com/5B977EX.png)
 
-Supports editing inventory items:    
-  ---Item type    
-  ---Item quantity    
-  ---Item prefix (large, mythical, etc)
-  
-Supports editing stats:    
-  ---Current health    
-  ---Maximum health    
-  ---Current mana    
-  ---Maximum mana    
-  
-Supports editing colours:    
-  ---Hair colour    
-  ---Skin colour    
-  ---eye colour    
-  ---Shirt colour    
-  ---Undershirt colour    
-  ---Pants colour    
-  ---Shoe colour
+### Features
+-Edit players inventory
+-Edit players coins / ammo
+-Edit players colours 
+-Edit health and mana
+-Standalone EXE, no dependencies
+-Detect and reload if the save is changed by terraria
+
+### Screenshots
+![](https://i.imgur.com/h0m1NFu.png)
+Main screen showing player information, colours, inventory, money and ammo
+
+![](https://i.imgur.com/vGMvdrR.png)
+Extra options
