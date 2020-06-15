@@ -142,20 +142,16 @@ namespace WinTerrEdit
 
             int startpos = 25;
 
+            int nameLen = decrypted[startpos-1];
+
             StringBuilder nameBuild = new StringBuilder();
 
-            for (int i = startpos; i < 51; i++)
-            {       
-                if (!char.IsControl((char)decrypted[i]))
-                {
-                    nameBuild.Append(Encoding.ASCII.GetString(new byte[] { decrypted[i] }));
-                }
-                else
-                {
-                    nameEndOffset = i;
-                    break;
-                }
+            for(int i = startpos; i < startpos + nameLen; i++)
+            {
+                nameBuild.Append(Encoding.ASCII.GetString(new byte[] { decrypted[i] }));
             }
+
+            nameEndOffset = startpos + nameLen;
 
             playerMode = (gamemodes.gamemode)decrypted[nameEndOffset];
 
