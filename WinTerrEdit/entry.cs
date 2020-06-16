@@ -155,7 +155,6 @@ namespace WinTerrEdit
 
             playerMode = (gamemodes.gamemode)decrypted[nameEndOffset];
 
-
             playerName = nameBuild.ToString();
 
             tbName.Text = playerName;
@@ -190,7 +189,6 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
-
 
             int CoinDataBeginOffset = nameEndOffset + coinOffset;
             int CoinDataEndOffset = CoinDataBeginOffset + 80;

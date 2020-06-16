@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,49 +49,26 @@ namespace WinTerrEdit
         }
         public baseItem searchItemByID(int id)
         {
-            foreach (baseItem i in globalTerrariaItems)
-            {
-                if (i.ID == id)
-                {
-                    return i;
-                }
-            }
-            return globalTerrariaItems[0];
+            var res = globalTerrariaItems.Where(baseItem => baseItem.ID == id);
+            return (res.Count() > 0) ? res.First() : globalTerrariaItems[0];
         }
+
         public baseItem searchItemByName(string name)
         {
-            foreach (baseItem i in globalTerrariaItems)
-            {
-                if (i.name == name)
-                {
-                    return i;
-                }
-            }
-            return globalTerrariaItems[0];
+            var res = globalTerrariaItems.Where(baseItem => baseItem.name == name);
+            return (res.Count() > 0) ? res.First() : globalTerrariaItems[0];
         }
 
         public itemPrefix searchPrefixByID(int id)
         {
-            foreach (itemPrefix i in globalItemPrefixes)
-            {
-                if (i.ID == id)
-                {
-                    return i;
-                }
-            }
-            return globalItemPrefixes[0];
+            var res = globalItemPrefixes.Where(itemPrefix => itemPrefix.ID == id);
+            return (res.Count() > 0) ? res.First() : globalItemPrefixes[0];
         }
 
         public itemPrefix searchPrefixByName(string name)
         {
-            foreach (itemPrefix i in globalItemPrefixes)
-            {
-                if (i.name == name)
-                {
-                    return i;
-                }
-            }
-            return globalItemPrefixes[0];
+            var res = globalItemPrefixes.Where(itemPrefix => itemPrefix.name == name);
+            return (res.Count() > 0) ? res.First() : globalItemPrefixes[0];
         }
 
         public bool calcByteOffset(List<List<int>> invDat)

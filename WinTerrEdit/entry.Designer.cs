@@ -1185,7 +1185,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 95);
+            this.label10.Location = new System.Drawing.Point(10, 99);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 13);
             this.label10.TabIndex = 11;
@@ -1194,7 +1194,7 @@
             // shoesPnl
             // 
             this.shoesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.shoesPnl.Location = new System.Drawing.Point(70, 95);
+            this.shoesPnl.Location = new System.Drawing.Point(74, 99);
             this.shoesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.shoesPnl.Name = "shoesPnl";
             this.shoesPnl.Size = new System.Drawing.Size(20, 20);
@@ -1204,7 +1204,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 69);
+            this.label9.Location = new System.Drawing.Point(10, 73);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 9;
@@ -1213,7 +1213,7 @@
             // pantsPnl
             // 
             this.pantsPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pantsPnl.Location = new System.Drawing.Point(70, 69);
+            this.pantsPnl.Location = new System.Drawing.Point(74, 73);
             this.pantsPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pantsPnl.Name = "pantsPnl";
             this.pantsPnl.Size = new System.Drawing.Size(20, 20);
@@ -1223,7 +1223,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 43);
+            this.label8.Location = new System.Drawing.Point(10, 47);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 13);
             this.label8.TabIndex = 7;
@@ -1232,7 +1232,7 @@
             // undershirtPnl
             // 
             this.undershirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.undershirtPnl.Location = new System.Drawing.Point(70, 43);
+            this.undershirtPnl.Location = new System.Drawing.Point(74, 47);
             this.undershirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.undershirtPnl.Name = "undershirtPnl";
             this.undershirtPnl.Size = new System.Drawing.Size(20, 20);
@@ -1242,7 +1242,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 17);
+            this.label7.Location = new System.Drawing.Point(10, 21);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 13);
             this.label7.TabIndex = 5;
@@ -1251,7 +1251,7 @@
             // shirtPnl
             // 
             this.shirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.shirtPnl.Location = new System.Drawing.Point(70, 17);
+            this.shirtPnl.Location = new System.Drawing.Point(74, 21);
             this.shirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.shirtPnl.Name = "shirtPnl";
             this.shirtPnl.Size = new System.Drawing.Size(20, 20);
@@ -1261,7 +1261,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 175);
+            this.label6.Location = new System.Drawing.Point(10, 179);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 3;
@@ -1270,7 +1270,7 @@
             // eyesPnl
             // 
             this.eyesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.eyesPnl.Location = new System.Drawing.Point(70, 175);
+            this.eyesPnl.Location = new System.Drawing.Point(74, 179);
             this.eyesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.eyesPnl.Name = "eyesPnl";
             this.eyesPnl.Size = new System.Drawing.Size(20, 20);
@@ -1280,7 +1280,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 149);
+            this.label5.Location = new System.Drawing.Point(10, 153);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 1;
@@ -1289,7 +1289,7 @@
             // skinPnl
             // 
             this.skinPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.skinPnl.Location = new System.Drawing.Point(70, 149);
+            this.skinPnl.Location = new System.Drawing.Point(74, 153);
             this.skinPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.skinPnl.Name = "skinPnl";
             this.skinPnl.Size = new System.Drawing.Size(20, 20);
@@ -1299,7 +1299,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 123);
+            this.label4.Location = new System.Drawing.Point(10, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 0;
@@ -1308,7 +1308,7 @@
             // hairPnl
             // 
             this.hairPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.hairPnl.Location = new System.Drawing.Point(70, 123);
+            this.hairPnl.Location = new System.Drawing.Point(74, 127);
             this.hairPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.hairPnl.Name = "hairPnl";
             this.hairPnl.Size = new System.Drawing.Size(20, 20);
