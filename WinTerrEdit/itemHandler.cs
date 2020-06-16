@@ -61,44 +61,6 @@ namespace WinTerrEdit
             var res = globalItemPrefixes.Where(itemPrefix => itemPrefix.name == name);
             return (res.Count() > 0) ? res.First() : globalItemPrefixes[0];
         }
-
-        public bool calcByteOffset(List<List<int>> invDat)
-        {
-            int additor = 0;
-            bool foundItem = false;
-
-            foreach(List<int> invchunk in invDat)
-            {
-                foreach(int i in invchunk)
-                {
-                    if(i != 0)
-                    {
-                        foundItem = true;
-                    }
-                }
-
-                additor += invchunk[2];
-                additor += invchunk[3];
-                additor += invchunk[6];
-                additor += invchunk[7];
-                additor += invchunk[9];
-            }
-
-            Console.WriteLine(additor);
-
-            if (!foundItem)
-            {
-                return true;
-            }
-            if(additor == 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
     }
     public class invItem
     {
@@ -117,8 +79,6 @@ namespace WinTerrEdit
         //returns the inventory item as a set of 10 bytes for reinserting into raw data
         public List<Byte> recompile(itemHandler handler)
         {
-            Random r = new Random();
-
             List<Byte> final = new List<Byte> { };
             List<int> encodedItem = handler.encodeData(item.ID);
             List<int> encodedQuant = handler.encodeData(quantity);

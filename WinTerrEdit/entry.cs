@@ -431,22 +431,12 @@ namespace WinTerrEdit
             foreach (invItem iv in inventory)
             {
                 List<Byte> tmp = iv.recompile(ih);
-                foreach (byte b in tmp)
-                {
-                    buffer.Add(b);
-                }
+                buffer.AddRange(tmp);
             }
 
             foreach(Color c in playerColours)
             {
-                List<int> tmpCol = new List<int> { };
-                tmpCol.Add(c.R);
-                tmpCol.Add(c.G);
-                tmpCol.Add(c.B);
-                foreach(int i in tmpCol)
-                {
-                    buffer.Add((byte)i);
-                }
+                buffer.AddRange(new List<Byte> { c.R, c.G, c.B });
             }
 
             buffer.Add((byte)ih.encodeData(playerHealth[0])[0]);
@@ -713,7 +703,6 @@ namespace WinTerrEdit
 
         private void colourSelecter_Click(object sender, EventArgs e)
         {
-            string elementName = (sender as Panel).Name;
             int extCount = pnCollection.IndexOf(sender as Panel);
             colourSelecter.Color = playerColours[extCount];
             colourSelecter.FullOpen = true;
