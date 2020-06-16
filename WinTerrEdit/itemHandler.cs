@@ -32,20 +32,11 @@ namespace WinTerrEdit
         }
         public int resolveEncodedData(int b1, int b2)
         {
-            int ID = 0;
-            ID += b1;
-            ID += 256 * b2;
-            return ID;
+            return b1 + (256 * b2);
         }
         public List<int> encodeData(int inp)
         {
-            int count256 = 0;
-            while (inp > 256)
-            {
-                inp -= 256;
-                count256 += 1;
-            }
-            return new List<int> { inp, count256 };
+            return new List<int> { inp % 256, inp / 256};
         }
         public baseItem searchItemByID(int id)
         {
