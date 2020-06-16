@@ -159,7 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="rainbowBrick.ico" />
-    <None Include="Resources\winTerrEditLogoSmall.png" />
+    <EmbeddedResource Include="Resources\winTerrEditLogoSmall.png" />
     <EmbeddedResource Include="Resources\crappyreload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
