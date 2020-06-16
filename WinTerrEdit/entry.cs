@@ -60,7 +60,7 @@ namespace WinTerrEdit
             InitializeComponent();
             new Thread(new ThreadStart(delegate
             {
-                Application.Run(ld = new loading(ih.globalTerrariaItems.Count()));
+                Application.Run(ld = new loading());
             })).Start();
         }
         private void Entry_Load(object sender, EventArgs e)
