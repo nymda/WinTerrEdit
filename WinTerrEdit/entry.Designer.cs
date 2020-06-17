@@ -1602,7 +1602,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "entry";
-            this.Text = "WinTerrEdit | [F1] About | [F2] Settings | [F3] Debug";
+            this.Text = "WinTerrEdit | [F1] About | [F2] Settings ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onClose);
             this.Load += new System.EventHandler(this.Entry_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entry_kDown);

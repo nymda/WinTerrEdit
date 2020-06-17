@@ -87,11 +87,14 @@ namespace WinTerrEdit
             {
                 cbItem.Items.Add(itm.name);
                 imageList1.Images.Add(itm.icon);
-                ListViewItem tmp = new ListViewItem();
-                tmp.Text = itm.name;
-                tmp.ImageIndex = cnt;
-                itemLV.Items.Add(tmp);
-                lvis.Add(tmp);
+                if(itm.ID != -1)
+                {
+                    ListViewItem tmp = new ListViewItem();
+                    tmp.Text = itm.name;
+                    tmp.ImageIndex = cnt;
+                    itemLV.Items.Add(tmp);
+                    lvis.Add(tmp);
+                }
                 cnt++;
             }
             st.Stop();
@@ -272,6 +275,12 @@ namespace WinTerrEdit
 
             nudManaCur.Value = playerMana[0];
             nudManaMax.Value = playerMana[1];
+
+            var res = inventory.Where(invItem => invItem.item.name == "Unknown");
+            if(res.Count() > 0)
+            {
+                MessageBox.Show("This player contains \"Unknown\" items. These are items which have a quantity or prefix but no ID. This may be caused by a game bug or (more likely) a mod. Be careful when editing these items.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)

@@ -71,9 +71,17 @@ namespace WinTerrEdit
         public invItem(List<int> terrData, itemHandler handler)
         {
             int id = handler.resolveEncodedData(terrData[0], terrData[1]);
-            item = handler.searchItemByID(id);
             quantity = handler.resolveEncodedData(terrData[4], terrData[5]);
             prefix = handler.searchPrefixByID(terrData[8]);
+
+            if(quantity > 0 && id == 0)
+            {
+                item = handler.searchItemByID(-1);
+            }
+            else
+            {
+                item = handler.searchItemByID(id);
+            }
         }
 
         //returns the inventory item as a set of 10 bytes for reinserting into raw data
