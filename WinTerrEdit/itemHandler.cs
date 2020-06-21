@@ -36,7 +36,15 @@ namespace WinTerrEdit
         }
         public List<int> encodeData(int inp)
         {
-            return new List<int> { inp % 256, inp / 256};
+            if(inp >= 0)
+            {
+                return new List<int> { inp % 256, inp / 256 };
+            }
+            else
+            {
+                return new List<int> { 0, 0 };
+            }
+
         }
         public baseItem searchItemByID(int id)
         {
