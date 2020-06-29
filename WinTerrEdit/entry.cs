@@ -952,5 +952,10 @@ namespace WinTerrEdit
                 //do shit all
             }
         }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
