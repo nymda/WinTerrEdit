@@ -58,7 +58,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>knedit_software_key2.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>knedit_software.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>BCE127B3A37F5F9BEB6B1C69FFF4B6F07FFEA020</ManifestCertificateThumbprint>

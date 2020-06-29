@@ -353,11 +353,6 @@ namespace WinTerrEdit
             gb_slot.Enabled = true;
             gbItems.Enabled = true;
 
-            for (int i = 0; i < 58; i++)
-            {
-                pbCollection[i].Image = inventory[i].item.icon;
-            }
-
             btnSave.Enabled = true;
             invSelectedIndex = 0;
             updateInvDisplay();
@@ -436,7 +431,19 @@ namespace WinTerrEdit
             //i hate this method so much
 
             List<Byte> buffer = new List<Byte> { };
+
             List<Byte> save = rawDecrypted;
+            save.RemoveRange(24, save[24] + 1);
+
+            List<Byte> nn = new List<byte> { };
+            nn.Add((byte)playerName.Length);
+            foreach (char c in playerName)
+            {
+                nn.Add((byte)c);
+            }
+            save.InsertRange(24, nn);
+            nameEndOffset = 25 + playerName.Length;
+
             foreach (invItem iv in inventory)
             {
                 List<Byte> tmp = iv.recompile(ih);
@@ -955,7 +962,7 @@ namespace WinTerrEdit
 
         private void tbName_TextChanged(object sender, EventArgs e)
         {
-
+            playerName = tbName.Text;
         }
     }
 }
