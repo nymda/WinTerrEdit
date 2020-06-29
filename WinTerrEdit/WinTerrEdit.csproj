@@ -186,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="rainbowBrick.ico" />
+    <None Include="Resources\winTerrEditLogoSmallInverted.png" />
     <EmbeddedResource Include="Resources\winTerrEditLogoSmall.png" />
     <EmbeddedResource Include="Resources\crappyreload.png" />
   </ItemGroup>

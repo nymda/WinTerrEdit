@@ -24,7 +24,7 @@ namespace WinTerrEdit
         public int r = 255;
         public int g = 0;
         public int b = 0;
-        float frequency = 0.3f;
+        float frequency = 0.1f;
 
         public Color current = Color.FromArgb(0, 0, 0);
 
@@ -60,11 +60,11 @@ namespace WinTerrEdit
             count++;
         }
 
-        //  ,adPPYba,  ,adPPYba,  8b,dPPYba, 8b,dPPYba,   
-        // a8"     "" a8"     "8a 88P'   "Y8 88P'   `"8a  
-        // 8b         8b       d8 88         88       88  
-        // "8a,   ,aa "8a,   ,a8" 88         88       88  
-        //  `"Ybbd8"'  `"YbbdP"'  88         88       88  
+        //  ,adPPYba,    ,adPPYba,    8b,dPPYba,   8b,dPPYba,   
+        // a8"     ""   a8"     "8a   88P'   "Y8   88P'   `"8a  
+        // 8b           8b       d8   88           88       88  
+        // "8a,   ,aa   "8a,   ,a8"   88           88       88  
+        //  `"Ybbd8"'    `"YbbdP"'    88           88       88  
 
         public Bitmap getCorn()
         {
@@ -79,12 +79,14 @@ namespace WinTerrEdit
             return corn;
         }
 
-        public int i = 0;
+        public int i = -32;
         private void timer2_Tick(object sender, EventArgs e)
         {
+
+
             if (i == 32)
             {
-                i = 0;
+                i = -32;
             }
 
             i++;
