@@ -86,7 +86,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 39);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Want to contact me?\r\nDiscord: OreyBun#6892\r\nTelegram: @knebby\r\n";
+            this.label2.Text = "Want to contact me?\r\nDiscord: OreyBun#8081\r\nTelegram: @knebby\r\n";
             // 
             // about
             // 
