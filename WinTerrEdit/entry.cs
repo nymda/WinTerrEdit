@@ -44,6 +44,7 @@ namespace WinTerrEdit
         public int inventoryOffset;
         public int ammoOffset;
         public int coinOffset;
+        public int colOffset;
         public List<List<int>> debugInvData = new List<List<int>> { };
         public List<ListViewItem> lvis = new List<ListViewItem> { };
         public List<Panel> pnCollection = new List<Panel> { };
@@ -54,7 +55,9 @@ namespace WinTerrEdit
         public bool isSaved = true;
         public loading ld;
         public ToolTip baseTT = new ToolTip();
+        public bool useExtendedName = false;
 
+        public bool twoByteNameCode = false;
         public entry()
         {
             InitializeComponent();
@@ -67,9 +70,9 @@ namespace WinTerrEdit
         {
 
             baseTT.ShowAlways = true;
-            baseTT.SetToolTip(btnLoad, "Open .PLR file");
-            baseTT.SetToolTip(btnReload, "Reload the last .PLR file");
-            baseTT.SetToolTip(btnSave, "Save the currently open .PLR file (and overwrite the origional)");
+            baseTT.SetToolTip(btnLoad, "Open a .PLR file");
+            baseTT.SetToolTip(btnReload, "Reload the last opened .PLR file");
+            baseTT.SetToolTip(btnSave, "Save the currently open .PLR file");
 
             btnReload.UseCompatibleTextRendering = true;
             pbCollection.AddRange(new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18, pictureBox19, pictureBox20, pictureBox21, pictureBox22, pictureBox23, pictureBox24, pictureBox25, pictureBox26, pictureBox27, pictureBox28, pictureBox29, pictureBox30, pictureBox31, pictureBox32, pictureBox33, pictureBox34, pictureBox35, pictureBox36, pictureBox37, pictureBox38, pictureBox39, pictureBox40, pictureBox41, pictureBox42, pictureBox43, pictureBox44, pictureBox45, pictureBox46, pictureBox47, pictureBox48, pictureBox49, pictureBox50, pictureBox51, pictureBox52, pictureBox53, pictureBox54, pictureBox55, pictureBox56, pictureBox57, pictureBox58 }); //0-50 inv, 51 - 58 ammo / coins
@@ -147,18 +150,16 @@ namespace WinTerrEdit
 
             int nameLen = decrypted[startpos-1];
 
-            StringBuilder nameBuild = new StringBuilder();
-
-            for(int i = startpos; i < startpos + nameLen; i++)
-            {
-                nameBuild.Append(Encoding.ASCII.GetString(new byte[] { decrypted[i] }));
-            }
+            byte[] namebytes = new byte[nameLen];
+            Array.Copy(decrypted, startpos, namebytes, 0, nameLen);
 
             nameEndOffset = startpos + nameLen;
 
             playerMode = (gamemodes.gamemode)decrypted[nameEndOffset];
 
-            playerName = nameBuild.ToString();
+            playerName = Encoding.UTF8.GetString(namebytes);
+
+            Console.WriteLine(namebytes.Length);
 
             tbName.Text = playerName;
 
@@ -166,11 +167,13 @@ namespace WinTerrEdit
             {
                 inventoryOffset = 211;
                 coinOffset = 711;
+                colOffset = 40;
             }
             else
             {
                 inventoryOffset = 213;
                 coinOffset = 713;
+                colOffset = 42;
             }
 
             int InvDataBeginOffset = nameEndOffset + inventoryOffset;
@@ -205,7 +208,6 @@ namespace WinTerrEdit
                 coinTmp.Add(decrypted[i]);
                 if (extCounter == 10)
                 {
-                    Console.WriteLine(string.Join(",", coinTmp));
                     invItem iv = new invItem(coinTmp, ih);
                     inventory.Add(iv);
                     debugInvData.Add(coinTmp);
@@ -214,7 +216,7 @@ namespace WinTerrEdit
                 }
             }
 
-            int ColourDataBeginOffset = nameEndOffset + 40;
+            int ColourDataBeginOffset = nameEndOffset + colOffset;
             int ColourDataEndOffset = ColourDataBeginOffset + 21;
             List<int> colTmp = new List<int> { };
             for (int i = ColourDataBeginOffset; i < ColourDataEndOffset; i++)
@@ -223,6 +225,7 @@ namespace WinTerrEdit
                 colTmp.Add(decrypted[i]);
                 if (extCounter == 3)
                 {
+                    Console.WriteLine(String.Join(",", colTmp));
                     Color col = Color.FromArgb(colTmp[0], colTmp[1], colTmp[2]);
                     playerColours.Add(col);
                     colTmp = new List<int> { };
@@ -436,13 +439,16 @@ namespace WinTerrEdit
             save.RemoveRange(24, save[24] + 1);
 
             List<Byte> nn = new List<byte> { };
-            nn.Add((byte)playerName.Length);
-            foreach (char c in playerName)
-            {
-                nn.Add((byte)c);
-            }
+
+            byte[] nameConverted = Encoding.UTF8.GetBytes(playerName);
+
+            nn.Add((byte)nameConverted.Length);
+            nn.AddRange(nameConverted);
+
+            Console.WriteLine(string.Join(",", nn));
+
             save.InsertRange(24, nn);
-            nameEndOffset = 25 + playerName.Length;
+            nameEndOffset = 25 + nameConverted.Length;
 
             foreach (invItem iv in inventory)
             {
@@ -491,7 +497,7 @@ namespace WinTerrEdit
                 extCount++;
             }
 
-            int ColourDataBeginOffset = nameEndOffset + 40;
+            int ColourDataBeginOffset = nameEndOffset + colOffset;
             int ColourDataEndOffset = ColourDataBeginOffset + 21;
             for (int i = ColourDataBeginOffset; i < ColourDataEndOffset; i++)
             {
@@ -797,11 +803,12 @@ namespace WinTerrEdit
             }
             if(e.KeyCode == Keys.F2)
             {
-                Settings st = new Settings(useOverwriteFile, useAutoReloadFile);
+                Settings st = new Settings(useOverwriteFile, useAutoReloadFile, useExtendedName);
                 if(st.ShowDialog() == DialogResult.OK)
                 {
                     useOverwriteFile = st.useOverwriteFile;
                     useAutoReloadFile = st.useAutoReloadFile;
+                    useExtendedName = st.useExtendedName;
 
                     if (useAutoReloadFile)
                     {
@@ -813,6 +820,19 @@ namespace WinTerrEdit
                     else
                     {
                         autoFunctionTimer.Stop();
+                    }
+
+                    if (useExtendedName)
+                    {
+                        tbName.MaxLength = 200;
+                    }
+                    else
+                    {
+                        tbName.MaxLength = 20;
+                        if(tbName.Text.Length > 20)
+                        {
+                            tbName.Text = tbName.Text.Substring(0, 20);
+                        }
                     }
                 }
             }

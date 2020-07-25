@@ -1440,8 +1440,8 @@
             // 
             this.tbName.Location = new System.Drawing.Point(52, 17);
             this.tbName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbName.MaxLength = 20;
             this.tbName.Name = "tbName";
-            this.tbName.ReadOnly = true;
             this.tbName.Size = new System.Drawing.Size(108, 20);
             this.tbName.TabIndex = 52;
             this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);

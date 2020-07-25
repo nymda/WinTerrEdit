@@ -82,8 +82,6 @@ namespace WinTerrEdit
         public int i = -32;
         private void timer2_Tick(object sender, EventArgs e)
         {
-
-
             if (i == 32)
             {
                 i = -32;
