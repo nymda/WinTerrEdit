@@ -6,6 +6,7 @@
 ### Features
 - Inventory / Coins / Ammo editing
 - Health / Mana filling and editing
+- Name / Colour editing
 - Portable EXE, no dependancies
 - Automatic reloading and saving
 - Easy to use GUI
