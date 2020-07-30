@@ -1,4 +1,5 @@
 ![](https://i.imgur.com/5B977EX.png)
+![](https://img.shields.io/github/downloads/Nymda/WinTerrEdit/total?style=flat-square)
 
 ### Features
 -Edit players inventory    
