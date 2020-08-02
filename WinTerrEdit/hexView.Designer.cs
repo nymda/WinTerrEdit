@@ -29,28 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(hexView));
-            this.tbOut = new System.Windows.Forms.TextBox();
             this.rbInt = new System.Windows.Forms.RadioButton();
             this.rbHex = new System.Windows.Forms.RadioButton();
             this.rbStr = new System.Windows.Forms.RadioButton();
             this.cbConstSize = new System.Windows.Forms.CheckBox();
             this.rbInv = new System.Windows.Forms.RadioButton();
             this.rbHyb = new System.Windows.Forms.RadioButton();
+            this.tbOut = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // tbOut
-            // 
-            this.tbOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbOut.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOut.Location = new System.Drawing.Point(12, 12);
-            this.tbOut.Multiline = true;
-            this.tbOut.Name = "tbOut";
-            this.tbOut.ReadOnly = true;
-            this.tbOut.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbOut.Size = new System.Drawing.Size(500, 541);
-            this.tbOut.TabIndex = 1;
             // 
             // rbInt
             // 
@@ -133,18 +120,43 @@
             this.rbHyb.UseVisualStyleBackColor = true;
             this.rbHyb.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
             // 
+            // tbOut
+            // 
+            this.tbOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOut.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOut.Location = new System.Drawing.Point(12, 12);
+            this.tbOut.Name = "tbOut";
+            this.tbOut.Size = new System.Drawing.Size(500, 541);
+            this.tbOut.TabIndex = 9;
+            this.tbOut.Text = "";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Lucida Console", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(351, 557);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 17);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "highlight";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // hexView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 583);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tbOut);
             this.Controls.Add(this.rbHyb);
             this.Controls.Add(this.rbInv);
             this.Controls.Add(this.cbConstSize);
             this.Controls.Add(this.rbStr);
             this.Controls.Add(this.rbHex);
             this.Controls.Add(this.rbInt);
-            this.Controls.Add(this.tbOut);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "hexView";
             this.Text = "Debug";
@@ -155,12 +167,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox tbOut;
         private System.Windows.Forms.RadioButton rbInt;
         private System.Windows.Forms.RadioButton rbHex;
         private System.Windows.Forms.RadioButton rbStr;
         private System.Windows.Forms.CheckBox cbConstSize;
         private System.Windows.Forms.RadioButton rbInv;
         private System.Windows.Forms.RadioButton rbHyb;
+        private System.Windows.Forms.RichTextBox tbOut;
+        private System.Windows.Forms.Button button1;
     }
 }

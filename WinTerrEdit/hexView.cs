@@ -158,5 +158,29 @@ namespace WinTerrEdit
             }
             tbOut.Text = output;
         }
+
+        public void colourSections()
+        {
+            string[] data = tbOut.Text.Split(',');
+            int point = 0;
+            foreach(string s in data)
+            {
+                try
+                {
+                    tbOut.Select(point, 4);
+                    tbOut.SelectionColor = Color.FromArgb(0, Int32.Parse(s), 0, 0);
+                }
+                catch
+                {
+
+                }
+                point += 4;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            colourSections();
+        }
     }
 }
