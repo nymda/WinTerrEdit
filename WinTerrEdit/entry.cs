@@ -14,10 +14,14 @@ namespace WinTerrEdit
 {
     public partial class entry : Form
     {
+        /// <note>
+        /// the combobox "cbItem" is no longer nessicary on the UI, however its functionality is integeral to the program. 
+        /// </note>
+
         //general stuff
         itemHandler ih = new itemHandler(true);
         public List<Byte> rawDecrypted = new List<Byte> { };
-        public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/My Games/Terraria/Players";
+        public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Terraria\\Players";
         public string lastReadPlrPath = "";
         public bool useOverwriteFile = false;
         public bool useAutoReloadFile = false;
@@ -68,6 +72,7 @@ namespace WinTerrEdit
         }
         private void Entry_Load(object sender, EventArgs e)
         {
+            Console.WriteLine(playerfolder);
 
             baseTT.ShowAlways = true;
             baseTT.SetToolTip(btnLoad, "Open a .PLR file");
@@ -75,7 +80,7 @@ namespace WinTerrEdit
             baseTT.SetToolTip(btnSave, "Save the currently open .PLR file");
 
             btnReload.UseCompatibleTextRendering = true;
-            pbCollection.AddRange(new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16, pictureBox17, pictureBox18, pictureBox19, pictureBox20, pictureBox21, pictureBox22, pictureBox23, pictureBox24, pictureBox25, pictureBox26, pictureBox27, pictureBox28, pictureBox29, pictureBox30, pictureBox31, pictureBox32, pictureBox33, pictureBox34, pictureBox35, pictureBox36, pictureBox37, pictureBox38, pictureBox39, pictureBox40, pictureBox41, pictureBox42, pictureBox43, pictureBox44, pictureBox45, pictureBox46, pictureBox47, pictureBox48, pictureBox49, pictureBox50, pictureBox51, pictureBox52, pictureBox53, pictureBox54, pictureBox55, pictureBox56, pictureBox57, pictureBox58 }); //0-50 inv, 51 - 58 ammo / coins
+            pbCollection.AddRange(new List<PictureBox> { Pb1, Pb2, Pb3, Pb4, Pb5, Pb6, Pb7, Pb8, Pb9, Pb10, Pb11, Pb12, Pb13, Pb14, Pb15, Pb16, Pb17, Pb18, Pb19, Pb20, Pb21, Pb22, Pb23, Pb24, Pb25, Pb26, Pb27, Pb28, Pb29, Pb30, Pb31, Pb32, Pb33, Pb34, Pb35, Pb36, Pb37, Pb38, Pb39, Pb40, Pb41, Pb42, Pb43, Pb44, Pb45, Pb46, Pb47, Pb48, Pb49, Pb50, pictureBox51, pictureBox52, pictureBox53, pictureBox54, pictureBox55, pictureBox56, pictureBox57, pictureBox58 }); //0-50 inv, 51 - 58 ammo / coins
             pnCollection.AddRange(new List<Panel> { hairPnl, skinPnl, eyesPnl, shirtPnl, undershirtPnl, pantsPnl, shoesPnl });
 
             int cnt = 0;
@@ -135,10 +140,8 @@ namespace WinTerrEdit
             }
 
             currentFileHash = calcMd5OfOpenFile();
-
             byte[] decrypted = cr.decryptFile(path);
             rawDecrypted = decrypted.ToList();
-
             versionCode = ih.resolveEncodedData(decrypted[0], decrypted[1]);
 
             if(versionCode > 512)
@@ -147,20 +150,12 @@ namespace WinTerrEdit
             }
 
             int startpos = 25;
-
             int nameLen = decrypted[startpos-1];
-
             byte[] namebytes = new byte[nameLen];
             Array.Copy(decrypted, startpos, namebytes, 0, nameLen);
-
             nameEndOffset = startpos + nameLen;
-
             playerMode = (gamemodes.gamemode)decrypted[nameEndOffset];
-
             playerName = Encoding.UTF8.GetString(namebytes);
-
-            Console.WriteLine(namebytes.Length);
-
             tbName.Text = playerName;
 
             if(versionCode < 230)
@@ -225,7 +220,6 @@ namespace WinTerrEdit
                 colTmp.Add(decrypted[i]);
                 if (extCounter == 3)
                 {
-                    Console.WriteLine(String.Join(",", colTmp));
                     Color col = Color.FromArgb(colTmp[0], colTmp[1], colTmp[2]);
                     playerColours.Add(col);
                     colTmp = new List<int> { };
@@ -313,11 +307,14 @@ namespace WinTerrEdit
                         inventory.Clear();
 
                         lastReadPlrPath = dlg.FileName;
+                        this.Text = "WinTerrEdit | [F1] About | [F2] Settings | (" + dlg.SafeFileName + ")";
+
 
                         loadData(dlg.FileName);
-                        gbInvHold.Enabled = true;
-                        gbColour.Enabled = true;
-                        gbPlayer.Enabled = true;
+                        //gbInvHold.Enabled = true;
+                        //gbColour.Enabled = true;
+                        //gbPlayer.Enabled = true;
+                        tcMain.Enabled = true;
                         gb_slot.Enabled = true;
                         gbItems.Enabled = true;
                         btnReload.Enabled = true;
@@ -351,11 +348,11 @@ namespace WinTerrEdit
             inventory.Clear();
 
             loadData(lastReadPlrPath);
-            gbInvHold.Enabled = true;
-            gbColour.Enabled = true;
+            //gbInvHold.Enabled = true;
+            //gbColour.Enabled = true;
             gb_slot.Enabled = true;
             gbItems.Enabled = true;
-
+            tcMain.Enabled = true;
             btnSave.Enabled = true;
             invSelectedIndex = 0;
             updateInvDisplay();
@@ -367,7 +364,7 @@ namespace WinTerrEdit
                 cbItem.SelectedItem = inventory[invSelectedIndex].item.name;
                 nudQuant.Value = inventory[invSelectedIndex].quantity;
                 cbPrefixes.SelectedItem = inventory[invSelectedIndex].prefix.name;
-                gb_slot.Text = "Slot " + (invSelectedIndex + 1);
+                gb_slot.Text = "Slot " + (invSelectedIndex + 1) + " (" + inventory[invSelectedIndex].item.name + ")";
                 for (int i = 0; i < 58; i++)
                 {
                     pbCollection[i].Image = inventory[i].item.icon;
@@ -424,7 +421,7 @@ namespace WinTerrEdit
         private void item_Click(object sender, EventArgs e)
         {
             string elementName = (sender as PictureBox).Name;
-            string[] npart = elementName.Split(new string[] { "Box" }, StringSplitOptions.None);
+            string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
             invSelectedIndex = Int32.Parse(npart[1]) - 1;
             updateInvDisplay();
         }
@@ -444,8 +441,6 @@ namespace WinTerrEdit
 
             nn.Add((byte)nameConverted.Length);
             nn.AddRange(nameConverted);
-
-            Console.WriteLine(string.Join(",", nn));
 
             save.InsertRange(24, nn);
             nameEndOffset = 25 + nameConverted.Length;
@@ -554,6 +549,32 @@ namespace WinTerrEdit
                         isSaved = true;
                         saveNotifier sn = new saveNotifier();
                         sn.ShowDialog();
+
+                        rawDecrypted = new List<Byte> { };
+                        playerName = "";
+                        inventory = new List<invItem> { };
+                        playerHealth = new List<int> { };
+                        playerMana = new List<int> { };
+                        playerColours = new List<Color> { };
+                        nameEndOffset = 0;
+                        invSelectedIndex = 0;
+                        isSaved = true;
+                        unlockAllData = new List<Byte> { };
+                        debugInvData = new List<List<int>> { };
+                        inventory.Clear();
+
+                        lastReadPlrPath = dlg.FileName;
+
+                        //reload the saved file
+                        this.Text = "WinTerrEdit | [F1] About | [F2] Settings | (" + dlg.FileName.Split('\\')[dlg.FileName.Split('\\').Length-1] + ")";
+
+                        loadData(dlg.FileName);
+                        //gbInvHold.Enabled = true;
+                        //gbColour.Enabled = true;
+                        //gbPlayer.Enabled = true;
+                        gb_slot.Enabled = true;
+                        gbItems.Enabled = true;
+                        btnReload.Enabled = true;
                     }
                 }
             }
@@ -562,7 +583,7 @@ namespace WinTerrEdit
         private void item_Paint(object sender, PaintEventArgs e)
         {
             string elementName = (sender as PictureBox).Name;
-            string[] npart = elementName.Split(new string[] { "Box" }, StringSplitOptions.None);
+            string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
             int tmp = Int32.Parse(npart[1]) - 1;
 
             if(tmp == copyIndex)
@@ -869,11 +890,46 @@ namespace WinTerrEdit
                 cbPrefixes.SelectedIndex = 0;
                 nudQuant.Value = 0;
             }
+            if(invSelectedIndex < 50 && invSelectedIndex != -1)
+            {
+                if (e.KeyCode == Keys.NumPad8)
+                {
+                    if (invSelectedIndex > 10)
+                    {
+                        invSelectedIndex -= 10;
+                        updateInvDisplay();
+                    }
+                }
+                if (e.KeyCode == Keys.NumPad2)
+                {
+                    if (invSelectedIndex <= 39)
+                    {
+                        invSelectedIndex += 10;
+                        updateInvDisplay();
+                    }
+                }
+                if (e.KeyCode == Keys.NumPad4)
+                {
+                    if (invSelectedIndex > 0)
+                    {
+                        invSelectedIndex -= 1;
+                        updateInvDisplay();
+                    }
+                }
+                if (e.KeyCode == Keys.NumPad6)
+                {
+                    if (invSelectedIndex < 49)
+                    {
+                        invSelectedIndex += 1;
+                        updateInvDisplay();
+                    }
+                }
+            }
         }
 
         private void ndq_keydown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
+            if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control || e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.NumPad5)
             {
                 e.SuppressKeyPress = true;
             }
@@ -958,10 +1014,11 @@ namespace WinTerrEdit
                 inventory.Clear();
 
                 loadData(lastReadPlrPath);
-                gbInvHold.Enabled = true;
-                gbColour.Enabled = true;
+                //gbInvHold.Enabled = true;
+                //gbColour.Enabled = true;
                 gb_slot.Enabled = true;
                 gbItems.Enabled = true;
+                tcMain.Enabled = true;
 
                 for (int i = 0; i < 58; i++)
                 {
@@ -983,6 +1040,11 @@ namespace WinTerrEdit
         private void tbName_TextChanged(object sender, EventArgs e)
         {
             playerName = tbName.Text;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
