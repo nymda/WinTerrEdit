@@ -15,7 +15,7 @@ namespace WinTerrEdit
     public partial class entry : Form
     {
         /// <note>
-        /// the combobox "cbItem" is no longer nessicary on the UI, however its functionality is integeral to the program. 
+        /// the combobox "cbItem" is no longer nessicary on the UI, however its f, unctionality is integeral to the program. 
         /// </note>
 
         //general stuff
@@ -32,10 +32,18 @@ namespace WinTerrEdit
         public gamemodes.gamemode playerMode;
         public int versionCode;
 
+        //displays
+        public List<PictureBox> pbs_inventory = new List<PictureBox> { };
+        public List<PictureBox> pbs_piggybank = new List<PictureBox> { };
+        public List<PictureBox> pbs_safe = new List<PictureBox> { };
+        public List<PictureBox> pbs_ammocoins = new List<PictureBox> { };
+
         //modifiable player variables
-        public List<invItem> inventory = new List<invItem> { };
-        public List<invItem> safe = new List<invItem> { };
-        public List<invItem> pbank = new List<invItem> { };
+        public List<invItem> inv_main = new List<invItem> { };
+        public List<invItem> inv_piggybank = new List<invItem> { };
+        public List<invItem> inv_safe = new List<invItem> { };
+        public List<invItem> inv_ammocoins = new List<invItem> { };
+
         public List<int> playerHealth = new List<int> { };
         public List<int> playerMana = new List<int> { };
         public List<Color> playerColours = new List<Color> { }; //hair, skin, eyes, shirt, undershirt, pants, shoes
@@ -54,7 +62,6 @@ namespace WinTerrEdit
         public List<List<int>> debugInvData = new List<List<int>> { };
         public List<ListViewItem> lvis = new List<ListViewItem> { };
         public List<Panel> pnCollection = new List<Panel> { };
-        public List<PictureBox> pbCollection = new List<PictureBox> { };
         public int nameEndOffset = 0;
         public int invSelectedIndex = -1;
         crypto cr = new crypto();
@@ -63,7 +70,6 @@ namespace WinTerrEdit
         public ToolTip baseTT = new ToolTip();
         public bool useExtendedName = false;
 
-        public bool twoByteNameCode = false;
         public entry()
         {
             InitializeComponent();
@@ -82,8 +88,14 @@ namespace WinTerrEdit
             baseTT.SetToolTip(btnSave, "Save the currently open .PLR file");
 
             btnReload.UseCompatibleTextRendering = true;
-            pbCollection.AddRange(new List<PictureBox> { Pb1, Pb2, Pb3, Pb4, Pb5, Pb6, Pb7, Pb8, Pb9, Pb10, Pb11, Pb12, Pb13, Pb14, Pb15, Pb16, Pb17, Pb18, Pb19, Pb20, Pb21, Pb22, Pb23, Pb24, Pb25, Pb26, Pb27, Pb28, Pb29, Pb30, Pb31, Pb32, Pb33, Pb34, Pb35, Pb36, Pb37, Pb38, Pb39, Pb40, Pb41, Pb42, Pb43, Pb44, Pb45, Pb46, Pb47, Pb48, Pb49, Pb50, Pb51, Pb52, Pb53, Pb54, Pb55, Pb56, Pb57, Pb58, Pb59, Pb60, Pb61, Pb62, Pb63, Pb64, Pb65, Pb66, Pb67, Pb68, Pb69, Pb70, Pb71, Pb72, Pb73, Pb74, Pb75, Pb76, Pb77, Pb78, Pb79, Pb80, Pb81, Pb82, Pb83, Pb84, Pb85, Pb86, Pb87, Pb88, Pb89, Pb90, Pb91, Pb92, Pb93, Pb94, Pb95, Pb96, Pb97, Pb98, Pb99, Pb100 }); //0-50 inv, 51 - 58 ammo / coins
-            pnCollection.AddRange(new List<Panel> { hairPnl, skinPnl, eyesPnl, shirtPnl, undershirtPnl, pantsPnl, shoesPnl });
+            
+            //display content
+            pbs_inventory.AddRange(new List<PictureBox> { Pb1, Pb2, Pb3, Pb4, Pb5, Pb6, Pb7, Pb8, Pb9, Pb10, Pb11, Pb12, Pb13, Pb14, Pb15, Pb16, Pb17, Pb18, Pb19, Pb20, Pb21, Pb22, Pb23, Pb24, Pb25, Pb26, Pb27, Pb28, Pb29, Pb30, Pb31, Pb32, Pb33, Pb34, Pb35, Pb36, Pb37, Pb38, Pb39, Pb40, Pb41, Pb42, Pb43, Pb44, Pb45, Pb46, Pb47, Pb48, Pb49, Pb50 }); 
+            pbs_piggybank.AddRange(new List<PictureBox> { Pb51, Pb52, Pb53, Pb54, Pb55, Pb56, Pb57, Pb58, Pb59, Pb60, Pb61, Pb62, Pb63, Pb64, Pb65, Pb66, Pb67, Pb68, Pb69, Pb70, Pb71, Pb72, Pb73, Pb74, Pb75, Pb76, Pb77, Pb78, Pb79, Pb80, Pb81, Pb82, Pb83, Pb84, Pb85, Pb86, Pb87, Pb88, Pb89, Pb90, Pb91 });
+            pbs_safe.AddRange(new List<PictureBox> { Pb92, Pb93, Pb94, Pb95, Pb96, Pb97, Pb98, Pb99, Pb100, Pb101, Pb102, Pb103, Pb104, Pb105, Pb106, Pb107, Pb108, Pb109, Pb110, Pb111, Pb112, Pb113, Pb114, Pb115, Pb116, Pb117, Pb118, Pb119, Pb120, Pb121, Pb122, Pb123, Pb124, Pb125, Pb126, Pb127, Pb128, Pb129, Pb130 });
+            pbs_ammocoins.AddRange(new List<PictureBox> { Pb131, Pb132, Pb133, Pb134, Pb135, Pb136, Pb137, Pb138 });
+            
+            pnCollection.AddRange(new List<Panel> { hairPnl, skinPnl, eyesPnl, shirtPnl, undershirtPnl, pantsPnl, shoesPnl }); 
 
             int cnt = 0;
             itemLV.View = View.Details;
@@ -188,7 +200,7 @@ namespace WinTerrEdit
                 if (extCounter == 10)
                 {
                     invItem iv = new invItem(invTmp, ih);
-                    inventory.Add(iv);
+                    inv_main.Add(iv);
                     debugInvData.Add(invTmp);
                     invTmp = new List<int> { };
                     extCounter = 0;
@@ -196,7 +208,7 @@ namespace WinTerrEdit
             }
 
             int PbnkDataBeginOffset = nameEndOffset + 843;
-            int PbnkDataEndOffset = PbnkDataBeginOffset + 400;
+            int PbnkDataEndOffset = PbnkDataBeginOffset + 720;
 
             extCounter = 0;
 
@@ -207,16 +219,13 @@ namespace WinTerrEdit
                 invTmp.Add(decrypted[i]);
                 if (extCounter == 9)
                 {
-                    Console.WriteLine(string.Join(",", invTmp));
                     invItem iv = new invItem(invTmp, ih);
-                    pbank.Add(iv);
+                    //inventory.Add(iv);
                     debugInvData.Add(invTmp);
                     invTmp = new List<int> { };
                     extCounter = 0;
                 }
             }
-
-            Console.WriteLine(safe.Count());
 
             int CoinDataBeginOffset = nameEndOffset + coinOffset;
             int CoinDataEndOffset = CoinDataBeginOffset + 80;
@@ -231,7 +240,7 @@ namespace WinTerrEdit
                 if (extCounter == 10)
                 {
                     invItem iv = new invItem(coinTmp, ih);
-                    inventory.Add(iv);
+                    inv_ammocoins.Add(iv);
                     debugInvData.Add(coinTmp);
                     coinTmp = new List<int> { };
                     extCounter = 0;
@@ -300,7 +309,7 @@ namespace WinTerrEdit
             nudManaCur.Value = playerMana[0];
             nudManaMax.Value = playerMana[1];
 
-            var res = inventory.Where(invItem => invItem.item.name == "Unknown");
+            var res = inv_main.Where(invItem => invItem.item.name == "Unknown");
             if(res.Count() > 0)
             {
                 MessageBox.Show("This player contains \"Unknown\" items. These are items which have a quantity or prefix but no ID. This may be caused by a game bug or (more likely) a mod. Be careful when editing these items.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -322,7 +331,7 @@ namespace WinTerrEdit
                         //reset variables
                         rawDecrypted = new List<Byte> { };
                         playerName = "";
-                        inventory = new List<invItem> { };
+                        inv_main = new List<invItem> { };
                         playerHealth = new List<int> { };
                         playerMana = new List<int> { };
                         playerColours = new List<Color> { };
@@ -331,9 +340,10 @@ namespace WinTerrEdit
                         isSaved = true;
                         unlockAllData = new List<Byte> { };
                         debugInvData = new List<List<int>> { };
-                        inventory.Clear();
-                        safe.Clear();
-                        pbank.Clear();
+                        inv_main.Clear();
+                        inv_piggybank.Clear();
+                        inv_safe.Clear();
+                        inv_ammocoins.Clear();
 
                         lastReadPlrPath = dlg.FileName;
                         this.Text = "WinTerrEdit | [F1] About | [F2] Settings | (" + dlg.SafeFileName + ")";
@@ -365,7 +375,7 @@ namespace WinTerrEdit
         {
             rawDecrypted = new List<Byte> { };
             playerName = "";
-            inventory = new List<invItem> { };
+            inv_main = new List<invItem> { };
             playerHealth = new List<int> { };
             playerMana = new List<int> { };
             playerColours = new List<Color> { };
@@ -374,10 +384,10 @@ namespace WinTerrEdit
             isSaved = true;
             unlockAllData = new List<Byte> { };
             debugInvData = new List<List<int>> { };
-            inventory.Clear();
-            safe.Clear();
-            pbank.Clear();
-
+            inv_main.Clear();
+            inv_piggybank.Clear();
+            inv_safe.Clear();
+            inv_ammocoins.Clear();
 
             loadData(lastReadPlrPath);
             //gbInvHold.Enabled = true;
@@ -395,48 +405,22 @@ namespace WinTerrEdit
 
             try
             {
-                if (invSelectedIndex <= 50)
-                {
-                    cbItem.SelectedItem = inventory[invSelectedIndex].item.name;
-                    nudQuant.Value = inventory[invSelectedIndex].quantity;
-                    cbPrefixes.SelectedItem = inventory[invSelectedIndex].prefix.name;
-                    gb_slot.Text = "Inventory Slot " + (invSelectedIndex + 1) + " (" + inventory[invSelectedIndex].item.name + ")";
-                }
-                if (invSelectedIndex > 50 && invSelectedIndex < 91)
-                {
-                    cbItem.SelectedItem = pbank[invSelectedIndex - 51].item.name;
-                    nudQuant.Value = pbank[invSelectedIndex - 51].quantity;
-                    cbPrefixes.SelectedItem = pbank[invSelectedIndex - 51].prefix.name;
-                    gb_slot.Text = "Piggybank Slot " + (invSelectedIndex + 1) + " (" + pbank[invSelectedIndex - 51].item.name + ")";
-                }
+
+                cbItem.SelectedItem = inv_main[invSelectedIndex].item.name;
+                nudQuant.Value = inv_main[invSelectedIndex].quantity;
+                cbPrefixes.SelectedItem = inv_main[invSelectedIndex].prefix.name;
+                gb_slot.Text = "Inventory Slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
 
                 int slotNameCount = 1;
                 int i = 0;
-                foreach (PictureBox pb in pbCollection)
+                foreach (PictureBox pb in pbs_inventory)
                 {
-                    if(slotNameCount <= 50)
-                    {
-                        pbCollection[i].Image = inventory[i].item.icon;
+                    pbs_inventory[i].Image = inv_main[i].item.icon;
 
-                        string processedNameData = " (" + inventory[slotNameCount - 1].item.name + " x" + inventory[slotNameCount - 1].quantity + ")";
+                    string processedNameData = " (" + inv_main[slotNameCount - 1].item.name + " x" + inv_main[slotNameCount - 1].quantity + ")";
 
-                        if (slotNameCount <= 50)
-                        {
-                            baseTT.SetToolTip(pb, "Slot " + slotNameCount + processedNameData);
-                        }
-                    }
-                    else if(slotNameCount > 50 && slotNameCount < 91)
-                    {
-                        pbCollection[i].Image = pbank[i-50].item.icon;
-                        Console.WriteLine(i);
-
-                        string processedNameData = " (" + pbank[slotNameCount - 51].item.name + " x" + pbank[slotNameCount - 51].quantity + ")";
-
-                        if (slotNameCount <= 50)
-                        {
-                            baseTT.SetToolTip(pb, "Slot " + slotNameCount + processedNameData);
-                        }
-                    }
+                    baseTT.SetToolTip(pb, "Slot " + slotNameCount + processedNameData);
+                    
                     slotNameCount++;
                     i++;
 
@@ -455,13 +439,13 @@ namespace WinTerrEdit
         {
             if(cbItem.SelectedIndex.ToString() != "")
             {
-                inventory[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
+                inv_main[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
             }
             if(cbPrefixes.SelectedItem.ToString() != "")
             {
-                inventory[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
+                inv_main[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
             }
-            inventory[invSelectedIndex].quantity = (int)nudQuant.Value;
+            inv_main[invSelectedIndex].quantity = (int)nudQuant.Value;
             updateInvDisplay();
         }
 
@@ -475,98 +459,96 @@ namespace WinTerrEdit
 
         public List<Byte> reEncode()
         {
-            //i hate this method so much
+            //define each data block for re-encoding
+            List<Byte> encodedInvData = new List<Byte> { };
+            List<Byte> encodedBankData = new List<Byte> { };
+            List<Byte> encodedSafeData= new List<Byte> { };
+            List<Byte> encodedAmmoData = new List<Byte> { };
+            List<Byte> encodedColourData = new List<Byte> { };
+            List<Byte> encodedHealthData = new List<Byte> { };
+            List<Byte> encodedManaData = new List<Byte> { };
 
-            List<Byte> buffer = new List<Byte> { };
-
+            //create the template
             List<Byte> save = rawDecrypted;
+
+            //insert the name and recalculate NEO
             save.RemoveRange(24, save[24] + 1);
-
             List<Byte> nn = new List<byte> { };
-
             byte[] nameConverted = Encoding.UTF8.GetBytes(playerName);
-
             nn.Add((byte)nameConverted.Length);
             nn.AddRange(nameConverted);
-
             save.InsertRange(24, nn);
             nameEndOffset = 25 + nameConverted.Length;
 
-            foreach (invItem iv in inventory)
+            //populate encoded inventory data
+            foreach (invItem iv in inv_main)
             {
-                List<Byte> tmp = iv.recompile(ih);
-                buffer.AddRange(tmp);
+                encodedInvData.AddRange(iv.recompile(ih, true));
             }
 
-            foreach(Color c in playerColours)
+            //populate encoded ammo / coin data
+            foreach (invItem iv in inv_ammocoins)
             {
-                buffer.AddRange(new List<Byte> { c.R, c.G, c.B });
+                encodedAmmoData.AddRange(iv.recompile(ih, true));
             }
 
-            buffer.Add((byte)ih.encodeData(playerHealth[0])[0]);
-            buffer.Add((byte)ih.encodeData(playerHealth[0])[1]);
-            buffer.Add(0x00);
-            buffer.Add(0x00);
-            buffer.Add((byte)ih.encodeData(playerHealth[1])[0]);
-            buffer.Add((byte)ih.encodeData(playerHealth[1])[1]);
-            buffer.Add(0x00);
-            buffer.Add(0x00);
-            buffer.Add((byte)ih.encodeData(playerMana[0])[0]);
-            buffer.Add((byte)ih.encodeData(playerMana[0])[1]);
-            buffer.Add(0x00);
-            buffer.Add(0x00);
-            buffer.Add((byte)ih.encodeData(playerMana[1])[0]);
-            buffer.Add((byte)ih.encodeData(playerMana[1])[1]);
-            buffer.Add(0x00);
-            buffer.Add(0x00);
+            //populate encoded colour data
+            foreach (Color c in playerColours)
+            {
+                encodedColourData.AddRange(new List<Byte> { c.R, c.G, c.B });
+            }
 
+            //populate encoded health data
+            encodedHealthData.Add((byte)ih.encodeData(playerHealth[0])[0]);
+            encodedHealthData.Add((byte)ih.encodeData(playerHealth[0])[1]);
+            encodedHealthData.Add(0x00);
+            encodedHealthData.Add(0x00);
+            encodedHealthData.Add((byte)ih.encodeData(playerHealth[1])[0]);
+            encodedHealthData.Add((byte)ih.encodeData(playerHealth[1])[1]);
+            encodedHealthData.Add(0x00);
+            encodedHealthData.Add(0x00);
+
+            //populate encoded mana data
+            encodedManaData.Add((byte)ih.encodeData(playerMana[0])[0]);
+            encodedManaData.Add((byte)ih.encodeData(playerMana[0])[1]);
+            encodedManaData.Add(0x00);
+            encodedManaData.Add(0x00);
+            encodedManaData.Add((byte)ih.encodeData(playerMana[1])[0]);
+            encodedManaData.Add((byte)ih.encodeData(playerMana[1])[1]);
+            encodedManaData.Add(0x00);
+            encodedManaData.Add(0x00);
+
+            //insert inventory data 
             int dataBeginOffset = nameEndOffset + inventoryOffset;
-            int dataEndOffset = dataBeginOffset + 500;
-            int extCount = 0;
+            save.RemoveRange(dataBeginOffset, 500);
+            save.InsertRange(dataBeginOffset, encodedInvData);
+            Console.WriteLine("Inventory data: Removed 500 bytes, Inserted " + encodedInvData.Count() + " bytes");
 
-            for (int i = dataBeginOffset; i < dataEndOffset; i++)
-            {
-                save[i] = buffer[extCount];
-                extCount++;
-            }
-
-            int CoinDataBeginOffset = nameEndOffset + coinOffset;
-            int CoinDataEndOffset = CoinDataBeginOffset + 80;
-
-            for (int i = CoinDataBeginOffset; i < CoinDataEndOffset; i++)
-            {
-                save[i] = buffer[extCount];
-                extCount++;
-            }
+            int AmmmoDataBeginOffset = nameEndOffset + coinOffset;
+            save.RemoveRange(AmmmoDataBeginOffset, 80);
+            save.InsertRange(AmmmoDataBeginOffset, encodedAmmoData);
+            Console.WriteLine("Ammo data: Removed 80 bytes, Inserted " + encodedAmmoData.Count() + " bytes");
 
             int ColourDataBeginOffset = nameEndOffset + colOffset;
-            int ColourDataEndOffset = ColourDataBeginOffset + 21;
-            for (int i = ColourDataBeginOffset; i < ColourDataEndOffset; i++)
-            {
-                save[i] = buffer[extCount];
-                extCount++;
-            }
+            save.RemoveRange(ColourDataBeginOffset, 21);
+            save.InsertRange(ColourDataBeginOffset, encodedColourData);
+            Console.WriteLine("Colour data: Removed 21 bytes, Inserted " + encodedColourData.Count() + " bytes");
 
             int HealthDataBeginOffset = nameEndOffset + 18;
-            int HealthDataEndOffset = HealthDataBeginOffset + 8;
-            for (int i = HealthDataBeginOffset; i < HealthDataEndOffset; i++)
-            {
-                save[i] = buffer[extCount];
-                extCount++;
-            }
+            save.RemoveRange(HealthDataBeginOffset, 8);
+            save.InsertRange(HealthDataBeginOffset, encodedHealthData);
+            Console.WriteLine("Health data: Removed 8 bytes, Inserted " + encodedHealthData.Count() + " bytes");
 
             int ManaDataBeginOffset = nameEndOffset + 26;
-            int ManaDataEndOffset = ManaDataBeginOffset + 8;
-            for (int i = ManaDataBeginOffset; i < ManaDataEndOffset; i++)
-            {
-                save[i] = buffer[extCount];
-                extCount++;
-            }
+            save.RemoveRange(ManaDataBeginOffset, 8);
+            save.InsertRange(ManaDataBeginOffset, encodedManaData);
+            Console.WriteLine("Mana data: Removed 8 bytes, Inserted " + encodedManaData.Count() + " bytes");
 
             //insert padding if needed
-            while(save.Count() % 16 != 0)
+            while (save.Count() % 16 != 0)
             {
                 save.Add(0);
+                Console.WriteLine("ADDED PADDING");
             }
 
             return save;
@@ -599,7 +581,7 @@ namespace WinTerrEdit
 
                         rawDecrypted = new List<Byte> { };
                         playerName = "";
-                        inventory = new List<invItem> { };
+                        inv_main = new List<invItem> { };
                         playerHealth = new List<int> { };
                         playerMana = new List<int> { };
                         playerColours = new List<Color> { };
@@ -608,9 +590,11 @@ namespace WinTerrEdit
                         isSaved = true;
                         unlockAllData = new List<Byte> { };
                         debugInvData = new List<List<int>> { };
-                        inventory.Clear();
-                        safe.Clear();
-                        pbank.Clear();
+                        inv_main.Clear();
+                        inv_piggybank.Clear();
+                        inv_safe.Clear();
+                        inv_ammocoins.Clear();
+
                         lastReadPlrPath = dlg.FileName;
 
                         //reload the saved file
@@ -655,17 +639,17 @@ namespace WinTerrEdit
             {
                 if (cbItem.SelectedIndex.ToString() != "")
                 {
-                    inventory[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
+                    inv_main[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
                 }
                 isSaved = false;
-                if(inventory[invSelectedIndex].quantity == 0 && inventory[invSelectedIndex].item.name != "Empty")
+                if(inv_main[invSelectedIndex].quantity == 0 && inv_main[invSelectedIndex].item.name != "Empty")
                 {
-                    inventory[invSelectedIndex].quantity += 1;
+                    inv_main[invSelectedIndex].quantity += 1;
                     nudQuant.Value += 1;
                 }
-                if(inventory[invSelectedIndex].item.name == "Empty")
+                if(inv_main[invSelectedIndex].item.name == "Empty")
                 {
-                    inventory[invSelectedIndex].quantity = 0;
+                    inv_main[invSelectedIndex].quantity = 0;
                     nudQuant.Value = 0;
                 }
                 updateInvDisplay();
@@ -682,7 +666,7 @@ namespace WinTerrEdit
             {
                 if (cbPrefixes.SelectedItem.ToString() != "")
                 {
-                    inventory[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
+                    inv_main[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
                 }
                 updateInvDisplay();
                 isSaved = false;
@@ -697,10 +681,10 @@ namespace WinTerrEdit
         {
             try
             {
-                inventory[invSelectedIndex].quantity = (int)nudQuant.Value;
+                inv_main[invSelectedIndex].quantity = (int)nudQuant.Value;
                 for (int i = 0; i < 58; i++)
                 {
-                    pbCollection[i].Image = inventory[i].item.icon;
+                    pbs_inventory[i].Image = inv_main[i].item.icon;
                 }
                 isSaved = false;
             }
@@ -906,7 +890,7 @@ namespace WinTerrEdit
             }
             if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
             {
-                copyBuffer = inventory[invSelectedIndex];
+                copyBuffer = inv_main[invSelectedIndex];
                 copyIndex = invSelectedIndex;
                 updateInvDisplay();
             }
@@ -1044,7 +1028,7 @@ namespace WinTerrEdit
             {
                 rawDecrypted = new List<Byte> { };
                 playerName = "";
-                inventory = new List<invItem> { };
+                inv_main = new List<invItem> { };
                 playerHealth = new List<int> { };
                 playerMana = new List<int> { };
                 playerColours = new List<Color> { };
@@ -1053,9 +1037,10 @@ namespace WinTerrEdit
                 isSaved = true;
                 unlockAllData = new List<Byte> { };
                 debugInvData = new List<List<int>> { };
-                inventory.Clear();
-                safe.Clear();
-                pbank.Clear();
+                inv_main.Clear();
+                inv_piggybank.Clear();
+                inv_safe.Clear();
+                inv_ammocoins.Clear();
 
                 loadData(lastReadPlrPath);
                 //gbInvHold.Enabled = true;
