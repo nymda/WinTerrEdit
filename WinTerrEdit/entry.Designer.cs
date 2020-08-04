@@ -376,7 +376,7 @@
             // Pb41
             // 
             this.Pb41.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb41.Location = new System.Drawing.Point(7, 161);
+            this.Pb41.Location = new System.Drawing.Point(7, 163);
             this.Pb41.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb41.Name = "Pb41";
             this.Pb41.Size = new System.Drawing.Size(32, 32);
@@ -389,7 +389,7 @@
             // Pb42
             // 
             this.Pb42.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb42.Location = new System.Drawing.Point(45, 161);
+            this.Pb42.Location = new System.Drawing.Point(45, 163);
             this.Pb42.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb42.Name = "Pb42";
             this.Pb42.Size = new System.Drawing.Size(32, 32);
@@ -402,7 +402,7 @@
             // Pb43
             // 
             this.Pb43.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb43.Location = new System.Drawing.Point(83, 161);
+            this.Pb43.Location = new System.Drawing.Point(83, 163);
             this.Pb43.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb43.Name = "Pb43";
             this.Pb43.Size = new System.Drawing.Size(32, 32);
@@ -415,7 +415,7 @@
             // Pb44
             // 
             this.Pb44.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb44.Location = new System.Drawing.Point(121, 161);
+            this.Pb44.Location = new System.Drawing.Point(121, 163);
             this.Pb44.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb44.Name = "Pb44";
             this.Pb44.Size = new System.Drawing.Size(32, 32);
@@ -428,7 +428,7 @@
             // Pb45
             // 
             this.Pb45.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb45.Location = new System.Drawing.Point(159, 161);
+            this.Pb45.Location = new System.Drawing.Point(159, 163);
             this.Pb45.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb45.Name = "Pb45";
             this.Pb45.Size = new System.Drawing.Size(32, 32);
@@ -441,7 +441,7 @@
             // Pb46
             // 
             this.Pb46.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb46.Location = new System.Drawing.Point(197, 161);
+            this.Pb46.Location = new System.Drawing.Point(197, 163);
             this.Pb46.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb46.Name = "Pb46";
             this.Pb46.Size = new System.Drawing.Size(32, 32);
@@ -454,7 +454,7 @@
             // Pb47
             // 
             this.Pb47.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb47.Location = new System.Drawing.Point(235, 161);
+            this.Pb47.Location = new System.Drawing.Point(235, 163);
             this.Pb47.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb47.Name = "Pb47";
             this.Pb47.Size = new System.Drawing.Size(32, 32);
@@ -467,7 +467,7 @@
             // Pb48
             // 
             this.Pb48.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb48.Location = new System.Drawing.Point(273, 161);
+            this.Pb48.Location = new System.Drawing.Point(273, 163);
             this.Pb48.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb48.Name = "Pb48";
             this.Pb48.Size = new System.Drawing.Size(32, 32);
@@ -480,7 +480,7 @@
             // Pb49
             // 
             this.Pb49.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb49.Location = new System.Drawing.Point(311, 161);
+            this.Pb49.Location = new System.Drawing.Point(311, 163);
             this.Pb49.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb49.Name = "Pb49";
             this.Pb49.Size = new System.Drawing.Size(32, 32);
@@ -493,7 +493,7 @@
             // Pb50
             // 
             this.Pb50.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb50.Location = new System.Drawing.Point(349, 161);
+            this.Pb50.Location = new System.Drawing.Point(349, 163);
             this.Pb50.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pb50.Name = "Pb50";
             this.Pb50.Size = new System.Drawing.Size(32, 32);
@@ -1624,7 +1624,7 @@
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.btnClear.ForeColor = System.Drawing.Color.Red;
-            this.btnClear.Location = new System.Drawing.Point(215, 13);
+            this.btnClear.Location = new System.Drawing.Point(215, 16);
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(26, 51);
@@ -1719,7 +1719,7 @@
             // cbPrefixes
             // 
             this.cbPrefixes.FormattingEnabled = true;
-            this.cbPrefixes.Location = new System.Drawing.Point(66, 15);
+            this.cbPrefixes.Location = new System.Drawing.Point(66, 18);
             this.cbPrefixes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbPrefixes.Name = "cbPrefixes";
             this.cbPrefixes.Size = new System.Drawing.Size(145, 21);
@@ -2004,6 +2004,7 @@
             this.tcMain.SelectedIndex = 0;
             this.tcMain.Size = new System.Drawing.Size(397, 228);
             this.tcMain.TabIndex = 124;
+            this.tcMain.SelectedIndexChanged += new System.EventHandler(this.tabs_selectedChanged);
             // 
             // tabPage1
             // 
@@ -2807,7 +2808,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 18);
+            this.label3.Location = new System.Drawing.Point(24, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 120;
@@ -2815,7 +2816,7 @@
             // 
             // nudQuant
             // 
-            this.nudQuant.Location = new System.Drawing.Point(66, 44);
+            this.nudQuant.Location = new System.Drawing.Point(66, 47);
             this.nudQuant.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudQuant.Maximum = new decimal(new int[] {
             25535,
@@ -2836,7 +2837,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 46);
+            this.label2.Location = new System.Drawing.Point(11, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 119;

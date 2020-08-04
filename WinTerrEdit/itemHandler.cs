@@ -93,7 +93,7 @@ namespace WinTerrEdit
         }
 
         //returns the inventory item as a set of 10 bytes for reinserting into raw data
-        public List<Byte> recompile(itemHandler handler, bool addFinalByte)
+        public List<Byte> recompile(itemHandler handler, encodeMethod e)
         {
             List<Byte> final = new List<Byte> { };
             List<int> encodedItem = handler.encodeData(item.ID);
@@ -108,7 +108,7 @@ namespace WinTerrEdit
             final.Add(0x00);
             final.Add(0x00);
             final.Add((byte)prefix.ID);
-            if (addFinalByte)
+            if (e == encodeMethod.Long)
             {
                 final.Add(0x00);
             }
@@ -146,5 +146,11 @@ namespace WinTerrEdit
             this.ID = ID;
             this.name = name;
         }
+    }
+
+    public enum encodeMethod
+    {
+        Long,
+        Short
     }
 }
