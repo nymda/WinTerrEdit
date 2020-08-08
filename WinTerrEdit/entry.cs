@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using WinTerrEdit.Properties;
 
 namespace WinTerrEdit
 {
@@ -73,9 +74,11 @@ namespace WinTerrEdit
         public ToolTip baseTT = new ToolTip();
         public bool useExtendedName = false;
         int selectedTab = 0;
+        Stopwatch st = new Stopwatch();
 
         public entry()
         {
+            st.Start();
             InitializeComponent();
             new Thread(new ThreadStart(delegate
             {
@@ -85,6 +88,8 @@ namespace WinTerrEdit
         private void Entry_Load(object sender, EventArgs e)
         {
             Console.WriteLine(playerfolder);
+
+            btnReload.Image = Resources.crappyreload;
 
             baseTT.ShowAlways = true;
             baseTT.SetToolTip(btnLoad, "Open a .PLR file");
@@ -107,8 +112,6 @@ namespace WinTerrEdit
             imageList1.ImageSize = new Size(32, 32);
             itemLV.SmallImageList = imageList1;
             itemLV.BeginUpdate();
-            Stopwatch st = new Stopwatch();
-            st.Start();
             foreach (baseItem itm in ih.globalTerrariaItems)
             {
                 cbItem.Items.Add(itm.name);
@@ -1291,6 +1294,16 @@ namespace WinTerrEdit
         {
             selectedTab = tcMain.SelectedIndex;
             updateInvDisplay();
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

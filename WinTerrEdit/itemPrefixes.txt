@@ -1,4 +1,4 @@
-﻿0,None
+0,None
 1,Large
 2,Massive
 3,Dangerous

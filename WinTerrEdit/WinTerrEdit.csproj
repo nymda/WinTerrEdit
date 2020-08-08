@@ -28,8 +28,8 @@
     <TargetCulture>en-GB</TargetCulture>
     <ProductName>WinTerrEdit</ProductName>
     <PublisherName>Knedit</PublisherName>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>1.0.9.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -185,16 +185,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="itemIDs.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="itemPrefixes.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="rainbowBrick.ico" />
     <EmbeddedResource Include="Resources\winTerrEditLogoSmallInvertedV2.png" />
     <EmbeddedResource Include="Resources\winTerrEditLogoSmallInverted.png" />
     <EmbeddedResource Include="Resources\winTerrEditLogoSmall.png" />
-    <EmbeddedResource Include="Resources\crappyreload.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
