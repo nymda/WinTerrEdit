@@ -39,11 +39,14 @@ namespace WinTerrEdit
         public List<PictureBox> pbs_safe = new List<PictureBox> { };
         public List<PictureBox> pbs_ammocoins = new List<PictureBox> { };
 
+        public List<PictureBox> pbs_buffs = new List<PictureBox> { };
+
         //modifiable player variables
         public List<invItem> inv_main = new List<invItem> { };
         public List<invItem> inv_piggybank = new List<invItem> { };
         public List<invItem> inv_safe = new List<invItem> { };
         public List<invItem> inv_ammocoins = new List<invItem> { };
+        public List<playerBuff> playerBuffs = new List<playerBuff> { };
 
         public List<int> playerHealth = new List<int> { };
         public List<int> playerMana = new List<int> { };
@@ -62,8 +65,10 @@ namespace WinTerrEdit
         public int colOffset;
         public int pigOffset;
         public int safeOffset;
+        public int buffOffset;
         public List<List<int>> debugInvData = new List<List<int>> { };
         public List<ListViewItem> lvis = new List<ListViewItem> { };
+        public List<ListViewItem> lvis_buff = new List<ListViewItem> { };
         public List<Panel> pnCollection = new List<Panel> { };
         public int nameEndOffset = 0;
         public int invSelectedIndex = -1;
@@ -103,19 +108,20 @@ namespace WinTerrEdit
             pbs_piggybank.AddRange(new List<PictureBox> { Pb51, Pb52, Pb53, Pb54, Pb55, Pb56, Pb57, Pb58, Pb59, Pb60, Pb61, Pb62, Pb63, Pb64, Pb65, Pb66, Pb67, Pb68, Pb69, Pb70, Pb71, Pb72, Pb73, Pb74, Pb75, Pb76, Pb77, Pb78, Pb79, Pb80, Pb81, Pb82, Pb83, Pb84, Pb85, Pb86, Pb87, Pb88, Pb89, Pb90 });
             pbs_safe.AddRange(new List<PictureBox> { Pb91, Pb92, Pb93, Pb94, Pb95, Pb96, Pb97, Pb98, Pb99, Pb100, Pb101, Pb102, Pb103, Pb104, Pb105, Pb106, Pb107, Pb108, Pb109, Pb110, Pb111, Pb112, Pb113, Pb114, Pb115, Pb116, Pb117, Pb118, Pb119, Pb120, Pb121, Pb122, Pb123, Pb124, Pb125, Pb126, Pb127, Pb128, Pb129, Pb130 });
             pbs_ammocoins.AddRange(new List<PictureBox> { Pb131, Pb132, Pb133, Pb134, Pb135, Pb136, Pb137, Pb138 });
-            
+            pbs_buffs.AddRange(new List<PictureBox> { Pb179, Pb180, Pb181, Pb182, Pb183, Pb184, Pb185, Pb186, Pb187, Pb188, Pb189, Pb190, Pb191, Pb192, Pb193, Pb194, Pb195, Pb196, Pb197, Pb198, Pb199, Pb200 });
+
             pnCollection.AddRange(new List<Panel> { hairPnl, skinPnl, eyesPnl, shirtPnl, undershirtPnl, pantsPnl, shoesPnl }); 
 
             int cnt = 0;
             itemLV.View = View.Details;
             itemLV.Columns[0].Width = itemLV.Width - 25;
-            imageList1.ImageSize = new Size(32, 32);
-            itemLV.SmallImageList = imageList1;
+            imgl_items.ImageSize = new Size(32, 32);
+            itemLV.SmallImageList = imgl_items;
             itemLV.BeginUpdate();
             foreach (baseItem itm in ih.globalTerrariaItems)
             {
                 cbItem.Items.Add(itm.name);
-                imageList1.Images.Add(itm.icon);
+                imgl_items.Images.Add(itm.icon);
                 if(itm.ID != -1)
                 {
                     ListViewItem tmp = new ListViewItem();
@@ -126,11 +132,38 @@ namespace WinTerrEdit
                 }
                 cnt++;
             }
+
+            cnt = 0;
+            buffLV.View = View.Details;
+            buffLV.Columns[0].Width = buffLV.Width - 25;
+            imgl_buffs.ImageSize = new Size(32, 32);
+            buffLV.SmallImageList = imgl_buffs;
+            buffLV.BeginUpdate();
+            foreach (buff bff in ih.globalBuffs)
+            {
+                cbBuffs.Items.Add(bff.name);
+                imgl_buffs.Images.Add(bff.icon);
+                if (bff.ID != -1)
+                {
+                    ListViewItem tmp = new ListViewItem();
+                    tmp.Text = bff.name;
+                    tmp.ImageIndex = cnt;
+                    buffLV.Items.Add(tmp);
+                    lvis_buff.Add(tmp);
+                }
+                cnt++;
+            }
+
             st.Stop();
             Console.WriteLine("load took " + st.Elapsed);
+
             itemLV.Sorting = SortOrder.Ascending;
             itemLV.Sort();
             itemLV.EndUpdate();
+            buffLV.Sorting = SortOrder.Ascending;
+            buffLV.Sort();
+            buffLV.EndUpdate();
+
             this.Invoke(new MethodInvoker(delegate ()
             {
                 ld.Close();
@@ -188,6 +221,7 @@ namespace WinTerrEdit
                 colOffset = 40;
                 pigOffset = 841;
                 safeOffset = 1201;
+                buffOffset = 2281;
             }
             else
             {
@@ -196,6 +230,7 @@ namespace WinTerrEdit
                 colOffset = 42;
                 pigOffset = 843;
                 safeOffset = 1203;
+                buffOffset = 2284;
             }
 
             int InvDataBeginOffset = nameEndOffset + inventoryOffset;
@@ -274,6 +309,26 @@ namespace WinTerrEdit
                     inv_ammocoins.Add(iv);
                     debugInvData.Add(coinTmp);
                     coinTmp = new List<int> { };
+                    extCounter = 0;
+                }
+            }
+
+            int BuffDataBeginOffset = nameEndOffset + buffOffset;
+            int BuffDataEndOffset = BuffDataBeginOffset + 176;
+
+            extCounter = 0;
+
+            List<int> buffBtm = new List<int> { };
+            for (int i = BuffDataBeginOffset; i < BuffDataEndOffset; i++)
+            {
+                extCounter++;
+                buffBtm.Add(decrypted[i]);
+                if (extCounter == 8)
+                {
+                    playerBuff iv = new playerBuff(buffBtm, ih);
+                    playerBuffs.Add(iv);
+                    debugInvData.Add(buffBtm);
+                    buffBtm = new List<int> { };
                     extCounter = 0;
                 }
             }
@@ -385,8 +440,10 @@ namespace WinTerrEdit
                         //gbColour.Enabled = true;
                         //gbPlayer.Enabled = true;
                         tcMain.Enabled = true;
-                        gb_slot.Enabled = true;
+                        gb_slot_items.Enabled = true;
+                        gb_slot_buff.Enabled = true;
                         gbItems.Enabled = true;
+                        gbBuffs.Enabled = true;
                         btnReload.Enabled = true;
                     }
                     catch
@@ -423,8 +480,10 @@ namespace WinTerrEdit
             loadData(lastReadPlrPath);
             //gbInvHold.Enabled = true;
             //gbColour.Enabled = true;
-            gb_slot.Enabled = true;
+            gb_slot_items.Enabled = true;
+            gb_slot_buff.Enabled = true;
             gbItems.Enabled = true;
+            gbBuffs.Enabled = true;
             tcMain.Enabled = true;
             btnSave.Enabled = true;
             updateInvDisplay();
@@ -495,6 +554,20 @@ namespace WinTerrEdit
 
                         }
                         break;
+
+                    case 4:
+                        slotNameCount = 1;
+                        i = 0;
+                        foreach (PictureBox pb in pbs_buffs)
+                        {
+                            pbs_buffs[i].Image = playerBuffs[i].buff.icon;
+                            string processedNameData = " (" + playerBuffs[slotNameCount - 1].buff.name + " for" + playerBuffs[slotNameCount - 1].duration + " seconds)";
+                            baseTT.SetToolTip(pb, "Buff slot " + slotNameCount + processedNameData);
+                            slotNameCount++;
+                            i++;
+
+                        }
+                        break;
                 }
 
             }
@@ -503,7 +576,7 @@ namespace WinTerrEdit
                 cbItem.SelectedItem = ih.globalTerrariaItems[0].name;
                 nudQuant.Value = 0;
                 cbPrefixes.SelectedItem = ih.globalItemPrefixes[0].name;
-                gb_slot.Text = "Slot 0";
+                gb_slot_items.Text = "Slot 0";
             }
         }
 
@@ -519,7 +592,7 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_main[invSelectedIndex].item.name;
                     nudQuant.Value = inv_main[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_main[invSelectedIndex].prefix.name;
-                    gb_slot.Text = "Inventory slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    gb_slot_items.Text = "Inventory slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
 
                     break;
 
@@ -528,7 +601,7 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_piggybank[invSelectedIndex].item.name;
                     nudQuant.Value = inv_piggybank[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_piggybank[invSelectedIndex].prefix.name;
-                    gb_slot.Text = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_piggybank[invSelectedIndex].item.name + ")";
+                    gb_slot_items.Text = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_piggybank[invSelectedIndex].item.name + ")";
                     break;
 
                 case 2:
@@ -536,7 +609,7 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_safe[invSelectedIndex].item.name;
                     nudQuant.Value = inv_safe[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_safe[invSelectedIndex].prefix.name;
-                    gb_slot.Text = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_safe[invSelectedIndex].item.name + ")";
+                    gb_slot_items.Text = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_safe[invSelectedIndex].item.name + ")";
                     break;
 
                 case 3:
@@ -544,7 +617,15 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_ammocoins[invSelectedIndex].item.name;
                     nudQuant.Value = inv_ammocoins[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_ammocoins[invSelectedIndex].prefix.name;
-                    gb_slot.Text = "Coin / Ammo slot " + (invSelectedIndex + 1) + " (" + inv_ammocoins[invSelectedIndex].item.name + ")";
+                    gb_slot_items.Text = "Coin / Ammo slot " + (invSelectedIndex + 1) + " (" + inv_ammocoins[invSelectedIndex].item.name + ")";
+                    break;
+
+                case 4:
+                    invSelectedIndex -= 178;
+                    cbBuffs.SelectedItem = playerBuffs[invSelectedIndex].buff.name;
+                    nudDur.Value = playerBuffs[invSelectedIndex].duration;
+                    cbBuffs.SelectedItem = playerBuffs[invSelectedIndex].buff.name;
+                    gb_slot_buff.Text = "Buff slot " + (invSelectedIndex + 1) + " (" + playerBuffs[invSelectedIndex].buff.name + ")";
                     break;
 
             }
@@ -705,8 +786,10 @@ namespace WinTerrEdit
                         //gbInvHold.Enabled = true;
                         //gbColour.Enabled = true;
                         //gbPlayer.Enabled = true;
-                        gb_slot.Enabled = true;
+                        gb_slot_items.Enabled = true;
+                        gb_slot_buff.Enabled = true;
                         gbItems.Enabled = true;
+                        gbBuffs.Enabled = true;
                         btnReload.Enabled = true;
                     }
                 }
@@ -719,7 +802,7 @@ namespace WinTerrEdit
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
             int tmp = Int32.Parse(npart[1]) - 1;
 
-            if(tmp == copyIndex)
+            if(tmp == copyIndex && tcMain.SelectedIndex != 4)
             {
                 e.Graphics.DrawRectangle(Pens.Blue, 0, 0, 31, 31);
             }
@@ -808,6 +891,24 @@ namespace WinTerrEdit
                         if (inv_ammocoins[invSelectedIndex].item.name == "Empty")
                         {
                             inv_ammocoins[invSelectedIndex].quantity = 0;
+                            nudQuant.Value = 0;
+                        }
+                        break;
+
+                    case 4:
+                        if (cbBuffs.SelectedIndex.ToString() != "")
+                        {
+                            playerBuffs[invSelectedIndex].buff = ih.searchBuffByName(cbBuffs.SelectedItem.ToString());
+                        }
+                        isSaved = false;
+                        if (playerBuffs[invSelectedIndex].duration == 0 && playerBuffs[invSelectedIndex].buff.name != "None")
+                        {
+                            playerBuffs[invSelectedIndex].duration += 1;
+                            nudQuant.Value += 1;
+                        }
+                        if (playerBuffs[invSelectedIndex].buff.name == "None")
+                        {
+                            playerBuffs[invSelectedIndex].duration = 0;
                             nudQuant.Value = 0;
                         }
                         break;
@@ -1264,8 +1365,10 @@ namespace WinTerrEdit
                 loadData(lastReadPlrPath);
                 //gbInvHold.Enabled = true;
                 //gbColour.Enabled = true;
-                gb_slot.Enabled = true;
+                gb_slot_items.Enabled = true;
+                gb_slot_buff.Enabled = true;
                 gbItems.Enabled = true;
+                gbBuffs.Enabled = true;
                 tcMain.Enabled = true;
 
                 btnSave.Enabled = true;
@@ -1280,30 +1383,21 @@ namespace WinTerrEdit
             }
         }
 
-        private void tbName_TextChanged(object sender, EventArgs e)
-        {
-            playerName = tbName.Text;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void tabs_selectedChanged(object sender, EventArgs e)
         {
             selectedTab = tcMain.SelectedIndex;
             updateInvDisplay();
-        }
 
-        private void tabPage4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage6_Click(object sender, EventArgs e)
-        {
-
+            if(tcMain.SelectedIndex == 4)
+            {
+                gbBuffs.BringToFront();
+                gb_slot_buff.BringToFront();
+            }
+            else
+            {
+                gbItems.BringToFront();
+                gb_slot_items.BringToFront();
+            }
         }
     }
 }

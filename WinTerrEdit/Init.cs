@@ -62,5 +62,29 @@ namespace WinTerrEdit
 
             return completed;
         }
+
+        public List<buff> loadBuffIDs()
+        {
+            List<buff> completed = new List<buff> { };
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "WinTerrEdit.buffIDs.txt";
+            string result;
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                result = reader.ReadToEnd();
+            }
+            List<String> dataArray = result.Split('\n').ToList();
+
+            foreach (string str in dataArray)
+            {
+                Console.WriteLine(str);
+                string[] split = str.Split(',');
+                completed.Add(new buff(str.Split(',')));
+            }
+
+            return completed;
+        }
     }
 }

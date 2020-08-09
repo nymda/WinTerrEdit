@@ -186,6 +186,7 @@
   <ItemGroup>
     <EmbeddedResource Include="itemIDs.txt" />
     <EmbeddedResource Include="itemPrefixes.txt" />
+    <EmbeddedResource Include="buffIDs.txt" />
     <Content Include="rainbowBrick.ico" />
     <EmbeddedResource Include="Resources\winTerrEditLogoSmallInvertedV2.png" />
     <EmbeddedResource Include="Resources\winTerrEditLogoSmallInverted.png" />

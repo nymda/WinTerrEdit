@@ -20,6 +20,7 @@ namespace WinTerrEdit
     {
         public List<baseItem> globalTerrariaItems = new List<baseItem> { };
         public List<itemPrefix> globalItemPrefixes = new List<itemPrefix> { };
+        public List<buff> globalBuffs = new List<buff> { };
         public Init intialize = new Init();
 
         public itemHandler(bool load)
@@ -28,6 +29,7 @@ namespace WinTerrEdit
             {
                 globalTerrariaItems = intialize.loaditemIDs();
                 globalItemPrefixes = intialize.loadItemPrefixes();
+                globalBuffs = intialize.loadBuffIDs();
             }
         }
         public int resolveEncodedData(int b1, int b2)
@@ -68,6 +70,18 @@ namespace WinTerrEdit
         {
             var res = globalItemPrefixes.Where(itemPrefix => itemPrefix.name == name);
             return (res.Count() > 0) ? res.First() : globalItemPrefixes[0];
+        }
+        public buff searchBuffById(int id)
+        {
+            Console.WriteLine("Search buff " + id);
+            var res = globalBuffs.Where(buff => buff.ID == id);
+            return (res.Count() > 0) ? res.First() : globalBuffs[0];
+        }
+
+        public buff searchBuffByName(string name)
+        {
+            var res = globalBuffs.Where(buff => buff.name == name);
+            return (res.Count() > 0) ? res.First() : globalBuffs[0];
         }
     }
     public class invItem
@@ -116,6 +130,36 @@ namespace WinTerrEdit
             return final;
         }
     }
+    public class playerBuff
+    {
+        public buff buff { get; set; }
+        public int duration { get; set; }
+
+        public playerBuff(List<int> terrData, itemHandler handler)
+        {
+            int id = handler.resolveEncodedData(terrData[0], terrData[1]);
+            buff = handler.searchBuffById(id);
+            duration = handler.resolveEncodedData(terrData[4], terrData[5]);
+        }
+
+        //returns the inventory item as a set of 10 bytes for reinserting into raw data
+        public List<Byte> recompile(itemHandler handler)
+        {
+            List<Byte> final = new List<Byte> { };
+            List<int> encodedItem = handler.encodeData(buff.ID);
+            List<int> encodedDuration = handler.encodeData(duration);
+            //bytes 2, 3, 6, 7 and 9 seem to make the item dissapear if they are anything other than 0x00
+            final.Add((byte)encodedItem[0]);
+            final.Add((byte)encodedItem[1]);
+            final.Add(0x00);
+            final.Add(0x00);
+            final.Add((byte)encodedDuration[0]);
+            final.Add((byte)encodedDuration[1]);
+            final.Add(0x00);
+            final.Add(0x00);
+            return final;
+        }
+    }
     public class baseItem
     {
         public int ID { get; }
@@ -136,6 +180,30 @@ namespace WinTerrEdit
             }
         }
     }
+
+    public class buff
+    {
+        public int ID { get; }
+        public string name { get; }
+        public string name_internal { get; }
+        public buffStatus buffStatus { get; }
+        public Bitmap icon { get; }
+
+        public buff(string[] insertion)
+        {
+            //loads item data from array
+            this.ID = Int32.Parse(insertion[0]);
+            this.name = insertion[1];
+            this.name_internal = insertion[2];
+            this.buffStatus = (insertion[3] == "Buff") ? buffStatus.Buff : buffStatus.Debuff;
+            byte[] bdata = Convert.FromBase64String(insertion[4]);
+            using (MemoryStream ms = new MemoryStream(bdata))
+            {
+                this.icon = new Bitmap(ms);
+            }
+        }
+    }
+
     public class itemPrefix
     {
         public int ID { get; }
@@ -152,5 +220,11 @@ namespace WinTerrEdit
     {
         Long,
         Short
+    }
+
+    public enum buffStatus
+    {
+        Buff,
+        Debuff
     }
 }
