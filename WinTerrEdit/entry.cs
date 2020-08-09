@@ -922,6 +922,33 @@ namespace WinTerrEdit
             }
         }
 
+        private void cbBuffs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbBuffs.SelectedIndex.ToString() != "")
+                {
+                    playerBuffs[invSelectedIndex].buff = ih.searchBuffByName(cbBuffs.SelectedItem.ToString());
+                }
+                isSaved = false;
+                if (playerBuffs[invSelectedIndex].duration == 0 && playerBuffs[invSelectedIndex].buff.name != "None")
+                {
+                    playerBuffs[invSelectedIndex].duration += 60;
+                    nudDur.Value += 60;
+                }
+                if (playerBuffs[invSelectedIndex].buff.name == "None")
+                {
+                    playerBuffs[invSelectedIndex].duration = 0;
+                    nudDur.Value = 0;
+                }
+                updateInvDisplay();
+            }
+            catch
+            {
+
+            }
+        }
+
         private void cbPrefixes_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -988,6 +1015,20 @@ namespace WinTerrEdit
                         inv_ammocoins[invSelectedIndex].quantity = (int)nudQuant.Value;
                         break;
                 }
+
+                isSaved = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void nudDur_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;          
 
                 isSaved = false;
             }
@@ -1284,6 +1325,11 @@ namespace WinTerrEdit
         private void lb_activ(object sender, EventArgs e)
         {
             cbItem.SelectedItem = itemLV.SelectedItems[0].Text;
+        }
+
+        private void blb_activ(object sender, EventArgs e)
+        {
+            cbBuffs.SelectedItem = buffLV.SelectedItems[0].Text;
         }
 
         public static class User32

@@ -3940,6 +3940,7 @@
             this.buffLV.Size = new System.Drawing.Size(250, 261);
             this.buffLV.TabIndex = 52;
             this.buffLV.UseCompatibleStateImageBehavior = false;
+            this.buffLV.ItemActivate += new System.EventHandler(this.blb_activ);
             // 
             // columnHeader2
             // 
@@ -3960,6 +3961,7 @@
             this.cbBuffs.Name = "cbBuffs";
             this.cbBuffs.Size = new System.Drawing.Size(145, 21);
             this.cbBuffs.TabIndex = 130;
+            this.cbBuffs.SelectedIndexChanged += new System.EventHandler(this.cbBuffs_SelectedIndexChanged);
             // 
             // gb_slot_buff
             // 
@@ -4016,6 +4018,7 @@
             0,
             0,
             0});
+            this.nudDur.ValueChanged += new System.EventHandler(this.nudDur_ValueChanged);
             // 
             // label19
             // 
