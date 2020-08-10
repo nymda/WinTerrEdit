@@ -302,6 +302,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.nudDur = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
@@ -2696,6 +2697,7 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.label20);
             this.tabPage6.Controls.Add(this.Pb169);
             this.tabPage6.Controls.Add(this.Pb170);
             this.tabPage6.Controls.Add(this.Pb171);
@@ -3780,6 +3782,7 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(94, 20);
             this.tbName.TabIndex = 65;
+            this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             // 
             // label14
             // 
@@ -4034,6 +4037,16 @@
             this.label19.TabIndex = 119;
             this.label19.Text = "Duration:";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(169, 12);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 26);
+            this.label20.TabIndex = 230;
+            this.label20.Text = "<= Coins\r\nAmmo =>";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4044,8 +4057,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbItems);
             this.Controls.Add(this.gbBuffs);
-            this.Controls.Add(this.gb_slot_buff);
             this.Controls.Add(this.gb_slot_items);
+            this.Controls.Add(this.gb_slot_buff);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -4196,6 +4209,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb92)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb91)).EndInit();
             this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pb169)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb170)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb171)).EndInit();
@@ -4557,6 +4571,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.NumericUpDown nudDur;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
     }
 }
 

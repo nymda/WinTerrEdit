@@ -402,6 +402,30 @@ namespace WinTerrEdit
             nudHair.Value = playerHS;
             cbGamemode.SelectedIndex = (int)playerMode;
 
+            switch (selectedTab)
+            {
+                case 0:
+                    nudQuant.Value = inv_main[invSelectedIndex].quantity;
+                    break;
+
+                case 1:
+                    nudQuant.Value = inv_piggybank[invSelectedIndex].quantity;
+                    break;
+
+                case 2:
+                    nudQuant.Value = inv_safe[invSelectedIndex].quantity;
+                    break;
+
+                case 3:
+                    nudQuant.Value = inv_ammocoins[invSelectedIndex].quantity;
+                    break;
+
+                case 4:
+                    cbBuffs.SelectedItem = playerBuffs[invSelectedIndex].buff.name;
+                    nudDur.Value = playerBuffs[invSelectedIndex].duration;
+                    break;
+            }
+
             var res = inv_main.Where(invItem => invItem.item.name == "Unknown");
             if(res.Count() > 0)
             {
@@ -648,10 +672,9 @@ namespace WinTerrEdit
 
                 case 4:
                     invSelectedIndex -= 178;
-                    cbBuffs.SelectedItem = playerBuffs[invSelectedIndex].buff.name;
                     nudDur.Value = playerBuffs[invSelectedIndex].duration;
                     cbBuffs.SelectedItem = playerBuffs[invSelectedIndex].buff.name;
-                    gb_slot_buff.Text = "Buff slot " + (invSelectedIndex + 1) + " (" + playerBuffs[invSelectedIndex].buff.name + ")";
+                    gb_slot_buff.Text = "Buff slot " + (invSelectedIndex + 1);
                     break;
 
             }
@@ -1514,6 +1537,11 @@ namespace WinTerrEdit
         private void nudHair_ValueChanged(object sender, EventArgs e)
         {
             playerHS = (int)nudHair.Value;
+        }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+            playerName = tbName.Text;
         }
     }
 }
