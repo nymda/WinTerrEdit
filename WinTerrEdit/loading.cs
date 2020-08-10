@@ -96,7 +96,7 @@ namespace WinTerrEdit
 
             tblack = new Pen(current, 2);
 
-            tmp.DrawRectangle(tblack, 1, 1, this.Width - 3, this.Height - 3);
+            tmp.DrawRectangle(tblack, 1, 1, this.Width - 2, this.Height - 2);
             //tmp.DrawRectangle(Pens.Black, 3, 3, 1, 1);
             //Bitmap corn = getCorn();
             //tmp.DrawImage(corn, 0, 0);

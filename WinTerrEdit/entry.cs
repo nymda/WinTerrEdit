@@ -400,6 +400,7 @@ namespace WinTerrEdit
 
             playerHS = decrypted[nameEndOffset + 9];
             nudHair.Value = playerHS;
+            cbGamemode.SelectedIndex = (int)playerMode;
 
             var res = inv_main.Where(invItem => invItem.item.name == "Unknown");
             if(res.Count() > 0)
@@ -440,7 +441,6 @@ namespace WinTerrEdit
 
                         lastReadPlrPath = dlg.FileName;
                         this.Text = "WinTerrEdit | [F1] About | [F2] Settings | (" + dlg.SafeFileName + ")";
-
 
                         loadData(dlg.FileName);
                         //gbInvHold.Enabled = true;
@@ -1223,6 +1223,12 @@ namespace WinTerrEdit
             cbItem.SelectedItem = "Empty";
             cbPrefixes.SelectedIndex = 0;
             nudQuant.Value = 0;
+        }
+
+        private void BuffClearBtn_Click(object sender, EventArgs e)
+        {
+            cbBuffs.SelectedItem = "None";
+            nudDur.Value = 0;
         }
 
         private void entry_kDown(object sender, KeyEventArgs e)
