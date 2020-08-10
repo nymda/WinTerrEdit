@@ -30,6 +30,77 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(entry));
+            this.label10 = new System.Windows.Forms.Label();
+            this.shoesPnl = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pantsPnl = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.undershirtPnl = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.shirtPnl = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.eyesPnl = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.skinPnl = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.hairPnl = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.nudHealthMax = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.nudManaMax = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.nudManaCur = new System.Windows.Forms.NumericUpDown();
+            this.cbPrefixes = new System.Windows.Forms.ComboBox();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gbItems = new System.Windows.Forms.GroupBox();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.itemLV = new System.Windows.Forms.ListView();
+            this.imgl_items = new System.Windows.Forms.ImageList(this.components);
+            this.autoFunctionTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnSave = new System.Windows.Forms.Button();
+            this.tcMain = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.nudHealthCur = new System.Windows.Forms.NumericUpDown();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nudHair = new System.Windows.Forms.NumericUpDown();
+            this.gbMaximumMana = new System.Windows.Forms.Button();
+            this.btnMaxHealth = new System.Windows.Forms.Button();
+            this.gbFillMana = new System.Windows.Forms.Button();
+            this.btnHeal = new System.Windows.Forms.Button();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.gb_slot_items = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nudQuant = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.colourSelecter = new System.Windows.Forms.ColorDialog();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbItem = new System.Windows.Forms.ComboBox();
+            this.gbBuffs = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.buffLV = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imgl_buffs = new System.Windows.Forms.ImageList(this.components);
+            this.cbBuffs = new System.Windows.Forms.ComboBox();
+            this.gb_slot_buff = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.nudDur = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
             this.Pb41 = new System.Windows.Forms.PictureBox();
             this.Pb42 = new System.Windows.Forms.PictureBox();
             this.Pb43 = new System.Windows.Forms.PictureBox();
@@ -40,24 +111,6 @@
             this.Pb48 = new System.Windows.Forms.PictureBox();
             this.Pb49 = new System.Windows.Forms.PictureBox();
             this.Pb50 = new System.Windows.Forms.PictureBox();
-            this.Pb64 = new System.Windows.Forms.PictureBox();
-            this.Pb63 = new System.Windows.Forms.PictureBox();
-            this.Pb65 = new System.Windows.Forms.PictureBox();
-            this.Pb66 = new System.Windows.Forms.PictureBox();
-            this.Pb67 = new System.Windows.Forms.PictureBox();
-            this.Pb68 = new System.Windows.Forms.PictureBox();
-            this.Pb69 = new System.Windows.Forms.PictureBox();
-            this.Pb70 = new System.Windows.Forms.PictureBox();
-            this.Pb60 = new System.Windows.Forms.PictureBox();
-            this.Pb59 = new System.Windows.Forms.PictureBox();
-            this.Pb58 = new System.Windows.Forms.PictureBox();
-            this.Pb57 = new System.Windows.Forms.PictureBox();
-            this.Pb56 = new System.Windows.Forms.PictureBox();
-            this.Pb55 = new System.Windows.Forms.PictureBox();
-            this.Pb54 = new System.Windows.Forms.PictureBox();
-            this.Pb53 = new System.Windows.Forms.PictureBox();
-            this.Pb52 = new System.Windows.Forms.PictureBox();
-            this.Pb51 = new System.Windows.Forms.PictureBox();
             this.Pb31 = new System.Windows.Forms.PictureBox();
             this.Pb32 = new System.Windows.Forms.PictureBox();
             this.Pb33 = new System.Windows.Forms.PictureBox();
@@ -98,64 +151,6 @@
             this.Pb3 = new System.Windows.Forms.PictureBox();
             this.Pb2 = new System.Windows.Forms.PictureBox();
             this.Pb1 = new System.Windows.Forms.PictureBox();
-            this.Pb121 = new System.Windows.Forms.PictureBox();
-            this.Pb122 = new System.Windows.Forms.PictureBox();
-            this.Pb123 = new System.Windows.Forms.PictureBox();
-            this.Pb124 = new System.Windows.Forms.PictureBox();
-            this.Pb125 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.shoesPnl = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pantsPnl = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.undershirtPnl = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.shirtPnl = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.eyesPnl = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.skinPnl = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.hairPnl = new System.Windows.Forms.Panel();
-            this.Pb127 = new System.Windows.Forms.PictureBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.Pb128 = new System.Windows.Forms.PictureBox();
-            this.Pb129 = new System.Windows.Forms.PictureBox();
-            this.Pb130 = new System.Windows.Forms.PictureBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.Pb126 = new System.Windows.Forms.PictureBox();
-            this.nudHealthMax = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.nudManaMax = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
-            this.nudManaCur = new System.Windows.Forms.NumericUpDown();
-            this.cbPrefixes = new System.Windows.Forms.ComboBox();
-            this.Pb111 = new System.Windows.Forms.PictureBox();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.gbItems = new System.Windows.Forms.GroupBox();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.itemLV = new System.Windows.Forms.ListView();
-            this.Pb112 = new System.Windows.Forms.PictureBox();
-            this.Pb113 = new System.Windows.Forms.PictureBox();
-            this.Pb114 = new System.Windows.Forms.PictureBox();
-            this.Pb115 = new System.Windows.Forms.PictureBox();
-            this.Pb116 = new System.Windows.Forms.PictureBox();
-            this.Pb117 = new System.Windows.Forms.PictureBox();
-            this.Pb118 = new System.Windows.Forms.PictureBox();
-            this.btnReload = new System.Windows.Forms.Button();
-            this.Pb119 = new System.Windows.Forms.PictureBox();
-            this.Pb120 = new System.Windows.Forms.PictureBox();
-            this.Pb102 = new System.Windows.Forms.PictureBox();
-            this.Pb103 = new System.Windows.Forms.PictureBox();
-            this.Pb104 = new System.Windows.Forms.PictureBox();
-            this.imgl_items = new System.Windows.Forms.ImageList(this.components);
-            this.autoFunctionTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnSave = new System.Windows.Forms.Button();
-            this.Pb101 = new System.Windows.Forms.PictureBox();
-            this.tcMain = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.Pb81 = new System.Windows.Forms.PictureBox();
             this.Pb82 = new System.Windows.Forms.PictureBox();
             this.Pb83 = new System.Windows.Forms.PictureBox();
@@ -178,7 +173,48 @@
             this.Pb80 = new System.Windows.Forms.PictureBox();
             this.Pb61 = new System.Windows.Forms.PictureBox();
             this.Pb62 = new System.Windows.Forms.PictureBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.Pb63 = new System.Windows.Forms.PictureBox();
+            this.Pb64 = new System.Windows.Forms.PictureBox();
+            this.Pb65 = new System.Windows.Forms.PictureBox();
+            this.Pb66 = new System.Windows.Forms.PictureBox();
+            this.Pb67 = new System.Windows.Forms.PictureBox();
+            this.Pb68 = new System.Windows.Forms.PictureBox();
+            this.Pb69 = new System.Windows.Forms.PictureBox();
+            this.Pb70 = new System.Windows.Forms.PictureBox();
+            this.Pb60 = new System.Windows.Forms.PictureBox();
+            this.Pb59 = new System.Windows.Forms.PictureBox();
+            this.Pb58 = new System.Windows.Forms.PictureBox();
+            this.Pb57 = new System.Windows.Forms.PictureBox();
+            this.Pb56 = new System.Windows.Forms.PictureBox();
+            this.Pb55 = new System.Windows.Forms.PictureBox();
+            this.Pb54 = new System.Windows.Forms.PictureBox();
+            this.Pb53 = new System.Windows.Forms.PictureBox();
+            this.Pb52 = new System.Windows.Forms.PictureBox();
+            this.Pb51 = new System.Windows.Forms.PictureBox();
+            this.Pb121 = new System.Windows.Forms.PictureBox();
+            this.Pb122 = new System.Windows.Forms.PictureBox();
+            this.Pb123 = new System.Windows.Forms.PictureBox();
+            this.Pb124 = new System.Windows.Forms.PictureBox();
+            this.Pb125 = new System.Windows.Forms.PictureBox();
+            this.Pb126 = new System.Windows.Forms.PictureBox();
+            this.Pb127 = new System.Windows.Forms.PictureBox();
+            this.Pb128 = new System.Windows.Forms.PictureBox();
+            this.Pb129 = new System.Windows.Forms.PictureBox();
+            this.Pb130 = new System.Windows.Forms.PictureBox();
+            this.Pb111 = new System.Windows.Forms.PictureBox();
+            this.Pb112 = new System.Windows.Forms.PictureBox();
+            this.Pb113 = new System.Windows.Forms.PictureBox();
+            this.Pb114 = new System.Windows.Forms.PictureBox();
+            this.Pb115 = new System.Windows.Forms.PictureBox();
+            this.Pb116 = new System.Windows.Forms.PictureBox();
+            this.Pb117 = new System.Windows.Forms.PictureBox();
+            this.Pb118 = new System.Windows.Forms.PictureBox();
+            this.Pb119 = new System.Windows.Forms.PictureBox();
+            this.Pb120 = new System.Windows.Forms.PictureBox();
+            this.Pb101 = new System.Windows.Forms.PictureBox();
+            this.Pb102 = new System.Windows.Forms.PictureBox();
+            this.Pb103 = new System.Windows.Forms.PictureBox();
+            this.Pb104 = new System.Windows.Forms.PictureBox();
             this.Pb105 = new System.Windows.Forms.PictureBox();
             this.Pb106 = new System.Windows.Forms.PictureBox();
             this.Pb107 = new System.Windows.Forms.PictureBox();
@@ -195,7 +231,6 @@
             this.Pb93 = new System.Windows.Forms.PictureBox();
             this.Pb92 = new System.Windows.Forms.PictureBox();
             this.Pb91 = new System.Windows.Forms.PictureBox();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.Pb169 = new System.Windows.Forms.PictureBox();
             this.Pb170 = new System.Windows.Forms.PictureBox();
             this.Pb171 = new System.Windows.Forms.PictureBox();
@@ -244,7 +279,6 @@
             this.Pb136 = new System.Windows.Forms.PictureBox();
             this.Pb137 = new System.Windows.Forms.PictureBox();
             this.Pb138 = new System.Windows.Forms.PictureBox();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.Pb195 = new System.Windows.Forms.PictureBox();
             this.Pb196 = new System.Windows.Forms.PictureBox();
             this.Pb197 = new System.Windows.Forms.PictureBox();
@@ -267,41 +301,26 @@
             this.Pb179 = new System.Windows.Forms.PictureBox();
             this.Pb192 = new System.Windows.Forms.PictureBox();
             this.Pb191 = new System.Windows.Forms.PictureBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.nudHealthCur = new System.Windows.Forms.NumericUpDown();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.gbMaximumMana = new System.Windows.Forms.Button();
-            this.btnMaxHealth = new System.Windows.Forms.Button();
-            this.gbFillMana = new System.Windows.Forms.Button();
-            this.btnHeal = new System.Windows.Forms.Button();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.gb_slot_items = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nudQuant = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.colourSelecter = new System.Windows.Forms.ColorDialog();
-            this.btnLoad = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbItem = new System.Windows.Forms.ComboBox();
-            this.gbBuffs = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.buffLV = new System.Windows.Forms.ListView();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imgl_buffs = new System.Windows.Forms.ImageList(this.components);
-            this.cbBuffs = new System.Windows.Forms.ComboBox();
-            this.gb_slot_buff = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.nudDur = new System.Windows.Forms.NumericUpDown();
-            this.label19 = new System.Windows.Forms.Label();
+            this.btnReload = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
+            this.gbItems.SuspendLayout();
+            this.tcMain.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHair)).BeginInit();
+            this.gb_slot_items.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuant)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.gbBuffs.SuspendLayout();
+            this.gb_slot_buff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb43)).BeginInit();
@@ -312,24 +331,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb48)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb49)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb50)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb64)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb63)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb65)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb66)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb67)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb68)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb69)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb70)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb60)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb59)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb58)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb57)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb56)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb55)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb54)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb53)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb52)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb51)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb33)).BeginInit();
@@ -370,37 +371,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb121)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb122)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb123)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb124)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb125)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb127)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb128)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb129)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb130)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb126)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb111)).BeginInit();
-            this.gbItems.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb112)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb113)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb114)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb115)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb116)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb117)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb118)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb119)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb120)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb102)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb103)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb104)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb101)).BeginInit();
-            this.tcMain.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pb81)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb82)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb83)).BeginInit();
@@ -423,7 +393,48 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb80)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb61)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb62)).BeginInit();
-            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb63)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb64)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb65)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb66)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb67)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb68)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb69)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb70)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb60)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb59)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb58)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb57)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb56)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb55)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb54)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb53)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb52)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb51)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb121)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb122)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb123)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb124)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb125)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb126)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb127)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb128)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb129)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb130)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb111)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb112)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb113)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb114)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb115)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb116)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb117)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb118)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb119)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb120)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb101)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb102)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb103)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb104)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb105)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb106)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb107)).BeginInit();
@@ -440,7 +451,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb93)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb92)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb91)).BeginInit();
-            this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pb169)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb170)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb171)).BeginInit();
@@ -489,7 +499,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb136)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb137)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb138)).BeginInit();
-            this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pb195)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb196)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb197)).BeginInit();
@@ -512,16 +521,982 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb179)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb192)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb191)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.gb_slot_items.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuant)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.gbBuffs.SuspendLayout();
-            this.gb_slot_buff.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDur)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(155, 90);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 13);
+            this.label10.TabIndex = 91;
+            this.label10.Text = "Shoes:";
+            // 
+            // shoesPnl
+            // 
+            this.shoesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.shoesPnl.Location = new System.Drawing.Point(216, 90);
+            this.shoesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.shoesPnl.Name = "shoesPnl";
+            this.shoesPnl.Size = new System.Drawing.Size(20, 20);
+            this.shoesPnl.TabIndex = 92;
+            this.shoesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(155, 63);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 89;
+            this.label9.Text = "Pants:";
+            // 
+            // pantsPnl
+            // 
+            this.pantsPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pantsPnl.Location = new System.Drawing.Point(216, 63);
+            this.pantsPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pantsPnl.Name = "pantsPnl";
+            this.pantsPnl.Size = new System.Drawing.Size(20, 20);
+            this.pantsPnl.TabIndex = 90;
+            this.pantsPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(155, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 87;
+            this.label8.Text = "Undershirt:";
+            // 
+            // undershirtPnl
+            // 
+            this.undershirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.undershirtPnl.Location = new System.Drawing.Point(216, 36);
+            this.undershirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.undershirtPnl.Name = "undershirtPnl";
+            this.undershirtPnl.Size = new System.Drawing.Size(20, 20);
+            this.undershirtPnl.TabIndex = 88;
+            this.undershirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(155, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 85;
+            this.label7.Text = "Shirt:";
+            // 
+            // shirtPnl
+            // 
+            this.shirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.shirtPnl.Location = new System.Drawing.Point(216, 9);
+            this.shirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.shirtPnl.Name = "shirtPnl";
+            this.shirtPnl.Size = new System.Drawing.Size(20, 20);
+            this.shirtPnl.TabIndex = 86;
+            this.shirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(155, 173);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 83;
+            this.label6.Text = "Eyes:";
+            // 
+            // eyesPnl
+            // 
+            this.eyesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.eyesPnl.Location = new System.Drawing.Point(216, 173);
+            this.eyesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.eyesPnl.Name = "eyesPnl";
+            this.eyesPnl.Size = new System.Drawing.Size(20, 20);
+            this.eyesPnl.TabIndex = 84;
+            this.eyesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(155, 146);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 81;
+            this.label5.Text = "Skin:";
+            // 
+            // skinPnl
+            // 
+            this.skinPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.skinPnl.Location = new System.Drawing.Point(216, 146);
+            this.skinPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.skinPnl.Name = "skinPnl";
+            this.skinPnl.Size = new System.Drawing.Size(20, 20);
+            this.skinPnl.TabIndex = 82;
+            this.skinPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(155, 119);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 79;
+            this.label4.Text = "Hair:";
+            // 
+            // hairPnl
+            // 
+            this.hairPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.hairPnl.Location = new System.Drawing.Point(216, 119);
+            this.hairPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.hairPnl.Name = "hairPnl";
+            this.hairPnl.Size = new System.Drawing.Size(20, 20);
+            this.hairPnl.TabIndex = 80;
+            this.hairPnl.Click += new System.EventHandler(this.colourSelecter_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 58);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.TabIndex = 74;
+            this.label15.Text = "Mana:";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.btnClear.ForeColor = System.Drawing.Color.Red;
+            this.btnClear.Location = new System.Drawing.Point(215, 16);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(26, 51);
+            this.btnClear.TabIndex = 122;
+            this.btnClear.Text = "CLR";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // nudHealthMax
+            // 
+            this.nudHealthMax.Location = new System.Drawing.Point(104, 33);
+            this.nudHealthMax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudHealthMax.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nudHealthMax.Name = "nudHealthMax";
+            this.nudHealthMax.Size = new System.Drawing.Size(40, 20);
+            this.nudHealthMax.TabIndex = 69;
+            this.nudHealthMax.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudHealthMax.ValueChanged += new System.EventHandler(this.nudHealthMax_ValueChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 32);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(41, 13);
+            this.label12.TabIndex = 70;
+            this.label12.Text = "Health:";
+            // 
+            // nudManaMax
+            // 
+            this.nudManaMax.Location = new System.Drawing.Point(104, 59);
+            this.nudManaMax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudManaMax.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.nudManaMax.Name = "nudManaMax";
+            this.nudManaMax.Size = new System.Drawing.Size(40, 20);
+            this.nudManaMax.TabIndex = 73;
+            this.nudManaMax.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudManaMax.ValueChanged += new System.EventHandler(this.nudManaMax_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(87, 34);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 13);
+            this.label13.TabIndex = 71;
+            this.label13.Text = " / ";
+            // 
+            // nudManaCur
+            // 
+            this.nudManaCur.Location = new System.Drawing.Point(50, 59);
+            this.nudManaCur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudManaCur.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.nudManaCur.Name = "nudManaCur";
+            this.nudManaCur.Size = new System.Drawing.Size(40, 20);
+            this.nudManaCur.TabIndex = 72;
+            this.nudManaCur.ValueChanged += new System.EventHandler(this.nudManaCur_ValueChanged);
+            // 
+            // cbPrefixes
+            // 
+            this.cbPrefixes.FormattingEnabled = true;
+            this.cbPrefixes.Location = new System.Drawing.Point(66, 17);
+            this.cbPrefixes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbPrefixes.Name = "cbPrefixes";
+            this.cbPrefixes.Size = new System.Drawing.Size(145, 21);
+            this.cbPrefixes.TabIndex = 121;
+            this.cbPrefixes.SelectedIndexChanged += new System.EventHandler(this.cbPrefixes_SelectedIndexChanged);
+            this.cbPrefixes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ndq_keydown);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Items:";
+            // 
+            // gbItems
+            // 
+            this.gbItems.Controls.Add(this.lblSearch);
+            this.gbItems.Controls.Add(this.textBox1);
+            this.gbItems.Controls.Add(this.itemLV);
+            this.gbItems.Enabled = false;
+            this.gbItems.Location = new System.Drawing.Point(12, 12);
+            this.gbItems.Name = "gbItems";
+            this.gbItems.Size = new System.Drawing.Size(262, 310);
+            this.gbItems.TabIndex = 126;
+            this.gbItems.TabStop = false;
+            this.gbItems.Text = "Items";
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(6, 286);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(44, 13);
+            this.lblSearch.TabIndex = 54;
+            this.lblSearch.Text = "Search:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(56, 284);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 20);
+            this.textBox1.TabIndex = 53;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // itemLV
+            // 
+            this.itemLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.itemLV.HideSelection = false;
+            this.itemLV.Location = new System.Drawing.Point(6, 17);
+            this.itemLV.Name = "itemLV";
+            this.itemLV.Size = new System.Drawing.Size(250, 261);
+            this.itemLV.TabIndex = 52;
+            this.itemLV.UseCompatibleStateImageBehavior = false;
+            this.itemLV.ItemActivate += new System.EventHandler(this.lb_activ);
+            // 
+            // imgl_items
+            // 
+            this.imgl_items.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imgl_items.ImageSize = new System.Drawing.Size(16, 16);
+            this.imgl_items.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // autoFunctionTimer
+            // 
+            this.autoFunctionTimer.Interval = 1000;
+            this.autoFunctionTimer.Tick += new System.EventHandler(this.autoFunctionTimer_Tick);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Enabled = false;
+            this.btnSave.Location = new System.Drawing.Point(6, 45);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(129, 22);
+            this.btnSave.TabIndex = 56;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // tcMain
+            // 
+            this.tcMain.Controls.Add(this.tabPage1);
+            this.tcMain.Controls.Add(this.tabPage2);
+            this.tcMain.Controls.Add(this.tabPage3);
+            this.tcMain.Controls.Add(this.tabPage6);
+            this.tcMain.Controls.Add(this.tabPage5);
+            this.tcMain.Controls.Add(this.tabPage4);
+            this.tcMain.Enabled = false;
+            this.tcMain.Location = new System.Drawing.Point(280, 94);
+            this.tcMain.Name = "tcMain";
+            this.tcMain.SelectedIndex = 0;
+            this.tcMain.Size = new System.Drawing.Size(397, 228);
+            this.tcMain.TabIndex = 124;
+            this.tcMain.SelectedIndexChanged += new System.EventHandler(this.tabs_selectedChanged);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.Pb41);
+            this.tabPage1.Controls.Add(this.Pb42);
+            this.tabPage1.Controls.Add(this.Pb43);
+            this.tabPage1.Controls.Add(this.Pb44);
+            this.tabPage1.Controls.Add(this.Pb45);
+            this.tabPage1.Controls.Add(this.Pb46);
+            this.tabPage1.Controls.Add(this.Pb47);
+            this.tabPage1.Controls.Add(this.Pb48);
+            this.tabPage1.Controls.Add(this.Pb49);
+            this.tabPage1.Controls.Add(this.Pb50);
+            this.tabPage1.Controls.Add(this.Pb31);
+            this.tabPage1.Controls.Add(this.Pb32);
+            this.tabPage1.Controls.Add(this.Pb33);
+            this.tabPage1.Controls.Add(this.Pb34);
+            this.tabPage1.Controls.Add(this.Pb35);
+            this.tabPage1.Controls.Add(this.Pb36);
+            this.tabPage1.Controls.Add(this.Pb37);
+            this.tabPage1.Controls.Add(this.Pb38);
+            this.tabPage1.Controls.Add(this.Pb39);
+            this.tabPage1.Controls.Add(this.Pb40);
+            this.tabPage1.Controls.Add(this.Pb21);
+            this.tabPage1.Controls.Add(this.Pb22);
+            this.tabPage1.Controls.Add(this.Pb23);
+            this.tabPage1.Controls.Add(this.Pb24);
+            this.tabPage1.Controls.Add(this.Pb25);
+            this.tabPage1.Controls.Add(this.Pb26);
+            this.tabPage1.Controls.Add(this.Pb27);
+            this.tabPage1.Controls.Add(this.Pb28);
+            this.tabPage1.Controls.Add(this.Pb29);
+            this.tabPage1.Controls.Add(this.Pb30);
+            this.tabPage1.Controls.Add(this.Pb11);
+            this.tabPage1.Controls.Add(this.Pb12);
+            this.tabPage1.Controls.Add(this.Pb13);
+            this.tabPage1.Controls.Add(this.Pb14);
+            this.tabPage1.Controls.Add(this.Pb15);
+            this.tabPage1.Controls.Add(this.Pb16);
+            this.tabPage1.Controls.Add(this.Pb17);
+            this.tabPage1.Controls.Add(this.Pb18);
+            this.tabPage1.Controls.Add(this.Pb19);
+            this.tabPage1.Controls.Add(this.Pb20);
+            this.tabPage1.Controls.Add(this.Pb10);
+            this.tabPage1.Controls.Add(this.Pb9);
+            this.tabPage1.Controls.Add(this.Pb8);
+            this.tabPage1.Controls.Add(this.Pb7);
+            this.tabPage1.Controls.Add(this.Pb6);
+            this.tabPage1.Controls.Add(this.Pb5);
+            this.tabPage1.Controls.Add(this.Pb4);
+            this.tabPage1.Controls.Add(this.Pb3);
+            this.tabPage1.Controls.Add(this.Pb2);
+            this.tabPage1.Controls.Add(this.Pb1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(389, 202);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Inventory";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.Pb81);
+            this.tabPage2.Controls.Add(this.Pb82);
+            this.tabPage2.Controls.Add(this.Pb83);
+            this.tabPage2.Controls.Add(this.Pb84);
+            this.tabPage2.Controls.Add(this.Pb85);
+            this.tabPage2.Controls.Add(this.Pb86);
+            this.tabPage2.Controls.Add(this.Pb87);
+            this.tabPage2.Controls.Add(this.Pb88);
+            this.tabPage2.Controls.Add(this.Pb89);
+            this.tabPage2.Controls.Add(this.Pb90);
+            this.tabPage2.Controls.Add(this.Pb71);
+            this.tabPage2.Controls.Add(this.Pb72);
+            this.tabPage2.Controls.Add(this.Pb73);
+            this.tabPage2.Controls.Add(this.Pb74);
+            this.tabPage2.Controls.Add(this.Pb75);
+            this.tabPage2.Controls.Add(this.Pb76);
+            this.tabPage2.Controls.Add(this.Pb77);
+            this.tabPage2.Controls.Add(this.Pb78);
+            this.tabPage2.Controls.Add(this.Pb79);
+            this.tabPage2.Controls.Add(this.Pb80);
+            this.tabPage2.Controls.Add(this.Pb61);
+            this.tabPage2.Controls.Add(this.Pb62);
+            this.tabPage2.Controls.Add(this.Pb63);
+            this.tabPage2.Controls.Add(this.Pb64);
+            this.tabPage2.Controls.Add(this.Pb65);
+            this.tabPage2.Controls.Add(this.Pb66);
+            this.tabPage2.Controls.Add(this.Pb67);
+            this.tabPage2.Controls.Add(this.Pb68);
+            this.tabPage2.Controls.Add(this.Pb69);
+            this.tabPage2.Controls.Add(this.Pb70);
+            this.tabPage2.Controls.Add(this.Pb60);
+            this.tabPage2.Controls.Add(this.Pb59);
+            this.tabPage2.Controls.Add(this.Pb58);
+            this.tabPage2.Controls.Add(this.Pb57);
+            this.tabPage2.Controls.Add(this.Pb56);
+            this.tabPage2.Controls.Add(this.Pb55);
+            this.tabPage2.Controls.Add(this.Pb54);
+            this.tabPage2.Controls.Add(this.Pb53);
+            this.tabPage2.Controls.Add(this.Pb52);
+            this.tabPage2.Controls.Add(this.Pb51);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(389, 202);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "Piggybank";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.Pb121);
+            this.tabPage3.Controls.Add(this.Pb122);
+            this.tabPage3.Controls.Add(this.Pb123);
+            this.tabPage3.Controls.Add(this.Pb124);
+            this.tabPage3.Controls.Add(this.Pb125);
+            this.tabPage3.Controls.Add(this.Pb126);
+            this.tabPage3.Controls.Add(this.Pb127);
+            this.tabPage3.Controls.Add(this.Pb128);
+            this.tabPage3.Controls.Add(this.Pb129);
+            this.tabPage3.Controls.Add(this.Pb130);
+            this.tabPage3.Controls.Add(this.Pb111);
+            this.tabPage3.Controls.Add(this.Pb112);
+            this.tabPage3.Controls.Add(this.Pb113);
+            this.tabPage3.Controls.Add(this.Pb114);
+            this.tabPage3.Controls.Add(this.Pb115);
+            this.tabPage3.Controls.Add(this.Pb116);
+            this.tabPage3.Controls.Add(this.Pb117);
+            this.tabPage3.Controls.Add(this.Pb118);
+            this.tabPage3.Controls.Add(this.Pb119);
+            this.tabPage3.Controls.Add(this.Pb120);
+            this.tabPage3.Controls.Add(this.Pb101);
+            this.tabPage3.Controls.Add(this.Pb102);
+            this.tabPage3.Controls.Add(this.Pb103);
+            this.tabPage3.Controls.Add(this.Pb104);
+            this.tabPage3.Controls.Add(this.Pb105);
+            this.tabPage3.Controls.Add(this.Pb106);
+            this.tabPage3.Controls.Add(this.Pb107);
+            this.tabPage3.Controls.Add(this.Pb108);
+            this.tabPage3.Controls.Add(this.Pb109);
+            this.tabPage3.Controls.Add(this.Pb110);
+            this.tabPage3.Controls.Add(this.Pb100);
+            this.tabPage3.Controls.Add(this.Pb99);
+            this.tabPage3.Controls.Add(this.Pb98);
+            this.tabPage3.Controls.Add(this.Pb97);
+            this.tabPage3.Controls.Add(this.Pb96);
+            this.tabPage3.Controls.Add(this.Pb95);
+            this.tabPage3.Controls.Add(this.Pb94);
+            this.tabPage3.Controls.Add(this.Pb93);
+            this.tabPage3.Controls.Add(this.Pb92);
+            this.tabPage3.Controls.Add(this.Pb91);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(389, 202);
+            this.tabPage3.TabIndex = 5;
+            this.tabPage3.Text = "Safe";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.Pb169);
+            this.tabPage6.Controls.Add(this.Pb170);
+            this.tabPage6.Controls.Add(this.Pb171);
+            this.tabPage6.Controls.Add(this.Pb172);
+            this.tabPage6.Controls.Add(this.Pb173);
+            this.tabPage6.Controls.Add(this.Pb174);
+            this.tabPage6.Controls.Add(this.Pb175);
+            this.tabPage6.Controls.Add(this.Pb176);
+            this.tabPage6.Controls.Add(this.Pb177);
+            this.tabPage6.Controls.Add(this.Pb178);
+            this.tabPage6.Controls.Add(this.Pb159);
+            this.tabPage6.Controls.Add(this.Pb160);
+            this.tabPage6.Controls.Add(this.Pb161);
+            this.tabPage6.Controls.Add(this.Pb162);
+            this.tabPage6.Controls.Add(this.Pb163);
+            this.tabPage6.Controls.Add(this.Pb164);
+            this.tabPage6.Controls.Add(this.Pb165);
+            this.tabPage6.Controls.Add(this.Pb166);
+            this.tabPage6.Controls.Add(this.Pb167);
+            this.tabPage6.Controls.Add(this.Pb168);
+            this.tabPage6.Controls.Add(this.Pb149);
+            this.tabPage6.Controls.Add(this.Pb150);
+            this.tabPage6.Controls.Add(this.Pb151);
+            this.tabPage6.Controls.Add(this.Pb152);
+            this.tabPage6.Controls.Add(this.Pb153);
+            this.tabPage6.Controls.Add(this.Pb154);
+            this.tabPage6.Controls.Add(this.Pb155);
+            this.tabPage6.Controls.Add(this.Pb156);
+            this.tabPage6.Controls.Add(this.Pb157);
+            this.tabPage6.Controls.Add(this.Pb158);
+            this.tabPage6.Controls.Add(this.Pb139);
+            this.tabPage6.Controls.Add(this.Pb140);
+            this.tabPage6.Controls.Add(this.Pb141);
+            this.tabPage6.Controls.Add(this.Pb142);
+            this.tabPage6.Controls.Add(this.Pb143);
+            this.tabPage6.Controls.Add(this.Pb144);
+            this.tabPage6.Controls.Add(this.Pb145);
+            this.tabPage6.Controls.Add(this.Pb146);
+            this.tabPage6.Controls.Add(this.Pb147);
+            this.tabPage6.Controls.Add(this.Pb148);
+            this.tabPage6.Controls.Add(this.Pb131);
+            this.tabPage6.Controls.Add(this.Pb132);
+            this.tabPage6.Controls.Add(this.Pb133);
+            this.tabPage6.Controls.Add(this.Pb134);
+            this.tabPage6.Controls.Add(this.Pb135);
+            this.tabPage6.Controls.Add(this.Pb136);
+            this.tabPage6.Controls.Add(this.Pb137);
+            this.tabPage6.Controls.Add(this.Pb138);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(389, 202);
+            this.tabPage6.TabIndex = 8;
+            this.tabPage6.Text = "Misc";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.Pb195);
+            this.tabPage5.Controls.Add(this.Pb196);
+            this.tabPage5.Controls.Add(this.Pb197);
+            this.tabPage5.Controls.Add(this.Pb198);
+            this.tabPage5.Controls.Add(this.Pb185);
+            this.tabPage5.Controls.Add(this.Pb186);
+            this.tabPage5.Controls.Add(this.Pb187);
+            this.tabPage5.Controls.Add(this.Pb188);
+            this.tabPage5.Controls.Add(this.Pb189);
+            this.tabPage5.Controls.Add(this.Pb190);
+            this.tabPage5.Controls.Add(this.Pb199);
+            this.tabPage5.Controls.Add(this.Pb200);
+            this.tabPage5.Controls.Add(this.Pb194);
+            this.tabPage5.Controls.Add(this.Pb193);
+            this.tabPage5.Controls.Add(this.Pb184);
+            this.tabPage5.Controls.Add(this.Pb183);
+            this.tabPage5.Controls.Add(this.Pb182);
+            this.tabPage5.Controls.Add(this.Pb181);
+            this.tabPage5.Controls.Add(this.Pb180);
+            this.tabPage5.Controls.Add(this.Pb179);
+            this.tabPage5.Controls.Add(this.Pb192);
+            this.tabPage5.Controls.Add(this.Pb191);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(389, 202);
+            this.tabPage5.TabIndex = 7;
+            this.tabPage5.Text = "Buffs";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.nudHealthMax);
+            this.tabPage4.Controls.Add(this.nudManaMax);
+            this.tabPage4.Controls.Add(this.nudHealthCur);
+            this.tabPage4.Controls.Add(this.nudManaCur);
+            this.tabPage4.Controls.Add(this.panel2);
+            this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.comboBox1);
+            this.tabPage4.Controls.Add(this.label1);
+            this.tabPage4.Controls.Add(this.nudHair);
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.shoesPnl);
+            this.tabPage4.Controls.Add(this.label9);
+            this.tabPage4.Controls.Add(this.pantsPnl);
+            this.tabPage4.Controls.Add(this.label8);
+            this.tabPage4.Controls.Add(this.undershirtPnl);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.shirtPnl);
+            this.tabPage4.Controls.Add(this.label6);
+            this.tabPage4.Controls.Add(this.eyesPnl);
+            this.tabPage4.Controls.Add(this.label5);
+            this.tabPage4.Controls.Add(this.skinPnl);
+            this.tabPage4.Controls.Add(this.label4);
+            this.tabPage4.Controls.Add(this.hairPnl);
+            this.tabPage4.Controls.Add(this.gbMaximumMana);
+            this.tabPage4.Controls.Add(this.btnMaxHealth);
+            this.tabPage4.Controls.Add(this.gbFillMana);
+            this.tabPage4.Controls.Add(this.btnHeal);
+            this.tabPage4.Controls.Add(this.tbName);
+            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.label15);
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(389, 202);
+            this.tabPage4.TabIndex = 6;
+            this.tabPage4.Text = "Character";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // nudHealthCur
+            // 
+            this.nudHealthCur.Location = new System.Drawing.Point(50, 33);
+            this.nudHealthCur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudHealthCur.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nudHealthCur.Name = "nudHealthCur";
+            this.nudHealthCur.Size = new System.Drawing.Size(40, 20);
+            this.nudHealthCur.TabIndex = 67;
+            this.nudHealthCur.ValueChanged += new System.EventHandler(this.nudHealthCur_ValueChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Location = new System.Drawing.Point(243, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 202);
+            this.panel2.TabIndex = 134;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Location = new System.Drawing.Point(149, 1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1, 202);
+            this.panel1.TabIndex = 132;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(247, 38);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 13);
+            this.label16.TabIndex = 131;
+            this.label16.Text = "Game mode:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Journey",
+            "Softcore",
+            "Mediumcore",
+            "Hardcore"});
+            this.comboBox1.Location = new System.Drawing.Point(248, 56);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(134, 21);
+            this.comboBox1.TabIndex = 129;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(248, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 130;
+            this.label1.Text = "Hair style:";
+            // 
+            // nudHair
+            // 
+            this.nudHair.Location = new System.Drawing.Point(307, 9);
+            this.nudHair.Maximum = new decimal(new int[] {
+            133,
+            0,
+            0,
+            0});
+            this.nudHair.Name = "nudHair";
+            this.nudHair.Size = new System.Drawing.Size(75, 20);
+            this.nudHair.TabIndex = 129;
+            this.nudHair.ValueChanged += new System.EventHandler(this.nudHair_ValueChanged);
+            // 
+            // gbMaximumMana
+            // 
+            this.gbMaximumMana.Location = new System.Drawing.Point(9, 114);
+            this.gbMaximumMana.Name = "gbMaximumMana";
+            this.gbMaximumMana.Size = new System.Drawing.Size(135, 23);
+            this.gbMaximumMana.TabIndex = 78;
+            this.gbMaximumMana.Text = "Maximum mana";
+            this.gbMaximumMana.UseVisualStyleBackColor = true;
+            this.gbMaximumMana.Click += new System.EventHandler(this.gbMaximumMana_Click);
+            // 
+            // btnMaxHealth
+            // 
+            this.btnMaxHealth.Location = new System.Drawing.Point(9, 85);
+            this.btnMaxHealth.Name = "btnMaxHealth";
+            this.btnMaxHealth.Size = new System.Drawing.Size(135, 23);
+            this.btnMaxHealth.TabIndex = 77;
+            this.btnMaxHealth.Text = "Maximum health";
+            this.btnMaxHealth.UseVisualStyleBackColor = true;
+            this.btnMaxHealth.Click += new System.EventHandler(this.btnMaxHealth_Click);
+            // 
+            // gbFillMana
+            // 
+            this.gbFillMana.Location = new System.Drawing.Point(9, 172);
+            this.gbFillMana.Name = "gbFillMana";
+            this.gbFillMana.Size = new System.Drawing.Size(135, 23);
+            this.gbFillMana.TabIndex = 76;
+            this.gbFillMana.Text = "Fill mana";
+            this.gbFillMana.UseVisualStyleBackColor = true;
+            this.gbFillMana.Click += new System.EventHandler(this.gbFillMana_Click);
+            // 
+            // btnHeal
+            // 
+            this.btnHeal.Location = new System.Drawing.Point(9, 143);
+            this.btnHeal.Name = "btnHeal";
+            this.btnHeal.Size = new System.Drawing.Size(135, 23);
+            this.btnHeal.TabIndex = 68;
+            this.btnHeal.Text = "Heal";
+            this.btnHeal.UseVisualStyleBackColor = true;
+            this.btnHeal.Click += new System.EventHandler(this.btnHeal_Click);
+            // 
+            // tbName
+            // 
+            this.tbName.Location = new System.Drawing.Point(50, 9);
+            this.tbName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbName.MaxLength = 20;
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(94, 20);
+            this.tbName.TabIndex = 65;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(87, 60);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(18, 13);
+            this.label14.TabIndex = 75;
+            this.label14.Text = " / ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 13);
+            this.label11.TabIndex = 66;
+            this.label11.Text = "Name:";
+            // 
+            // gb_slot_items
+            // 
+            this.gb_slot_items.Controls.Add(this.btnClear);
+            this.gb_slot_items.Controls.Add(this.cbPrefixes);
+            this.gb_slot_items.Controls.Add(this.label3);
+            this.gb_slot_items.Controls.Add(this.nudQuant);
+            this.gb_slot_items.Controls.Add(this.label2);
+            this.gb_slot_items.Enabled = false;
+            this.gb_slot_items.Location = new System.Drawing.Point(280, 12);
+            this.gb_slot_items.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gb_slot_items.Name = "gb_slot_items";
+            this.gb_slot_items.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gb_slot_items.Size = new System.Drawing.Size(247, 75);
+            this.gb_slot_items.TabIndex = 125;
+            this.gb_slot_items.TabStop = false;
+            this.gb_slot_items.Text = "Slot";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 120;
+            this.label3.Text = "Prefix:";
+            // 
+            // nudQuant
+            // 
+            this.nudQuant.Location = new System.Drawing.Point(66, 47);
+            this.nudQuant.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudQuant.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudQuant.Name = "nudQuant";
+            this.nudQuant.Size = new System.Drawing.Size(145, 20);
+            this.nudQuant.TabIndex = 117;
+            this.nudQuant.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudQuant.ValueChanged += new System.EventHandler(this.nudQuant_ValueChanged);
+            this.nudQuant.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ndq_keydown);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 119;
+            this.label2.Text = "Quantity:";
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(6, 17);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(84, 22);
+            this.btnLoad.TabIndex = 55;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnLoad);
+            this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Controls.Add(this.btnReload);
+            this.groupBox1.Location = new System.Drawing.Point(533, 12);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(144, 75);
+            this.groupBox1.TabIndex = 127;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "File";
+            // 
+            // cbItem
+            // 
+            this.cbItem.Enabled = false;
+            this.cbItem.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbItem.FormattingEnabled = true;
+            this.cbItem.Location = new System.Drawing.Point(704, 297);
+            this.cbItem.Name = "cbItem";
+            this.cbItem.Size = new System.Drawing.Size(0, 21);
+            this.cbItem.TabIndex = 128;
+            this.cbItem.SelectedIndexChanged += new System.EventHandler(this.cbItem_SelectedIndexChanged);
+            // 
+            // gbBuffs
+            // 
+            this.gbBuffs.Controls.Add(this.label17);
+            this.gbBuffs.Controls.Add(this.textBox2);
+            this.gbBuffs.Controls.Add(this.buffLV);
+            this.gbBuffs.Enabled = false;
+            this.gbBuffs.Location = new System.Drawing.Point(12, 12);
+            this.gbBuffs.Name = "gbBuffs";
+            this.gbBuffs.Size = new System.Drawing.Size(262, 310);
+            this.gbBuffs.TabIndex = 129;
+            this.gbBuffs.TabStop = false;
+            this.gbBuffs.Text = "Buffs";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 286);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(44, 13);
+            this.label17.TabIndex = 54;
+            this.label17.Text = "Search:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(56, 284);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(200, 20);
+            this.textBox2.TabIndex = 53;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // buffLV
+            // 
+            this.buffLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.buffLV.HideSelection = false;
+            this.buffLV.Location = new System.Drawing.Point(6, 17);
+            this.buffLV.Name = "buffLV";
+            this.buffLV.Size = new System.Drawing.Size(250, 261);
+            this.buffLV.TabIndex = 52;
+            this.buffLV.UseCompatibleStateImageBehavior = false;
+            this.buffLV.ItemActivate += new System.EventHandler(this.blb_activ);
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Items:";
+            // 
+            // imgl_buffs
+            // 
+            this.imgl_buffs.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imgl_buffs.ImageSize = new System.Drawing.Size(16, 16);
+            this.imgl_buffs.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // cbBuffs
+            // 
+            this.cbBuffs.Enabled = false;
+            this.cbBuffs.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbBuffs.FormattingEnabled = true;
+            this.cbBuffs.Location = new System.Drawing.Point(66, 17);
+            this.cbBuffs.Name = "cbBuffs";
+            this.cbBuffs.Size = new System.Drawing.Size(145, 21);
+            this.cbBuffs.TabIndex = 130;
+            this.cbBuffs.SelectedIndexChanged += new System.EventHandler(this.cbBuffs_SelectedIndexChanged);
+            // 
+            // gb_slot_buff
+            // 
+            this.gb_slot_buff.Controls.Add(this.cbBuffs);
+            this.gb_slot_buff.Controls.Add(this.button1);
+            this.gb_slot_buff.Controls.Add(this.label18);
+            this.gb_slot_buff.Controls.Add(this.nudDur);
+            this.gb_slot_buff.Controls.Add(this.label19);
+            this.gb_slot_buff.Enabled = false;
+            this.gb_slot_buff.Location = new System.Drawing.Point(280, 12);
+            this.gb_slot_buff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gb_slot_buff.Name = "gb_slot_buff";
+            this.gb_slot_buff.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gb_slot_buff.Size = new System.Drawing.Size(247, 75);
+            this.gb_slot_buff.TabIndex = 131;
+            this.gb_slot_buff.TabStop = false;
+            this.gb_slot_buff.Text = "Slot";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.button1.ForeColor = System.Drawing.Color.Red;
+            this.button1.Location = new System.Drawing.Point(215, 16);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(26, 51);
+            this.button1.TabIndex = 122;
+            this.button1.Text = "CLR";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(29, 21);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(29, 13);
+            this.label18.TabIndex = 120;
+            this.label18.Text = "Buff:";
+            // 
+            // nudDur
+            // 
+            this.nudDur.Location = new System.Drawing.Point(66, 47);
+            this.nudDur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nudDur.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudDur.Name = "nudDur";
+            this.nudDur.Size = new System.Drawing.Size(145, 20);
+            this.nudDur.TabIndex = 117;
+            this.nudDur.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudDur.ValueChanged += new System.EventHandler(this.nudDur_ValueChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(10, 49);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(50, 13);
+            this.label19.TabIndex = 119;
+            this.label19.Text = "Duration:";
             // 
             // Pb41
             // 
@@ -652,240 +1627,6 @@
             this.Pb50.TabStop = false;
             this.Pb50.Click += new System.EventHandler(this.item_Click);
             this.Pb50.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb64
-            // 
-            this.Pb64.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb64.Location = new System.Drawing.Point(121, 47);
-            this.Pb64.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb64.Name = "Pb64";
-            this.Pb64.Size = new System.Drawing.Size(32, 32);
-            this.Pb64.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb64.TabIndex = 132;
-            this.Pb64.TabStop = false;
-            this.Pb64.Click += new System.EventHandler(this.item_Click);
-            this.Pb64.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb63
-            // 
-            this.Pb63.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb63.Location = new System.Drawing.Point(83, 47);
-            this.Pb63.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb63.Name = "Pb63";
-            this.Pb63.Size = new System.Drawing.Size(32, 32);
-            this.Pb63.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb63.TabIndex = 133;
-            this.Pb63.TabStop = false;
-            this.Pb63.Click += new System.EventHandler(this.item_Click);
-            this.Pb63.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb65
-            // 
-            this.Pb65.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb65.Location = new System.Drawing.Point(159, 47);
-            this.Pb65.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb65.Name = "Pb65";
-            this.Pb65.Size = new System.Drawing.Size(32, 32);
-            this.Pb65.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb65.TabIndex = 131;
-            this.Pb65.TabStop = false;
-            this.Pb65.Click += new System.EventHandler(this.item_Click);
-            this.Pb65.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb66
-            // 
-            this.Pb66.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb66.Location = new System.Drawing.Point(197, 47);
-            this.Pb66.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb66.Name = "Pb66";
-            this.Pb66.Size = new System.Drawing.Size(32, 32);
-            this.Pb66.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb66.TabIndex = 130;
-            this.Pb66.TabStop = false;
-            this.Pb66.Click += new System.EventHandler(this.item_Click);
-            this.Pb66.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb67
-            // 
-            this.Pb67.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb67.Location = new System.Drawing.Point(235, 47);
-            this.Pb67.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb67.Name = "Pb67";
-            this.Pb67.Size = new System.Drawing.Size(32, 32);
-            this.Pb67.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb67.TabIndex = 129;
-            this.Pb67.TabStop = false;
-            this.Pb67.Click += new System.EventHandler(this.item_Click);
-            this.Pb67.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb68
-            // 
-            this.Pb68.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb68.Location = new System.Drawing.Point(273, 47);
-            this.Pb68.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb68.Name = "Pb68";
-            this.Pb68.Size = new System.Drawing.Size(32, 32);
-            this.Pb68.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb68.TabIndex = 128;
-            this.Pb68.TabStop = false;
-            this.Pb68.Click += new System.EventHandler(this.item_Click);
-            this.Pb68.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb69
-            // 
-            this.Pb69.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb69.Location = new System.Drawing.Point(311, 47);
-            this.Pb69.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb69.Name = "Pb69";
-            this.Pb69.Size = new System.Drawing.Size(32, 32);
-            this.Pb69.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb69.TabIndex = 127;
-            this.Pb69.TabStop = false;
-            this.Pb69.Click += new System.EventHandler(this.item_Click);
-            this.Pb69.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb70
-            // 
-            this.Pb70.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb70.Location = new System.Drawing.Point(349, 47);
-            this.Pb70.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb70.Name = "Pb70";
-            this.Pb70.Size = new System.Drawing.Size(32, 32);
-            this.Pb70.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb70.TabIndex = 126;
-            this.Pb70.TabStop = false;
-            this.Pb70.Click += new System.EventHandler(this.item_Click);
-            this.Pb70.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb60
-            // 
-            this.Pb60.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb60.Location = new System.Drawing.Point(349, 9);
-            this.Pb60.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb60.Name = "Pb60";
-            this.Pb60.Size = new System.Drawing.Size(32, 32);
-            this.Pb60.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb60.TabIndex = 125;
-            this.Pb60.TabStop = false;
-            this.Pb60.Click += new System.EventHandler(this.item_Click);
-            this.Pb60.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb59
-            // 
-            this.Pb59.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb59.Location = new System.Drawing.Point(311, 9);
-            this.Pb59.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb59.Name = "Pb59";
-            this.Pb59.Size = new System.Drawing.Size(32, 32);
-            this.Pb59.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb59.TabIndex = 124;
-            this.Pb59.TabStop = false;
-            this.Pb59.Click += new System.EventHandler(this.item_Click);
-            this.Pb59.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb58
-            // 
-            this.Pb58.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb58.Location = new System.Drawing.Point(273, 9);
-            this.Pb58.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb58.Name = "Pb58";
-            this.Pb58.Size = new System.Drawing.Size(32, 32);
-            this.Pb58.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb58.TabIndex = 123;
-            this.Pb58.TabStop = false;
-            this.Pb58.Click += new System.EventHandler(this.item_Click);
-            this.Pb58.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb57
-            // 
-            this.Pb57.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb57.Location = new System.Drawing.Point(235, 9);
-            this.Pb57.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb57.Name = "Pb57";
-            this.Pb57.Size = new System.Drawing.Size(32, 32);
-            this.Pb57.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb57.TabIndex = 122;
-            this.Pb57.TabStop = false;
-            this.Pb57.Click += new System.EventHandler(this.item_Click);
-            this.Pb57.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb56
-            // 
-            this.Pb56.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb56.Location = new System.Drawing.Point(197, 9);
-            this.Pb56.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb56.Name = "Pb56";
-            this.Pb56.Size = new System.Drawing.Size(32, 32);
-            this.Pb56.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb56.TabIndex = 121;
-            this.Pb56.TabStop = false;
-            this.Pb56.Click += new System.EventHandler(this.item_Click);
-            this.Pb56.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb55
-            // 
-            this.Pb55.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb55.Location = new System.Drawing.Point(159, 9);
-            this.Pb55.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb55.Name = "Pb55";
-            this.Pb55.Size = new System.Drawing.Size(32, 32);
-            this.Pb55.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb55.TabIndex = 120;
-            this.Pb55.TabStop = false;
-            this.Pb55.Click += new System.EventHandler(this.item_Click);
-            this.Pb55.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb54
-            // 
-            this.Pb54.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb54.Location = new System.Drawing.Point(121, 9);
-            this.Pb54.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb54.Name = "Pb54";
-            this.Pb54.Size = new System.Drawing.Size(32, 32);
-            this.Pb54.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb54.TabIndex = 119;
-            this.Pb54.TabStop = false;
-            this.Pb54.Click += new System.EventHandler(this.item_Click);
-            this.Pb54.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb53
-            // 
-            this.Pb53.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb53.Location = new System.Drawing.Point(83, 9);
-            this.Pb53.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb53.Name = "Pb53";
-            this.Pb53.Size = new System.Drawing.Size(32, 32);
-            this.Pb53.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb53.TabIndex = 118;
-            this.Pb53.TabStop = false;
-            this.Pb53.Click += new System.EventHandler(this.item_Click);
-            this.Pb53.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb52
-            // 
-            this.Pb52.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb52.Location = new System.Drawing.Point(45, 9);
-            this.Pb52.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb52.Name = "Pb52";
-            this.Pb52.Size = new System.Drawing.Size(32, 32);
-            this.Pb52.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb52.TabIndex = 117;
-            this.Pb52.TabStop = false;
-            this.Pb52.Click += new System.EventHandler(this.item_Click);
-            this.Pb52.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb51
-            // 
-            this.Pb51.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb51.Location = new System.Drawing.Point(7, 9);
-            this.Pb51.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb51.Name = "Pb51";
-            this.Pb51.Size = new System.Drawing.Size(32, 32);
-            this.Pb51.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb51.TabIndex = 116;
-            this.Pb51.TabStop = false;
-            this.Pb51.Click += new System.EventHandler(this.item_Click);
-            this.Pb51.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
             // 
             // Pb31
             // 
@@ -1407,762 +2148,6 @@
             this.Pb1.Click += new System.EventHandler(this.item_Click);
             this.Pb1.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
             // 
-            // Pb121
-            // 
-            this.Pb121.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb121.Location = new System.Drawing.Point(7, 123);
-            this.Pb121.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb121.Name = "Pb121";
-            this.Pb121.Size = new System.Drawing.Size(32, 32);
-            this.Pb121.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb121.TabIndex = 155;
-            this.Pb121.TabStop = false;
-            this.Pb121.Click += new System.EventHandler(this.item_Click);
-            this.Pb121.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb122
-            // 
-            this.Pb122.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb122.Location = new System.Drawing.Point(45, 123);
-            this.Pb122.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb122.Name = "Pb122";
-            this.Pb122.Size = new System.Drawing.Size(32, 32);
-            this.Pb122.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb122.TabIndex = 154;
-            this.Pb122.TabStop = false;
-            this.Pb122.Click += new System.EventHandler(this.item_Click);
-            this.Pb122.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb123
-            // 
-            this.Pb123.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb123.Location = new System.Drawing.Point(83, 123);
-            this.Pb123.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb123.Name = "Pb123";
-            this.Pb123.Size = new System.Drawing.Size(32, 32);
-            this.Pb123.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb123.TabIndex = 153;
-            this.Pb123.TabStop = false;
-            this.Pb123.Click += new System.EventHandler(this.item_Click);
-            this.Pb123.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb124
-            // 
-            this.Pb124.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb124.Location = new System.Drawing.Point(121, 123);
-            this.Pb124.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb124.Name = "Pb124";
-            this.Pb124.Size = new System.Drawing.Size(32, 32);
-            this.Pb124.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb124.TabIndex = 152;
-            this.Pb124.TabStop = false;
-            this.Pb124.Click += new System.EventHandler(this.item_Click);
-            this.Pb124.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb125
-            // 
-            this.Pb125.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb125.Location = new System.Drawing.Point(159, 123);
-            this.Pb125.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb125.Name = "Pb125";
-            this.Pb125.Size = new System.Drawing.Size(32, 32);
-            this.Pb125.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb125.TabIndex = 151;
-            this.Pb125.TabStop = false;
-            this.Pb125.Click += new System.EventHandler(this.item_Click);
-            this.Pb125.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(155, 90);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 13);
-            this.label10.TabIndex = 91;
-            this.label10.Text = "Shoes:";
-            // 
-            // shoesPnl
-            // 
-            this.shoesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.shoesPnl.Location = new System.Drawing.Point(216, 90);
-            this.shoesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.shoesPnl.Name = "shoesPnl";
-            this.shoesPnl.Size = new System.Drawing.Size(20, 20);
-            this.shoesPnl.TabIndex = 92;
-            this.shoesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(155, 63);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 13);
-            this.label9.TabIndex = 89;
-            this.label9.Text = "Pants:";
-            // 
-            // pantsPnl
-            // 
-            this.pantsPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pantsPnl.Location = new System.Drawing.Point(216, 63);
-            this.pantsPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pantsPnl.Name = "pantsPnl";
-            this.pantsPnl.Size = new System.Drawing.Size(20, 20);
-            this.pantsPnl.TabIndex = 90;
-            this.pantsPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(155, 36);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 87;
-            this.label8.Text = "Undershirt:";
-            // 
-            // undershirtPnl
-            // 
-            this.undershirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.undershirtPnl.Location = new System.Drawing.Point(216, 36);
-            this.undershirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.undershirtPnl.Name = "undershirtPnl";
-            this.undershirtPnl.Size = new System.Drawing.Size(20, 20);
-            this.undershirtPnl.TabIndex = 88;
-            this.undershirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(155, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 13);
-            this.label7.TabIndex = 85;
-            this.label7.Text = "Shirt:";
-            // 
-            // shirtPnl
-            // 
-            this.shirtPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.shirtPnl.Location = new System.Drawing.Point(216, 9);
-            this.shirtPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.shirtPnl.Name = "shirtPnl";
-            this.shirtPnl.Size = new System.Drawing.Size(20, 20);
-            this.shirtPnl.TabIndex = 86;
-            this.shirtPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(155, 173);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
-            this.label6.TabIndex = 83;
-            this.label6.Text = "Eyes:";
-            // 
-            // eyesPnl
-            // 
-            this.eyesPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.eyesPnl.Location = new System.Drawing.Point(216, 173);
-            this.eyesPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.eyesPnl.Name = "eyesPnl";
-            this.eyesPnl.Size = new System.Drawing.Size(20, 20);
-            this.eyesPnl.TabIndex = 84;
-            this.eyesPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(155, 146);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 81;
-            this.label5.Text = "Skin:";
-            // 
-            // skinPnl
-            // 
-            this.skinPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.skinPnl.Location = new System.Drawing.Point(216, 146);
-            this.skinPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.skinPnl.Name = "skinPnl";
-            this.skinPnl.Size = new System.Drawing.Size(20, 20);
-            this.skinPnl.TabIndex = 82;
-            this.skinPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(155, 119);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 79;
-            this.label4.Text = "Hair:";
-            // 
-            // hairPnl
-            // 
-            this.hairPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.hairPnl.Location = new System.Drawing.Point(216, 119);
-            this.hairPnl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.hairPnl.Name = "hairPnl";
-            this.hairPnl.Size = new System.Drawing.Size(20, 20);
-            this.hairPnl.TabIndex = 80;
-            this.hairPnl.Click += new System.EventHandler(this.colourSelecter_Click);
-            // 
-            // Pb127
-            // 
-            this.Pb127.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb127.Location = new System.Drawing.Point(235, 123);
-            this.Pb127.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb127.Name = "Pb127";
-            this.Pb127.Size = new System.Drawing.Size(32, 32);
-            this.Pb127.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb127.TabIndex = 149;
-            this.Pb127.TabStop = false;
-            this.Pb127.Click += new System.EventHandler(this.item_Click);
-            this.Pb127.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 58);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
-            this.label15.TabIndex = 74;
-            this.label15.Text = "Mana:";
-            // 
-            // Pb128
-            // 
-            this.Pb128.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb128.Location = new System.Drawing.Point(273, 123);
-            this.Pb128.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb128.Name = "Pb128";
-            this.Pb128.Size = new System.Drawing.Size(32, 32);
-            this.Pb128.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb128.TabIndex = 148;
-            this.Pb128.TabStop = false;
-            this.Pb128.Click += new System.EventHandler(this.item_Click);
-            this.Pb128.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb129
-            // 
-            this.Pb129.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb129.Location = new System.Drawing.Point(311, 123);
-            this.Pb129.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb129.Name = "Pb129";
-            this.Pb129.Size = new System.Drawing.Size(32, 32);
-            this.Pb129.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb129.TabIndex = 147;
-            this.Pb129.TabStop = false;
-            this.Pb129.Click += new System.EventHandler(this.item_Click);
-            this.Pb129.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb130
-            // 
-            this.Pb130.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb130.Location = new System.Drawing.Point(349, 123);
-            this.Pb130.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb130.Name = "Pb130";
-            this.Pb130.Size = new System.Drawing.Size(32, 32);
-            this.Pb130.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb130.TabIndex = 146;
-            this.Pb130.TabStop = false;
-            this.Pb130.Click += new System.EventHandler(this.item_Click);
-            this.Pb130.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.btnClear.ForeColor = System.Drawing.Color.Red;
-            this.btnClear.Location = new System.Drawing.Point(215, 16);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(26, 51);
-            this.btnClear.TabIndex = 122;
-            this.btnClear.Text = "CLR";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // Pb126
-            // 
-            this.Pb126.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb126.Location = new System.Drawing.Point(197, 123);
-            this.Pb126.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb126.Name = "Pb126";
-            this.Pb126.Size = new System.Drawing.Size(32, 32);
-            this.Pb126.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb126.TabIndex = 150;
-            this.Pb126.TabStop = false;
-            this.Pb126.Click += new System.EventHandler(this.item_Click);
-            this.Pb126.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // nudHealthMax
-            // 
-            this.nudHealthMax.Location = new System.Drawing.Point(104, 33);
-            this.nudHealthMax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nudHealthMax.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.nudHealthMax.Name = "nudHealthMax";
-            this.nudHealthMax.Size = new System.Drawing.Size(40, 20);
-            this.nudHealthMax.TabIndex = 69;
-            this.nudHealthMax.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudHealthMax.ValueChanged += new System.EventHandler(this.nudHealthMax_ValueChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 32);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 13);
-            this.label12.TabIndex = 70;
-            this.label12.Text = "Health:";
-            // 
-            // nudManaMax
-            // 
-            this.nudManaMax.Location = new System.Drawing.Point(104, 59);
-            this.nudManaMax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nudManaMax.Maximum = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.nudManaMax.Name = "nudManaMax";
-            this.nudManaMax.Size = new System.Drawing.Size(40, 20);
-            this.nudManaMax.TabIndex = 73;
-            this.nudManaMax.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudManaMax.ValueChanged += new System.EventHandler(this.nudManaMax_ValueChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(87, 34);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(18, 13);
-            this.label13.TabIndex = 71;
-            this.label13.Text = " / ";
-            // 
-            // nudManaCur
-            // 
-            this.nudManaCur.Location = new System.Drawing.Point(50, 59);
-            this.nudManaCur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nudManaCur.Maximum = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.nudManaCur.Name = "nudManaCur";
-            this.nudManaCur.Size = new System.Drawing.Size(40, 20);
-            this.nudManaCur.TabIndex = 72;
-            this.nudManaCur.ValueChanged += new System.EventHandler(this.nudManaCur_ValueChanged);
-            // 
-            // cbPrefixes
-            // 
-            this.cbPrefixes.FormattingEnabled = true;
-            this.cbPrefixes.Location = new System.Drawing.Point(66, 18);
-            this.cbPrefixes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbPrefixes.Name = "cbPrefixes";
-            this.cbPrefixes.Size = new System.Drawing.Size(145, 21);
-            this.cbPrefixes.TabIndex = 121;
-            this.cbPrefixes.SelectedIndexChanged += new System.EventHandler(this.cbPrefixes_SelectedIndexChanged);
-            this.cbPrefixes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ndq_keydown);
-            // 
-            // Pb111
-            // 
-            this.Pb111.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb111.Location = new System.Drawing.Point(7, 85);
-            this.Pb111.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb111.Name = "Pb111";
-            this.Pb111.Size = new System.Drawing.Size(32, 32);
-            this.Pb111.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb111.TabIndex = 145;
-            this.Pb111.TabStop = false;
-            this.Pb111.Click += new System.EventHandler(this.item_Click);
-            this.Pb111.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Items:";
-            // 
-            // gbItems
-            // 
-            this.gbItems.Controls.Add(this.lblSearch);
-            this.gbItems.Controls.Add(this.textBox1);
-            this.gbItems.Controls.Add(this.itemLV);
-            this.gbItems.Enabled = false;
-            this.gbItems.Location = new System.Drawing.Point(12, 12);
-            this.gbItems.Name = "gbItems";
-            this.gbItems.Size = new System.Drawing.Size(262, 310);
-            this.gbItems.TabIndex = 126;
-            this.gbItems.TabStop = false;
-            this.gbItems.Text = "Items";
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(6, 286);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(44, 13);
-            this.lblSearch.TabIndex = 54;
-            this.lblSearch.Text = "Search:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(56, 284);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 53;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // itemLV
-            // 
-            this.itemLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.itemLV.HideSelection = false;
-            this.itemLV.Location = new System.Drawing.Point(6, 17);
-            this.itemLV.Name = "itemLV";
-            this.itemLV.Size = new System.Drawing.Size(250, 261);
-            this.itemLV.TabIndex = 52;
-            this.itemLV.UseCompatibleStateImageBehavior = false;
-            this.itemLV.ItemActivate += new System.EventHandler(this.lb_activ);
-            // 
-            // Pb112
-            // 
-            this.Pb112.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb112.Location = new System.Drawing.Point(45, 85);
-            this.Pb112.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb112.Name = "Pb112";
-            this.Pb112.Size = new System.Drawing.Size(32, 32);
-            this.Pb112.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb112.TabIndex = 144;
-            this.Pb112.TabStop = false;
-            this.Pb112.Click += new System.EventHandler(this.item_Click);
-            this.Pb112.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb113
-            // 
-            this.Pb113.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb113.Location = new System.Drawing.Point(83, 85);
-            this.Pb113.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb113.Name = "Pb113";
-            this.Pb113.Size = new System.Drawing.Size(32, 32);
-            this.Pb113.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb113.TabIndex = 143;
-            this.Pb113.TabStop = false;
-            this.Pb113.Click += new System.EventHandler(this.item_Click);
-            this.Pb113.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb114
-            // 
-            this.Pb114.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb114.Location = new System.Drawing.Point(121, 85);
-            this.Pb114.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb114.Name = "Pb114";
-            this.Pb114.Size = new System.Drawing.Size(32, 32);
-            this.Pb114.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb114.TabIndex = 142;
-            this.Pb114.TabStop = false;
-            this.Pb114.Click += new System.EventHandler(this.item_Click);
-            this.Pb114.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb115
-            // 
-            this.Pb115.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb115.Location = new System.Drawing.Point(159, 85);
-            this.Pb115.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb115.Name = "Pb115";
-            this.Pb115.Size = new System.Drawing.Size(32, 32);
-            this.Pb115.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb115.TabIndex = 141;
-            this.Pb115.TabStop = false;
-            this.Pb115.Click += new System.EventHandler(this.item_Click);
-            this.Pb115.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb116
-            // 
-            this.Pb116.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb116.Location = new System.Drawing.Point(197, 85);
-            this.Pb116.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb116.Name = "Pb116";
-            this.Pb116.Size = new System.Drawing.Size(32, 32);
-            this.Pb116.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb116.TabIndex = 140;
-            this.Pb116.TabStop = false;
-            this.Pb116.Click += new System.EventHandler(this.item_Click);
-            this.Pb116.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb117
-            // 
-            this.Pb117.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb117.Location = new System.Drawing.Point(235, 85);
-            this.Pb117.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb117.Name = "Pb117";
-            this.Pb117.Size = new System.Drawing.Size(32, 32);
-            this.Pb117.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb117.TabIndex = 139;
-            this.Pb117.TabStop = false;
-            this.Pb117.Click += new System.EventHandler(this.item_Click);
-            this.Pb117.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb118
-            // 
-            this.Pb118.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb118.Location = new System.Drawing.Point(273, 85);
-            this.Pb118.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb118.Name = "Pb118";
-            this.Pb118.Size = new System.Drawing.Size(32, 32);
-            this.Pb118.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb118.TabIndex = 138;
-            this.Pb118.TabStop = false;
-            this.Pb118.Click += new System.EventHandler(this.item_Click);
-            this.Pb118.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // btnReload
-            // 
-            this.btnReload.Enabled = false;
-            this.btnReload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReload.Location = new System.Drawing.Point(96, 17);
-            this.btnReload.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(39, 22);
-            this.btnReload.TabIndex = 62;
-            this.btnReload.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnReload.UseVisualStyleBackColor = true;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // Pb119
-            // 
-            this.Pb119.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb119.Location = new System.Drawing.Point(311, 85);
-            this.Pb119.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb119.Name = "Pb119";
-            this.Pb119.Size = new System.Drawing.Size(32, 32);
-            this.Pb119.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb119.TabIndex = 137;
-            this.Pb119.TabStop = false;
-            this.Pb119.Click += new System.EventHandler(this.item_Click);
-            this.Pb119.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb120
-            // 
-            this.Pb120.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb120.Location = new System.Drawing.Point(349, 85);
-            this.Pb120.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb120.Name = "Pb120";
-            this.Pb120.Size = new System.Drawing.Size(32, 32);
-            this.Pb120.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb120.TabIndex = 136;
-            this.Pb120.TabStop = false;
-            this.Pb120.Click += new System.EventHandler(this.item_Click);
-            this.Pb120.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb102
-            // 
-            this.Pb102.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb102.Location = new System.Drawing.Point(45, 47);
-            this.Pb102.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb102.Name = "Pb102";
-            this.Pb102.Size = new System.Drawing.Size(32, 32);
-            this.Pb102.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb102.TabIndex = 134;
-            this.Pb102.TabStop = false;
-            this.Pb102.Click += new System.EventHandler(this.item_Click);
-            this.Pb102.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb103
-            // 
-            this.Pb103.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb103.Location = new System.Drawing.Point(83, 47);
-            this.Pb103.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb103.Name = "Pb103";
-            this.Pb103.Size = new System.Drawing.Size(32, 32);
-            this.Pb103.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb103.TabIndex = 133;
-            this.Pb103.TabStop = false;
-            this.Pb103.Click += new System.EventHandler(this.item_Click);
-            this.Pb103.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // Pb104
-            // 
-            this.Pb104.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb104.Location = new System.Drawing.Point(121, 47);
-            this.Pb104.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb104.Name = "Pb104";
-            this.Pb104.Size = new System.Drawing.Size(32, 32);
-            this.Pb104.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb104.TabIndex = 132;
-            this.Pb104.TabStop = false;
-            this.Pb104.Click += new System.EventHandler(this.item_Click);
-            this.Pb104.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // imgl_items
-            // 
-            this.imgl_items.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imgl_items.ImageSize = new System.Drawing.Size(16, 16);
-            this.imgl_items.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // autoFunctionTimer
-            // 
-            this.autoFunctionTimer.Interval = 1000;
-            this.autoFunctionTimer.Tick += new System.EventHandler(this.autoFunctionTimer_Tick);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(6, 45);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(129, 22);
-            this.btnSave.TabIndex = 56;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // Pb101
-            // 
-            this.Pb101.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Pb101.Location = new System.Drawing.Point(7, 47);
-            this.Pb101.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pb101.Name = "Pb101";
-            this.Pb101.Size = new System.Drawing.Size(32, 32);
-            this.Pb101.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Pb101.TabIndex = 135;
-            this.Pb101.TabStop = false;
-            this.Pb101.Click += new System.EventHandler(this.item_Click);
-            this.Pb101.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // tcMain
-            // 
-            this.tcMain.Controls.Add(this.tabPage1);
-            this.tcMain.Controls.Add(this.tabPage2);
-            this.tcMain.Controls.Add(this.tabPage3);
-            this.tcMain.Controls.Add(this.tabPage6);
-            this.tcMain.Controls.Add(this.tabPage5);
-            this.tcMain.Controls.Add(this.tabPage4);
-            this.tcMain.Enabled = false;
-            this.tcMain.Location = new System.Drawing.Point(280, 94);
-            this.tcMain.Name = "tcMain";
-            this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(397, 228);
-            this.tcMain.TabIndex = 124;
-            this.tcMain.SelectedIndexChanged += new System.EventHandler(this.tabs_selectedChanged);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.Pb41);
-            this.tabPage1.Controls.Add(this.Pb42);
-            this.tabPage1.Controls.Add(this.Pb43);
-            this.tabPage1.Controls.Add(this.Pb44);
-            this.tabPage1.Controls.Add(this.Pb45);
-            this.tabPage1.Controls.Add(this.Pb46);
-            this.tabPage1.Controls.Add(this.Pb47);
-            this.tabPage1.Controls.Add(this.Pb48);
-            this.tabPage1.Controls.Add(this.Pb49);
-            this.tabPage1.Controls.Add(this.Pb50);
-            this.tabPage1.Controls.Add(this.Pb31);
-            this.tabPage1.Controls.Add(this.Pb32);
-            this.tabPage1.Controls.Add(this.Pb33);
-            this.tabPage1.Controls.Add(this.Pb34);
-            this.tabPage1.Controls.Add(this.Pb35);
-            this.tabPage1.Controls.Add(this.Pb36);
-            this.tabPage1.Controls.Add(this.Pb37);
-            this.tabPage1.Controls.Add(this.Pb38);
-            this.tabPage1.Controls.Add(this.Pb39);
-            this.tabPage1.Controls.Add(this.Pb40);
-            this.tabPage1.Controls.Add(this.Pb21);
-            this.tabPage1.Controls.Add(this.Pb22);
-            this.tabPage1.Controls.Add(this.Pb23);
-            this.tabPage1.Controls.Add(this.Pb24);
-            this.tabPage1.Controls.Add(this.Pb25);
-            this.tabPage1.Controls.Add(this.Pb26);
-            this.tabPage1.Controls.Add(this.Pb27);
-            this.tabPage1.Controls.Add(this.Pb28);
-            this.tabPage1.Controls.Add(this.Pb29);
-            this.tabPage1.Controls.Add(this.Pb30);
-            this.tabPage1.Controls.Add(this.Pb11);
-            this.tabPage1.Controls.Add(this.Pb12);
-            this.tabPage1.Controls.Add(this.Pb13);
-            this.tabPage1.Controls.Add(this.Pb14);
-            this.tabPage1.Controls.Add(this.Pb15);
-            this.tabPage1.Controls.Add(this.Pb16);
-            this.tabPage1.Controls.Add(this.Pb17);
-            this.tabPage1.Controls.Add(this.Pb18);
-            this.tabPage1.Controls.Add(this.Pb19);
-            this.tabPage1.Controls.Add(this.Pb20);
-            this.tabPage1.Controls.Add(this.Pb10);
-            this.tabPage1.Controls.Add(this.Pb9);
-            this.tabPage1.Controls.Add(this.Pb8);
-            this.tabPage1.Controls.Add(this.Pb7);
-            this.tabPage1.Controls.Add(this.Pb6);
-            this.tabPage1.Controls.Add(this.Pb5);
-            this.tabPage1.Controls.Add(this.Pb4);
-            this.tabPage1.Controls.Add(this.Pb3);
-            this.tabPage1.Controls.Add(this.Pb2);
-            this.tabPage1.Controls.Add(this.Pb1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(389, 202);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Inventory";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.Pb81);
-            this.tabPage2.Controls.Add(this.Pb82);
-            this.tabPage2.Controls.Add(this.Pb83);
-            this.tabPage2.Controls.Add(this.Pb84);
-            this.tabPage2.Controls.Add(this.Pb85);
-            this.tabPage2.Controls.Add(this.Pb86);
-            this.tabPage2.Controls.Add(this.Pb87);
-            this.tabPage2.Controls.Add(this.Pb88);
-            this.tabPage2.Controls.Add(this.Pb89);
-            this.tabPage2.Controls.Add(this.Pb90);
-            this.tabPage2.Controls.Add(this.Pb71);
-            this.tabPage2.Controls.Add(this.Pb72);
-            this.tabPage2.Controls.Add(this.Pb73);
-            this.tabPage2.Controls.Add(this.Pb74);
-            this.tabPage2.Controls.Add(this.Pb75);
-            this.tabPage2.Controls.Add(this.Pb76);
-            this.tabPage2.Controls.Add(this.Pb77);
-            this.tabPage2.Controls.Add(this.Pb78);
-            this.tabPage2.Controls.Add(this.Pb79);
-            this.tabPage2.Controls.Add(this.Pb80);
-            this.tabPage2.Controls.Add(this.Pb61);
-            this.tabPage2.Controls.Add(this.Pb62);
-            this.tabPage2.Controls.Add(this.Pb63);
-            this.tabPage2.Controls.Add(this.Pb64);
-            this.tabPage2.Controls.Add(this.Pb65);
-            this.tabPage2.Controls.Add(this.Pb66);
-            this.tabPage2.Controls.Add(this.Pb67);
-            this.tabPage2.Controls.Add(this.Pb68);
-            this.tabPage2.Controls.Add(this.Pb69);
-            this.tabPage2.Controls.Add(this.Pb70);
-            this.tabPage2.Controls.Add(this.Pb60);
-            this.tabPage2.Controls.Add(this.Pb59);
-            this.tabPage2.Controls.Add(this.Pb58);
-            this.tabPage2.Controls.Add(this.Pb57);
-            this.tabPage2.Controls.Add(this.Pb56);
-            this.tabPage2.Controls.Add(this.Pb55);
-            this.tabPage2.Controls.Add(this.Pb54);
-            this.tabPage2.Controls.Add(this.Pb53);
-            this.tabPage2.Controls.Add(this.Pb52);
-            this.tabPage2.Controls.Add(this.Pb51);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(389, 202);
-            this.tabPage2.TabIndex = 4;
-            this.tabPage2.Text = "Piggybank";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // Pb81
             // 
             this.Pb81.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -2449,55 +2434,551 @@
             this.Pb62.Click += new System.EventHandler(this.item_Click);
             this.Pb62.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
             // 
-            // tabPage3
+            // Pb63
             // 
-            this.tabPage3.Controls.Add(this.Pb121);
-            this.tabPage3.Controls.Add(this.Pb122);
-            this.tabPage3.Controls.Add(this.Pb123);
-            this.tabPage3.Controls.Add(this.Pb124);
-            this.tabPage3.Controls.Add(this.Pb125);
-            this.tabPage3.Controls.Add(this.Pb126);
-            this.tabPage3.Controls.Add(this.Pb127);
-            this.tabPage3.Controls.Add(this.Pb128);
-            this.tabPage3.Controls.Add(this.Pb129);
-            this.tabPage3.Controls.Add(this.Pb130);
-            this.tabPage3.Controls.Add(this.Pb111);
-            this.tabPage3.Controls.Add(this.Pb112);
-            this.tabPage3.Controls.Add(this.Pb113);
-            this.tabPage3.Controls.Add(this.Pb114);
-            this.tabPage3.Controls.Add(this.Pb115);
-            this.tabPage3.Controls.Add(this.Pb116);
-            this.tabPage3.Controls.Add(this.Pb117);
-            this.tabPage3.Controls.Add(this.Pb118);
-            this.tabPage3.Controls.Add(this.Pb119);
-            this.tabPage3.Controls.Add(this.Pb120);
-            this.tabPage3.Controls.Add(this.Pb101);
-            this.tabPage3.Controls.Add(this.Pb102);
-            this.tabPage3.Controls.Add(this.Pb103);
-            this.tabPage3.Controls.Add(this.Pb104);
-            this.tabPage3.Controls.Add(this.Pb105);
-            this.tabPage3.Controls.Add(this.Pb106);
-            this.tabPage3.Controls.Add(this.Pb107);
-            this.tabPage3.Controls.Add(this.Pb108);
-            this.tabPage3.Controls.Add(this.Pb109);
-            this.tabPage3.Controls.Add(this.Pb110);
-            this.tabPage3.Controls.Add(this.Pb100);
-            this.tabPage3.Controls.Add(this.Pb99);
-            this.tabPage3.Controls.Add(this.Pb98);
-            this.tabPage3.Controls.Add(this.Pb97);
-            this.tabPage3.Controls.Add(this.Pb96);
-            this.tabPage3.Controls.Add(this.Pb95);
-            this.tabPage3.Controls.Add(this.Pb94);
-            this.tabPage3.Controls.Add(this.Pb93);
-            this.tabPage3.Controls.Add(this.Pb92);
-            this.tabPage3.Controls.Add(this.Pb91);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(389, 202);
-            this.tabPage3.TabIndex = 5;
-            this.tabPage3.Text = "Safe";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.Pb63.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb63.Location = new System.Drawing.Point(83, 47);
+            this.Pb63.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb63.Name = "Pb63";
+            this.Pb63.Size = new System.Drawing.Size(32, 32);
+            this.Pb63.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb63.TabIndex = 133;
+            this.Pb63.TabStop = false;
+            this.Pb63.Click += new System.EventHandler(this.item_Click);
+            this.Pb63.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb64
+            // 
+            this.Pb64.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb64.Location = new System.Drawing.Point(121, 47);
+            this.Pb64.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb64.Name = "Pb64";
+            this.Pb64.Size = new System.Drawing.Size(32, 32);
+            this.Pb64.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb64.TabIndex = 132;
+            this.Pb64.TabStop = false;
+            this.Pb64.Click += new System.EventHandler(this.item_Click);
+            this.Pb64.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb65
+            // 
+            this.Pb65.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb65.Location = new System.Drawing.Point(159, 47);
+            this.Pb65.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb65.Name = "Pb65";
+            this.Pb65.Size = new System.Drawing.Size(32, 32);
+            this.Pb65.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb65.TabIndex = 131;
+            this.Pb65.TabStop = false;
+            this.Pb65.Click += new System.EventHandler(this.item_Click);
+            this.Pb65.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb66
+            // 
+            this.Pb66.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb66.Location = new System.Drawing.Point(197, 47);
+            this.Pb66.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb66.Name = "Pb66";
+            this.Pb66.Size = new System.Drawing.Size(32, 32);
+            this.Pb66.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb66.TabIndex = 130;
+            this.Pb66.TabStop = false;
+            this.Pb66.Click += new System.EventHandler(this.item_Click);
+            this.Pb66.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb67
+            // 
+            this.Pb67.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb67.Location = new System.Drawing.Point(235, 47);
+            this.Pb67.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb67.Name = "Pb67";
+            this.Pb67.Size = new System.Drawing.Size(32, 32);
+            this.Pb67.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb67.TabIndex = 129;
+            this.Pb67.TabStop = false;
+            this.Pb67.Click += new System.EventHandler(this.item_Click);
+            this.Pb67.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb68
+            // 
+            this.Pb68.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb68.Location = new System.Drawing.Point(273, 47);
+            this.Pb68.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb68.Name = "Pb68";
+            this.Pb68.Size = new System.Drawing.Size(32, 32);
+            this.Pb68.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb68.TabIndex = 128;
+            this.Pb68.TabStop = false;
+            this.Pb68.Click += new System.EventHandler(this.item_Click);
+            this.Pb68.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb69
+            // 
+            this.Pb69.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb69.Location = new System.Drawing.Point(311, 47);
+            this.Pb69.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb69.Name = "Pb69";
+            this.Pb69.Size = new System.Drawing.Size(32, 32);
+            this.Pb69.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb69.TabIndex = 127;
+            this.Pb69.TabStop = false;
+            this.Pb69.Click += new System.EventHandler(this.item_Click);
+            this.Pb69.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb70
+            // 
+            this.Pb70.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb70.Location = new System.Drawing.Point(349, 47);
+            this.Pb70.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb70.Name = "Pb70";
+            this.Pb70.Size = new System.Drawing.Size(32, 32);
+            this.Pb70.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb70.TabIndex = 126;
+            this.Pb70.TabStop = false;
+            this.Pb70.Click += new System.EventHandler(this.item_Click);
+            this.Pb70.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb60
+            // 
+            this.Pb60.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb60.Location = new System.Drawing.Point(349, 9);
+            this.Pb60.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb60.Name = "Pb60";
+            this.Pb60.Size = new System.Drawing.Size(32, 32);
+            this.Pb60.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb60.TabIndex = 125;
+            this.Pb60.TabStop = false;
+            this.Pb60.Click += new System.EventHandler(this.item_Click);
+            this.Pb60.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb59
+            // 
+            this.Pb59.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb59.Location = new System.Drawing.Point(311, 9);
+            this.Pb59.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb59.Name = "Pb59";
+            this.Pb59.Size = new System.Drawing.Size(32, 32);
+            this.Pb59.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb59.TabIndex = 124;
+            this.Pb59.TabStop = false;
+            this.Pb59.Click += new System.EventHandler(this.item_Click);
+            this.Pb59.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb58
+            // 
+            this.Pb58.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb58.Location = new System.Drawing.Point(273, 9);
+            this.Pb58.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb58.Name = "Pb58";
+            this.Pb58.Size = new System.Drawing.Size(32, 32);
+            this.Pb58.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb58.TabIndex = 123;
+            this.Pb58.TabStop = false;
+            this.Pb58.Click += new System.EventHandler(this.item_Click);
+            this.Pb58.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb57
+            // 
+            this.Pb57.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb57.Location = new System.Drawing.Point(235, 9);
+            this.Pb57.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb57.Name = "Pb57";
+            this.Pb57.Size = new System.Drawing.Size(32, 32);
+            this.Pb57.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb57.TabIndex = 122;
+            this.Pb57.TabStop = false;
+            this.Pb57.Click += new System.EventHandler(this.item_Click);
+            this.Pb57.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb56
+            // 
+            this.Pb56.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb56.Location = new System.Drawing.Point(197, 9);
+            this.Pb56.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb56.Name = "Pb56";
+            this.Pb56.Size = new System.Drawing.Size(32, 32);
+            this.Pb56.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb56.TabIndex = 121;
+            this.Pb56.TabStop = false;
+            this.Pb56.Click += new System.EventHandler(this.item_Click);
+            this.Pb56.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb55
+            // 
+            this.Pb55.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb55.Location = new System.Drawing.Point(159, 9);
+            this.Pb55.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb55.Name = "Pb55";
+            this.Pb55.Size = new System.Drawing.Size(32, 32);
+            this.Pb55.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb55.TabIndex = 120;
+            this.Pb55.TabStop = false;
+            this.Pb55.Click += new System.EventHandler(this.item_Click);
+            this.Pb55.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb54
+            // 
+            this.Pb54.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb54.Location = new System.Drawing.Point(121, 9);
+            this.Pb54.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb54.Name = "Pb54";
+            this.Pb54.Size = new System.Drawing.Size(32, 32);
+            this.Pb54.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb54.TabIndex = 119;
+            this.Pb54.TabStop = false;
+            this.Pb54.Click += new System.EventHandler(this.item_Click);
+            this.Pb54.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb53
+            // 
+            this.Pb53.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb53.Location = new System.Drawing.Point(83, 9);
+            this.Pb53.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb53.Name = "Pb53";
+            this.Pb53.Size = new System.Drawing.Size(32, 32);
+            this.Pb53.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb53.TabIndex = 118;
+            this.Pb53.TabStop = false;
+            this.Pb53.Click += new System.EventHandler(this.item_Click);
+            this.Pb53.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb52
+            // 
+            this.Pb52.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb52.Location = new System.Drawing.Point(45, 9);
+            this.Pb52.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb52.Name = "Pb52";
+            this.Pb52.Size = new System.Drawing.Size(32, 32);
+            this.Pb52.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb52.TabIndex = 117;
+            this.Pb52.TabStop = false;
+            this.Pb52.Click += new System.EventHandler(this.item_Click);
+            this.Pb52.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb51
+            // 
+            this.Pb51.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb51.Location = new System.Drawing.Point(7, 9);
+            this.Pb51.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb51.Name = "Pb51";
+            this.Pb51.Size = new System.Drawing.Size(32, 32);
+            this.Pb51.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb51.TabIndex = 116;
+            this.Pb51.TabStop = false;
+            this.Pb51.Click += new System.EventHandler(this.item_Click);
+            this.Pb51.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb121
+            // 
+            this.Pb121.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb121.Location = new System.Drawing.Point(7, 123);
+            this.Pb121.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb121.Name = "Pb121";
+            this.Pb121.Size = new System.Drawing.Size(32, 32);
+            this.Pb121.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb121.TabIndex = 155;
+            this.Pb121.TabStop = false;
+            this.Pb121.Click += new System.EventHandler(this.item_Click);
+            this.Pb121.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb122
+            // 
+            this.Pb122.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb122.Location = new System.Drawing.Point(45, 123);
+            this.Pb122.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb122.Name = "Pb122";
+            this.Pb122.Size = new System.Drawing.Size(32, 32);
+            this.Pb122.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb122.TabIndex = 154;
+            this.Pb122.TabStop = false;
+            this.Pb122.Click += new System.EventHandler(this.item_Click);
+            this.Pb122.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb123
+            // 
+            this.Pb123.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb123.Location = new System.Drawing.Point(83, 123);
+            this.Pb123.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb123.Name = "Pb123";
+            this.Pb123.Size = new System.Drawing.Size(32, 32);
+            this.Pb123.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb123.TabIndex = 153;
+            this.Pb123.TabStop = false;
+            this.Pb123.Click += new System.EventHandler(this.item_Click);
+            this.Pb123.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb124
+            // 
+            this.Pb124.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb124.Location = new System.Drawing.Point(121, 123);
+            this.Pb124.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb124.Name = "Pb124";
+            this.Pb124.Size = new System.Drawing.Size(32, 32);
+            this.Pb124.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb124.TabIndex = 152;
+            this.Pb124.TabStop = false;
+            this.Pb124.Click += new System.EventHandler(this.item_Click);
+            this.Pb124.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb125
+            // 
+            this.Pb125.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb125.Location = new System.Drawing.Point(159, 123);
+            this.Pb125.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb125.Name = "Pb125";
+            this.Pb125.Size = new System.Drawing.Size(32, 32);
+            this.Pb125.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb125.TabIndex = 151;
+            this.Pb125.TabStop = false;
+            this.Pb125.Click += new System.EventHandler(this.item_Click);
+            this.Pb125.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb126
+            // 
+            this.Pb126.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb126.Location = new System.Drawing.Point(197, 123);
+            this.Pb126.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb126.Name = "Pb126";
+            this.Pb126.Size = new System.Drawing.Size(32, 32);
+            this.Pb126.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb126.TabIndex = 150;
+            this.Pb126.TabStop = false;
+            this.Pb126.Click += new System.EventHandler(this.item_Click);
+            this.Pb126.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb127
+            // 
+            this.Pb127.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb127.Location = new System.Drawing.Point(235, 123);
+            this.Pb127.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb127.Name = "Pb127";
+            this.Pb127.Size = new System.Drawing.Size(32, 32);
+            this.Pb127.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb127.TabIndex = 149;
+            this.Pb127.TabStop = false;
+            this.Pb127.Click += new System.EventHandler(this.item_Click);
+            this.Pb127.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb128
+            // 
+            this.Pb128.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb128.Location = new System.Drawing.Point(273, 123);
+            this.Pb128.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb128.Name = "Pb128";
+            this.Pb128.Size = new System.Drawing.Size(32, 32);
+            this.Pb128.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb128.TabIndex = 148;
+            this.Pb128.TabStop = false;
+            this.Pb128.Click += new System.EventHandler(this.item_Click);
+            this.Pb128.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb129
+            // 
+            this.Pb129.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb129.Location = new System.Drawing.Point(311, 123);
+            this.Pb129.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb129.Name = "Pb129";
+            this.Pb129.Size = new System.Drawing.Size(32, 32);
+            this.Pb129.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb129.TabIndex = 147;
+            this.Pb129.TabStop = false;
+            this.Pb129.Click += new System.EventHandler(this.item_Click);
+            this.Pb129.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb130
+            // 
+            this.Pb130.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb130.Location = new System.Drawing.Point(349, 123);
+            this.Pb130.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb130.Name = "Pb130";
+            this.Pb130.Size = new System.Drawing.Size(32, 32);
+            this.Pb130.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb130.TabIndex = 146;
+            this.Pb130.TabStop = false;
+            this.Pb130.Click += new System.EventHandler(this.item_Click);
+            this.Pb130.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb111
+            // 
+            this.Pb111.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb111.Location = new System.Drawing.Point(7, 85);
+            this.Pb111.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb111.Name = "Pb111";
+            this.Pb111.Size = new System.Drawing.Size(32, 32);
+            this.Pb111.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb111.TabIndex = 145;
+            this.Pb111.TabStop = false;
+            this.Pb111.Click += new System.EventHandler(this.item_Click);
+            this.Pb111.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb112
+            // 
+            this.Pb112.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb112.Location = new System.Drawing.Point(45, 85);
+            this.Pb112.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb112.Name = "Pb112";
+            this.Pb112.Size = new System.Drawing.Size(32, 32);
+            this.Pb112.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb112.TabIndex = 144;
+            this.Pb112.TabStop = false;
+            this.Pb112.Click += new System.EventHandler(this.item_Click);
+            this.Pb112.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb113
+            // 
+            this.Pb113.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb113.Location = new System.Drawing.Point(83, 85);
+            this.Pb113.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb113.Name = "Pb113";
+            this.Pb113.Size = new System.Drawing.Size(32, 32);
+            this.Pb113.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb113.TabIndex = 143;
+            this.Pb113.TabStop = false;
+            this.Pb113.Click += new System.EventHandler(this.item_Click);
+            this.Pb113.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb114
+            // 
+            this.Pb114.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb114.Location = new System.Drawing.Point(121, 85);
+            this.Pb114.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb114.Name = "Pb114";
+            this.Pb114.Size = new System.Drawing.Size(32, 32);
+            this.Pb114.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb114.TabIndex = 142;
+            this.Pb114.TabStop = false;
+            this.Pb114.Click += new System.EventHandler(this.item_Click);
+            this.Pb114.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb115
+            // 
+            this.Pb115.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb115.Location = new System.Drawing.Point(159, 85);
+            this.Pb115.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb115.Name = "Pb115";
+            this.Pb115.Size = new System.Drawing.Size(32, 32);
+            this.Pb115.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb115.TabIndex = 141;
+            this.Pb115.TabStop = false;
+            this.Pb115.Click += new System.EventHandler(this.item_Click);
+            this.Pb115.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb116
+            // 
+            this.Pb116.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb116.Location = new System.Drawing.Point(197, 85);
+            this.Pb116.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb116.Name = "Pb116";
+            this.Pb116.Size = new System.Drawing.Size(32, 32);
+            this.Pb116.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb116.TabIndex = 140;
+            this.Pb116.TabStop = false;
+            this.Pb116.Click += new System.EventHandler(this.item_Click);
+            this.Pb116.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb117
+            // 
+            this.Pb117.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb117.Location = new System.Drawing.Point(235, 85);
+            this.Pb117.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb117.Name = "Pb117";
+            this.Pb117.Size = new System.Drawing.Size(32, 32);
+            this.Pb117.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb117.TabIndex = 139;
+            this.Pb117.TabStop = false;
+            this.Pb117.Click += new System.EventHandler(this.item_Click);
+            this.Pb117.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb118
+            // 
+            this.Pb118.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb118.Location = new System.Drawing.Point(273, 85);
+            this.Pb118.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb118.Name = "Pb118";
+            this.Pb118.Size = new System.Drawing.Size(32, 32);
+            this.Pb118.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb118.TabIndex = 138;
+            this.Pb118.TabStop = false;
+            this.Pb118.Click += new System.EventHandler(this.item_Click);
+            this.Pb118.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb119
+            // 
+            this.Pb119.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb119.Location = new System.Drawing.Point(311, 85);
+            this.Pb119.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb119.Name = "Pb119";
+            this.Pb119.Size = new System.Drawing.Size(32, 32);
+            this.Pb119.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb119.TabIndex = 137;
+            this.Pb119.TabStop = false;
+            this.Pb119.Click += new System.EventHandler(this.item_Click);
+            this.Pb119.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb120
+            // 
+            this.Pb120.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb120.Location = new System.Drawing.Point(349, 85);
+            this.Pb120.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb120.Name = "Pb120";
+            this.Pb120.Size = new System.Drawing.Size(32, 32);
+            this.Pb120.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb120.TabIndex = 136;
+            this.Pb120.TabStop = false;
+            this.Pb120.Click += new System.EventHandler(this.item_Click);
+            this.Pb120.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb101
+            // 
+            this.Pb101.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb101.Location = new System.Drawing.Point(7, 47);
+            this.Pb101.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb101.Name = "Pb101";
+            this.Pb101.Size = new System.Drawing.Size(32, 32);
+            this.Pb101.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb101.TabIndex = 135;
+            this.Pb101.TabStop = false;
+            this.Pb101.Click += new System.EventHandler(this.item_Click);
+            this.Pb101.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb102
+            // 
+            this.Pb102.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb102.Location = new System.Drawing.Point(45, 47);
+            this.Pb102.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb102.Name = "Pb102";
+            this.Pb102.Size = new System.Drawing.Size(32, 32);
+            this.Pb102.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb102.TabIndex = 134;
+            this.Pb102.TabStop = false;
+            this.Pb102.Click += new System.EventHandler(this.item_Click);
+            this.Pb102.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb103
+            // 
+            this.Pb103.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb103.Location = new System.Drawing.Point(83, 47);
+            this.Pb103.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb103.Name = "Pb103";
+            this.Pb103.Size = new System.Drawing.Size(32, 32);
+            this.Pb103.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb103.TabIndex = 133;
+            this.Pb103.TabStop = false;
+            this.Pb103.Click += new System.EventHandler(this.item_Click);
+            this.Pb103.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
+            // 
+            // Pb104
+            // 
+            this.Pb104.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Pb104.Location = new System.Drawing.Point(121, 47);
+            this.Pb104.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pb104.Name = "Pb104";
+            this.Pb104.Size = new System.Drawing.Size(32, 32);
+            this.Pb104.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pb104.TabIndex = 132;
+            this.Pb104.TabStop = false;
+            this.Pb104.Click += new System.EventHandler(this.item_Click);
+            this.Pb104.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
             // 
             // Pb105
             // 
@@ -2706,64 +3187,6 @@
             this.Pb91.TabStop = false;
             this.Pb91.Click += new System.EventHandler(this.item_Click);
             this.Pb91.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.Pb169);
-            this.tabPage6.Controls.Add(this.Pb170);
-            this.tabPage6.Controls.Add(this.Pb171);
-            this.tabPage6.Controls.Add(this.Pb172);
-            this.tabPage6.Controls.Add(this.Pb173);
-            this.tabPage6.Controls.Add(this.Pb174);
-            this.tabPage6.Controls.Add(this.Pb175);
-            this.tabPage6.Controls.Add(this.Pb176);
-            this.tabPage6.Controls.Add(this.Pb177);
-            this.tabPage6.Controls.Add(this.Pb178);
-            this.tabPage6.Controls.Add(this.Pb159);
-            this.tabPage6.Controls.Add(this.Pb160);
-            this.tabPage6.Controls.Add(this.Pb161);
-            this.tabPage6.Controls.Add(this.Pb162);
-            this.tabPage6.Controls.Add(this.Pb163);
-            this.tabPage6.Controls.Add(this.Pb164);
-            this.tabPage6.Controls.Add(this.Pb165);
-            this.tabPage6.Controls.Add(this.Pb166);
-            this.tabPage6.Controls.Add(this.Pb167);
-            this.tabPage6.Controls.Add(this.Pb168);
-            this.tabPage6.Controls.Add(this.Pb149);
-            this.tabPage6.Controls.Add(this.Pb150);
-            this.tabPage6.Controls.Add(this.Pb151);
-            this.tabPage6.Controls.Add(this.Pb152);
-            this.tabPage6.Controls.Add(this.Pb153);
-            this.tabPage6.Controls.Add(this.Pb154);
-            this.tabPage6.Controls.Add(this.Pb155);
-            this.tabPage6.Controls.Add(this.Pb156);
-            this.tabPage6.Controls.Add(this.Pb157);
-            this.tabPage6.Controls.Add(this.Pb158);
-            this.tabPage6.Controls.Add(this.Pb139);
-            this.tabPage6.Controls.Add(this.Pb140);
-            this.tabPage6.Controls.Add(this.Pb141);
-            this.tabPage6.Controls.Add(this.Pb142);
-            this.tabPage6.Controls.Add(this.Pb143);
-            this.tabPage6.Controls.Add(this.Pb144);
-            this.tabPage6.Controls.Add(this.Pb145);
-            this.tabPage6.Controls.Add(this.Pb146);
-            this.tabPage6.Controls.Add(this.Pb147);
-            this.tabPage6.Controls.Add(this.Pb148);
-            this.tabPage6.Controls.Add(this.Pb131);
-            this.tabPage6.Controls.Add(this.Pb132);
-            this.tabPage6.Controls.Add(this.Pb133);
-            this.tabPage6.Controls.Add(this.Pb134);
-            this.tabPage6.Controls.Add(this.Pb135);
-            this.tabPage6.Controls.Add(this.Pb136);
-            this.tabPage6.Controls.Add(this.Pb137);
-            this.tabPage6.Controls.Add(this.Pb138);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(389, 202);
-            this.tabPage6.TabIndex = 8;
-            this.tabPage6.Text = "Misc";
-            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // Pb169
             // 
@@ -3309,37 +3732,6 @@
             this.Pb138.Click += new System.EventHandler(this.item_Click);
             this.Pb138.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
             // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.Pb195);
-            this.tabPage5.Controls.Add(this.Pb196);
-            this.tabPage5.Controls.Add(this.Pb197);
-            this.tabPage5.Controls.Add(this.Pb198);
-            this.tabPage5.Controls.Add(this.Pb185);
-            this.tabPage5.Controls.Add(this.Pb186);
-            this.tabPage5.Controls.Add(this.Pb187);
-            this.tabPage5.Controls.Add(this.Pb188);
-            this.tabPage5.Controls.Add(this.Pb189);
-            this.tabPage5.Controls.Add(this.Pb190);
-            this.tabPage5.Controls.Add(this.Pb199);
-            this.tabPage5.Controls.Add(this.Pb200);
-            this.tabPage5.Controls.Add(this.Pb194);
-            this.tabPage5.Controls.Add(this.Pb193);
-            this.tabPage5.Controls.Add(this.Pb184);
-            this.tabPage5.Controls.Add(this.Pb183);
-            this.tabPage5.Controls.Add(this.Pb182);
-            this.tabPage5.Controls.Add(this.Pb181);
-            this.tabPage5.Controls.Add(this.Pb180);
-            this.tabPage5.Controls.Add(this.Pb179);
-            this.tabPage5.Controls.Add(this.Pb192);
-            this.tabPage5.Controls.Add(this.Pb191);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(389, 202);
-            this.tabPage5.TabIndex = 7;
-            this.tabPage5.Text = "Buffs";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
             // Pb195
             // 
             this.Pb195.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -3626,408 +4018,19 @@
             this.Pb191.Click += new System.EventHandler(this.item_Click);
             this.Pb191.Paint += new System.Windows.Forms.PaintEventHandler(this.item_Paint);
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.nudHealthMax);
-            this.tabPage4.Controls.Add(this.nudManaMax);
-            this.tabPage4.Controls.Add(this.nudHealthCur);
-            this.tabPage4.Controls.Add(this.nudManaCur);
-            this.tabPage4.Controls.Add(this.panel2);
-            this.tabPage4.Controls.Add(this.panel1);
-            this.tabPage4.Controls.Add(this.label16);
-            this.tabPage4.Controls.Add(this.comboBox1);
-            this.tabPage4.Controls.Add(this.label1);
-            this.tabPage4.Controls.Add(this.numericUpDown1);
-            this.tabPage4.Controls.Add(this.label10);
-            this.tabPage4.Controls.Add(this.shoesPnl);
-            this.tabPage4.Controls.Add(this.label9);
-            this.tabPage4.Controls.Add(this.pantsPnl);
-            this.tabPage4.Controls.Add(this.label8);
-            this.tabPage4.Controls.Add(this.undershirtPnl);
-            this.tabPage4.Controls.Add(this.label7);
-            this.tabPage4.Controls.Add(this.shirtPnl);
-            this.tabPage4.Controls.Add(this.label6);
-            this.tabPage4.Controls.Add(this.eyesPnl);
-            this.tabPage4.Controls.Add(this.label5);
-            this.tabPage4.Controls.Add(this.skinPnl);
-            this.tabPage4.Controls.Add(this.label4);
-            this.tabPage4.Controls.Add(this.hairPnl);
-            this.tabPage4.Controls.Add(this.gbMaximumMana);
-            this.tabPage4.Controls.Add(this.btnMaxHealth);
-            this.tabPage4.Controls.Add(this.gbFillMana);
-            this.tabPage4.Controls.Add(this.btnHeal);
-            this.tabPage4.Controls.Add(this.tbName);
-            this.tabPage4.Controls.Add(this.label14);
-            this.tabPage4.Controls.Add(this.label11);
-            this.tabPage4.Controls.Add(this.label15);
-            this.tabPage4.Controls.Add(this.label12);
-            this.tabPage4.Controls.Add(this.label13);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(389, 202);
-            this.tabPage4.TabIndex = 6;
-            this.tabPage4.Text = "Character";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // nudHealthCur
-            // 
-            this.nudHealthCur.Location = new System.Drawing.Point(50, 33);
-            this.nudHealthCur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nudHealthCur.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.nudHealthCur.Name = "nudHealthCur";
-            this.nudHealthCur.Size = new System.Drawing.Size(40, 20);
-            this.nudHealthCur.TabIndex = 67;
-            this.nudHealthCur.ValueChanged += new System.EventHandler(this.nudHealthCur_ValueChanged);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(243, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 202);
-            this.panel2.TabIndex = 134;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(149, 1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 202);
-            this.panel1.TabIndex = 132;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(247, 38);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 13);
-            this.label16.TabIndex = 131;
-            this.label16.Text = "Game mode:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Journey",
-            "Softcore",
-            "Mediumcore",
-            "Hardcore"});
-            this.comboBox1.Location = new System.Drawing.Point(248, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(134, 21);
-            this.comboBox1.TabIndex = 129;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(248, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 130;
-            this.label1.Text = "Hair style:";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(307, 9);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            133,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(75, 20);
-            this.numericUpDown1.TabIndex = 129;
-            // 
-            // gbMaximumMana
-            // 
-            this.gbMaximumMana.Location = new System.Drawing.Point(9, 114);
-            this.gbMaximumMana.Name = "gbMaximumMana";
-            this.gbMaximumMana.Size = new System.Drawing.Size(135, 23);
-            this.gbMaximumMana.TabIndex = 78;
-            this.gbMaximumMana.Text = "Maximum mana";
-            this.gbMaximumMana.UseVisualStyleBackColor = true;
-            this.gbMaximumMana.Click += new System.EventHandler(this.gbMaximumMana_Click);
-            // 
-            // btnMaxHealth
-            // 
-            this.btnMaxHealth.Location = new System.Drawing.Point(9, 85);
-            this.btnMaxHealth.Name = "btnMaxHealth";
-            this.btnMaxHealth.Size = new System.Drawing.Size(135, 23);
-            this.btnMaxHealth.TabIndex = 77;
-            this.btnMaxHealth.Text = "Maximum health";
-            this.btnMaxHealth.UseVisualStyleBackColor = true;
-            this.btnMaxHealth.Click += new System.EventHandler(this.btnMaxHealth_Click);
-            // 
-            // gbFillMana
-            // 
-            this.gbFillMana.Location = new System.Drawing.Point(9, 172);
-            this.gbFillMana.Name = "gbFillMana";
-            this.gbFillMana.Size = new System.Drawing.Size(135, 23);
-            this.gbFillMana.TabIndex = 76;
-            this.gbFillMana.Text = "Fill mana";
-            this.gbFillMana.UseVisualStyleBackColor = true;
-            this.gbFillMana.Click += new System.EventHandler(this.gbFillMana_Click);
-            // 
-            // btnHeal
-            // 
-            this.btnHeal.Location = new System.Drawing.Point(9, 143);
-            this.btnHeal.Name = "btnHeal";
-            this.btnHeal.Size = new System.Drawing.Size(135, 23);
-            this.btnHeal.TabIndex = 68;
-            this.btnHeal.Text = "Heal";
-            this.btnHeal.UseVisualStyleBackColor = true;
-            this.btnHeal.Click += new System.EventHandler(this.btnHeal_Click);
-            // 
-            // tbName
-            // 
-            this.tbName.Location = new System.Drawing.Point(50, 9);
-            this.tbName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbName.MaxLength = 20;
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(94, 20);
-            this.tbName.TabIndex = 65;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(87, 60);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(18, 13);
-            this.label14.TabIndex = 75;
-            this.label14.Text = " / ";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(38, 13);
-            this.label11.TabIndex = 66;
-            this.label11.Text = "Name:";
-            // 
-            // gb_slot_items
-            // 
-            this.gb_slot_items.Controls.Add(this.btnClear);
-            this.gb_slot_items.Controls.Add(this.cbPrefixes);
-            this.gb_slot_items.Controls.Add(this.label3);
-            this.gb_slot_items.Controls.Add(this.nudQuant);
-            this.gb_slot_items.Controls.Add(this.label2);
-            this.gb_slot_items.Enabled = false;
-            this.gb_slot_items.Location = new System.Drawing.Point(280, 12);
-            this.gb_slot_items.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gb_slot_items.Name = "gb_slot_items";
-            this.gb_slot_items.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gb_slot_items.Size = new System.Drawing.Size(247, 75);
-            this.gb_slot_items.TabIndex = 125;
-            this.gb_slot_items.TabStop = false;
-            this.gb_slot_items.Text = "Slot";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 120;
-            this.label3.Text = "Prefix:";
-            // 
-            // nudQuant
-            // 
-            this.nudQuant.Location = new System.Drawing.Point(66, 47);
-            this.nudQuant.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nudQuant.Maximum = new decimal(new int[] {
-            25535,
-            0,
-            0,
-            0});
-            this.nudQuant.Name = "nudQuant";
-            this.nudQuant.Size = new System.Drawing.Size(145, 20);
-            this.nudQuant.TabIndex = 117;
-            this.nudQuant.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudQuant.ValueChanged += new System.EventHandler(this.nudQuant_ValueChanged);
-            this.nudQuant.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ndq_keydown);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 119;
-            this.label2.Text = "Quantity:";
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(6, 17);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(84, 22);
-            this.btnLoad.TabIndex = 55;
-            this.btnLoad.Text = "Load";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnLoad);
-            this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.btnReload);
-            this.groupBox1.Location = new System.Drawing.Point(533, 12);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(144, 75);
-            this.groupBox1.TabIndex = 127;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "File";
-            // 
-            // cbItem
-            // 
-            this.cbItem.Enabled = false;
-            this.cbItem.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbItem.FormattingEnabled = true;
-            this.cbItem.Location = new System.Drawing.Point(704, 297);
-            this.cbItem.Name = "cbItem";
-            this.cbItem.Size = new System.Drawing.Size(0, 21);
-            this.cbItem.TabIndex = 128;
-            this.cbItem.SelectedIndexChanged += new System.EventHandler(this.cbItem_SelectedIndexChanged);
-            // 
-            // gbBuffs
-            // 
-            this.gbBuffs.Controls.Add(this.label17);
-            this.gbBuffs.Controls.Add(this.textBox2);
-            this.gbBuffs.Controls.Add(this.buffLV);
-            this.gbBuffs.Enabled = false;
-            this.gbBuffs.Location = new System.Drawing.Point(12, 12);
-            this.gbBuffs.Name = "gbBuffs";
-            this.gbBuffs.Size = new System.Drawing.Size(262, 310);
-            this.gbBuffs.TabIndex = 129;
-            this.gbBuffs.TabStop = false;
-            this.gbBuffs.Text = "Buffs";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 286);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 13);
-            this.label17.TabIndex = 54;
-            this.label17.Text = "Search:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(56, 284);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 53;
-            // 
-            // buffLV
-            // 
-            this.buffLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2});
-            this.buffLV.HideSelection = false;
-            this.buffLV.Location = new System.Drawing.Point(6, 17);
-            this.buffLV.Name = "buffLV";
-            this.buffLV.Size = new System.Drawing.Size(250, 261);
-            this.buffLV.TabIndex = 52;
-            this.buffLV.UseCompatibleStateImageBehavior = false;
-            this.buffLV.ItemActivate += new System.EventHandler(this.blb_activ);
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Items:";
-            // 
-            // imgl_buffs
-            // 
-            this.imgl_buffs.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imgl_buffs.ImageSize = new System.Drawing.Size(16, 16);
-            this.imgl_buffs.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // cbBuffs
-            // 
-            this.cbBuffs.Enabled = false;
-            this.cbBuffs.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbBuffs.FormattingEnabled = true;
-            this.cbBuffs.Location = new System.Drawing.Point(66, 17);
-            this.cbBuffs.Name = "cbBuffs";
-            this.cbBuffs.Size = new System.Drawing.Size(145, 21);
-            this.cbBuffs.TabIndex = 130;
-            this.cbBuffs.SelectedIndexChanged += new System.EventHandler(this.cbBuffs_SelectedIndexChanged);
-            // 
-            // gb_slot_buff
-            // 
-            this.gb_slot_buff.Controls.Add(this.cbBuffs);
-            this.gb_slot_buff.Controls.Add(this.button1);
-            this.gb_slot_buff.Controls.Add(this.label18);
-            this.gb_slot_buff.Controls.Add(this.nudDur);
-            this.gb_slot_buff.Controls.Add(this.label19);
-            this.gb_slot_buff.Enabled = false;
-            this.gb_slot_buff.Location = new System.Drawing.Point(280, 12);
-            this.gb_slot_buff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gb_slot_buff.Name = "gb_slot_buff";
-            this.gb_slot_buff.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gb_slot_buff.Size = new System.Drawing.Size(247, 75);
-            this.gb_slot_buff.TabIndex = 131;
-            this.gb_slot_buff.TabStop = false;
-            this.gb_slot_buff.Text = "Slot";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(215, 16);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(26, 51);
-            this.button1.TabIndex = 122;
-            this.button1.Text = "CLR";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(29, 21);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(29, 13);
-            this.label18.TabIndex = 120;
-            this.label18.Text = "Buff:";
-            // 
-            // nudDur
-            // 
-            this.nudDur.Location = new System.Drawing.Point(66, 47);
-            this.nudDur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nudDur.Maximum = new decimal(new int[] {
-            25535,
-            0,
-            0,
-            0});
-            this.nudDur.Name = "nudDur";
-            this.nudDur.Size = new System.Drawing.Size(145, 20);
-            this.nudDur.TabIndex = 117;
-            this.nudDur.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudDur.ValueChanged += new System.EventHandler(this.nudDur_ValueChanged);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(11, 49);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(47, 13);
-            this.label19.TabIndex = 119;
-            this.label19.Text = "Duration";
+            // btnReload
+            // 
+            this.btnReload.Enabled = false;
+            this.btnReload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Image = global::WinTerrEdit.Properties.Resources.crappyreload;
+            this.btnReload.Location = new System.Drawing.Point(96, 17);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(39, 22);
+            this.btnReload.TabIndex = 62;
+            this.btnReload.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // entry
             // 
@@ -4037,10 +4040,10 @@
             this.Controls.Add(this.cbItem);
             this.Controls.Add(this.tcMain);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gbItems);
-            this.Controls.Add(this.gbBuffs);
             this.Controls.Add(this.gb_slot_items);
             this.Controls.Add(this.gb_slot_buff);
+            this.Controls.Add(this.gbItems);
+            this.Controls.Add(this.gbBuffs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -4051,6 +4054,30 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onClose);
             this.Load += new System.EventHandler(this.Entry_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entry_kDown);
+            ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).EndInit();
+            this.gbItems.ResumeLayout(false);
+            this.gbItems.PerformLayout();
+            this.tcMain.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHair)).EndInit();
+            this.gb_slot_items.ResumeLayout(false);
+            this.gb_slot_items.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQuant)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.gbBuffs.ResumeLayout(false);
+            this.gbBuffs.PerformLayout();
+            this.gb_slot_buff.ResumeLayout(false);
+            this.gb_slot_buff.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb43)).EndInit();
@@ -4061,24 +4088,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb48)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb49)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb50)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb64)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb63)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb65)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb66)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb67)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb68)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb69)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb70)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb60)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb59)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb58)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb57)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb56)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb55)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb54)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb53)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb52)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb51)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb33)).EndInit();
@@ -4119,38 +4128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb121)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb122)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb123)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb124)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb125)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb127)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb128)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb129)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb130)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb126)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb111)).EndInit();
-            this.gbItems.ResumeLayout(false);
-            this.gbItems.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb112)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb113)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb114)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb115)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb116)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb117)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb118)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb119)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb120)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb102)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb103)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb104)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pb101)).EndInit();
-            this.tcMain.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pb81)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb82)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb83)).EndInit();
@@ -4173,7 +4150,48 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb80)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb61)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb62)).EndInit();
-            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Pb63)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb64)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb65)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb66)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb67)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb68)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb69)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb70)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb60)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb59)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb58)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb57)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb56)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb55)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb54)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb53)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb52)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb51)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb121)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb122)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb123)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb124)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb125)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb126)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb127)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb128)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb129)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb130)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb111)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb112)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb113)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb114)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb115)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb116)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb117)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb118)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb119)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb120)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb101)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb102)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb103)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pb104)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb105)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb106)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb107)).EndInit();
@@ -4190,7 +4208,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb93)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb92)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb91)).EndInit();
-            this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pb169)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb170)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb171)).EndInit();
@@ -4239,7 +4256,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb136)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb137)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb138)).EndInit();
-            this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pb195)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb196)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb197)).EndInit();
@@ -4262,19 +4278,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pb179)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb192)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pb191)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudHealthCur)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.gb_slot_items.ResumeLayout(false);
-            this.gb_slot_items.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuant)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.gbBuffs.ResumeLayout(false);
-            this.gbBuffs.PerformLayout();
-            this.gb_slot_buff.ResumeLayout(false);
-            this.gb_slot_buff.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDur)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4515,7 +4518,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudHair;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox gbBuffs;

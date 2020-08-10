@@ -73,29 +73,9 @@ namespace WinTerrEdit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap winTerrEditLogoSmall {
+        internal static System.Drawing.Bitmap Logo_Only1 {
             get {
-                object obj = ResourceManager.GetObject("winTerrEditLogoSmall", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap winTerrEditLogoSmallInverted {
-            get {
-                object obj = ResourceManager.GetObject("winTerrEditLogoSmallInverted", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap winTerrEditLogoSmallInvertedV2 {
-            get {
-                object obj = ResourceManager.GetObject("winTerrEditLogoSmallInvertedV2", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_Only1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

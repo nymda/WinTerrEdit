@@ -184,13 +184,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Logo_Only1.png" />
     <EmbeddedResource Include="itemIDs.txt" />
     <EmbeddedResource Include="itemPrefixes.txt" />
     <EmbeddedResource Include="buffIDs.txt" />
     <Content Include="rainbowBrick.ico" />
-    <EmbeddedResource Include="Resources\winTerrEditLogoSmallInvertedV2.png" />
-    <EmbeddedResource Include="Resources\winTerrEditLogoSmallInverted.png" />
-    <EmbeddedResource Include="Resources\winTerrEditLogoSmall.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

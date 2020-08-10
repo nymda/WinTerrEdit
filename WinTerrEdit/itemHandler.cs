@@ -73,7 +73,6 @@ namespace WinTerrEdit
         }
         public buff searchBuffById(int id)
         {
-            Console.WriteLine("Search buff " + id);
             var res = globalBuffs.Where(buff => buff.ID == id);
             return (res.Count() > 0) ? res.First() : globalBuffs[0];
         }

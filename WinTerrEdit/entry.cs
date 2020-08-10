@@ -51,6 +51,7 @@ namespace WinTerrEdit
         public List<int> playerHealth = new List<int> { };
         public List<int> playerMana = new List<int> { };
         public List<Color> playerColours = new List<Color> { }; //hair, skin, eyes, shirt, undershirt, pants, shoes
+        public int playerHS = 0;
 
         public invItem copyBuffer;
         public int copyIndex = -1;
@@ -92,8 +93,6 @@ namespace WinTerrEdit
         }
         private void Entry_Load(object sender, EventArgs e)
         {
-            Console.WriteLine(playerfolder);
-
             btnReload.Image = Resources.crappyreload;
 
             baseTT.ShowAlways = true;
@@ -148,6 +147,10 @@ namespace WinTerrEdit
                     ListViewItem tmp = new ListViewItem();
                     tmp.Text = bff.name;
                     tmp.ImageIndex = cnt;
+                    if(bff.buffStatus == buffStatus.Debuff)
+                    {
+                        tmp.ForeColor = Color.Red;
+                    }
                     buffLV.Items.Add(tmp);
                     lvis_buff.Add(tmp);
                 }
@@ -395,6 +398,9 @@ namespace WinTerrEdit
             nudManaCur.Value = playerMana[0];
             nudManaMax.Value = playerMana[1];
 
+            playerHS = decrypted[nameEndOffset + 9];
+            nudHair.Value = playerHS;
+
             var res = inv_main.Where(invItem => invItem.item.name == "Unknown");
             if(res.Count() > 0)
             {
@@ -415,21 +421,22 @@ namespace WinTerrEdit
                     try
                     {
                         //reset variables
-                        rawDecrypted = new List<Byte> { };
+                        rawDecrypted.Clear();
                         playerName = "";
-                        inv_main = new List<invItem> { };
-                        playerHealth = new List<int> { };
-                        playerMana = new List<int> { };
-                        playerColours = new List<Color> { };
+                        inv_main.Clear();
+                        playerHealth.Clear();
+                        playerMana.Clear();
+                        playerColours.Clear();
                         nameEndOffset = 0;
                         invSelectedIndex = 0;
                         isSaved = true;
-                        unlockAllData = new List<Byte> { };
-                        debugInvData = new List<List<int>> { };
+                        unlockAllData.Clear();
+                        debugInvData.Clear();
                         inv_main.Clear();
                         inv_piggybank.Clear();
                         inv_safe.Clear();
                         inv_ammocoins.Clear();
+                        playerBuffs.Clear();
 
                         lastReadPlrPath = dlg.FileName;
                         this.Text = "WinTerrEdit | [F1] About | [F2] Settings | (" + dlg.SafeFileName + ")";
@@ -461,21 +468,22 @@ namespace WinTerrEdit
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            rawDecrypted = new List<Byte> { };
+            rawDecrypted.Clear();
             playerName = "";
-            inv_main = new List<invItem> { };
-            playerHealth = new List<int> { };
-            playerMana = new List<int> { };
-            playerColours = new List<Color> { };
+            inv_main.Clear();
+            playerHealth.Clear();
+            playerMana.Clear();
+            playerColours.Clear();
             nameEndOffset = 0;
             invSelectedIndex = 0;
             isSaved = true;
-            unlockAllData = new List<Byte> { };
-            debugInvData = new List<List<int>> { };
+            unlockAllData.Clear();
+            debugInvData.Clear();
             inv_main.Clear();
             inv_piggybank.Clear();
             inv_safe.Clear();
             inv_ammocoins.Clear();
+            playerBuffs.Clear();
 
             loadData(lastReadPlrPath);
             //gbInvHold.Enabled = true;
@@ -509,7 +517,6 @@ namespace WinTerrEdit
                             baseTT.SetToolTip(pb, "Slot " + slotNameCount + processedNameData);
                             slotNameCount++;
                             i++;
-
                         }
                         break;
 
@@ -523,7 +530,6 @@ namespace WinTerrEdit
                             baseTT.SetToolTip(pb, "Piggybank slot " + slotNameCount + processedNameData);
                             slotNameCount++;
                             i++;
-
                         }
                         break;
 
@@ -537,7 +543,6 @@ namespace WinTerrEdit
                             baseTT.SetToolTip(pb, "Safe slot " + slotNameCount + processedNameData);
                             slotNameCount++;
                             i++;
-
                         }
                         break;
 
@@ -551,7 +556,6 @@ namespace WinTerrEdit
                             baseTT.SetToolTip(pb, "Safe slot " + slotNameCount + processedNameData);
                             slotNameCount++;
                             i++;
-
                         }
                         break;
 
@@ -561,11 +565,10 @@ namespace WinTerrEdit
                         foreach (PictureBox pb in pbs_buffs)
                         {
                             pbs_buffs[i].Image = playerBuffs[i].buff.icon;
-                            string processedNameData = " (" + playerBuffs[slotNameCount - 1].buff.name + " for" + playerBuffs[slotNameCount - 1].duration + " seconds)";
+                            string processedNameData = " (" + playerBuffs[slotNameCount - 1].buff.name + " for " + playerBuffs[slotNameCount - 1].duration + " seconds)";
                             baseTT.SetToolTip(pb, "Buff slot " + slotNameCount + processedNameData);
                             slotNameCount++;
                             i++;
-
                         }
                         break;
                 }
@@ -582,10 +585,34 @@ namespace WinTerrEdit
 
         private void item_Click(object sender, EventArgs e)
         {
+            switch (selectedTab)
+            {
+                case 0:
+                    inv_main[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    break;
+
+                case 1:
+                    inv_piggybank[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    break;
+
+                case 2:
+                    inv_safe[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    break;
+
+                case 3:
+                    inv_ammocoins[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    break;
+
+                case 4:
+                    playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;
+                    break;
+            }
+
             string elementName = (sender as PictureBox).Name;
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
             invSelectedIndex = Int32.Parse(npart[1]) - 1;
             trueSelectedIndex = invSelectedIndex;
+
             switch (selectedTab)
             {
                 case 0:
@@ -593,7 +620,6 @@ namespace WinTerrEdit
                     nudQuant.Value = inv_main[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_main[invSelectedIndex].prefix.name;
                     gb_slot_items.Text = "Inventory slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
-
                     break;
 
                 case 1:
@@ -642,6 +668,7 @@ namespace WinTerrEdit
             List<Byte> encodedColourData = new List<Byte> { };
             List<Byte> encodedHealthData = new List<Byte> { };
             List<Byte> encodedManaData = new List<Byte> { };
+            List<Byte> encodedBuffData = new List<Byte> { };
 
             //create the template
             List<Byte> save = rawDecrypted;
@@ -683,6 +710,11 @@ namespace WinTerrEdit
             foreach (Color c in playerColours)
             {
                 encodedColourData.AddRange(new List<Byte> { c.R, c.G, c.B });
+            }
+
+            foreach(playerBuff pb in playerBuffs)
+            {
+                encodedBuffData.AddRange(pb.recompile(ih));
             }
 
             //populate encoded health data
@@ -727,6 +759,13 @@ namespace WinTerrEdit
             save.InsertRange(ManaDataBeginOffset, encodedManaData);
             Console.WriteLine("Mana data: Removed 8 bytes, Inserted " + encodedManaData.Count() + " bytes");
 
+            int BuffDataBeginOffset = nameEndOffset + buffOffset;
+            save.RemoveRange(BuffDataBeginOffset, 176);
+            save.InsertRange(BuffDataBeginOffset, encodedBuffData);
+            Console.WriteLine("Mana data: Removed 176 bytes, Inserted " + encodedBuffData.Count() + " bytes");
+
+            save[nameEndOffset + 9] = (byte)playerHS;
+
             //insert padding if needed
             while (save.Count() % 16 != 0)
             {
@@ -761,21 +800,22 @@ namespace WinTerrEdit
                         saveNotifier sn = new saveNotifier();
                         sn.ShowDialog();
 
-                        rawDecrypted = new List<Byte> { };
+                        rawDecrypted.Clear();
                         playerName = "";
-                        inv_main = new List<invItem> { };
-                        playerHealth = new List<int> { };
-                        playerMana = new List<int> { };
-                        playerColours = new List<Color> { };
+                        inv_main.Clear();
+                        playerHealth.Clear();
+                        playerMana.Clear();
+                        playerColours.Clear();
                         nameEndOffset = 0;
                         invSelectedIndex = 0;
                         isSaved = true;
-                        unlockAllData = new List<Byte> { };
-                        debugInvData = new List<List<int>> { };
+                        unlockAllData.Clear();
+                        debugInvData.Clear();
                         inv_main.Clear();
                         inv_piggybank.Clear();
                         inv_safe.Clear();
                         inv_ammocoins.Clear();
+                        playerBuffs.Clear();
 
                         lastReadPlrPath = dlg.FileName;
 
@@ -1366,6 +1406,24 @@ namespace WinTerrEdit
             }
         }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Length > 2)
+            {
+                var results = lvis_buff.Where(x => x.Text.ToLower().Contains(textBox2.Text)).ToList();
+                buffLV.Items.Clear();
+                foreach (var i in results)
+                {
+                    buffLV.Items.Add(i);
+                }
+            }
+            else
+            {
+                buffLV.Items.Clear();
+                buffLV.Items.AddRange(lvis_buff.ToArray());
+            }
+        }
+
         public string calcMd5OfOpenFile()
         {
             try
@@ -1392,21 +1450,22 @@ namespace WinTerrEdit
 
             if (tmp != currentFileHash)
             {
-                rawDecrypted = new List<Byte> { };
+                rawDecrypted.Clear();
                 playerName = "";
-                inv_main = new List<invItem> { };
-                playerHealth = new List<int> { };
-                playerMana = new List<int> { };
-                playerColours = new List<Color> { };
+                inv_main.Clear();
+                playerHealth.Clear();
+                playerMana.Clear();
+                playerColours.Clear();
                 nameEndOffset = 0;
                 invSelectedIndex = 0;
                 isSaved = true;
-                unlockAllData = new List<Byte> { };
-                debugInvData = new List<List<int>> { };
+                unlockAllData.Clear();
+                debugInvData.Clear();
                 inv_main.Clear();
                 inv_piggybank.Clear();
                 inv_safe.Clear();
                 inv_ammocoins.Clear();
+                playerBuffs.Clear();
 
                 loadData(lastReadPlrPath);
                 //gbInvHold.Enabled = true;
@@ -1444,6 +1503,11 @@ namespace WinTerrEdit
                 gbItems.BringToFront();
                 gb_slot_items.BringToFront();
             }
+        }
+
+        private void nudHair_ValueChanged(object sender, EventArgs e)
+        {
+            playerHS = (int)nudHair.Value;
         }
     }
 }

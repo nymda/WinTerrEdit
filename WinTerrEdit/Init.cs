@@ -87,4 +87,10 @@ namespace WinTerrEdit
             return completed;
         }
     }
+
+    public enum gamemode
+    {
+
+
+    }
 }

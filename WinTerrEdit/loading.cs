@@ -34,13 +34,13 @@ namespace WinTerrEdit
         public loading()
         {
             InitializeComponent();
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            //Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         private void loading_Load(object sender, EventArgs e)
         {
             tmp = this.CreateGraphics();
-            timer1.Start();
+            //timer1.Start();
             timer2.Start();
         }
 
@@ -56,7 +56,7 @@ namespace WinTerrEdit
             {
                 tmp.Append('.', count);
             }
-            label1.Text = tmp.ToString();
+            //label1.Text = tmp.ToString();
             count++;
         }
 
@@ -97,15 +97,20 @@ namespace WinTerrEdit
             tblack = new Pen(current, 2);
 
             tmp.DrawRectangle(tblack, 1, 1, this.Width - 3, this.Height - 3);
-            tmp.DrawRectangle(Pens.Black, 3, 3, 1, 1);
-            Bitmap corn = getCorn();
-            tmp.DrawImage(corn, 0, 0);
-            corn.RotateFlip(RotateFlipType.RotateNoneFlipX);
-            tmp.DrawImage(corn, -1, 0);
-            corn.RotateFlip(RotateFlipType.RotateNoneFlipY);
-            tmp.DrawImage(corn, -1, -1);
-            corn.RotateFlip(RotateFlipType.RotateNoneFlipX);
-            tmp.DrawImage(corn, 0, -1);
+            //tmp.DrawRectangle(Pens.Black, 3, 3, 1, 1);
+            //Bitmap corn = getCorn();
+            //tmp.DrawImage(corn, 0, 0);
+            //corn.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            //tmp.DrawImage(corn, -1, 0);
+            //corn.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            //tmp.DrawImage(corn, -1, -1);
+            //corn.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            //tmp.DrawImage(corn, 0, -1);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
