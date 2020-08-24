@@ -13,5 +13,5 @@
 - Easy to use GUI
 
 ### Screenshots
-![](https://i.imgur.com/qkwphJd.png)    
+![](https://i.imgur.com/pDawJ8j.png)    
 Main UI with inventory display and item search
