@@ -195,6 +195,7 @@
             this.Pb92 = new System.Windows.Forms.PictureBox();
             this.Pb91 = new System.Windows.Forms.PictureBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
             this.Pb169 = new System.Windows.Forms.PictureBox();
             this.Pb170 = new System.Windows.Forms.PictureBox();
             this.Pb171 = new System.Windows.Forms.PictureBox();
@@ -302,7 +303,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.nudDur = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
@@ -712,7 +712,7 @@
             this.nudManaMax.Location = new System.Drawing.Point(104, 59);
             this.nudManaMax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudManaMax.Maximum = new decimal(new int[] {
-            250,
+            400,
             0,
             0,
             0});
@@ -740,7 +740,7 @@
             this.nudManaCur.Location = new System.Drawing.Point(50, 59);
             this.nudManaCur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudManaCur.Maximum = new decimal(new int[] {
-            250,
+            400,
             0,
             0,
             0});
@@ -2754,6 +2754,16 @@
             this.tabPage6.Text = "Misc";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(169, 12);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 26);
+            this.label20.TabIndex = 230;
+            this.label20.Text = "<= Coins\r\nAmmo =>";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Pb169
             // 
             this.Pb169.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -4036,16 +4046,6 @@
             this.label19.Size = new System.Drawing.Size(50, 13);
             this.label19.TabIndex = 119;
             this.label19.Text = "Duration:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(169, 12);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 26);
-            this.label20.TabIndex = 230;
-            this.label20.Text = "<= Coins\r\nAmmo =>";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // entry
             // 

@@ -183,6 +183,7 @@ namespace WinTerrEdit
             }
             cbItem.SelectedIndex = 0;
             cbPrefixes.SelectedIndex = 0;
+            cbBuffs.SelectedIndex = 0;
             nudQuant.MouseWheel += new MouseEventHandler(this.ScrollHandlerFunction);
             nudHealthCur.MouseWheel += new MouseEventHandler(this.ScrollHandlerFunction);
             nudHealthMax.MouseWheel += new MouseEventHandler(this.ScrollHandlerFunction);
@@ -609,29 +610,6 @@ namespace WinTerrEdit
 
         private void item_Click(object sender, EventArgs e)
         {
-            switch (selectedTab)
-            {
-                case 0:
-                    inv_main[invSelectedIndex].quantity = (int)nudQuant.Value;
-                    break;
-
-                case 1:
-                    inv_piggybank[invSelectedIndex].quantity = (int)nudQuant.Value;
-                    break;
-
-                case 2:
-                    inv_safe[invSelectedIndex].quantity = (int)nudQuant.Value;
-                    break;
-
-                case 3:
-                    inv_ammocoins[invSelectedIndex].quantity = (int)nudQuant.Value;
-                    break;
-
-                case 4:
-                    playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;
-                    break;
-            }
-
             string elementName = (sender as PictureBox).Name;
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
             invSelectedIndex = Int32.Parse(npart[1]) - 1;
@@ -644,6 +622,7 @@ namespace WinTerrEdit
                     nudQuant.Value = inv_main[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_main[invSelectedIndex].prefix.name;
                     gb_slot_items.Text = "Inventory slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    inv_main[invSelectedIndex].quantity = (int)nudQuant.Value;
                     break;
 
                 case 1:
@@ -652,6 +631,7 @@ namespace WinTerrEdit
                     nudQuant.Value = inv_piggybank[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_piggybank[invSelectedIndex].prefix.name;
                     gb_slot_items.Text = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_piggybank[invSelectedIndex].item.name + ")";
+                    inv_piggybank[invSelectedIndex].quantity = (int)nudQuant.Value;
                     break;
 
                 case 2:
@@ -660,6 +640,7 @@ namespace WinTerrEdit
                     nudQuant.Value = inv_safe[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_safe[invSelectedIndex].prefix.name;
                     gb_slot_items.Text = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_safe[invSelectedIndex].item.name + ")";
+                    inv_safe[invSelectedIndex].quantity = (int)nudQuant.Value;
                     break;
 
                 case 3:
@@ -668,6 +649,7 @@ namespace WinTerrEdit
                     nudQuant.Value = inv_ammocoins[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_ammocoins[invSelectedIndex].prefix.name;
                     gb_slot_items.Text = "Coin / Ammo slot " + (invSelectedIndex + 1) + " (" + inv_ammocoins[invSelectedIndex].item.name + ")";
+                    inv_ammocoins[invSelectedIndex].quantity = (int)nudQuant.Value;
                     break;
 
                 case 4:
@@ -675,9 +657,11 @@ namespace WinTerrEdit
                     nudDur.Value = playerBuffs[invSelectedIndex].duration;
                     cbBuffs.SelectedItem = playerBuffs[invSelectedIndex].buff.name;
                     gb_slot_buff.Text = "Buff slot " + (invSelectedIndex + 1);
+                    playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;
                     break;
 
             }
+
             updateInvDisplay();
         }
 
@@ -1394,6 +1378,49 @@ namespace WinTerrEdit
         private void lb_activ(object sender, EventArgs e)
         {
             cbItem.SelectedItem = itemLV.SelectedItems[0].Text;
+
+            switch (selectedTab)
+            {
+                case 0:
+                    inv_main[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    cbItem.SelectedItem = inv_main[invSelectedIndex].item.name;
+                    nudQuant.Value = inv_main[invSelectedIndex].quantity;
+                    cbPrefixes.SelectedItem = inv_main[invSelectedIndex].prefix.name;
+                    gb_slot_items.Text = "Inventory slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    break;
+
+                case 1:
+                    inv_piggybank[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    cbItem.SelectedItem = inv_piggybank[invSelectedIndex].item.name;
+                    nudQuant.Value = inv_piggybank[invSelectedIndex].quantity;
+                    cbPrefixes.SelectedItem = inv_piggybank[invSelectedIndex].prefix.name;
+                    gb_slot_items.Text = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_piggybank[invSelectedIndex].item.name + ")";
+                    break;
+
+                case 2:
+                    inv_safe[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    cbItem.SelectedItem = inv_safe[invSelectedIndex].item.name;
+                    nudQuant.Value = inv_safe[invSelectedIndex].quantity;
+                    cbPrefixes.SelectedItem = inv_safe[invSelectedIndex].prefix.name;
+                    gb_slot_items.Text = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_safe[invSelectedIndex].item.name + ")";
+                    break;
+
+                case 3:
+                    inv_ammocoins[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    cbItem.SelectedItem = inv_ammocoins[invSelectedIndex].item.name;
+                    nudQuant.Value = inv_ammocoins[invSelectedIndex].quantity;
+                    cbPrefixes.SelectedItem = inv_ammocoins[invSelectedIndex].prefix.name;
+                    gb_slot_items.Text = "Coin / Ammo slot " + (invSelectedIndex + 1) + " (" + inv_ammocoins[invSelectedIndex].item.name + ")";
+                    break;
+
+                case 4:
+                    playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;
+                    nudDur.Value = playerBuffs[invSelectedIndex].duration;
+                    cbBuffs.SelectedItem = playerBuffs[invSelectedIndex].buff.name;
+                    gb_slot_buff.Text = "Buff slot " + (invSelectedIndex + 1);
+                    break;
+
+            }
         }
 
         private void blb_activ(object sender, EventArgs e)

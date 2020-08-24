@@ -33,8 +33,8 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -81,15 +81,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contact";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 39);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Want to contact me? \r\nDiscord: OreyBun#8081\r\nTelegram: @knebby\r\n";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -99,6 +90,14 @@
             this.label3.Size = new System.Drawing.Size(101, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Names may change";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 4;
             // 
             // about
             // 
@@ -112,7 +111,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "about";
-            this.Text = "about | Release 1.0.9";
+            this.Text = "about | Release 1.10.0";
+            this.Load += new System.EventHandler(this.about_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

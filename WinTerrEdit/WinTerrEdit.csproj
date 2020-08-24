@@ -28,7 +28,7 @@
     <TargetCulture>en-GB</TargetCulture>
     <ProductName>WinTerrEdit</ProductName>
     <PublisherName>Knedit</PublisherName>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
