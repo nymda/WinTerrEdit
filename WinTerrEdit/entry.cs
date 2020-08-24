@@ -610,19 +610,58 @@ namespace WinTerrEdit
 
         private void item_Click(object sender, EventArgs e)
         {
+            try
+            {
+                switch (selectedTab)
+                {
+                    case 0:
+                        inv_main[invSelectedIndex].quantity = (int)nudQuant.Value;
+                        break;
+
+                    case 1:
+                        inv_piggybank[invSelectedIndex].quantity = (int)nudQuant.Value;
+                        break;
+
+                    case 2:
+                        inv_safe[invSelectedIndex].quantity = (int)nudQuant.Value;
+                        break;
+
+                    case 3:
+                        inv_ammocoins[invSelectedIndex].quantity = (int)nudQuant.Value;
+                        break;
+
+                    case 4:
+                        playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;
+                        break;
+
+                }
+            }
+            catch
+            {
+                ///
+                /// This block allows me to assign a manually edited quantity to
+                /// an item when the users clicks off of it, however it can
+                /// also cause an outOfBounds error.
+                ///
+            }
+
             string elementName = (sender as PictureBox).Name;
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
             invSelectedIndex = Int32.Parse(npart[1]) - 1;
             trueSelectedIndex = invSelectedIndex;
-
+            string titleText;
             switch (selectedTab)
             {
                 case 0:
                     cbItem.SelectedItem = inv_main[invSelectedIndex].item.name;
                     nudQuant.Value = inv_main[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_main[invSelectedIndex].prefix.name;
-                    gb_slot_items.Text = "Inventory slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
-                    inv_main[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    titleText = "Inventory slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    if (titleText.Length > 40)
+                    {
+                        titleText = titleText.Substring(0, 40) + "...";
+                    }
+                    gb_slot_items.Text = titleText;
                     break;
 
                 case 1:
@@ -630,8 +669,12 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_piggybank[invSelectedIndex].item.name;
                     nudQuant.Value = inv_piggybank[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_piggybank[invSelectedIndex].prefix.name;
-                    gb_slot_items.Text = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_piggybank[invSelectedIndex].item.name + ")";
-                    inv_piggybank[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    titleText = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    if (titleText.Length > 40)
+                    {
+                        titleText = titleText.Substring(0, 40) + "...";
+                    }
+                    gb_slot_items.Text = titleText;
                     break;
 
                 case 2:
@@ -639,8 +682,12 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_safe[invSelectedIndex].item.name;
                     nudQuant.Value = inv_safe[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_safe[invSelectedIndex].prefix.name;
-                    gb_slot_items.Text = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_safe[invSelectedIndex].item.name + ")";
-                    inv_safe[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    titleText = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    if (titleText.Length > 40)
+                    {
+                        titleText = titleText.Substring(0, 40) + "...";
+                    }
+                    gb_slot_items.Text = titleText;
                     break;
 
                 case 3:
@@ -648,8 +695,12 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_ammocoins[invSelectedIndex].item.name;
                     nudQuant.Value = inv_ammocoins[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_ammocoins[invSelectedIndex].prefix.name;
-                    gb_slot_items.Text = "Coin / Ammo slot " + (invSelectedIndex + 1) + " (" + inv_ammocoins[invSelectedIndex].item.name + ")";
-                    inv_ammocoins[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    titleText = "Coin / ammo slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    if (titleText.Length > 40)
+                    {
+                        titleText = titleText.Substring(0, 40) + "...";
+                    }
+                    gb_slot_items.Text = titleText;
                     break;
 
                 case 4:
@@ -1373,11 +1424,36 @@ namespace WinTerrEdit
             {
                 e.SuppressKeyPress = true;
             }
+            switch (selectedTab)
+            {
+                case 0:
+                    inv_main[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    break;
+
+                case 1:
+                    inv_piggybank[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    break;
+
+                case 2:
+                    inv_safe[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    break;
+
+                case 3:
+                    inv_ammocoins[invSelectedIndex].quantity = (int)nudQuant.Value;
+                    break;
+
+                case 4:
+                    playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;
+                    break;
+
+            }
+
         }
 
         private void lb_activ(object sender, EventArgs e)
         {
             cbItem.SelectedItem = itemLV.SelectedItems[0].Text;
+            string titleText;
 
             switch (selectedTab)
             {
@@ -1386,7 +1462,12 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_main[invSelectedIndex].item.name;
                     nudQuant.Value = inv_main[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_main[invSelectedIndex].prefix.name;
-                    gb_slot_items.Text = "Inventory slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    titleText = "Inventory slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    if (titleText.Length > 40)
+                    {
+                        titleText = titleText.Substring(0, 40) + "...";
+                    }
+                    gb_slot_items.Text = titleText;
                     break;
 
                 case 1:
@@ -1394,7 +1475,12 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_piggybank[invSelectedIndex].item.name;
                     nudQuant.Value = inv_piggybank[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_piggybank[invSelectedIndex].prefix.name;
-                    gb_slot_items.Text = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_piggybank[invSelectedIndex].item.name + ")";
+                    titleText = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    if (titleText.Length > 40)
+                    {
+                        titleText = titleText.Substring(0, 40) + "...";
+                    }
+                    gb_slot_items.Text = titleText;
                     break;
 
                 case 2:
@@ -1402,7 +1488,12 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_safe[invSelectedIndex].item.name;
                     nudQuant.Value = inv_safe[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_safe[invSelectedIndex].prefix.name;
-                    gb_slot_items.Text = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_safe[invSelectedIndex].item.name + ")";
+                    titleText = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    if (titleText.Length > 40)
+                    {
+                        titleText = titleText.Substring(0, 40) + "...";
+                    }
+                    gb_slot_items.Text = titleText;
                     break;
 
                 case 3:
@@ -1410,7 +1501,12 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_ammocoins[invSelectedIndex].item.name;
                     nudQuant.Value = inv_ammocoins[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_ammocoins[invSelectedIndex].prefix.name;
-                    gb_slot_items.Text = "Coin / Ammo slot " + (invSelectedIndex + 1) + " (" + inv_ammocoins[invSelectedIndex].item.name + ")";
+                    titleText = "Coin / Ammo slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    if (titleText.Length > 40)
+                    {
+                        titleText = titleText.Substring(0, 40) + "...";
+                    }
+                    gb_slot_items.Text = titleText;
                     break;
 
                 case 4:
@@ -1569,6 +1665,11 @@ namespace WinTerrEdit
         private void tbName_TextChanged(object sender, EventArgs e)
         {
             playerName = tbName.Text;
+        }
+
+        private void quant_leaveFocus(object sender, EventArgs e)
+        {
+            Console.WriteLine("broke focus");
         }
     }
 }
