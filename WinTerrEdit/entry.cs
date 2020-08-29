@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -81,6 +82,7 @@ namespace WinTerrEdit
         public bool useExtendedName = false;
         int selectedTab = 0;
         Stopwatch st = new Stopwatch();
+        public string aboutBoxContactData = "Loading...";
 
         public entry()
         {
@@ -169,8 +171,12 @@ namespace WinTerrEdit
 
             this.Invoke(new MethodInvoker(delegate ()
             {
+                //LOADING FINISHED
                 ld.Close();
             }));
+
+            Thread getContact = new Thread(() => aboutBoxContactData = getContactInfoFromExtServer());
+            getContact.Start();
 
             //just show the fucking form to the user
             User32.AllowSetForegroundWindow((uint)Process.GetCurrentProcess().Id);
@@ -1293,7 +1299,7 @@ namespace WinTerrEdit
         {
             if(e.KeyCode == Keys.F1)
             {
-                about ab = new about();
+                about ab = new about(aboutBoxContactData);
                 ab.ShowDialog();
             }
             if(e.KeyCode == Keys.F2)
@@ -1654,6 +1660,28 @@ namespace WinTerrEdit
             {
                 gbItems.BringToFront();
                 gb_slot_items.BringToFront();
+            }
+        }
+
+        public string getContactInfoFromExtServer()
+        {
+            try
+            {
+                WebClient w = new WebClient();
+                w.Headers.Add("user-agent", "Internal WTE request");
+                string _tmp = w.DownloadString(@"http://knedit.pw/WTE_Contact_Data_Tmp/");
+                if (_tmp[0] == 'W')
+                {
+                    return _tmp;
+                }
+                else
+                {
+                    throw new Exception("corrupt data");
+                }
+            }
+            catch
+            {
+                return "Unknown server error :(";
             }
         }
 

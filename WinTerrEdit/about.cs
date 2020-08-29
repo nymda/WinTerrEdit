@@ -14,9 +14,12 @@ namespace WinTerrEdit
 {
     public partial class about : Form
     {
-        public about()
+        public string cont;
+
+        public about(string cont)
         {
             InitializeComponent();
+            this.cont = cont;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -24,26 +27,9 @@ namespace WinTerrEdit
             Process.Start("https://www.gnu.org/licenses/");
         }
 
-        public string obtainContactInfoFromWeb()
-        {
-            using(WebClient w = new WebClient())
-            {
-                string contactInfo = Encoding.UTF8.GetString(w.DownloadData(@"http://knedit.pw/WTE_Contact_Data"));
-                contactInfo = contactInfo.Split(new string[] { "##" }, StringSplitOptions.None)[0];
-                return contactInfo;
-            }
-        }
-
         private void about_Load(object sender, EventArgs e)
         {
-            try
-            {
-                label2.Text = obtainContactInfoFromWeb();
-            }
-            catch
-            {
-                label2.Text = "Could not contact server :(";
-            }
+            label2.Text = cont;
         }
     }
 }
