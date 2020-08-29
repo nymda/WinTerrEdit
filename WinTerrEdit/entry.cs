@@ -39,7 +39,6 @@ namespace WinTerrEdit
         public List<PictureBox> pbs_piggybank = new List<PictureBox> { };
         public List<PictureBox> pbs_safe = new List<PictureBox> { };
         public List<PictureBox> pbs_ammocoins = new List<PictureBox> { };
-
         public List<PictureBox> pbs_buffs = new List<PictureBox> { };
 
         //modifiable player variables
@@ -82,7 +81,7 @@ namespace WinTerrEdit
         public bool useExtendedName = false;
         int selectedTab = 0;
         Stopwatch st = new Stopwatch();
-        public string aboutBoxContactData = "Loading...";
+        public string aboutBoxContactData;
 
         public entry()
         {
