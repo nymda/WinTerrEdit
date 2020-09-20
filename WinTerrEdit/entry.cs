@@ -674,7 +674,7 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_piggybank[invSelectedIndex].item.name;
                     nudQuant.Value = inv_piggybank[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_piggybank[invSelectedIndex].prefix.name;
-                    titleText = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    titleText = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_piggybank[invSelectedIndex].item.name + ")";
                     if (titleText.Length > 40)
                     {
                         titleText = titleText.Substring(0, 40) + "...";
@@ -687,7 +687,7 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_safe[invSelectedIndex].item.name;
                     nudQuant.Value = inv_safe[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_safe[invSelectedIndex].prefix.name;
-                    titleText = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    titleText = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_safe[invSelectedIndex].item.name + ")";
                     if (titleText.Length > 40)
                     {
                         titleText = titleText.Substring(0, 40) + "...";
@@ -700,7 +700,7 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_ammocoins[invSelectedIndex].item.name;
                     nudQuant.Value = inv_ammocoins[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_ammocoins[invSelectedIndex].prefix.name;
-                    titleText = "Coin / ammo slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    titleText = "Coin / ammo slot " + (invSelectedIndex + 1) + " (" + inv_ammocoins[invSelectedIndex].item.name + ")";
                     if (titleText.Length > 40)
                     {
                         titleText = titleText.Substring(0, 40) + "...";
