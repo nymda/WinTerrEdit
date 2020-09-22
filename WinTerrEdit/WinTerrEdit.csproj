@@ -57,13 +57,13 @@
     <ApplicationIcon>rainbowBrick.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>knedit_software.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>WinTerrEdit_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>87F2D1946ABEE0A432A752482F666653F32AF7CD</ManifestCertificateThumbprint>
@@ -73,6 +73,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -170,6 +176,7 @@
     </EmbeddedResource>
     <None Include="knedit_software.pfx" />
     <None Include="knedit_software_key2.pfx" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
