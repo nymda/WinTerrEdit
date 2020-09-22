@@ -129,6 +129,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="registry.cs" />
     <Compile Include="saveNotifier.cs">
       <SubType>Form</SubType>
     </Compile>

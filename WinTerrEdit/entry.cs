@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -25,9 +26,12 @@ namespace WinTerrEdit
         public List<Byte> rawDecrypted = new List<Byte> { };
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Terraria\\Players";
         public string lastReadPlrPath = "";
+        public string currentFileHash = "";
+
+        //bools controling settings
         public bool useOverwriteFile = false;
         public bool useAutoReloadFile = false;
-        public string currentFileHash = "";
+        public bool useExtendedName = false;
 
         //static player variables
         public string playerName = "";
@@ -78,10 +82,10 @@ namespace WinTerrEdit
         public bool isSaved = true;
         public loading ld;
         public ToolTip baseTT = new ToolTip();
-        public bool useExtendedName = false;
         int selectedTab = 0;
         Stopwatch st = new Stopwatch();
         public string aboutBoxContactData;
+        public registryHandler rh = new registryHandler();
 
         public entry()
         {
@@ -94,6 +98,24 @@ namespace WinTerrEdit
         }
         private void Entry_Load(object sender, EventArgs e)
         {
+            string settings = "000";
+
+            try{ settings = rh.loadRegData(); }
+            catch{ }
+
+            if(settings[0] == '1')
+            {
+                useOverwriteFile = true;
+            }
+            if(settings[1] == '1')
+            {
+                useAutoReloadFile = true;
+            }
+            if(settings[2] == '1')
+            {
+                useExtendedName = true;
+            }
+
             btnReload.Image = Resources.crappyreload;
 
             baseTT.ShowAlways = true;
@@ -674,7 +696,7 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_piggybank[invSelectedIndex].item.name;
                     nudQuant.Value = inv_piggybank[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_piggybank[invSelectedIndex].prefix.name;
-                    titleText = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    titleText = "Piggybank slot " + (invSelectedIndex + 1) + " (" + inv_piggybank[invSelectedIndex].item.name + ")";
                     if (titleText.Length > 40)
                     {
                         titleText = titleText.Substring(0, 40) + "...";
@@ -687,7 +709,7 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_safe[invSelectedIndex].item.name;
                     nudQuant.Value = inv_safe[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_safe[invSelectedIndex].prefix.name;
-                    titleText = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    titleText = "Safe slot " + (invSelectedIndex + 1) + " (" + inv_safe[invSelectedIndex].item.name + ")";
                     if (titleText.Length > 40)
                     {
                         titleText = titleText.Substring(0, 40) + "...";
@@ -700,7 +722,7 @@ namespace WinTerrEdit
                     cbItem.SelectedItem = inv_ammocoins[invSelectedIndex].item.name;
                     nudQuant.Value = inv_ammocoins[invSelectedIndex].quantity;
                     cbPrefixes.SelectedItem = inv_ammocoins[invSelectedIndex].prefix.name;
-                    titleText = "Coin / ammo slot " + (invSelectedIndex + 1) + " (" + inv_main[invSelectedIndex].item.name + ")";
+                    titleText = "Coin / ammo slot " + (invSelectedIndex + 1) + " (" + inv_ammocoins[invSelectedIndex].item.name + ")";
                     if (titleText.Length > 40)
                     {
                         titleText = titleText.Substring(0, 40) + "...";
@@ -1204,6 +1226,7 @@ namespace WinTerrEdit
         {
             if (isSaved)
             {
+                rh.saveRegData(useOverwriteFile, useAutoReloadFile, useExtendedName);
                 Environment.Exit(0);
             }
             else
@@ -1212,6 +1235,7 @@ namespace WinTerrEdit
                 closeWarn cw = new closeWarn();
                 if(cw.ShowDialog() == DialogResult.OK) 
                 {
+                    rh.saveRegData(useOverwriteFile, useAutoReloadFile, useExtendedName);
                     Environment.Exit(0);
                 }
             }
