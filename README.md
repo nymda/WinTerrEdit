@@ -1,9 +1,9 @@
 ![](https://i.imgur.com/5B977EX.png)
 
-![](https://img.shields.io/github/downloads/Nymda/WinTerrEdit/total?style=flat-square) ![](https://img.shields.io/github/v/release/Nymda/WinTerrEdit?style=flat-square)
+![](https://img.shields.io/github/downloads/Nymda/WinTerrEdit/total?style=flat-square) ![](https://img.shields.io/github/v/release/Nymda/WinTerrEdit?style=flat-square) ![](https://img.shields.io/discord/760067342637465620?style=flat-square)
 
-I have now created a [discord server](https://discord.gg/2xVTgwH) ![](https://img.shields.io/discord/760067342637465620?style=flat-square)
 
+I have now created a [discord server](https://discord.gg/2xVTgwH) 
 ### Features
 - Inventory / Coins / Ammo editing
 - Item prefix and quantity editing
