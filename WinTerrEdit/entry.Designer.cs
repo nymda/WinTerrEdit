@@ -3710,7 +3710,6 @@
             // 
             // cbGamemode
             // 
-            this.cbGamemode.Enabled = false;
             this.cbGamemode.FormattingEnabled = true;
             this.cbGamemode.Items.AddRange(new object[] {
             "Classic",
@@ -3721,6 +3720,7 @@
             this.cbGamemode.Name = "cbGamemode";
             this.cbGamemode.Size = new System.Drawing.Size(134, 21);
             this.cbGamemode.TabIndex = 129;
+            this.cbGamemode.SelectedIndexChanged += new System.EventHandler(this.cbGamemode_SelectedIndexChanged);
             // 
             // label1
             // 

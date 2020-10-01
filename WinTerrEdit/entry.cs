@@ -226,6 +226,7 @@ namespace WinTerrEdit
 
             currentFileHash = calcMd5OfOpenFile();
             byte[] decrypted = cr.decryptFile(path);
+            Console.WriteLine(decrypted.Length);
             rawDecrypted = decrypted.ToList();
             versionCode = ih.resolveEncodedData(decrypted[0], decrypted[1]);
 
@@ -243,8 +244,6 @@ namespace WinTerrEdit
             playerName = Encoding.UTF8.GetString(namebytes);
             tbName.Text = playerName;
 
-            //neo + 838
-
             if(versionCode < 230)
             {
                 inventoryOffset = 211;
@@ -252,7 +251,7 @@ namespace WinTerrEdit
                 colOffset = 40;
                 pigOffset = 841;
                 safeOffset = 1201;
-                buffOffset = 2281;
+                buffOffset = 1921; //2281
             }
             else
             {
@@ -261,7 +260,7 @@ namespace WinTerrEdit
                 colOffset = 42;
                 pigOffset = 843;
                 safeOffset = 1203;
-                buffOffset = 2284;
+                buffOffset = 2284; //2284
             }
 
             int InvDataBeginOffset = nameEndOffset + inventoryOffset;
@@ -352,6 +351,7 @@ namespace WinTerrEdit
             List<int> buffBtm = new List<int> { };
             for (int i = BuffDataBeginOffset; i < BuffDataEndOffset; i++)
             {
+                Console.WriteLine(String.Join(",", buffBtm));
                 extCounter++;
                 buffBtm.Add(decrypted[i]);
                 if (extCounter == 8)
@@ -426,8 +426,15 @@ namespace WinTerrEdit
             nudManaCur.Value = playerMana[0];
             nudManaMax.Value = playerMana[1];
 
-            playerHS = decrypted[nameEndOffset + 9];
-            nudHair.Value = playerHS;
+            int hs = decrypted[nameEndOffset + 9];
+
+            if(hs > 133)
+            {
+                nudHair.Maximum = hs;
+            }
+
+            playerHS = hs;
+            nudHair.Value = hs;
             cbGamemode.SelectedIndex = (int)playerMode;
 
             switch (selectedTab)
@@ -766,7 +773,7 @@ namespace WinTerrEdit
             nn.AddRange(nameConverted);
             save.InsertRange(24, nn);
             nameEndOffset = 25 + nameConverted.Length;
-
+            
             //populate encoded inventory data
             foreach (invItem iv in inv_main)
             {
@@ -850,6 +857,7 @@ namespace WinTerrEdit
             Console.WriteLine("Mana data: Removed 176 bytes, Inserted " + encodedBuffData.Count() + " bytes");
 
             save[nameEndOffset + 9] = (byte)playerHS;
+            save[nameEndOffset] = (byte)playerMode;
 
             //insert padding if needed
             while (save.Count() % 16 != 0)
@@ -1721,6 +1729,24 @@ namespace WinTerrEdit
         private void quant_leaveFocus(object sender, EventArgs e)
         {
             Console.WriteLine("broke focus");
+        }
+
+        private void cbGamemode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(cbGamemode.SelectedIndex){
+                case 0:
+                    playerMode = gamemodes.gamemode.Classic;
+                    break;
+                case 1:
+                    playerMode = gamemodes.gamemode.MediumCore;
+                    break;
+                case 2:
+                    playerMode = gamemodes.gamemode.HardCore;
+                    break;
+                case 3:
+                    playerMode = gamemodes.gamemode.Journey;
+                    break;
+            }
         }
     }
 }
