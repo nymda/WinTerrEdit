@@ -432,8 +432,20 @@ namespace WinTerrEdit
                 }
             }
 
-            nudHealthCur.Value = playerHealth[0];
-            nudHealthMax.Value = playerHealth[1];
+            int phc = playerHealth[0];
+            int phm = playerHealth[1];
+
+            if( phc > nudHealthCur.Maximum)
+            {
+                nudHealthCur.Maximum = phc;
+            }
+            if (phm > nudHealthMax.Maximum)
+            {
+                nudHealthMax.Maximum = phm;
+            }
+
+            nudHealthCur.Value = phc;
+            nudHealthMax.Value = phm;
 
             //health data has been set and shown in UI
             stage = 9;
@@ -454,6 +466,18 @@ namespace WinTerrEdit
                 }
             }
 
+            int pmc = playerMana[0];
+            int pmm = playerMana[1];
+
+            if (pmc > nudManaCur.Maximum)
+            {
+                nudManaCur.Maximum = pmc;
+            }
+            if (pmm > nudManaMax.Maximum)
+            {
+                nudManaMax.Maximum = pmm;
+            }
+
             nudManaCur.Value = playerMana[0];
             nudManaMax.Value = playerMana[1];
 
@@ -462,7 +486,7 @@ namespace WinTerrEdit
 
             int hs = decrypted[nameEndOffset + 9];
 
-            if(hs > 133)
+            if(hs > nudHair.Maximum)
             {
                 nudHair.Maximum = hs;
             }
