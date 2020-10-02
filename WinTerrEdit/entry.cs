@@ -364,7 +364,7 @@ namespace WinTerrEdit
 
             //coins data has been found
             stage = 6;
-
+            
             int BuffDataBeginOffset = nameEndOffset + buffOffset;
             int BuffDataEndOffset = BuffDataBeginOffset + 176;
 
@@ -554,7 +554,9 @@ namespace WinTerrEdit
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show(String.Format("There was an issue loading this player. It may be corrupted or invalid. \n\nSTAGE: {0} \nERROR: {1}", stage, ex.Message), "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errorReporter er = new errorReporter(stage.ToString(), ex.Message, Convert.ToBase64String(File.ReadAllBytes(lastReadPlrPath)));
+                        er.ShowDialog();
+                        //MessageBox.Show(String.Format("There was an issue loading this player. It may be corrupted or invalid. \n\nSTAGE: {0} \nERROR: {1}", stage, ex.Message), "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

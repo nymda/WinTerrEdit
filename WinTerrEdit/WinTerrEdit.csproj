@@ -113,6 +113,12 @@
     <Compile Include="entry.Designer.cs">
       <DependentUpon>entry.cs</DependentUpon>
     </Compile>
+    <Compile Include="errorReporter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="errorReporter.Designer.cs">
+      <DependentUpon>errorReporter.cs</DependentUpon>
+    </Compile>
     <Compile Include="gamemodes.cs" />
     <Compile Include="hexView.cs">
       <SubType>Form</SubType>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="entry.resx">
       <DependentUpon>entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="errorReporter.resx">
+      <DependentUpon>errorReporter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="hexView.resx">
       <DependentUpon>hexView.cs</DependentUpon>
