@@ -87,6 +87,10 @@ namespace WinTerrEdit
         public string aboutBoxContactData;
         public registryHandler rh = new registryHandler();
 
+        //debug and error handling
+        int stage = 0;
+        string error = "";
+
         public entry()
         {
             st.Start();
@@ -226,7 +230,10 @@ namespace WinTerrEdit
 
             currentFileHash = calcMd5OfOpenFile();
             byte[] decrypted = cr.decryptFile(path);
-            Console.WriteLine(decrypted.Length);
+
+            //decryption complete
+            stage = 1;
+
             rawDecrypted = decrypted.ToList();
             versionCode = ih.resolveEncodedData(decrypted[0], decrypted[1]);
 
@@ -263,6 +270,9 @@ namespace WinTerrEdit
                 buffOffset = 2284; //2284
             }
 
+            //mana and name has been found, NEO has been set
+            stage = 2;
+
             int InvDataBeginOffset = nameEndOffset + inventoryOffset;
             int InvDataEndOffset = InvDataBeginOffset + 500;
 
@@ -282,6 +292,9 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
+
+            //inventory data has been found
+            stage = 3;
 
             int PbnkDataBeginOffset = nameEndOffset + pigOffset;
             int PbnkDataEndOffset = PbnkDataBeginOffset + 360;
@@ -303,6 +316,9 @@ namespace WinTerrEdit
                 }
             }
 
+            //piggybank data has been found
+            stage = 4;
+
             int SafeDataBeginOffset = nameEndOffset + safeOffset;
             int SafeDataEndOffset = SafeDataBeginOffset + 360;
 
@@ -322,6 +338,9 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
+
+            //safe data has been found
+            stage = 5;
 
             int CoinDataBeginOffset = nameEndOffset + coinOffset;
             int CoinDataEndOffset = CoinDataBeginOffset + 80;
@@ -343,6 +362,9 @@ namespace WinTerrEdit
                 }
             }
 
+            //coins data has been found
+            stage = 6;
+
             int BuffDataBeginOffset = nameEndOffset + buffOffset;
             int BuffDataEndOffset = BuffDataBeginOffset + 176;
 
@@ -363,6 +385,9 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
+
+            //buff data has been found
+            stage = 7;
 
             int ColourDataBeginOffset = nameEndOffset + colOffset;
             int ColourDataEndOffset = ColourDataBeginOffset + 21;
@@ -388,6 +413,9 @@ namespace WinTerrEdit
             pantsPnl.BackColor = playerColours[5];
             shoesPnl.BackColor = playerColours[6];
 
+            //colour data has been found and shown in UI
+            stage = 8;
+
             int HealthDataBeginOffset = nameEndOffset + 18;
             int HealthDataEndOffset = HealthDataBeginOffset + 8;
             List<int> helTmp = new List<int> { };
@@ -406,6 +434,9 @@ namespace WinTerrEdit
 
             nudHealthCur.Value = playerHealth[0];
             nudHealthMax.Value = playerHealth[1];
+
+            //health data has been set and shown in UI
+            stage = 9;
 
             int ManaDataBeginOffset = nameEndOffset + 26;
             int ManaDataEndOffset = ManaDataBeginOffset + 8;
@@ -426,6 +457,9 @@ namespace WinTerrEdit
             nudManaCur.Value = playerMana[0];
             nudManaMax.Value = playerMana[1];
 
+            //mana data has been set and shown in UI
+            stage = 10;
+
             int hs = decrypted[nameEndOffset + 9];
 
             if(hs > 133)
@@ -436,6 +470,9 @@ namespace WinTerrEdit
             playerHS = hs;
             nudHair.Value = hs;
             cbGamemode.SelectedIndex = (int)playerMode;
+
+            //hairstyle and gamemode has been shown in UI
+            stage = 11;
 
             switch (selectedTab)
             {
@@ -460,6 +497,9 @@ namespace WinTerrEdit
                     nudDur.Value = playerBuffs[invSelectedIndex].duration;
                     break;
             }
+
+            //other UI data has been set
+            stage = 12;
 
             var res = inv_main.Where(invItem => invItem.item.name == "Unknown");
             if(res.Count() > 0)
@@ -512,10 +552,9 @@ namespace WinTerrEdit
                         gbBuffs.Enabled = true;
                         btnReload.Enabled = true;
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        MessageBox.Show("There was an issue loading this player. It may be corrupted or invalid.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        MessageBox.Show(String.Format("There was an issue loading this player. It may be corrupted or invalid. \n\nSTAGE: {0} \nERROR: {1}", stage, ex.Message), "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

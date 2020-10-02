@@ -111,7 +111,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "about";
-            this.Text = "about | Release 1.10.1";
+            this.Text = "about | Release 1.10.2";
             this.Load += new System.EventHandler(this.about_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
