@@ -63,9 +63,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(20, 142);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 13);
+            this.label1.Size = new System.Drawing.Size(115, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Loading | WTE 1.10.2";
+            this.label1.Text = "Loading | WTE X.XX.X";
             // 
             // loading
             // 

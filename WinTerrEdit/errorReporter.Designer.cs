@@ -39,15 +39,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(406, 52);
+            this.label1.Size = new System.Drawing.Size(517, 39);
             this.label1.TabIndex = 0;
-            this.label1.Text = "An error occured while loading this player file. It may be a corrupted / invalid " +
-    ".PLR file\r\nor this may be a bug.\r\n\r\nIf you think this is a bug, please click \"Re" +
-    "port\" below.";
+            this.label1.Text = "An error occured while loading this player. This may be caused by a broken .PLR  " +
+    "file, or this could be a bug.\r\n\r\nIf you think this is a bug, please click \"Repor" +
+    "t\" below.";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 175);
+            this.button1.Location = new System.Drawing.Point(15, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -57,9 +57,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(15, 77);
+            this.richTextBox1.Location = new System.Drawing.Point(15, 51);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(399, 92);
+            this.richTextBox1.Size = new System.Drawing.Size(514, 118);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "STAGE: 0\nERROR: null\n\nPLR FILE:\n";
             // 
@@ -75,7 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 207);
+            this.ClientSize = new System.Drawing.Size(544, 207);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);

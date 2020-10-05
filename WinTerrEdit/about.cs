@@ -15,11 +15,13 @@ namespace WinTerrEdit
     public partial class about : Form
     {
         public string cont;
+        public string version;
 
-        public about(string cont)
+        public about(string cont, string version)
         {
             InitializeComponent();
             this.cont = cont;
+            this.version = version;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -30,6 +32,7 @@ namespace WinTerrEdit
         private void about_Load(object sender, EventArgs e)
         {
             label2.Text = cont;
+            this.Text = "about | Release " + version;
         }
     }
 }

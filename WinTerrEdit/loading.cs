@@ -31,15 +31,20 @@ namespace WinTerrEdit
         public Pen tblack = new Pen(Brushes.Black, 2);
 
         public Graphics tmp;
-        public loading()
+
+        public string version;
+
+        public loading(string version)
         {
             InitializeComponent();
+            this.version = version;
             //Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         private void loading_Load(object sender, EventArgs e)
         {
             tmp = this.CreateGraphics();
+            label1.Text = "Loading | WTE " + version;
             //timer1.Start();
             timer2.Start();
         }

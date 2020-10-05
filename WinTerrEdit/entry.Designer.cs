@@ -4056,10 +4056,10 @@
             this.Controls.Add(this.cbItem);
             this.Controls.Add(this.tcMain);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gbItems);
-            this.Controls.Add(this.gbBuffs);
             this.Controls.Add(this.gb_slot_items);
             this.Controls.Add(this.gb_slot_buff);
+            this.Controls.Add(this.gbItems);
+            this.Controls.Add(this.gbBuffs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;

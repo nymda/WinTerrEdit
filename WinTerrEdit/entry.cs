@@ -27,6 +27,7 @@ namespace WinTerrEdit
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Terraria\\Players";
         public string lastReadPlrPath = "";
         public string currentFileHash = "";
+        public const string WTEversion = "1.10.3";
 
         //bools controling settings
         public bool useOverwriteFile = false;
@@ -82,14 +83,16 @@ namespace WinTerrEdit
         public bool isSaved = true;
         public loading ld;
         public ToolTip baseTT = new ToolTip();
-        int selectedTab = 0;
+        public int selectedTab = 0;
         Stopwatch st = new Stopwatch();
         public string aboutBoxContactData;
         public registryHandler rh = new registryHandler();
 
         //debug and error handling
-        int stage = 0;
-        string error = "";
+        public int stage = 0;
+        public string error = "";
+        public bool doBuffs = true;
+        public bool loading_complete = false;
 
         public entry()
         {
@@ -97,7 +100,7 @@ namespace WinTerrEdit
             InitializeComponent();
             new Thread(new ThreadStart(delegate
             {
-                Application.Run(ld = new loading());
+                Application.Run(ld = new loading(WTEversion));
             })).Start();
         }
         private void Entry_Load(object sender, EventArgs e)
@@ -258,7 +261,16 @@ namespace WinTerrEdit
                 colOffset = 40;
                 pigOffset = 841;
                 safeOffset = 1201;
-                buffOffset = 1921; //2281
+                
+                doBuffs = false;
+                foreach(PictureBox p in pbs_buffs)
+                {
+                    p.Enabled = false;
+                }
+                nudDur.Enabled = false;
+                cbBuffs.Enabled = false;
+                BuffClearBtn.Enabled = false;
+                buffLV.Enabled = false;
             }
             else
             {
@@ -364,25 +376,28 @@ namespace WinTerrEdit
 
             //coins data has been found
             stage = 6;
-            
-            int BuffDataBeginOffset = nameEndOffset + buffOffset;
-            int BuffDataEndOffset = BuffDataBeginOffset + 176;
 
-            extCounter = 0;
-
-            List<int> buffBtm = new List<int> { };
-            for (int i = BuffDataBeginOffset; i < BuffDataEndOffset; i++)
+            if (doBuffs)
             {
-                Console.WriteLine(String.Join(",", buffBtm));
-                extCounter++;
-                buffBtm.Add(decrypted[i]);
-                if (extCounter == 8)
+                int BuffDataBeginOffset = nameEndOffset + buffOffset;
+                int BuffDataEndOffset = BuffDataBeginOffset + 176;
+
+                extCounter = 0;
+
+                List<int> buffBtm = new List<int> { };
+                for (int i = BuffDataBeginOffset; i < BuffDataEndOffset; i++)
                 {
-                    playerBuff iv = new playerBuff(buffBtm, ih);
-                    playerBuffs.Add(iv);
-                    debugInvData.Add(buffBtm);
-                    buffBtm = new List<int> { };
-                    extCounter = 0;
+                    Console.WriteLine(String.Join(",", buffBtm));
+                    extCounter++;
+                    buffBtm.Add(decrypted[i]);
+                    if (extCounter == 8)
+                    {
+                        playerBuff iv = new playerBuff(buffBtm, ih);
+                        playerBuffs.Add(iv);
+                        debugInvData.Add(buffBtm);
+                        buffBtm = new List<int> { };
+                        extCounter = 0;
+                    }
                 }
             }
 
@@ -599,7 +614,6 @@ namespace WinTerrEdit
             playerMana.Clear();
             playerColours.Clear();
             nameEndOffset = 0;
-            invSelectedIndex = 0;
             isSaved = true;
             unlockAllData.Clear();
             debugInvData.Clear();
@@ -684,15 +698,18 @@ namespace WinTerrEdit
                         break;
 
                     case 4:
-                        slotNameCount = 1;
-                        i = 0;
-                        foreach (PictureBox pb in pbs_buffs)
+                        if (doBuffs)
                         {
-                            pbs_buffs[i].Image = playerBuffs[i].buff.icon;
-                            string processedNameData = " (" + playerBuffs[slotNameCount - 1].buff.name + " for " + playerBuffs[slotNameCount - 1].duration + " seconds)";
-                            baseTT.SetToolTip(pb, "Buff slot " + slotNameCount + processedNameData);
-                            slotNameCount++;
-                            i++;
+                            slotNameCount = 1;
+                            i = 0;
+                            foreach (PictureBox pb in pbs_buffs)
+                            {
+                                pbs_buffs[i].Image = playerBuffs[i].buff.icon;
+                                string processedNameData = " (" + playerBuffs[slotNameCount - 1].buff.name + " for " + playerBuffs[slotNameCount - 1].duration + " seconds)";
+                                baseTT.SetToolTip(pb, "Buff slot " + slotNameCount + processedNameData);
+                                slotNameCount++;
+                                i++;
+                            }
                         }
                         break;
                 }
@@ -869,9 +886,12 @@ namespace WinTerrEdit
                 encodedColourData.AddRange(new List<Byte> { c.R, c.G, c.B });
             }
 
-            foreach(playerBuff pb in playerBuffs)
+            if (doBuffs)
             {
-                encodedBuffData.AddRange(pb.recompile(ih));
+                foreach (playerBuff pb in playerBuffs)
+                {
+                    encodedBuffData.AddRange(pb.recompile(ih));
+                }
             }
 
             //populate encoded health data
@@ -916,10 +936,13 @@ namespace WinTerrEdit
             save.InsertRange(ManaDataBeginOffset, encodedManaData);
             Console.WriteLine("Mana data: Removed 8 bytes, Inserted " + encodedManaData.Count() + " bytes");
 
-            int BuffDataBeginOffset = nameEndOffset + buffOffset;
-            save.RemoveRange(BuffDataBeginOffset, 176);
-            save.InsertRange(BuffDataBeginOffset, encodedBuffData);
-            Console.WriteLine("Mana data: Removed 176 bytes, Inserted " + encodedBuffData.Count() + " bytes");
+            if (doBuffs)
+            {
+                int BuffDataBeginOffset = nameEndOffset + buffOffset;
+                save.RemoveRange(BuffDataBeginOffset, 176);
+                save.InsertRange(BuffDataBeginOffset, encodedBuffData);
+                Console.WriteLine("Buff data: Removed 176 bytes, Inserted " + encodedBuffData.Count() + " bytes");
+            }
 
             save[nameEndOffset + 9] = (byte)playerHS;
             save[nameEndOffset] = (byte)playerMode;
@@ -1122,28 +1145,31 @@ namespace WinTerrEdit
 
         private void cbBuffs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if (doBuffs)
             {
-                if (cbBuffs.SelectedIndex.ToString() != "")
+                try
                 {
-                    playerBuffs[invSelectedIndex].buff = ih.searchBuffByName(cbBuffs.SelectedItem.ToString());
+                    if (cbBuffs.SelectedIndex.ToString() != "")
+                    {
+                        playerBuffs[invSelectedIndex].buff = ih.searchBuffByName(cbBuffs.SelectedItem.ToString());
+                    }
+                    isSaved = false;
+                    if (playerBuffs[invSelectedIndex].duration == 0 && playerBuffs[invSelectedIndex].buff.name != "None")
+                    {
+                        playerBuffs[invSelectedIndex].duration += 60;
+                        nudDur.Value += 60;
+                    }
+                    if (playerBuffs[invSelectedIndex].buff.name == "None")
+                    {
+                        playerBuffs[invSelectedIndex].duration = 0;
+                        nudDur.Value = 0;
+                    }
+                    updateInvDisplay();
                 }
-                isSaved = false;
-                if (playerBuffs[invSelectedIndex].duration == 0 && playerBuffs[invSelectedIndex].buff.name != "None")
+                catch
                 {
-                    playerBuffs[invSelectedIndex].duration += 60;
-                    nudDur.Value += 60;
-                }
-                if (playerBuffs[invSelectedIndex].buff.name == "None")
-                {
-                    playerBuffs[invSelectedIndex].duration = 0;
-                    nudDur.Value = 0;
-                }
-                updateInvDisplay();
-            }
-            catch
-            {
 
+                }
             }
         }
 
@@ -1395,7 +1421,7 @@ namespace WinTerrEdit
         {
             if(e.KeyCode == Keys.F1)
             {
-                about ab = new about(aboutBoxContactData);
+                about ab = new about(aboutBoxContactData, WTEversion);
                 ab.ShowDialog();
             }
             if(e.KeyCode == Keys.F2)
@@ -1711,7 +1737,6 @@ namespace WinTerrEdit
                 playerMana.Clear();
                 playerColours.Clear();
                 nameEndOffset = 0;
-                invSelectedIndex = 0;
                 isSaved = true;
                 unlockAllData.Clear();
                 debugInvData.Clear();
@@ -1722,8 +1747,6 @@ namespace WinTerrEdit
                 playerBuffs.Clear();
 
                 loadData(lastReadPlrPath);
-                //gbInvHold.Enabled = true;
-                //gbColour.Enabled = true;
                 gb_slot_items.Enabled = true;
                 gb_slot_buff.Enabled = true;
                 gbItems.Enabled = true;
@@ -1731,7 +1754,6 @@ namespace WinTerrEdit
                 tcMain.Enabled = true;
 
                 btnSave.Enabled = true;
-                invSelectedIndex = 0;
                 updateInvDisplay();
 
                 currentFileHash = tmp;
@@ -1764,8 +1786,9 @@ namespace WinTerrEdit
             try
             {
                 WebClient w = new WebClient();
-                w.Headers.Add("user-agent", "Internal WTE request");
+                w.Headers.Add("user-agent", "Internal WTE request | 1.10.3");
                 string _tmp = w.DownloadString(@"http://knedit.pw/WTE_Contact_Data_Tmp/");
+                Console.WriteLine(_tmp);
                 if (_tmp[0] == 'W')
                 {
                     return _tmp;
