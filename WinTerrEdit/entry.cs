@@ -88,11 +88,19 @@ namespace WinTerrEdit
         public string aboutBoxContactData;
         public registryHandler rh = new registryHandler();
 
+        //conext menus
+        public ContextMenu cm = new ContextMenu();
+        public MenuItem copy = new MenuItem("Copy");
+        public MenuItem paste = new MenuItem("Paste");
+        public MenuItem delete = new MenuItem("Delete");
+        public MenuItem toggleFav = new MenuItem("Toggle favourite");
+
         //debug and error handling
         public int stage = 0;
         public string error = "";
         public bool doBuffs = true;
         public bool loading_complete = false;
+        
 
         public entry()
         {
@@ -106,8 +114,12 @@ namespace WinTerrEdit
         private void Entry_Load(object sender, EventArgs e)
         {
             string settings = "000";
+            cm.MenuItems.Add(copy);
+            cm.MenuItems.Add(paste);
+            cm.MenuItems.Add(delete);
+            cm.MenuItems.Add(toggleFav);
 
-            try{ settings = rh.loadRegData(); }
+            try { settings = rh.loadRegData(); }
             catch{ }
 
             if(settings[0] == '1')
@@ -387,7 +399,6 @@ namespace WinTerrEdit
                 List<int> buffBtm = new List<int> { };
                 for (int i = BuffDataBeginOffset; i < BuffDataEndOffset; i++)
                 {
-                    Console.WriteLine(String.Join(",", buffBtm));
                     extCounter++;
                     buffBtm.Add(decrypted[i]);
                     if (extCounter == 8)
@@ -650,6 +661,7 @@ namespace WinTerrEdit
                         i = 0;
                         foreach (PictureBox pb in pbs_inventory)
                         {
+                            pb.ContextMenu = cm;
                             pbs_inventory[i].Image = inv_main[i].item.icon;
                             string processedNameData = " (" + inv_main[slotNameCount - 1].item.name + " x" + inv_main[slotNameCount - 1].quantity + ")";
                             baseTT.SetToolTip(pb, "Slot " + slotNameCount + processedNameData);
@@ -663,6 +675,7 @@ namespace WinTerrEdit
                         i = 0;
                         foreach (PictureBox pb in pbs_piggybank)
                         {
+                            pb.ContextMenu = cm;
                             pbs_piggybank[i].Image = inv_piggybank[i].item.icon;
                             string processedNameData = " (" + inv_piggybank[slotNameCount - 1].item.name + " x" + inv_piggybank[slotNameCount - 1].quantity + ")";
                             baseTT.SetToolTip(pb, "Piggybank slot " + slotNameCount + processedNameData);
@@ -676,6 +689,7 @@ namespace WinTerrEdit
                         i = 0;
                         foreach (PictureBox pb in pbs_safe)
                         {
+                            pb.ContextMenu = cm;
                             pbs_safe[i].Image = inv_safe[i].item.icon;
                             string processedNameData = " (" + inv_safe[slotNameCount - 1].item.name + " x" + inv_safe[slotNameCount - 1].quantity + ")";
                             baseTT.SetToolTip(pb, "Safe slot " + slotNameCount + processedNameData);
@@ -689,6 +703,7 @@ namespace WinTerrEdit
                         i = 0;
                         foreach (PictureBox pb in pbs_ammocoins)
                         {
+                            pb.ContextMenu = cm;
                             pbs_ammocoins[i].Image = inv_ammocoins[i].item.icon;
                             string processedNameData = " (" + inv_ammocoins[slotNameCount - 1].item.name + " x" + inv_ammocoins[slotNameCount - 1].quantity + ")";
                             baseTT.SetToolTip(pb, "Safe slot " + slotNameCount + processedNameData);
@@ -704,6 +719,7 @@ namespace WinTerrEdit
                             i = 0;
                             foreach (PictureBox pb in pbs_buffs)
                             {
+                                pb.ContextMenu = cm;
                                 pbs_buffs[i].Image = playerBuffs[i].buff.icon;
                                 string processedNameData = " (" + playerBuffs[slotNameCount - 1].buff.name + " for " + playerBuffs[slotNameCount - 1].duration + " seconds)";
                                 baseTT.SetToolTip(pb, "Buff slot " + slotNameCount + processedNameData);
@@ -1022,6 +1038,11 @@ namespace WinTerrEdit
             string elementName = (sender as PictureBox).Name;
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
             int tmp = Int32.Parse(npart[1]) - 1;
+
+            if(tcMain.SelectedIndex == 0 && inv_main.Count() > 0 && inv_main[tmp].isFavorite)
+            {
+                e.Graphics.FillRectangle(Brushes.Orange, 2, 2, 5, 5);
+            }
 
             if(tmp == copyIndex && tcMain.SelectedIndex != 4)
             {
@@ -1544,11 +1565,16 @@ namespace WinTerrEdit
                     }
                 }
             }
+            if(e.KeyCode == Keys.Menu && selectedTab == 0)
+            {
+                inv_main[invSelectedIndex].isFavorite = !inv_main[invSelectedIndex].isFavorite;
+                updateInvDisplay();
+            }
         }
 
         private void ndq_keydown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control || e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.NumPad5)
+            if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control || e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.NumPad5 || e.KeyCode == Keys.Alt)
             {
                 e.SuppressKeyPress = true;
             }
@@ -1788,7 +1814,6 @@ namespace WinTerrEdit
                 WebClient w = new WebClient();
                 w.Headers.Add("user-agent", "Internal WTE request | 1.10.3");
                 string _tmp = w.DownloadString(@"http://knedit.pw/WTE_Contact_Data_Tmp/");
-                Console.WriteLine(_tmp);
                 if (_tmp[0] == 'W')
                 {
                     return _tmp;

@@ -88,12 +88,14 @@ namespace WinTerrEdit
         public baseItem item { get; set; }
         public int quantity { get; set; }
         public itemPrefix prefix { get; set; }
+        public bool isFavorite { get; set; }
         
         public invItem(List<int> terrData, itemHandler handler)
         {
             int id = handler.resolveEncodedData(terrData[0], terrData[1]);
             quantity = handler.resolveEncodedData(terrData[4], terrData[5]);
             prefix = handler.searchPrefixByID(terrData[8]);
+            isFavorite = terrData.Last() == 1 ? true : false;
 
             if(quantity > 0 && id == 0)
             {
@@ -103,6 +105,8 @@ namespace WinTerrEdit
             {
                 item = handler.searchItemByID(id);
             }
+
+            //Console.WriteLine(item.name + ":" + isFavorite);
         }
 
         //returns the inventory item as a set of 10 bytes for reinserting into raw data
@@ -123,7 +127,7 @@ namespace WinTerrEdit
             final.Add((byte)prefix.ID);
             if (e == encodeMethod.Long)
             {
-                final.Add(0x00);
+                final.Add((byte)(isFavorite == true ? 0x01 : 0x00));
             }
             
             return final;
@@ -169,6 +173,7 @@ namespace WinTerrEdit
         public baseItem(string[] insertion)
         {
             //loads item data from array
+            Console.WriteLine(insertion[0]);
             this.ID = Int32.Parse(insertion[0]);
             this.name = insertion[1];
             this.name_internal = insertion[2];
