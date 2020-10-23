@@ -27,7 +27,9 @@ namespace WinTerrEdit
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Terraria\\Players";
         public string lastReadPlrPath = "";
         public string currentFileHash = "";
-        public const string WTEversion = "1.10.3";
+
+        //version
+        public const string WTEversion = "1.10.4";
 
         //bools controling settings
         public bool useOverwriteFile = false;
@@ -1812,7 +1814,7 @@ namespace WinTerrEdit
             try
             {
                 WebClient w = new WebClient();
-                w.Headers.Add("user-agent", "Internal WTE request | 1.10.3");
+                w.Headers.Add("user-agent", "Internal WTE request | " + WTEversion);
                 string _tmp = w.DownloadString(@"http://knedit.pw/WTE_Contact_Data_Tmp/");
                 if (_tmp[0] == 'W')
                 {
