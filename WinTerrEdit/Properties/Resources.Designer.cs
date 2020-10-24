@@ -73,6 +73,16 @@ namespace WinTerrEdit.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap discordIcon {
+            get {
+                object obj = ResourceManager.GetObject("discordIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo_Only1 {
             get {
                 object obj = ResourceManager.GetObject("Logo_Only1", resourceCulture);

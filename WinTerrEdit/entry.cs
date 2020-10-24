@@ -29,7 +29,7 @@ namespace WinTerrEdit
         public string currentFileHash = "";
 
         //version
-        public const string WTEversion = "1.10.4";
+        public const string WTEversion = "1.10.4-B";
 
         //bools controling settings
         public bool useOverwriteFile = false;

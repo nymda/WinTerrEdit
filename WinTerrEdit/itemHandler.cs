@@ -157,7 +157,6 @@ namespace WinTerrEdit
             buff = handler.searchBuffById(id);
             duration = handler.resolveBuff(terrData[4], terrData[5], terrData[6]);
             duration = duration / 60;
-            Console.WriteLine("LOADED DURATION: " + duration);
         }
 
         //returns the inventory item as a set of 10 bytes for reinserting into raw data
@@ -166,7 +165,6 @@ namespace WinTerrEdit
             List<Byte> final = new List<Byte> { };
             List<int> encodedItem = handler.encodeData(buff.ID);
             List<int> encodedDuration = handler.encodeBuffs(duration * 60);
-            Console.WriteLine("SAVED DURATION: " + duration * 60);
             //bytes 2, 3, 6, 7 and 9 seem to make the item dissapear if they are anything other than 0x00
             final.Add((byte)encodedItem[0]);
             final.Add((byte)encodedItem[1]);
