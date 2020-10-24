@@ -412,6 +412,7 @@ namespace WinTerrEdit
                         extCounter = 0;
                     }
                 }
+                nudDur.Value = playerBuffs[0].duration;
             }
 
             //buff data has been found
@@ -603,6 +604,7 @@ namespace WinTerrEdit
                         gbItems.Enabled = true;
                         gbBuffs.Enabled = true;
                         btnReload.Enabled = true;
+                        updateInvDisplay();
                     }
                     catch(Exception ex)
                     {
@@ -842,7 +844,6 @@ namespace WinTerrEdit
                     nudDur.Value = playerBuffs[invSelectedIndex].duration;
                     cbBuffs.SelectedItem = playerBuffs[invSelectedIndex].buff.name;
                     gb_slot_buff.Text = "Buff slot " + (invSelectedIndex + 1);
-                    playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;
                     break;
 
             }

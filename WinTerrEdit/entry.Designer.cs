@@ -303,6 +303,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.nudDur = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
@@ -3983,6 +3984,7 @@
             // 
             // gb_slot_buff
             // 
+            this.gb_slot_buff.Controls.Add(this.label21);
             this.gb_slot_buff.Controls.Add(this.cbBuffs);
             this.gb_slot_buff.Controls.Add(this.BuffClearBtn);
             this.gb_slot_buff.Controls.Add(this.label18);
@@ -4025,12 +4027,12 @@
             this.nudDur.Location = new System.Drawing.Point(66, 47);
             this.nudDur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudDur.Maximum = new decimal(new int[] {
-            65535,
+            16777000,
             0,
             0,
             0});
             this.nudDur.Name = "nudDur";
-            this.nudDur.Size = new System.Drawing.Size(145, 20);
+            this.nudDur.Size = new System.Drawing.Size(91, 20);
             this.nudDur.TabIndex = 117;
             this.nudDur.Value = new decimal(new int[] {
             1,
@@ -4048,6 +4050,15 @@
             this.label19.TabIndex = 119;
             this.label19.Text = "Duration:";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(162, 50);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(49, 13);
+            this.label21.TabIndex = 131;
+            this.label21.Text = "Seconds";
+            // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4056,10 +4067,10 @@
             this.Controls.Add(this.cbItem);
             this.Controls.Add(this.tcMain);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gb_slot_items);
-            this.Controls.Add(this.gb_slot_buff);
             this.Controls.Add(this.gbItems);
             this.Controls.Add(this.gbBuffs);
+            this.Controls.Add(this.gb_slot_items);
+            this.Controls.Add(this.gb_slot_buff);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -4573,6 +4584,7 @@
         private System.Windows.Forms.NumericUpDown nudDur;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
     }
 }
 

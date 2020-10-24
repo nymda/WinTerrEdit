@@ -36,17 +36,30 @@ namespace WinTerrEdit
         {
             return b1 + (256 * b2);
         }
+        public int resolveBuff(int b1, int b2, int b3)
+        {
+            List<byte> bytes = new List<byte> { (byte)b1, (byte)b2, (byte)b3, 0x00 };
+            return BitConverter.ToInt32(bytes.ToArray(), 0);
+        }
         public List<int> encodeData(int inp)
         {
-            if(inp >= 0)
-            {
-                return new List<int> { inp % 256, inp / 256 };
-            }
-            else
-            {
-                return new List<int> { 0, 0 };
-            }
+            byte[] tmp = BitConverter.GetBytes(inp);
+            return new List<int> { tmp[0], tmp[1] };
+            
+            //if (inp >= 0)
+            //{
+            //    return new List<int> { inp % 256, inp / 256 };
+            //}
+            //else
+            //{
+            //    return new List<int> { 0, 0 };
+            //}
 
+        }
+        public List<int> encodeBuffs(int inp)
+        {
+            byte[] tmp = BitConverter.GetBytes(inp);
+            return new List<int> { tmp[0], tmp[1], tmp[2] };
         }
         public baseItem searchItemByID(int id)
         {
@@ -142,7 +155,9 @@ namespace WinTerrEdit
         {
             int id = handler.resolveEncodedData(terrData[0], terrData[1]);
             buff = handler.searchBuffById(id);
-            duration = handler.resolveEncodedData(terrData[4], terrData[5]);
+            duration = handler.resolveBuff(terrData[4], terrData[5], terrData[6]);
+            duration = duration / 60;
+            Console.WriteLine("LOADED DURATION: " + duration);
         }
 
         //returns the inventory item as a set of 10 bytes for reinserting into raw data
@@ -150,7 +165,8 @@ namespace WinTerrEdit
         {
             List<Byte> final = new List<Byte> { };
             List<int> encodedItem = handler.encodeData(buff.ID);
-            List<int> encodedDuration = handler.encodeData(duration);
+            List<int> encodedDuration = handler.encodeBuffs(duration * 60);
+            Console.WriteLine("SAVED DURATION: " + duration * 60);
             //bytes 2, 3, 6, 7 and 9 seem to make the item dissapear if they are anything other than 0x00
             final.Add((byte)encodedItem[0]);
             final.Add((byte)encodedItem[1]);
@@ -158,7 +174,7 @@ namespace WinTerrEdit
             final.Add(0x00);
             final.Add((byte)encodedDuration[0]);
             final.Add((byte)encodedDuration[1]);
-            final.Add(0x00);
+            final.Add((byte)encodedDuration[2]);
             final.Add(0x00);
             return final;
         }
@@ -173,7 +189,6 @@ namespace WinTerrEdit
         public baseItem(string[] insertion)
         {
             //loads item data from array
-            Console.WriteLine(insertion[0]);
             this.ID = Int32.Parse(insertion[0]);
             this.name = insertion[1];
             this.name_internal = insertion[2];
