@@ -299,11 +299,25 @@
             this.imgl_buffs = new System.Windows.Forms.ImageList(this.components);
             this.cbBuffs = new System.Windows.Forms.ComboBox();
             this.gb_slot_buff = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.BuffClearBtn = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.nudDur = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bbToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ccToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toggleFavoriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
@@ -523,6 +537,7 @@
             this.gbBuffs.SuspendLayout();
             this.gb_slot_buff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDur)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label10
@@ -771,9 +786,9 @@
             this.gbItems.Controls.Add(this.textBox1);
             this.gbItems.Controls.Add(this.itemLV);
             this.gbItems.Enabled = false;
-            this.gbItems.Location = new System.Drawing.Point(12, 12);
+            this.gbItems.Location = new System.Drawing.Point(6, 28);
             this.gbItems.Name = "gbItems";
-            this.gbItems.Size = new System.Drawing.Size(262, 310);
+            this.gbItems.Size = new System.Drawing.Size(262, 290);
             this.gbItems.TabIndex = 126;
             this.gbItems.TabStop = false;
             this.gbItems.Text = "Items";
@@ -781,7 +796,7 @@
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(6, 286);
+            this.lblSearch.Location = new System.Drawing.Point(6, 264);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(44, 13);
             this.lblSearch.TabIndex = 54;
@@ -789,7 +804,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(56, 284);
+            this.textBox1.Location = new System.Drawing.Point(56, 262);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(200, 20);
             this.textBox1.TabIndex = 53;
@@ -802,7 +817,7 @@
             this.itemLV.HideSelection = false;
             this.itemLV.Location = new System.Drawing.Point(6, 17);
             this.itemLV.Name = "itemLV";
-            this.itemLV.Size = new System.Drawing.Size(250, 261);
+            this.itemLV.Size = new System.Drawing.Size(250, 239);
             this.itemLV.TabIndex = 52;
             this.itemLV.UseCompatibleStateImageBehavior = false;
             this.itemLV.ItemActivate += new System.EventHandler(this.lb_activ);
@@ -839,7 +854,7 @@
             this.tcMain.Controls.Add(this.tabPage5);
             this.tcMain.Controls.Add(this.tabPage4);
             this.tcMain.Enabled = false;
-            this.tcMain.Location = new System.Drawing.Point(280, 94);
+            this.tcMain.Location = new System.Drawing.Point(274, 90);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
             this.tcMain.Size = new System.Drawing.Size(397, 228);
@@ -3821,7 +3836,7 @@
             this.gb_slot_items.Controls.Add(this.nudQuant);
             this.gb_slot_items.Controls.Add(this.label2);
             this.gb_slot_items.Enabled = false;
-            this.gb_slot_items.Location = new System.Drawing.Point(280, 12);
+            this.gb_slot_items.Location = new System.Drawing.Point(274, 8);
             this.gb_slot_items.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gb_slot_items.Name = "gb_slot_items";
             this.gb_slot_items.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -3885,7 +3900,7 @@
             this.groupBox1.Controls.Add(this.btnLoad);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnReload);
-            this.groupBox1.Location = new System.Drawing.Point(533, 12);
+            this.groupBox1.Location = new System.Drawing.Point(527, 8);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -3925,9 +3940,9 @@
             this.gbBuffs.Controls.Add(this.textBox2);
             this.gbBuffs.Controls.Add(this.buffLV);
             this.gbBuffs.Enabled = false;
-            this.gbBuffs.Location = new System.Drawing.Point(12, 12);
+            this.gbBuffs.Location = new System.Drawing.Point(6, 28);
             this.gbBuffs.Name = "gbBuffs";
-            this.gbBuffs.Size = new System.Drawing.Size(262, 310);
+            this.gbBuffs.Size = new System.Drawing.Size(262, 290);
             this.gbBuffs.TabIndex = 129;
             this.gbBuffs.TabStop = false;
             this.gbBuffs.Text = "Buffs";
@@ -3935,7 +3950,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 286);
+            this.label17.Location = new System.Drawing.Point(6, 264);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(44, 13);
             this.label17.TabIndex = 54;
@@ -3943,7 +3958,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(56, 284);
+            this.textBox2.Location = new System.Drawing.Point(56, 262);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(200, 20);
             this.textBox2.TabIndex = 53;
@@ -3956,7 +3971,7 @@
             this.buffLV.HideSelection = false;
             this.buffLV.Location = new System.Drawing.Point(6, 17);
             this.buffLV.Name = "buffLV";
-            this.buffLV.Size = new System.Drawing.Size(250, 261);
+            this.buffLV.Size = new System.Drawing.Size(250, 239);
             this.buffLV.TabIndex = 52;
             this.buffLV.UseCompatibleStateImageBehavior = false;
             this.buffLV.ItemActivate += new System.EventHandler(this.blb_activ);
@@ -3991,7 +4006,7 @@
             this.gb_slot_buff.Controls.Add(this.nudDur);
             this.gb_slot_buff.Controls.Add(this.label19);
             this.gb_slot_buff.Enabled = false;
-            this.gb_slot_buff.Location = new System.Drawing.Point(280, 12);
+            this.gb_slot_buff.Location = new System.Drawing.Point(274, 8);
             this.gb_slot_buff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gb_slot_buff.Name = "gb_slot_buff";
             this.gb_slot_buff.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -3999,6 +4014,15 @@
             this.gb_slot_buff.TabIndex = 131;
             this.gb_slot_buff.TabStop = false;
             this.gb_slot_buff.Text = "Slot";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(162, 50);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(49, 13);
+            this.label21.TabIndex = 131;
+            this.label21.Text = "Seconds";
             // 
             // BuffClearBtn
             // 
@@ -4050,34 +4074,140 @@
             this.label19.TabIndex = 119;
             this.label19.Text = "Duration:";
             // 
-            // label21
+            // menuStrip1
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(162, 50);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(49, 13);
-            this.label21.TabIndex = 131;
-            this.label21.Text = "Seconds";
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.optionsToolStripMenuItem,
+            this.toolsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(3, 2);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(152, 24);
+            this.menuStrip1.TabIndex = 132;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aaToolStripMenuItem,
+            this.bbToolStripMenuItem,
+            this.ccToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // aaToolStripMenuItem
+            // 
+            this.aaToolStripMenuItem.Name = "aaToolStripMenuItem";
+            this.aaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aaToolStripMenuItem.Text = "Load";
+            this.aaToolStripMenuItem.Click += new System.EventHandler(this.aaToolStripMenuItem_Click);
+            // 
+            // bbToolStripMenuItem
+            // 
+            this.bbToolStripMenuItem.Name = "bbToolStripMenuItem";
+            this.bbToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bbToolStripMenuItem.Text = "Save";
+            this.bbToolStripMenuItem.Click += new System.EventHandler(this.bbToolStripMenuItem_Click);
+            // 
+            // ccToolStripMenuItem
+            // 
+            this.ccToolStripMenuItem.Name = "ccToolStripMenuItem";
+            this.ccToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ccToolStripMenuItem.Text = "Reload";
+            this.ccToolStripMenuItem.Click += new System.EventHandler(this.ccToolStripMenuItem_Click);
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.toggleFavoriteToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem,
+            this.aboutToolStripMenuItem,
+            this.debugToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // debugToolStripMenuItem
+            // 
+            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.debugToolStripMenuItem.Text = "Debug";
+            this.debugToolStripMenuItem.Click += new System.EventHandler(this.debugToolStripMenuItem_Click);
+            // 
+            // toggleFavoriteToolStripMenuItem
+            // 
+            this.toggleFavoriteToolStripMenuItem.Name = "toggleFavoriteToolStripMenuItem";
+            this.toggleFavoriteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toggleFavoriteToolStripMenuItem.Text = "Toggle favorite";
+            this.toggleFavoriteToolStripMenuItem.Click += new System.EventHandler(this.toggleFavoriteToolStripMenuItem_Click);
             // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 328);
+            this.ClientSize = new System.Drawing.Size(676, 323);
             this.Controls.Add(this.cbItem);
             this.Controls.Add(this.tcMain);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gbItems);
-            this.Controls.Add(this.gbBuffs);
             this.Controls.Add(this.gb_slot_items);
             this.Controls.Add(this.gb_slot_buff);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.gbItems);
+            this.Controls.Add(this.gbBuffs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "entry";
-            this.Text = "WinTerrEdit | [F1] About | [F2] Settings ";
+            this.Text = "WinTerrEdit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.onClose);
             this.Load += new System.EventHandler(this.Entry_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entry_kDown);
@@ -4306,7 +4436,10 @@
             this.gb_slot_buff.ResumeLayout(false);
             this.gb_slot_buff.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDur)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -4585,6 +4718,20 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bbToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ccToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toggleFavoriteToolStripMenuItem;
     }
 }
 

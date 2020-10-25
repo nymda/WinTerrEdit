@@ -17,8 +17,16 @@ namespace WinTerrEdit
 {
     public partial class entry : Form
     {
+        /// <summary>
+        /// 
+        /// This is quickly becoming a massive, mostly unmanagable mess. This whole project desperatly needs a full recode.
+        /// Abandon all hope, yee who enter there.
+        /// 
+        /// </summary>
+
         /// <note>
-        /// the combobox "cbItem" is no longer nessicary on the UI, however its f, unctionality is integeral to the program. 
+        /// the combobox "cbItem" is no longer nessicary on the UI, however, its unctionality is integeral to the program. 
+        /// dont delete cbItem, it is the glue holding everything together. 
         /// </note>
 
         //general stuff
@@ -91,18 +99,14 @@ namespace WinTerrEdit
         public registryHandler rh = new registryHandler();
 
         //conext menus
-        public ContextMenu cm = new ContextMenu();
-        public MenuItem copy = new MenuItem("Copy");
-        public MenuItem paste = new MenuItem("Paste");
-        public MenuItem delete = new MenuItem("Delete");
-        public MenuItem toggleFav = new MenuItem("Toggle favourite");
+        public ContextMenuStrip cm = new ContextMenuStrip();
 
         //debug and error handling
         public int stage = 0;
         public string error = "";
         public bool doBuffs = true;
         public bool loading_complete = false;
-        
+
 
         public entry()
         {
@@ -116,23 +120,24 @@ namespace WinTerrEdit
         private void Entry_Load(object sender, EventArgs e)
         {
             string settings = "000";
-            cm.MenuItems.Add(copy);
-            cm.MenuItems.Add(paste);
-            cm.MenuItems.Add(delete);
-            cm.MenuItems.Add(toggleFav);
+            cm.Items.Add("Copy");
+            cm.Items.Add("Paste");
+            cm.Items.Add("Delete");
+            cm.Items.Add("Toggle favourite");
+            cm.ItemClicked += new ToolStripItemClickedEventHandler(cm_ItemClicked);
 
             try { settings = rh.loadRegData(); }
-            catch{ }
+            catch { }
 
-            if(settings[0] == '1')
+            if (settings[0] == '1')
             {
                 useOverwriteFile = true;
             }
-            if(settings[1] == '1')
+            if (settings[1] == '1')
             {
                 useAutoReloadFile = true;
             }
-            if(settings[2] == '1')
+            if (settings[2] == '1')
             {
                 useExtendedName = true;
             }
@@ -145,15 +150,15 @@ namespace WinTerrEdit
             baseTT.SetToolTip(btnSave, "Save the currently open .PLR file");
 
             btnReload.UseCompatibleTextRendering = true;
-            
+
             //display content
-            pbs_inventory.AddRange(new List<PictureBox> { Pb1, Pb2, Pb3, Pb4, Pb5, Pb6, Pb7, Pb8, Pb9, Pb10, Pb11, Pb12, Pb13, Pb14, Pb15, Pb16, Pb17, Pb18, Pb19, Pb20, Pb21, Pb22, Pb23, Pb24, Pb25, Pb26, Pb27, Pb28, Pb29, Pb30, Pb31, Pb32, Pb33, Pb34, Pb35, Pb36, Pb37, Pb38, Pb39, Pb40, Pb41, Pb42, Pb43, Pb44, Pb45, Pb46, Pb47, Pb48, Pb49, Pb50 }); 
+            pbs_inventory.AddRange(new List<PictureBox> { Pb1, Pb2, Pb3, Pb4, Pb5, Pb6, Pb7, Pb8, Pb9, Pb10, Pb11, Pb12, Pb13, Pb14, Pb15, Pb16, Pb17, Pb18, Pb19, Pb20, Pb21, Pb22, Pb23, Pb24, Pb25, Pb26, Pb27, Pb28, Pb29, Pb30, Pb31, Pb32, Pb33, Pb34, Pb35, Pb36, Pb37, Pb38, Pb39, Pb40, Pb41, Pb42, Pb43, Pb44, Pb45, Pb46, Pb47, Pb48, Pb49, Pb50 });
             pbs_piggybank.AddRange(new List<PictureBox> { Pb51, Pb52, Pb53, Pb54, Pb55, Pb56, Pb57, Pb58, Pb59, Pb60, Pb61, Pb62, Pb63, Pb64, Pb65, Pb66, Pb67, Pb68, Pb69, Pb70, Pb71, Pb72, Pb73, Pb74, Pb75, Pb76, Pb77, Pb78, Pb79, Pb80, Pb81, Pb82, Pb83, Pb84, Pb85, Pb86, Pb87, Pb88, Pb89, Pb90 });
             pbs_safe.AddRange(new List<PictureBox> { Pb91, Pb92, Pb93, Pb94, Pb95, Pb96, Pb97, Pb98, Pb99, Pb100, Pb101, Pb102, Pb103, Pb104, Pb105, Pb106, Pb107, Pb108, Pb109, Pb110, Pb111, Pb112, Pb113, Pb114, Pb115, Pb116, Pb117, Pb118, Pb119, Pb120, Pb121, Pb122, Pb123, Pb124, Pb125, Pb126, Pb127, Pb128, Pb129, Pb130 });
             pbs_ammocoins.AddRange(new List<PictureBox> { Pb131, Pb132, Pb133, Pb134, Pb135, Pb136, Pb137, Pb138 });
             pbs_buffs.AddRange(new List<PictureBox> { Pb179, Pb180, Pb181, Pb182, Pb183, Pb184, Pb185, Pb186, Pb187, Pb188, Pb189, Pb190, Pb191, Pb192, Pb193, Pb194, Pb195, Pb196, Pb197, Pb198, Pb199, Pb200 });
 
-            pnCollection.AddRange(new List<Panel> { hairPnl, skinPnl, eyesPnl, shirtPnl, undershirtPnl, pantsPnl, shoesPnl }); 
+            pnCollection.AddRange(new List<Panel> { hairPnl, skinPnl, eyesPnl, shirtPnl, undershirtPnl, pantsPnl, shoesPnl });
 
             int cnt = 0;
             itemLV.View = View.Details;
@@ -165,7 +170,7 @@ namespace WinTerrEdit
             {
                 cbItem.Items.Add(itm.name);
                 imgl_items.Images.Add(itm.icon);
-                if(itm.ID != -1)
+                if (itm.ID != -1)
                 {
                     ListViewItem tmp = new ListViewItem();
                     tmp.Text = itm.name;
@@ -191,7 +196,7 @@ namespace WinTerrEdit
                     ListViewItem tmp = new ListViewItem();
                     tmp.Text = bff.name;
                     tmp.ImageIndex = cnt;
-                    if(bff.buffStatus == buffStatus.Debuff)
+                    if (bff.buffStatus == buffStatus.Debuff)
                     {
                         tmp.ForeColor = Color.Red;
                     }
@@ -254,13 +259,13 @@ namespace WinTerrEdit
             rawDecrypted = decrypted.ToList();
             versionCode = ih.resolveEncodedData(decrypted[0], decrypted[1]);
 
-            if(versionCode > 512)
+            if (versionCode > 512)
             {
                 throw new Exception("Invalid PLR header data");
             }
 
             int startpos = 25;
-            int nameLen = decrypted[startpos-1];
+            int nameLen = decrypted[startpos - 1];
             byte[] namebytes = new byte[nameLen];
             Array.Copy(decrypted, startpos, namebytes, 0, nameLen);
             nameEndOffset = startpos + nameLen;
@@ -268,16 +273,16 @@ namespace WinTerrEdit
             playerName = Encoding.UTF8.GetString(namebytes);
             tbName.Text = playerName;
 
-            if(versionCode < 230)
+            if (versionCode < 230)
             {
                 inventoryOffset = 211;
                 coinOffset = 711;
                 colOffset = 40;
                 pigOffset = 841;
                 safeOffset = 1201;
-                
+
                 doBuffs = false;
-                foreach(PictureBox p in pbs_buffs)
+                foreach (PictureBox p in pbs_buffs)
                 {
                     p.Enabled = false;
                 }
@@ -464,7 +469,7 @@ namespace WinTerrEdit
             int phc = playerHealth[0];
             int phm = playerHealth[1];
 
-            if( phc > nudHealthCur.Maximum)
+            if (phc > nudHealthCur.Maximum)
             {
                 nudHealthCur.Maximum = phc;
             }
@@ -515,7 +520,7 @@ namespace WinTerrEdit
 
             int hs = decrypted[nameEndOffset + 9];
 
-            if(hs > nudHair.Maximum)
+            if (hs > nudHair.Maximum)
             {
                 nudHair.Maximum = hs;
             }
@@ -555,13 +560,18 @@ namespace WinTerrEdit
             stage = 12;
 
             var res = inv_main.Where(invItem => invItem.item.name == "Unknown");
-            if(res.Count() > 0)
+            if (res.Count() > 0)
             {
                 MessageBox.Show("This player contains \"Unknown\" items. These are items which have a quantity or prefix but no ID. This may be caused by a game bug or (more likely) a mod. Be careful when editing these items.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
+        {
+            loadPlayer();
+        }
+
+        public void loadPlayer()
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
@@ -582,6 +592,7 @@ namespace WinTerrEdit
                         playerColours.Clear();
                         nameEndOffset = 0;
                         invSelectedIndex = 0;
+                        trueSelectedIndex = 0;
                         isSaved = true;
                         unlockAllData.Clear();
                         debugInvData.Clear();
@@ -592,7 +603,7 @@ namespace WinTerrEdit
                         playerBuffs.Clear();
 
                         lastReadPlrPath = dlg.FileName;
-                        this.Text = "WinTerrEdit | [F1] About | [F2] Settings | (" + dlg.SafeFileName + ")";
+                        this.Text = "WinTerrEdit | (" + dlg.SafeFileName + ")";
 
                         loadData(dlg.FileName);
                         //gbInvHold.Enabled = true;
@@ -606,7 +617,7 @@ namespace WinTerrEdit
                         btnReload.Enabled = true;
                         updateInvDisplay();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         errorReporter er = new errorReporter(stage.ToString(), ex.Message, Convert.ToBase64String(File.ReadAllBytes(lastReadPlrPath)));
                         er.ShowDialog();
@@ -621,6 +632,11 @@ namespace WinTerrEdit
         }
 
         private void btnReload_Click(object sender, EventArgs e)
+        {
+            reloadPlayer();
+        }
+
+        public void reloadPlayer()
         {
             rawDecrypted.Clear();
             playerName = "";
@@ -648,7 +664,8 @@ namespace WinTerrEdit
             tcMain.Enabled = true;
             btnSave.Enabled = true;
             updateInvDisplay();
-        }   
+        }
+
         public void updateInvDisplay()
         {
             //hardcoded numbers EEEEEEEEVERYWHEREEEE
@@ -665,7 +682,7 @@ namespace WinTerrEdit
                         i = 0;
                         foreach (PictureBox pb in pbs_inventory)
                         {
-                            pb.ContextMenu = cm;
+                            pb.ContextMenuStrip = cm;
                             pbs_inventory[i].Image = inv_main[i].item.icon;
                             string processedNameData = " (" + inv_main[slotNameCount - 1].item.name + " x" + inv_main[slotNameCount - 1].quantity + ")";
                             baseTT.SetToolTip(pb, "Slot " + slotNameCount + processedNameData);
@@ -679,7 +696,7 @@ namespace WinTerrEdit
                         i = 0;
                         foreach (PictureBox pb in pbs_piggybank)
                         {
-                            pb.ContextMenu = cm;
+                            pb.ContextMenuStrip = cm;
                             pbs_piggybank[i].Image = inv_piggybank[i].item.icon;
                             string processedNameData = " (" + inv_piggybank[slotNameCount - 1].item.name + " x" + inv_piggybank[slotNameCount - 1].quantity + ")";
                             baseTT.SetToolTip(pb, "Piggybank slot " + slotNameCount + processedNameData);
@@ -693,7 +710,7 @@ namespace WinTerrEdit
                         i = 0;
                         foreach (PictureBox pb in pbs_safe)
                         {
-                            pb.ContextMenu = cm;
+                            pb.ContextMenuStrip = cm;
                             pbs_safe[i].Image = inv_safe[i].item.icon;
                             string processedNameData = " (" + inv_safe[slotNameCount - 1].item.name + " x" + inv_safe[slotNameCount - 1].quantity + ")";
                             baseTT.SetToolTip(pb, "Safe slot " + slotNameCount + processedNameData);
@@ -707,7 +724,7 @@ namespace WinTerrEdit
                         i = 0;
                         foreach (PictureBox pb in pbs_ammocoins)
                         {
-                            pb.ContextMenu = cm;
+                            pb.ContextMenuStrip = cm;
                             pbs_ammocoins[i].Image = inv_ammocoins[i].item.icon;
                             string processedNameData = " (" + inv_ammocoins[slotNameCount - 1].item.name + " x" + inv_ammocoins[slotNameCount - 1].quantity + ")";
                             baseTT.SetToolTip(pb, "Safe slot " + slotNameCount + processedNameData);
@@ -723,7 +740,7 @@ namespace WinTerrEdit
                             i = 0;
                             foreach (PictureBox pb in pbs_buffs)
                             {
-                                pb.ContextMenu = cm;
+                                pb.ContextMenuStrip = cm;
                                 pbs_buffs[i].Image = playerBuffs[i].buff.icon;
                                 string processedNameData = " (" + playerBuffs[slotNameCount - 1].buff.name + " for " + playerBuffs[slotNameCount - 1].duration + " seconds)";
                                 baseTT.SetToolTip(pb, "Buff slot " + slotNameCount + processedNameData);
@@ -856,7 +873,7 @@ namespace WinTerrEdit
             //define each data block for re-encoding
             List<Byte> encodedInvData = new List<Byte> { };
             List<Byte> encodedBankData = new List<Byte> { };
-            List<Byte> encodedSafeData= new List<Byte> { };
+            List<Byte> encodedSafeData = new List<Byte> { };
             List<Byte> encodedAmmoData = new List<Byte> { };
             List<Byte> encodedColourData = new List<Byte> { };
             List<Byte> encodedHealthData = new List<Byte> { };
@@ -874,7 +891,7 @@ namespace WinTerrEdit
             nn.AddRange(nameConverted);
             save.InsertRange(24, nn);
             nameEndOffset = 25 + nameConverted.Length;
-            
+
             //populate encoded inventory data
             foreach (invItem iv in inv_main)
             {
@@ -888,7 +905,7 @@ namespace WinTerrEdit
             }
 
             //populate encoded piggybank data
-            foreach(invItem iv in inv_piggybank)
+            foreach (invItem iv in inv_piggybank)
             {
                 encodedBankData.AddRange(iv.recompile(ih, encodeMethod.Short));
             }
@@ -915,7 +932,7 @@ namespace WinTerrEdit
 
             //populate encoded health data
             encodedHealthData.InsertRange(0, new List<Byte> { (byte)ih.encodeData(playerHealth[0])[0], (byte)ih.encodeData(playerHealth[0])[1], 0x00, 0x00, (byte)ih.encodeData(playerHealth[1])[0], (byte)ih.encodeData(playerHealth[1])[1], 0x00, 0x00 });
-            
+
             //populate encoded mana data
             encodedManaData.InsertRange(0, new List<Byte> { (byte)ih.encodeData(playerMana[0])[0], (byte)ih.encodeData(playerMana[0])[1], 0x00, 0x00, (byte)ih.encodeData(playerMana[1])[0], (byte)ih.encodeData(playerMana[1])[1], 0x00, 0x00 });
 
@@ -977,6 +994,11 @@ namespace WinTerrEdit
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            savePlayer();
+        }
+
+        public void savePlayer()
+        {
             if (useOverwriteFile)
             {
                 cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
@@ -1020,7 +1042,7 @@ namespace WinTerrEdit
                         lastReadPlrPath = dlg.FileName;
 
                         //reload the saved file
-                        this.Text = "WinTerrEdit | [F1] About | [F2] Settings | (" + dlg.FileName.Split('\\')[dlg.FileName.Split('\\').Length-1] + ")";
+                        this.Text = "WinTerrEdit | (" + dlg.FileName.Split('\\')[dlg.FileName.Split('\\').Length - 1] + ")";
 
                         loadData(dlg.FileName);
                         //gbInvHold.Enabled = true;
@@ -1042,12 +1064,12 @@ namespace WinTerrEdit
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
             int tmp = Int32.Parse(npart[1]) - 1;
 
-            if(tcMain.SelectedIndex == 0 && inv_main.Count() > 0 && inv_main[tmp].isFavorite)
+            if (tcMain.SelectedIndex == 0 && inv_main.Count() > 0 && inv_main[tmp].isFavorite)
             {
                 e.Graphics.FillRectangle(Brushes.Orange, 2, 2, 5, 5);
             }
 
-            if(tmp == copyIndex && tcMain.SelectedIndex != 4)
+            if (tmp == copyIndex && tcMain.SelectedIndex != 4)
             {
                 e.Graphics.DrawRectangle(Pens.Blue, 0, 0, 31, 31);
             }
@@ -1083,6 +1105,7 @@ namespace WinTerrEdit
                         {
                             inv_main[invSelectedIndex].quantity = 0;
                             nudQuant.Value = 0;
+                            inv_main[invSelectedIndex].isFavorite = false;
                         }
                         break;
 
@@ -1276,7 +1299,7 @@ namespace WinTerrEdit
         {
             try
             {
-                playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;          
+                playerBuffs[invSelectedIndex].duration = (int)nudDur.Value;
 
                 isSaved = false;
             }
@@ -1356,7 +1379,7 @@ namespace WinTerrEdit
             {
                 e.Cancel = true;
                 closeWarn cw = new closeWarn();
-                if(cw.ShowDialog() == DialogResult.OK) 
+                if (cw.ShowDialog() == DialogResult.OK)
                 {
                     rh.saveRegData(useOverwriteFile, useAutoReloadFile, useExtendedName);
                     Environment.Exit(0);
@@ -1443,15 +1466,15 @@ namespace WinTerrEdit
 
         private void entry_kDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F1)
+            if (e.KeyCode == Keys.F1)
             {
                 about ab = new about(aboutBoxContactData, WTEversion);
                 ab.ShowDialog();
             }
-            if(e.KeyCode == Keys.F2)
+            if (e.KeyCode == Keys.F2)
             {
                 Settings st = new Settings(useOverwriteFile, useAutoReloadFile, useExtendedName);
-                if(st.ShowDialog() == DialogResult.OK)
+                if (st.ShowDialog() == DialogResult.OK)
                 {
                     useOverwriteFile = st.useOverwriteFile;
                     useAutoReloadFile = st.useAutoReloadFile;
@@ -1476,14 +1499,14 @@ namespace WinTerrEdit
                     else
                     {
                         tbName.MaxLength = 20;
-                        if(tbName.Text.Length > 20)
+                        if (tbName.Text.Length > 20)
                         {
                             tbName.Text = tbName.Text.Substring(0, 20);
                         }
                     }
                 }
             }
-            if(e.KeyCode == Keys.F3)
+            if (e.KeyCode == Keys.F3)
             {
                 hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, versionCode);
                 hx.ShowDialog();
@@ -1513,7 +1536,7 @@ namespace WinTerrEdit
             }
             if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
             {
-                if(copyBuffer != null)
+                if (copyBuffer != null)
                 {
                     cbItem.SelectedItem = copyBuffer.item.name;
                     cbPrefixes.SelectedItem = copyBuffer.prefix.name;
@@ -1521,19 +1544,19 @@ namespace WinTerrEdit
                     updateInvDisplay();
                 }
             }
-            if(e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape)
             {
                 copyIndex = -1;
                 copyBuffer = null;
                 updateInvDisplay();
             }
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 cbItem.SelectedItem = "Empty";
                 cbPrefixes.SelectedIndex = 0;
                 nudQuant.Value = 0;
             }
-            if(invSelectedIndex < 50 && invSelectedIndex != -1)
+            if (invSelectedIndex < 50 && invSelectedIndex != -1)
             {
                 if (e.KeyCode == Keys.NumPad8)
                 {
@@ -1568,7 +1591,7 @@ namespace WinTerrEdit
                     }
                 }
             }
-            if(e.KeyCode == Keys.Menu && selectedTab == 0)
+            if (e.KeyCode == Keys.Menu && selectedTab == 0)
             {
                 inv_main[invSelectedIndex].isFavorite = !inv_main[invSelectedIndex].isFavorite;
                 updateInvDisplay();
@@ -1699,14 +1722,14 @@ namespace WinTerrEdit
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if(textBox1.Text.Length > 2)
+            if (textBox1.Text.Length > 2)
             {
                 var results = lvis.Where(x => x.Text.ToLower().Contains(textBox1.Text)).ToList();
                 itemLV.Items.Clear();
                 foreach (var i in results)
                 {
                     itemLV.Items.Add(i);
-                }         
+                }
             }
             else
             {
@@ -1798,7 +1821,16 @@ namespace WinTerrEdit
             selectedTab = tcMain.SelectedIndex;
             updateInvDisplay();
 
-            if(tcMain.SelectedIndex == 4)
+            if(tcMain.SelectedIndex == 0)
+            {
+                toggleFavoriteToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                toggleFavoriteToolStripMenuItem.Enabled = false;
+            }
+
+            if (tcMain.SelectedIndex == 4)
             {
                 gbBuffs.BringToFront();
                 gb_slot_buff.BringToFront();
@@ -1849,7 +1881,8 @@ namespace WinTerrEdit
 
         private void cbGamemode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(cbGamemode.SelectedIndex){
+            switch (cbGamemode.SelectedIndex)
+            {
                 case 0:
                     playerMode = gamemodes.gamemode.Classic;
                     break;
@@ -1863,6 +1896,196 @@ namespace WinTerrEdit
                     playerMode = gamemodes.gamemode.Journey;
                     break;
             }
+        }
+
+        void cm_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            ToolStripItem item = e.ClickedItem;
+            Console.WriteLine((sender as ContextMenuStrip).SourceControl.Name + ":" + item.Text);
+
+            string elementName = (sender as ContextMenuStrip).SourceControl.Name;
+            string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
+            int tmp_invSelectedIndex = Int32.Parse(npart[1]) - 1;
+            int tmp_true = tmp_invSelectedIndex;
+            if(item.Text == "Copy")
+            {
+                switch (selectedTab)
+                {
+                    case 0:
+                        //no modification needed, just perform action
+                        //main inv
+                        copyBuffer = inv_main[tmp_invSelectedIndex];
+                        break;
+
+                    case 1:
+                        tmp_invSelectedIndex -= 50;
+                        //piggybank
+                        copyBuffer = inv_piggybank[tmp_invSelectedIndex];                        
+                        break;
+
+                    case 2:
+                        tmp_invSelectedIndex -= 90;
+                        //safe
+                        copyBuffer = inv_safe[tmp_invSelectedIndex];                      
+                        break;
+
+                    case 3:
+                        tmp_invSelectedIndex -= 130;
+                        //ammo and coins
+                        copyBuffer = inv_ammocoins[tmp_invSelectedIndex];                      
+                        break;
+
+                    case 4:
+                        //buffs
+                        break;
+                }
+                copyIndex = tmp_true;
+                updateInvDisplay();
+            }
+            if (item.Text == "Paste")
+            {
+                if(copyBuffer != null)
+                {
+                    cbItem.SelectedItem = copyBuffer.item.name;
+                    cbPrefixes.SelectedItem = copyBuffer.prefix.name;
+                    nudQuant.Value = copyBuffer.quantity;
+                    updateInvDisplay();
+                }
+            }
+            if(item.Text == "Delete")
+            {
+                cbItem.SelectedItem = "Empty";
+                cbPrefixes.SelectedIndex = 0;
+                nudQuant.Value = 0;
+            }
+            if(item.Text == "Toggle favourite" && tcMain.SelectedIndex == 0)
+            {
+                inv_main[invSelectedIndex].isFavorite = !inv_main[invSelectedIndex].isFavorite;
+                updateInvDisplay();
+            }
+        }
+
+        private void aaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadPlayer();
+        }
+
+        private void bbToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            savePlayer();
+        }
+
+        private void ccToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            reloadPlayer();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int tmp_invSelectedIndex = invSelectedIndex;
+            int tmp_true = tmp_invSelectedIndex;
+
+            switch (selectedTab)
+            {
+                case 0:
+                    //no modification needed, just perform action
+                    //main inv
+                    copyBuffer = inv_main[invSelectedIndex];
+                    break;
+
+                case 1:
+                    copyBuffer = inv_piggybank[invSelectedIndex];
+                    break;
+
+                case 2:
+                    copyBuffer = inv_safe[invSelectedIndex];
+                    break;
+
+                case 3:
+                    copyBuffer = inv_ammocoins[invSelectedIndex];
+                    break;
+
+                case 4:
+                    //buffs
+                    break;
+            }
+            copyIndex = trueSelectedIndex;
+            updateInvDisplay();
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (copyBuffer != null)
+            {
+                cbItem.SelectedItem = copyBuffer.item.name;
+                cbPrefixes.SelectedItem = copyBuffer.prefix.name;
+                nudQuant.Value = copyBuffer.quantity;
+                updateInvDisplay();
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cbItem.SelectedItem = "Empty";
+            cbPrefixes.SelectedIndex = 0;
+            nudQuant.Value = 0;
+        }
+
+        private void toggleFavoriteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(tcMain.SelectedIndex == 0)
+            {
+                inv_main[invSelectedIndex].isFavorite = !inv_main[invSelectedIndex].isFavorite;
+                updateInvDisplay();
+            }
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings st = new Settings(useOverwriteFile, useAutoReloadFile, useExtendedName);
+            if (st.ShowDialog() == DialogResult.OK)
+            {
+                useOverwriteFile = st.useOverwriteFile;
+                useAutoReloadFile = st.useAutoReloadFile;
+                useExtendedName = st.useExtendedName;
+
+                if (useAutoReloadFile)
+                {
+                    if (lastReadPlrPath != "")
+                    {
+                        autoFunctionTimer.Start();
+                    }
+                }
+                else
+                {
+                    autoFunctionTimer.Stop();
+                }
+
+                if (useExtendedName)
+                {
+                    tbName.MaxLength = 200;
+                }
+                else
+                {
+                    tbName.MaxLength = 20;
+                    if (tbName.Text.Length > 20)
+                    {
+                        tbName.Text = tbName.Text.Substring(0, 20);
+                    }
+                }
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            about ab = new about(aboutBoxContactData, WTEversion);
+            ab.ShowDialog();  
+        }
+
+        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, versionCode);
+            hx.ShowDialog();
         }
     }
 }

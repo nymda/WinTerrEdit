@@ -81,7 +81,7 @@ namespace WinTerrEdit
 
         private void discord_paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawRectangle(tblack, 0, 0, 44, 44);
+            e.Graphics.DrawEllipse(tblack, 0, 0, 44, 44);
         }
     }
 }
