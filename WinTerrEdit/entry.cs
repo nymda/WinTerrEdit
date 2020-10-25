@@ -19,8 +19,10 @@ namespace WinTerrEdit
     {
         /// <summary>
         /// 
+        /// WinTerrEdit - an open source terraria character editor that i never considered people might use. 
+        /// 
         /// This is quickly becoming a massive, mostly unmanagable mess. This whole project desperatly needs a full recode.
-        /// Abandon all hope, yee who enter there.
+        /// Lasciate ogne speranza, voi ch'intrate
         /// 
         /// </summary>
 
@@ -1821,7 +1823,7 @@ namespace WinTerrEdit
             selectedTab = tcMain.SelectedIndex;
             updateInvDisplay();
 
-            if(tcMain.SelectedIndex == 0)
+            if (tcMain.SelectedIndex == 0)
             {
                 toggleFavoriteToolStripMenuItem.Enabled = true;
             }
@@ -1907,7 +1909,7 @@ namespace WinTerrEdit
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
             int tmp_invSelectedIndex = Int32.Parse(npart[1]) - 1;
             int tmp_true = tmp_invSelectedIndex;
-            if(item.Text == "Copy")
+            if (item.Text == "Copy")
             {
                 switch (selectedTab)
                 {
@@ -1920,19 +1922,19 @@ namespace WinTerrEdit
                     case 1:
                         tmp_invSelectedIndex -= 50;
                         //piggybank
-                        copyBuffer = inv_piggybank[tmp_invSelectedIndex];                        
+                        copyBuffer = inv_piggybank[tmp_invSelectedIndex];
                         break;
 
                     case 2:
                         tmp_invSelectedIndex -= 90;
                         //safe
-                        copyBuffer = inv_safe[tmp_invSelectedIndex];                      
+                        copyBuffer = inv_safe[tmp_invSelectedIndex];
                         break;
 
                     case 3:
                         tmp_invSelectedIndex -= 130;
                         //ammo and coins
-                        copyBuffer = inv_ammocoins[tmp_invSelectedIndex];                      
+                        copyBuffer = inv_ammocoins[tmp_invSelectedIndex];
                         break;
 
                     case 4:
@@ -1944,7 +1946,7 @@ namespace WinTerrEdit
             }
             if (item.Text == "Paste")
             {
-                if(copyBuffer != null)
+                if (copyBuffer != null)
                 {
                     cbItem.SelectedItem = copyBuffer.item.name;
                     cbPrefixes.SelectedItem = copyBuffer.prefix.name;
@@ -1952,13 +1954,13 @@ namespace WinTerrEdit
                     updateInvDisplay();
                 }
             }
-            if(item.Text == "Delete")
+            if (item.Text == "Delete")
             {
                 cbItem.SelectedItem = "Empty";
                 cbPrefixes.SelectedIndex = 0;
                 nudQuant.Value = 0;
             }
-            if(item.Text == "Toggle favourite" && tcMain.SelectedIndex == 0)
+            if (item.Text == "Toggle favourite" && tcMain.SelectedIndex == 0)
             {
                 inv_main[invSelectedIndex].isFavorite = !inv_main[invSelectedIndex].isFavorite;
                 updateInvDisplay();
@@ -2033,7 +2035,7 @@ namespace WinTerrEdit
 
         private void toggleFavoriteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(tcMain.SelectedIndex == 0)
+            if (tcMain.SelectedIndex == 0)
             {
                 inv_main[invSelectedIndex].isFavorite = !inv_main[invSelectedIndex].isFavorite;
                 updateInvDisplay();
@@ -2079,7 +2081,7 @@ namespace WinTerrEdit
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             about ab = new about(aboutBoxContactData, WTEversion);
-            ab.ShowDialog();  
+            ab.ShowDialog();
         }
 
         private void debugToolStripMenuItem_Click(object sender, EventArgs e)
