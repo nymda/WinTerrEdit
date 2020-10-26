@@ -618,6 +618,10 @@ namespace WinTerrEdit
                         gbBuffs.Enabled = true;
                         btnReload.Enabled = true;
                         updateInvDisplay();
+                        if(tcMain.SelectedIndex == 0)
+                        {
+                            item_Click(Pb1, null);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -1088,84 +1092,121 @@ namespace WinTerrEdit
 
         private void cbItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if(invSelectedIndex >= 0)
             {
-                switch (selectedTab)
+                try
                 {
-                    case 0:
-                        if (cbItem.SelectedIndex.ToString() != "")
-                        {
-                            inv_main[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
-                        }
-                        isSaved = false;
-                        if (inv_main[invSelectedIndex].quantity == 0 && inv_main[invSelectedIndex].item.name != "Empty")
-                        {
-                            inv_main[invSelectedIndex].quantity += 1;
-                            nudQuant.Value += 1;
-                        }
-                        if (inv_main[invSelectedIndex].item.name == "Empty")
-                        {
-                            inv_main[invSelectedIndex].quantity = 0;
-                            nudQuant.Value = 0;
-                            inv_main[invSelectedIndex].isFavorite = false;
-                        }
-                        break;
+                    switch (selectedTab)
+                    {
+                        case 0:
+                            if (cbItem.SelectedIndex.ToString() != "")
+                            {
+                                inv_main[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
+                            }
+                            isSaved = false;
+                            if (inv_main[invSelectedIndex].quantity == 0 && inv_main[invSelectedIndex].item.name != "Empty")
+                            {
+                                inv_main[invSelectedIndex].quantity += 1;
+                                nudQuant.Value += 1;
+                            }
+                            if (inv_main[invSelectedIndex].item.name == "Empty")
+                            {
+                                inv_main[invSelectedIndex].quantity = 0;
+                                nudQuant.Value = 0;
+                                inv_main[invSelectedIndex].isFavorite = false;
+                            }
+                            break;
 
-                    case 1:
-                        if (cbItem.SelectedIndex.ToString() != "")
-                        {
-                            inv_piggybank[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
-                        }
-                        isSaved = false;
-                        if (inv_piggybank[invSelectedIndex].quantity == 0 && inv_piggybank[invSelectedIndex].item.name != "Empty")
-                        {
-                            inv_piggybank[invSelectedIndex].quantity += 1;
-                            nudQuant.Value += 1;
-                        }
-                        if (inv_piggybank[invSelectedIndex].item.name == "Empty")
-                        {
-                            inv_piggybank[invSelectedIndex].quantity = 0;
-                            nudQuant.Value = 0;
-                        }
-                        break;
+                        case 1:
+                            if (cbItem.SelectedIndex.ToString() != "")
+                            {
+                                inv_piggybank[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
+                            }
+                            isSaved = false;
+                            if (inv_piggybank[invSelectedIndex].quantity == 0 && inv_piggybank[invSelectedIndex].item.name != "Empty")
+                            {
+                                inv_piggybank[invSelectedIndex].quantity += 1;
+                                nudQuant.Value += 1;
+                            }
+                            if (inv_piggybank[invSelectedIndex].item.name == "Empty")
+                            {
+                                inv_piggybank[invSelectedIndex].quantity = 0;
+                                nudQuant.Value = 0;
+                            }
+                            break;
 
-                    case 2:
-                        if (cbItem.SelectedIndex.ToString() != "")
-                        {
-                            inv_safe[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
-                        }
-                        isSaved = false;
-                        if (inv_safe[invSelectedIndex].quantity == 0 && inv_safe[invSelectedIndex].item.name != "Empty")
-                        {
-                            inv_safe[invSelectedIndex].quantity += 1;
-                            nudQuant.Value += 1;
-                        }
-                        if (inv_safe[invSelectedIndex].item.name == "Empty")
-                        {
-                            inv_safe[invSelectedIndex].quantity = 0;
-                            nudQuant.Value = 0;
-                        }
-                        break;
+                        case 2:
+                            if (cbItem.SelectedIndex.ToString() != "")
+                            {
+                                inv_safe[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
+                            }
+                            isSaved = false;
+                            if (inv_safe[invSelectedIndex].quantity == 0 && inv_safe[invSelectedIndex].item.name != "Empty")
+                            {
+                                inv_safe[invSelectedIndex].quantity += 1;
+                                nudQuant.Value += 1;
+                            }
+                            if (inv_safe[invSelectedIndex].item.name == "Empty")
+                            {
+                                inv_safe[invSelectedIndex].quantity = 0;
+                                nudQuant.Value = 0;
+                            }
+                            break;
 
-                    case 3:
-                        if (cbItem.SelectedIndex.ToString() != "")
-                        {
-                            inv_ammocoins[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
-                        }
-                        isSaved = false;
-                        if (inv_ammocoins[invSelectedIndex].quantity == 0 && inv_ammocoins[invSelectedIndex].item.name != "Empty")
-                        {
-                            inv_ammocoins[invSelectedIndex].quantity += 1;
-                            nudQuant.Value += 1;
-                        }
-                        if (inv_ammocoins[invSelectedIndex].item.name == "Empty")
-                        {
-                            inv_ammocoins[invSelectedIndex].quantity = 0;
-                            nudQuant.Value = 0;
-                        }
-                        break;
+                        case 3:
+                            if (cbItem.SelectedIndex.ToString() != "")
+                            {
+                                inv_ammocoins[invSelectedIndex].item = ih.searchItemByName(cbItem.SelectedItem.ToString());
+                            }
+                            isSaved = false;
+                            if (inv_ammocoins[invSelectedIndex].quantity == 0 && inv_ammocoins[invSelectedIndex].item.name != "Empty")
+                            {
+                                inv_ammocoins[invSelectedIndex].quantity += 1;
+                                nudQuant.Value += 1;
+                            }
+                            if (inv_ammocoins[invSelectedIndex].item.name == "Empty")
+                            {
+                                inv_ammocoins[invSelectedIndex].quantity = 0;
+                                nudQuant.Value = 0;
+                            }
+                            break;
 
-                    case 4:
+                        case 4:
+                            if (cbBuffs.SelectedIndex.ToString() != "")
+                            {
+                                playerBuffs[invSelectedIndex].buff = ih.searchBuffByName(cbBuffs.SelectedItem.ToString());
+                            }
+                            isSaved = false;
+                            if (playerBuffs[invSelectedIndex].duration == 0 && playerBuffs[invSelectedIndex].buff.name != "None")
+                            {
+                                playerBuffs[invSelectedIndex].duration += 1;
+                                nudQuant.Value += 1;
+                            }
+                            if (playerBuffs[invSelectedIndex].buff.name == "None")
+                            {
+                                playerBuffs[invSelectedIndex].duration = 0;
+                                nudQuant.Value = 0;
+                            }
+                            break;
+                    }
+
+                    updateInvDisplay();
+                }
+                catch
+                {
+
+                }
+            }      
+        }
+
+        private void cbBuffs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(invSelectedIndex >= 0)
+            {
+                if (doBuffs)
+                {
+                    try
+                    {
                         if (cbBuffs.SelectedIndex.ToString() != "")
                         {
                             playerBuffs[invSelectedIndex].buff = ih.searchBuffByName(cbBuffs.SelectedItem.ToString());
@@ -1173,97 +1214,69 @@ namespace WinTerrEdit
                         isSaved = false;
                         if (playerBuffs[invSelectedIndex].duration == 0 && playerBuffs[invSelectedIndex].buff.name != "None")
                         {
-                            playerBuffs[invSelectedIndex].duration += 1;
-                            nudQuant.Value += 1;
+                            playerBuffs[invSelectedIndex].duration += 60;
+                            nudDur.Value += 60;
                         }
                         if (playerBuffs[invSelectedIndex].buff.name == "None")
                         {
                             playerBuffs[invSelectedIndex].duration = 0;
-                            nudQuant.Value = 0;
+                            nudDur.Value = 0;
                         }
-                        break;
+                        updateInvDisplay();
+                    }
+                    catch
+                    {
+
+                    }
                 }
-
-                updateInvDisplay();
-            }
-            catch
-            {
-
-            }
+            }       
         }
 
-        private void cbBuffs_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbPrefixes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (doBuffs)
+            if(invSelectedIndex >= 0)
             {
                 try
                 {
-                    if (cbBuffs.SelectedIndex.ToString() != "")
+                    switch (selectedTab)
                     {
-                        playerBuffs[invSelectedIndex].buff = ih.searchBuffByName(cbBuffs.SelectedItem.ToString());
+                        case 0:
+                            if (cbPrefixes.SelectedItem.ToString() != "")
+                            {
+                                inv_main[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
+                            }
+                            break;
+
+                        case 1:
+                            if (cbPrefixes.SelectedItem.ToString() != "")
+                            {
+                                inv_piggybank[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
+                            }
+                            break;
+
+                        case 2:
+                            if (cbPrefixes.SelectedItem.ToString() != "")
+                            {
+                                inv_safe[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
+                            }
+                            break;
+
+                        case 3:
+                            if (cbPrefixes.SelectedItem.ToString() != "")
+                            {
+                                inv_ammocoins[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
+                            }
+                            break;
                     }
-                    isSaved = false;
-                    if (playerBuffs[invSelectedIndex].duration == 0 && playerBuffs[invSelectedIndex].buff.name != "None")
-                    {
-                        playerBuffs[invSelectedIndex].duration += 60;
-                        nudDur.Value += 60;
-                    }
-                    if (playerBuffs[invSelectedIndex].buff.name == "None")
-                    {
-                        playerBuffs[invSelectedIndex].duration = 0;
-                        nudDur.Value = 0;
-                    }
+
                     updateInvDisplay();
+                    isSaved = false;
                 }
                 catch
                 {
 
                 }
-            }
-        }
-
-        private void cbPrefixes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                switch (selectedTab)
-                {
-                    case 0:
-                        if (cbPrefixes.SelectedItem.ToString() != "")
-                        {
-                            inv_main[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
-                        }
-                        break;
-
-                    case 1:
-                        if (cbPrefixes.SelectedItem.ToString() != "")
-                        {
-                            inv_piggybank[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
-                        }
-                        break;
-
-                    case 2:
-                        if (cbPrefixes.SelectedItem.ToString() != "")
-                        {
-                            inv_safe[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
-                        }
-                        break;
-
-                    case 3:
-                        if (cbPrefixes.SelectedItem.ToString() != "")
-                        {
-                            inv_ammocoins[invSelectedIndex].prefix = ih.searchPrefixByName(cbPrefixes.SelectedItem.ToString());
-                        }
-                        break;
-                }
-
-                updateInvDisplay();
-                isSaved = false;
-            }
-            catch
-            {
-
-            }
+            }        
         }
 
         private void nudQuant_ValueChanged(object sender, EventArgs e)
