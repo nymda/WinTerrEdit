@@ -4,7 +4,7 @@
 
 
 I have now created a [discord server](https://discord.gg/2xVTgwH)     
-Consider donating BTC if you like my software <3 3G6rnGKDeBScHdKTfAcyzx1MtiPgoPhEz5    
+Consider donating BTC if you like my software <3 ```3G6rnGKDeBScHdKTfAcyzx1MtiPgoPhEz5```    
 
 ### Features
 - Inventory / Coins / Ammo editing
