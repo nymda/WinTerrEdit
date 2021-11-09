@@ -586,14 +586,9 @@ namespace WinTerrEdit
         }
 
         #region Player file
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
-            loadPlayer();
-        }
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            reloadPlayer();
-        }
+        private void btnLoad_Click(object sender, EventArgs e) => loadPlayer();
+        private void btnReload_Click(object sender, EventArgs e) => reloadPlayer();
+        private void btnSave_Click(object sender, EventArgs e) => savePlayer();
 
         public void loadPlayer()
         {
@@ -688,7 +683,6 @@ namespace WinTerrEdit
             updateInvDisplay();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
         public void savePlayer()
         {
             if (useOverwriteFile)
