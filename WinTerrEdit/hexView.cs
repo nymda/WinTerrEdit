@@ -25,13 +25,13 @@ namespace WinTerrEdit
             this.invDat = invDat;
             this.versionCode = versionCode;
         }
-        private void hexView_Load(object sender, EventArgs e)
+        void hexView_Load(object sender, EventArgs e)
         {
             this.Text = "| NEO " + NEO + " | VERS " + versionCode + " |";   
             update();
         }
 
-        private void rb_CheckedChanged(object sender, EventArgs e)
+        void rb_CheckedChanged(object sender, EventArgs e)
         {
             update();
         }
@@ -178,7 +178,7 @@ namespace WinTerrEdit
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void button1_Click(object sender, EventArgs e)
         {
             colourSections();
         }

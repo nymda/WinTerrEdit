@@ -65,6 +65,9 @@ namespace WinTerrEdit {
         public List<int> playerMana = new List<int> { };
         public List<Color> playerColours = new List<Color> { }; //hair, skin, eyes, shirt, undershirt, pants, shoes
         public int playerHS = 0;
+
+        string fileName = "";
+        bool userEditedThings = false;
         #endregion
         #endregion
         #region Displays
@@ -120,6 +123,15 @@ namespace WinTerrEdit {
         #endregion
         #endregion
 
+        #region Accessors
+        public string Status {
+            get => statusMsg.Text;
+            set {
+                statusMsg.Text = value;
+            }
+        }
+        #endregion
+
         #region Methods
         public entry()
         {
@@ -130,7 +142,7 @@ namespace WinTerrEdit {
                 Application.Run(ld = new loading(WTEversion));
             })).Start();
         }
-        private void Entry_Load(object sender, EventArgs e)
+        void Entry_Load(object sender, EventArgs e)
         {
             string settings = "000";
             cm.Items.Add("Copy");
@@ -597,9 +609,9 @@ namespace WinTerrEdit {
         }
 
         #region Player file
-        private void btnLoad_Click(object sender, EventArgs e) => loadPlayer();
-        private void btnReload_Click(object sender, EventArgs e) => reloadPlayer();
-        private void btnSave_Click(object sender, EventArgs e) => savePlayer();
+        void btnLoad_Click(object sender, EventArgs e) => loadPlayer();
+        void btnReload_Click(object sender, EventArgs e) => reloadPlayer();
+        void btnSave_Click(object sender, EventArgs e) => savePlayer();
 
         public void loadPlayer()
         {
@@ -613,6 +625,7 @@ namespace WinTerrEdit {
                 {
                     try
                     {
+                        #region Reset
                         //reset variables
                         rawDecrypted.Clear();
                         playerName = "";
@@ -631,11 +644,15 @@ namespace WinTerrEdit {
                         inv_safe.Clear();
                         inv_ammocoins.Clear();
                         playerBuffs.Clear();
+                        #endregion
 
                         lastReadPlrPath = dlg.FileName;
                         this.Text = "WinTerrEdit | (" + dlg.SafeFileName + ")";
+                        Status = "Getting file path from user";
 
                         loadData(dlg.FileName);
+                        Status = "Loading file...";
+                        #region Enable all elements
                         //gbInvHold.Enabled = true;
                         //gbColour.Enabled = true;
                         //gbPlayer.Enabled = true;
@@ -645,14 +662,14 @@ namespace WinTerrEdit {
                         gbItems.Enabled = true;
                         gbBuffs.Enabled = true;
                         btnReload.Enabled = true;
+                        #endregion
                         updateInvDisplay();
                         if(tcMain.SelectedIndex == 0)
-                        {
                             item_Click(Pb1, null);
-                        }
+                        fileName = dlg.FileName;
                     }
-                    catch (Exception ex)
-                    {
+                    catch (Exception ex) {
+
                         errorReporter er = new errorReporter(stage.ToString(), ex.Message, Convert.ToBase64String(File.ReadAllBytes(lastReadPlrPath)));
                         er.ShowDialog();
                         //MessageBox.Show(String.Format("There was an issue loading this player. It may be corrupted or invalid. \n\nSTAGE: {0} \nERROR: {1}", stage, ex.Message), "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -693,7 +710,6 @@ namespace WinTerrEdit {
             btnSave.Enabled = true;
             updateInvDisplay();
         }
-
         public void savePlayer()
         {
             if (useOverwriteFile)
@@ -756,7 +772,7 @@ namespace WinTerrEdit {
         }
 
         //method for automatically reloading the latest file
-        private void autoFunctionTimer_Tick(object sender, EventArgs e)
+        void autoFunctionTimer_Tick(object sender, EventArgs e)
         {
             string tmp = calcMd5OfOpenFile();
 
@@ -892,7 +908,7 @@ namespace WinTerrEdit {
             }
         }
 
-        private void item_Click(object sender, EventArgs e)
+        void item_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1123,7 +1139,7 @@ namespace WinTerrEdit {
             return save;
         }
 
-        private void item_Paint(object sender, PaintEventArgs e)
+        void item_Paint(object sender, PaintEventArgs e)
         {
             string elementName = (sender as PictureBox).Name;
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
@@ -1144,12 +1160,12 @@ namespace WinTerrEdit {
             }
         }
 
-        private void gb_slot_Enter(object sender, EventArgs e)
+        void gb_slot_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void cbItem_SelectedIndexChanged(object sender, EventArgs e)
+        void cbItem_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(invSelectedIndex >= 0)
             {
@@ -1257,7 +1273,7 @@ namespace WinTerrEdit {
                 }
             }
         }
-        private void cbBuffs_SelectedIndexChanged(object sender, EventArgs e)
+        void cbBuffs_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(invSelectedIndex >= 0)
             {
@@ -1289,7 +1305,7 @@ namespace WinTerrEdit {
                 }
             }
         }
-        private void cbPrefixes_SelectedIndexChanged(object sender, EventArgs e)
+        void cbPrefixes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(invSelectedIndex >= 0)
             {
@@ -1336,7 +1352,7 @@ namespace WinTerrEdit {
             }
         }
 
-        private void nudQuant_ValueChanged(object sender, EventArgs e)
+        void nudQuant_ValueChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1366,7 +1382,7 @@ namespace WinTerrEdit {
 
             }
         }
-        private void nudDur_ValueChanged(object sender, EventArgs e)
+        void nudDur_ValueChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1380,7 +1396,7 @@ namespace WinTerrEdit {
             }
         }
 
-        private void ScrollHandlerFunction(object sender, MouseEventArgs e)
+        void ScrollHandlerFunction(object sender, MouseEventArgs e)
         {
             HandledMouseEventArgs handledArgs = e as HandledMouseEventArgs;
             handledArgs.Handled = true;
@@ -1439,7 +1455,7 @@ namespace WinTerrEdit {
             }
         }
 
-        private void onClose(object sender, FormClosingEventArgs e)
+        void onClose(object sender, FormClosingEventArgs e)
         {
             if (isSaved)
             {
@@ -1458,7 +1474,7 @@ namespace WinTerrEdit {
             }
         }
 
-        private void colourSelecter_Click(object sender, EventArgs e)
+        void colourSelecter_Click(object sender, EventArgs e)
         {
             int extCount = pnCollection.IndexOf(sender as Panel);
             colourSelecter.Color = playerColours[extCount];
@@ -1479,20 +1495,20 @@ namespace WinTerrEdit {
             }
         }
 
-        private void nudHealthCur_ValueChanged(object sender, EventArgs e)
+        void nudHealthCur_ValueChanged(object sender, EventArgs e)
         {
             playerHealth[0] = (int)nudHealthCur.Value;
         }
-        private void nudHealthMax_ValueChanged(object sender, EventArgs e)
+        void nudHealthMax_ValueChanged(object sender, EventArgs e)
         {
             playerHealth[1] = (int)nudHealthMax.Value;
         }
-        private void nudManaCur_ValueChanged(object sender, EventArgs e)
+        void nudManaCur_ValueChanged(object sender, EventArgs e)
         {
             playerMana[0] = (int)nudManaCur.Value;
             playerMana[0] = (int)nudManaCur.Value;
         }
-        private void nudManaMax_ValueChanged(object sender, EventArgs e)
+        void nudManaMax_ValueChanged(object sender, EventArgs e)
         {
             playerMana[1] = (int)nudManaMax.Value;
         }
@@ -1514,38 +1530,38 @@ namespace WinTerrEdit {
         }
 
         #region Button click events
-        private void btnHeal_Click(object sender, EventArgs e)
+        void btnHeal_Click(object sender, EventArgs e)
         {
             nudHealthCur.Value = nudHealthMax.Value;
         }
-        private void gbFillMana_Click(object sender, EventArgs e)
+        void gbFillMana_Click(object sender, EventArgs e)
         {
             nudManaCur.Value = nudManaMax.Value;
         }
-        private void btnMaxHealth_Click(object sender, EventArgs e)
+        void btnMaxHealth_Click(object sender, EventArgs e)
         {
             nudHealthMax.Value = 500;
             nudHealthCur.Value = 500;
         }
-        private void gbMaximumMana_Click(object sender, EventArgs e)
+        void gbMaximumMana_Click(object sender, EventArgs e)
         {
             nudManaMax.Value = 200;
             nudManaCur.Value = 200;
         }
-        private void btnClear_Click(object sender, EventArgs e)
+        void btnClear_Click(object sender, EventArgs e)
         {
             cbItem.SelectedItem = "Empty";
             cbPrefixes.SelectedIndex = 0;
             nudQuant.Value = 0;
         }
-        private void BuffClearBtn_Click(object sender, EventArgs e)
+        void BuffClearBtn_Click(object sender, EventArgs e)
         {
             cbBuffs.SelectedItem = "None";
             nudDur.Value = 0;
         }
         #endregion
         #region Other events
-        private void entry_kDown(object sender, KeyEventArgs e)
+        void entry_kDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
@@ -1679,7 +1695,7 @@ namespace WinTerrEdit {
             }
         }
 
-        private void ndq_keydown(object sender, KeyEventArgs e)
+        void ndq_keydown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control || e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.NumPad5 || e.KeyCode == Keys.Alt)
             {
@@ -1711,7 +1727,7 @@ namespace WinTerrEdit {
 
         }
 
-        private void lb_activ(object sender, EventArgs e)
+        void lb_activ(object sender, EventArgs e)
         {
             cbItem.SelectedItem = itemLV.SelectedItems[0].Text;
             string titleText;
@@ -1780,13 +1796,13 @@ namespace WinTerrEdit {
             }
         }
 
-        private void blb_activ(object sender, EventArgs e)
+        void blb_activ(object sender, EventArgs e)
         {
             cbBuffs.SelectedItem = buffLV.SelectedItems[0].Text;
         }
         #endregion
         #region Fields value changed events
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (textBox1.Text.Length > 2)
             {
@@ -1804,7 +1820,7 @@ namespace WinTerrEdit {
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (textBox2.Text.Length > 2)
             {
@@ -1822,12 +1838,12 @@ namespace WinTerrEdit {
             }
         }
 
-        private void nudHair_ValueChanged(object sender, EventArgs e)
+        void nudHair_ValueChanged(object sender, EventArgs e)
         {
             playerHS = (int)nudHair.Value;
         }
 
-        private void tbName_TextChanged(object sender, EventArgs e)
+        void tbName_TextChanged(object sender, EventArgs e)
         {
             playerName = tbName.Text;
         }
@@ -1852,7 +1868,7 @@ namespace WinTerrEdit {
             }
         }
 
-        private void tabs_selectedChanged(object sender, EventArgs e)
+        void tabs_selectedChanged(object sender, EventArgs e)
         {
             selectedTab = tcMain.SelectedIndex;
             updateInvDisplay();
@@ -1900,12 +1916,12 @@ namespace WinTerrEdit {
             }
         }
 
-        private void quant_leaveFocus(object sender, EventArgs e)
+        void quant_leaveFocus(object sender, EventArgs e)
         {
             Debug.WriteLine("broke focus");
         }
 
-        private void cbGamemode_SelectedIndexChanged(object sender, EventArgs e)
+        void cbGamemode_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cbGamemode.SelectedIndex)
             {
@@ -1992,19 +2008,19 @@ namespace WinTerrEdit {
             }
         }
 
-        private void aaToolStripMenuItem_Click(object sender, EventArgs e)
+        void aaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadPlayer();
         }
-        private void bbToolStripMenuItem_Click(object sender, EventArgs e)
+        void bbToolStripMenuItem_Click(object sender, EventArgs e)
         {
             savePlayer();
         }
-        private void ccToolStripMenuItem_Click(object sender, EventArgs e)
+        void ccToolStripMenuItem_Click(object sender, EventArgs e)
         {
             reloadPlayer();
         }
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int tmp_invSelectedIndex = invSelectedIndex;
             int tmp_true = tmp_invSelectedIndex;
@@ -2036,7 +2052,7 @@ namespace WinTerrEdit {
             copyIndex = trueSelectedIndex;
             updateInvDisplay();
         }
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (copyBuffer != null)
             {
@@ -2046,13 +2062,13 @@ namespace WinTerrEdit {
                 updateInvDisplay();
             }
         }
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cbItem.SelectedItem = "Empty";
             cbPrefixes.SelectedIndex = 0;
             nudQuant.Value = 0;
         }
-        private void toggleFavoriteToolStripMenuItem_Click(object sender, EventArgs e)
+        void toggleFavoriteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (tcMain.SelectedIndex == 0)
             {
@@ -2060,7 +2076,7 @@ namespace WinTerrEdit {
                 updateInvDisplay();
             }
         }
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Settings st = new Settings(useOverwriteFile, useAutoReloadFile, useExtendedName);
             if (st.ShowDialog() == DialogResult.OK)
@@ -2095,12 +2111,12 @@ namespace WinTerrEdit {
                 }
             }
         }
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             about ab = new about(aboutBoxContactData, WTEversion);
             ab.ShowDialog();
         }
-        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
+        void debugToolStripMenuItem_Click(object sender, EventArgs e)
         {
             hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, versionCode);
             hx.ShowDialog();

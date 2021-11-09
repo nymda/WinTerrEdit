@@ -25,29 +25,29 @@ namespace WinTerrEdit
             this.useExtendedName = useExtendedName;
         }
 
-        private void Settings_Load(object sender, EventArgs e)
+        void Settings_Load(object sender, EventArgs e)
         {
             cbUseOverwrite.Checked = useOverwriteFile;
             cbAutoReload.Checked = useAutoReloadFile;
             cbExtendedName.Checked = useExtendedName;
         }
 
-        private void onFormClose(object sender, FormClosedEventArgs e)
+        void onFormClose(object sender, FormClosedEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
         }
 
-        private void cbUseOverwrite_CheckedChanged(object sender, EventArgs e)
+        void cbUseOverwrite_CheckedChanged(object sender, EventArgs e)
         {
             useOverwriteFile = cbUseOverwrite.Checked;
         }
 
-        private void cbAutoReload_CheckedChanged(object sender, EventArgs e)
+        void cbAutoReload_CheckedChanged(object sender, EventArgs e)
         {
             useAutoReloadFile = cbAutoReload.Checked;
         }
 
-        private void cbExtendedName_CheckedChanged(object sender, EventArgs e)
+        void cbExtendedName_CheckedChanged(object sender, EventArgs e)
         {
             useExtendedName = cbExtendedName.Checked;
         }

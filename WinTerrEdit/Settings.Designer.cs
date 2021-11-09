@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.cbUseOverwrite = new System.Windows.Forms.CheckBox();
@@ -124,11 +124,11 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox cbUseOverwrite;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox cbAutoReload;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox cbExtendedName;
+        System.Windows.Forms.CheckBox cbUseOverwrite;
+        System.Windows.Forms.Label label1;
+        System.Windows.Forms.CheckBox cbAutoReload;
+        System.Windows.Forms.Label label2;
+        System.Windows.Forms.Label label3;
+        System.Windows.Forms.CheckBox cbExtendedName;
     }
 }

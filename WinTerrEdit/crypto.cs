@@ -15,7 +15,7 @@ namespace WinTerrEdit
     /// </summary>
     class crypto
     {
-        private const string EncryptionKey = "h3y_gUyZ";
+        const string EncryptionKey = "h3y_gUyZ";
         public FileInfo fi;
 
         public byte[] decryptFile(string path)

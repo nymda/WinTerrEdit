@@ -25,7 +25,7 @@ namespace WinTerrEdit
             this.plr_b64 = plr_b64;
         }
 
-        private void errorReporter_Load(object sender, EventArgs e)
+        void errorReporter_Load(object sender, EventArgs e)
         {
             string errorText = String.Format("STAGE: {0}\nERROR: {1}\n\nPLR FILE: {2}", stage, error, plr_b64);
             richTextBox1.Text = errorText;
@@ -44,7 +44,7 @@ namespace WinTerrEdit
             richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Bold);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void button1_Click(object sender, EventArgs e)
         {
             WebClient wc = new WebClient();
             var reqparm = new System.Collections.Specialized.NameValueCollection();

@@ -15,7 +15,7 @@ namespace WinTerrEdit
     public partial class loading : Form
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse );
+        static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse );
 
         public string str = "Loading assets, please wait";
         public string add = "";
@@ -41,7 +41,7 @@ namespace WinTerrEdit
             //Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
-        private void loading_Load(object sender, EventArgs e)
+        void loading_Load(object sender, EventArgs e)
         {
             tmp = this.CreateGraphics();
             label1.Text = "Loading | WTE " + version;
@@ -49,7 +49,7 @@ namespace WinTerrEdit
             timer2.Start();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        void timer1_Tick(object sender, EventArgs e)
         {
             if(count == 4)
             {
@@ -85,7 +85,7 @@ namespace WinTerrEdit
         }
 
         public int i = -32;
-        private void timer2_Tick(object sender, EventArgs e)
+        void timer2_Tick(object sender, EventArgs e)
         {
             if (i == 32)
             {
@@ -113,7 +113,7 @@ namespace WinTerrEdit
             //tmp.DrawImage(corn, 0, -1);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        void label1_Click(object sender, EventArgs e)
         {
 
         }
