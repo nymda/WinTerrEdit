@@ -42,7 +42,6 @@ namespace WinTerrEdit {
         #endregion
         #region Settings
         //bools controling settings
-        public bool useOverwriteFile = false;
         public bool useAutoReloadFile = false;
         public bool useExtendedName = false;
         #endregion
@@ -66,8 +65,7 @@ namespace WinTerrEdit {
         public List<Color> playerColours = new List<Color> { }; //hair, skin, eyes, shirt, undershirt, pants, shoes
         public int playerHS = 0;
 
-        string fileName = "";
-        bool userEditedThings = false;
+        string fileName = "-1";
         #endregion
         #endregion
         #region Displays
@@ -154,10 +152,6 @@ namespace WinTerrEdit {
             try { settings = rh.loadRegData(); }
             catch { }
 
-            if (settings[0] == '1')
-            {
-                useOverwriteFile = true;
-            }
             if (settings[1] == '1')
             {
                 useAutoReloadFile = true;
@@ -648,7 +642,6 @@ namespace WinTerrEdit {
 
                         lastReadPlrPath = dlg.FileName;
                         this.Text = "WinTerrEdit | (" + dlg.SafeFileName + ")";
-                        Status = "Getting file path from user";
 
                         loadData(dlg.FileName);
                         Status = "Loading file...";
@@ -669,7 +662,6 @@ namespace WinTerrEdit {
                         fileName = dlg.FileName;
                     }
                     catch (Exception ex) {
-
                         errorReporter er = new errorReporter(stage.ToString(), ex.Message, Convert.ToBase64String(File.ReadAllBytes(lastReadPlrPath)));
                         er.ShowDialog();
                         //MessageBox.Show(String.Format("There was an issue loading this player. It may be corrupted or invalid. \n\nSTAGE: {0} \nERROR: {1}", stage, ex.Message), "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -679,7 +671,8 @@ namespace WinTerrEdit {
 
             btnSave.Enabled = true;
             invSelectedIndex = 0;
-            updateInvDisplay();
+            //updateInvDisplay(); WHY?
+            Status = "File loaded!";
         }
         public void reloadPlayer()
         {
@@ -710,9 +703,8 @@ namespace WinTerrEdit {
             btnSave.Enabled = true;
             updateInvDisplay();
         }
-        public void savePlayer()
-        {
-            if (useOverwriteFile)
+        public void savePlayer() {
+            if (fileName != "-1")
             {
                 cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
                 isSaved = true;
@@ -812,7 +804,7 @@ namespace WinTerrEdit {
             }
         }
         #endregion
-
+        #region Uncathegorized events
         public void updateInvDisplay()
         {
             //hardcoded numbers EEEEEEEEVERYWHEREEEE
@@ -1459,7 +1451,7 @@ namespace WinTerrEdit {
         {
             if (isSaved)
             {
-                rh.saveRegData(useOverwriteFile, useAutoReloadFile, useExtendedName);
+                rh.saveRegData(useAutoReloadFile, useExtendedName);
                 Environment.Exit(0);
             }
             else
@@ -1468,7 +1460,7 @@ namespace WinTerrEdit {
                 closeWarn cw = new closeWarn();
                 if (cw.ShowDialog() == DialogResult.OK)
                 {
-                    rh.saveRegData(useOverwriteFile, useAutoReloadFile, useExtendedName);
+                    rh.saveRegData(useAutoReloadFile, useExtendedName);
                     Environment.Exit(0);
                 }
             }
@@ -1512,7 +1504,7 @@ namespace WinTerrEdit {
         {
             playerMana[1] = (int)nudManaMax.Value;
         }
-
+        #endregion
         public static class User32
         {
             public const int SW_HIDE = 0;
@@ -1570,10 +1562,9 @@ namespace WinTerrEdit {
             }
             if (e.KeyCode == Keys.F2)
             {
-                Settings st = new Settings(useOverwriteFile, useAutoReloadFile, useExtendedName);
+                Settings st = new Settings(useAutoReloadFile, useExtendedName);
                 if (st.ShowDialog() == DialogResult.OK)
                 {
-                    useOverwriteFile = st.useOverwriteFile;
                     useAutoReloadFile = st.useAutoReloadFile;
                     useExtendedName = st.useExtendedName;
 
@@ -1916,10 +1907,7 @@ namespace WinTerrEdit {
             }
         }
 
-        void quant_leaveFocus(object sender, EventArgs e)
-        {
-            Debug.WriteLine("broke focus");
-        }
+        void quant_leaveFocus(object sender, EventArgs e) => Debug.WriteLine("Broke focus");
 
         void cbGamemode_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2016,10 +2004,7 @@ namespace WinTerrEdit {
         {
             savePlayer();
         }
-        void ccToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            reloadPlayer();
-        }
+        void ccToolStripMenuItem_Click(object sender, EventArgs e) => reloadPlayer();
         void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int tmp_invSelectedIndex = invSelectedIndex;
@@ -2078,10 +2063,9 @@ namespace WinTerrEdit {
         }
         void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings st = new Settings(useOverwriteFile, useAutoReloadFile, useExtendedName);
+            Settings st = new Settings(useAutoReloadFile, useExtendedName);
             if (st.ShowDialog() == DialogResult.OK)
             {
-                useOverwriteFile = st.useOverwriteFile;
                 useAutoReloadFile = st.useAutoReloadFile;
                 useExtendedName = st.useExtendedName;
 
@@ -2122,6 +2106,11 @@ namespace WinTerrEdit {
             hx.ShowDialog();
         }
         #endregion
+
         #endregion
+
+        void saveAsToolStripMenuItem_Click(object sender, EventArgs e) {
+            savePlayer();
+        }
     }
 }

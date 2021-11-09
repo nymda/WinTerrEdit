@@ -16,9 +16,9 @@ namespace WinTerrEdit
             {
                 //key doesnt exist
                 RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\WinTerrEdit");
-                key.SetValue("Settings", "000");
+                key.SetValue("Settings", "00");
                 key.Close();
-                return "000";
+                return "00";
             }
             else
             {
@@ -27,11 +27,9 @@ namespace WinTerrEdit
             }
         }
 
-        public void saveRegData(bool useOverwriteFile, bool useAutoReloadFile, bool useExtendedName)
+        public void saveRegData(bool useAutoReloadFile, bool useExtendedName)
         {
             StringBuilder sb = new StringBuilder();
-            if (useOverwriteFile){ sb.Append("1"); }
-            else{ sb.Append("0"); }
             if (useAutoReloadFile){ sb.Append("1"); }
             else{ sb.Append("0"); }
             if (useExtendedName) { sb.Append("1"); }

@@ -144,12 +144,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="registry.cs" />
-    <Compile Include="saveNotifier.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="saveNotifier.Designer.cs">
-      <DependentUpon>saveNotifier.cs</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,9 +172,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="saveNotifier.resx">
-      <DependentUpon>saveNotifier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

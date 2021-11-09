@@ -13,21 +13,18 @@ namespace WinTerrEdit
 {
     public partial class Settings : Form
     {
-        public bool useOverwriteFile { get; set; }
         public bool useAutoReloadFile { get; set; }
         public bool useExtendedName { get; set; }
 
-        public Settings(bool useOverwriteFile, bool useAutoReloadFile, bool useExtendedName)
+        public Settings(bool useAutoReloadFile, bool useExtendedName)
         {
             InitializeComponent();
-            this.useOverwriteFile = useOverwriteFile;
             this.useAutoReloadFile = useAutoReloadFile;
             this.useExtendedName = useExtendedName;
         }
 
         void Settings_Load(object sender, EventArgs e)
         {
-            cbUseOverwrite.Checked = useOverwriteFile;
             cbAutoReload.Checked = useAutoReloadFile;
             cbExtendedName.Checked = useExtendedName;
         }
@@ -35,11 +32,6 @@ namespace WinTerrEdit
         void onFormClose(object sender, FormClosedEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-        }
-
-        void cbUseOverwrite_CheckedChanged(object sender, EventArgs e)
-        {
-            useOverwriteFile = cbUseOverwrite.Checked;
         }
 
         void cbAutoReload_CheckedChanged(object sender, EventArgs e)
