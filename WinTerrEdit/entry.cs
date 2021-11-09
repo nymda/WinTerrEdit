@@ -13,10 +13,9 @@ using System.Threading;
 using System.Windows.Forms;
 using WinTerrEdit.Properties;
 
-namespace WinTerrEdit
-{
-    public partial class entry : Form
-    {
+namespace WinTerrEdit {
+    public partial class entry : Form {
+        #region Summary
         /// <summary>
         ///
         /// WinTerrEdit - an open source terraria character editor that i never considered people might use.
@@ -30,34 +29,31 @@ namespace WinTerrEdit
         /// the combobox "cbItem" is no longer nessicary on the UI, however, its unctionality is integeral to the program.
         /// dont delete cbItem, it is the glue holding everything together.
         /// </note>
+        #endregion
 
+        #region Fields
+        #region General
         //general stuff
         itemHandler ih = new itemHandler(true);
         public List<Byte> rawDecrypted = new List<Byte> { };
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Terraria\\Players";
         public string lastReadPlrPath = "";
         public string currentFileHash = "";
-
-        //version
-        public const string WTEversion = "1.10.4-B";
-
+        #endregion
+        #region Settings
         //bools controling settings
         public bool useOverwriteFile = false;
         public bool useAutoReloadFile = false;
         public bool useExtendedName = false;
-
+        #endregion
+        #region Player
+        #region Static
         //static player variables
         public string playerName = "";
         public gamemodes.gamemode playerMode;
         public int versionCode;
-
-        //displays
-        public List<PictureBox> pbs_inventory = new List<PictureBox> { };
-        public List<PictureBox> pbs_piggybank = new List<PictureBox> { };
-        public List<PictureBox> pbs_safe = new List<PictureBox> { };
-        public List<PictureBox> pbs_ammocoins = new List<PictureBox> { };
-        public List<PictureBox> pbs_buffs = new List<PictureBox> { };
-
+        #endregion
+        #region Modifiable
         //modifiable player variables
         public List<invItem> inv_main = new List<invItem> { };
         public List<invItem> inv_piggybank = new List<invItem> { };
@@ -69,7 +65,19 @@ namespace WinTerrEdit
         public List<int> playerMana = new List<int> { };
         public List<Color> playerColours = new List<Color> { }; //hair, skin, eyes, shirt, undershirt, pants, shoes
         public int playerHS = 0;
-
+        #endregion
+        #endregion
+        #region Displays
+        //displays
+        public List<PictureBox> pbs_inventory = new List<PictureBox> { };
+        public List<PictureBox> pbs_piggybank = new List<PictureBox> { };
+        public List<PictureBox> pbs_safe = new List<PictureBox> { };
+        public List<PictureBox> pbs_ammocoins = new List<PictureBox> { };
+        public List<PictureBox> pbs_buffs = new List<PictureBox> { };
+        #endregion
+        #region Other
+        //version
+        public const string WTEversion = "1.10.4-B";
         public invItem copyBuffer;
         public int copyIndex = -1;
 
@@ -102,14 +110,17 @@ namespace WinTerrEdit
 
         //conext menus
         public ContextMenuStrip cm = new ContextMenuStrip();
-
+        #endregion
+        #region Debug and error handling
         //debug and error handling
         public int stage = 0;
         public string error = "";
         public bool doBuffs = true;
         public bool loading_complete = false;
+        #endregion
+        #endregion
 
-
+        #region Methods
         public entry()
         {
             st.Start();
@@ -2094,6 +2105,7 @@ namespace WinTerrEdit
             hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, versionCode);
             hx.ShowDialog();
         }
+        #endregion
         #endregion
     }
 }

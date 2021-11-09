@@ -313,11 +313,12 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toggleFavoriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toggleFavoriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusMsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
@@ -4100,21 +4101,21 @@
             // aaToolStripMenuItem
             // 
             this.aaToolStripMenuItem.Name = "aaToolStripMenuItem";
-            this.aaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aaToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.aaToolStripMenuItem.Text = "Load";
             this.aaToolStripMenuItem.Click += new System.EventHandler(this.aaToolStripMenuItem_Click);
             // 
             // bbToolStripMenuItem
             // 
             this.bbToolStripMenuItem.Name = "bbToolStripMenuItem";
-            this.bbToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bbToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.bbToolStripMenuItem.Text = "Save";
             this.bbToolStripMenuItem.Click += new System.EventHandler(this.bbToolStripMenuItem_Click);
             // 
             // ccToolStripMenuItem
             // 
             this.ccToolStripMenuItem.Name = "ccToolStripMenuItem";
-            this.ccToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ccToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.ccToolStripMenuItem.Text = "Reload";
             this.ccToolStripMenuItem.Click += new System.EventHandler(this.ccToolStripMenuItem_Click);
             // 
@@ -4150,6 +4151,13 @@
             this.deleteToolStripMenuItem.Text = "Delete [DEL]";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
+            // toggleFavoriteToolStripMenuItem
+            // 
+            this.toggleFavoriteToolStripMenuItem.Name = "toggleFavoriteToolStripMenuItem";
+            this.toggleFavoriteToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.toggleFavoriteToolStripMenuItem.Text = "Toggle favorite [ALT]";
+            this.toggleFavoriteToolStripMenuItem.Click += new System.EventHandler(this.toggleFavoriteToolStripMenuItem_Click);
+            // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -4163,36 +4171,38 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // debugToolStripMenuItem
             // 
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.debugToolStripMenuItem.Text = "Debug";
             this.debugToolStripMenuItem.Click += new System.EventHandler(this.debugToolStripMenuItem_Click);
             // 
-            // toggleFavoriteToolStripMenuItem
+            // statusMsg
             // 
-            this.toggleFavoriteToolStripMenuItem.Name = "toggleFavoriteToolStripMenuItem";
-            this.toggleFavoriteToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.toggleFavoriteToolStripMenuItem.Text = "Toggle favorite [ALT]";
-            this.toggleFavoriteToolStripMenuItem.Click += new System.EventHandler(this.toggleFavoriteToolStripMenuItem_Click);
+            this.statusMsg.Location = new System.Drawing.Point(9, 321);
+            this.statusMsg.Name = "statusMsg";
+            this.statusMsg.Size = new System.Drawing.Size(658, 16);
+            this.statusMsg.TabIndex = 133;
+            this.statusMsg.Text = "Status message will appear here!";
             // 
             // entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 323);
+            this.ClientSize = new System.Drawing.Size(676, 337);
+            this.Controls.Add(this.statusMsg);
             this.Controls.Add(this.cbItem);
             this.Controls.Add(this.tcMain);
             this.Controls.Add(this.groupBox1);
@@ -4732,6 +4742,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toggleFavoriteToolStripMenuItem;
+        private System.Windows.Forms.Label statusMsg;
     }
 }
 
