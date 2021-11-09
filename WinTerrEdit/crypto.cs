@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace WinTerrEdit
 {
     /// <summary>
-    /// 
+    ///
     /// handles all the cryptography for the .plr files
-    /// 
+    ///
     /// </summary>
     class crypto
     {

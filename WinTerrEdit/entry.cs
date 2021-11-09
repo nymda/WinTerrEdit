@@ -18,17 +18,17 @@ namespace WinTerrEdit
     public partial class entry : Form
     {
         /// <summary>
-        /// 
-        /// WinTerrEdit - an open source terraria character editor that i never considered people might use. 
-        /// 
+        ///
+        /// WinTerrEdit - an open source terraria character editor that i never considered people might use.
+        ///
         /// This is quickly becoming a massive, mostly unmanagable mess. This whole project desperatly needs a full recode.
         /// Lasciate ogne speranza, voi ch'intrate
-        /// 
+        ///
         /// </summary>
 
         /// <note>
-        /// the combobox "cbItem" is no longer nessicary on the UI, however, its unctionality is integeral to the program. 
-        /// dont delete cbItem, it is the glue holding everything together. 
+        /// the combobox "cbItem" is no longer nessicary on the UI, however, its unctionality is integeral to the program.
+        /// dont delete cbItem, it is the glue holding everything together.
         /// </note>
 
         //general stuff
@@ -209,7 +209,9 @@ namespace WinTerrEdit
             }
 
             st.Stop();
-            Console.WriteLine("load took " + st.Elapsed);
+            Debug.WriteLine($"Load took {st.ElapsedMilliseconds} ms ({st.ElapsedTicks})");
+            // Consider using Debug.Write(Line) to write output directly to VS debug output
+            // (since its no console app)
 
             itemLV.Sorting = SortOrder.Ascending;
             itemLV.Sort();
@@ -255,6 +257,8 @@ namespace WinTerrEdit
             currentFileHash = calcMd5OfOpenFile();
             byte[] decrypted = cr.decryptFile(path);
 
+            #region Stages
+            #region Stage 1
             //decryption complete
             stage = 1;
 
@@ -302,7 +306,8 @@ namespace WinTerrEdit
                 safeOffset = 1203;
                 buffOffset = 2284; //2284
             }
-
+            #endregion
+            #region Stage 2
             //mana and name has been found, NEO has been set
             stage = 2;
 
@@ -325,7 +330,8 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
-
+            #endregion
+            #region Stage 3
             //inventory data has been found
             stage = 3;
 
@@ -348,7 +354,8 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
-
+            #endregion
+            #region Stage 4
             //piggybank data has been found
             stage = 4;
 
@@ -371,7 +378,8 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
-
+            #endregion
+            #region Stage 5
             //safe data has been found
             stage = 5;
 
@@ -394,7 +402,8 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
-
+            #endregion
+            #region Stage 6
             //coins data has been found
             stage = 6;
 
@@ -421,7 +430,8 @@ namespace WinTerrEdit
                 }
                 nudDur.Value = playerBuffs[0].duration;
             }
-
+            #endregion
+            #region Stage 7
             //buff data has been found
             stage = 7;
 
@@ -448,7 +458,8 @@ namespace WinTerrEdit
             undershirtPnl.BackColor = playerColours[4];
             pantsPnl.BackColor = playerColours[5];
             shoesPnl.BackColor = playerColours[6];
-
+            #endregion
+            #region Stage 8
             //colour data has been found and shown in UI
             stage = 8;
 
@@ -482,7 +493,8 @@ namespace WinTerrEdit
 
             nudHealthCur.Value = phc;
             nudHealthMax.Value = phm;
-
+            #endregion
+            #region Stage 9
             //health data has been set and shown in UI
             stage = 9;
 
@@ -516,7 +528,8 @@ namespace WinTerrEdit
 
             nudManaCur.Value = playerMana[0];
             nudManaMax.Value = playerMana[1];
-
+            #endregion
+            #region Stage 10
             //mana data has been set and shown in UI
             stage = 10;
 
@@ -530,7 +543,8 @@ namespace WinTerrEdit
             playerHS = hs;
             nudHair.Value = hs;
             cbGamemode.SelectedIndex = (int)playerMode;
-
+            #endregion
+            #region Stage 11
             //hairstyle and gamemode has been shown in UI
             stage = 11;
 
@@ -557,7 +571,8 @@ namespace WinTerrEdit
                     nudDur.Value = playerBuffs[invSelectedIndex].duration;
                     break;
             }
-
+            #endregion
+            #region Stage 12
             //other UI data has been set
             stage = 12;
 
@@ -566,11 +581,18 @@ namespace WinTerrEdit
             {
                 MessageBox.Show("This player contains \"Unknown\" items. These are items which have a quantity or prefix but no ID. This may be caused by a game bug or (more likely) a mod. Be careful when editing these items.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            #endregion
+            #endregion
         }
 
+        #region Player file
         private void btnLoad_Click(object sender, EventArgs e)
         {
             loadPlayer();
+        }
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            reloadPlayer();
         }
 
         public void loadPlayer()
@@ -636,12 +658,6 @@ namespace WinTerrEdit
             invSelectedIndex = 0;
             updateInvDisplay();
         }
-
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            reloadPlayer();
-        }
-
         public void reloadPlayer()
         {
             rawDecrypted.Clear();
@@ -671,6 +687,110 @@ namespace WinTerrEdit
             btnSave.Enabled = true;
             updateInvDisplay();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        public void savePlayer()
+        {
+            if (useOverwriteFile)
+            {
+                cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
+                isSaved = true;
+                saveNotifier sn = new saveNotifier();
+                sn.ShowDialog();
+            }
+            else
+            {
+                using (SaveFileDialog dlg = new SaveFileDialog())
+                {
+                    dlg.InitialDirectory = playerfolder;
+                    dlg.Title = "Save player file";
+                    dlg.Filter = "Terraria player | *.plr";
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        string savepath = dlg.FileName;
+                        cr.encryptAndSave(reEncode().ToArray(), savepath);
+                        isSaved = true;
+                        saveNotifier sn = new saveNotifier();
+                        sn.ShowDialog();
+
+                        rawDecrypted.Clear();
+                        playerName = "";
+                        inv_main.Clear();
+                        playerHealth.Clear();
+                        playerMana.Clear();
+                        playerColours.Clear();
+                        nameEndOffset = 0;
+                        invSelectedIndex = 0;
+                        isSaved = true;
+                        unlockAllData.Clear();
+                        debugInvData.Clear();
+                        inv_main.Clear();
+                        inv_piggybank.Clear();
+                        inv_safe.Clear();
+                        inv_ammocoins.Clear();
+                        playerBuffs.Clear();
+
+                        lastReadPlrPath = dlg.FileName;
+
+                        //reload the saved file
+                        this.Text = "WinTerrEdit | (" + dlg.FileName.Split('\\')[dlg.FileName.Split('\\').Length - 1] + ")";
+
+                        loadData(dlg.FileName);
+                        //gbInvHold.Enabled = true;
+                        //gbColour.Enabled = true;
+                        //gbPlayer.Enabled = true;
+                        gb_slot_items.Enabled = true;
+                        gb_slot_buff.Enabled = true;
+                        gbItems.Enabled = true;
+                        gbBuffs.Enabled = true;
+                        btnReload.Enabled = true;
+                    }
+                }
+            }
+        }
+
+        //method for automatically reloading the latest file
+        private void autoFunctionTimer_Tick(object sender, EventArgs e)
+        {
+            string tmp = calcMd5OfOpenFile();
+
+            if (tmp != currentFileHash)
+            {
+                rawDecrypted.Clear();
+                playerName = "";
+                inv_main.Clear();
+                playerHealth.Clear();
+                playerMana.Clear();
+                playerColours.Clear();
+                nameEndOffset = 0;
+                isSaved = true;
+                unlockAllData.Clear();
+                debugInvData.Clear();
+                inv_main.Clear();
+                inv_piggybank.Clear();
+                inv_safe.Clear();
+                inv_ammocoins.Clear();
+                playerBuffs.Clear();
+
+                loadData(lastReadPlrPath);
+                gb_slot_items.Enabled = true;
+                gb_slot_buff.Enabled = true;
+                gbItems.Enabled = true;
+                gbBuffs.Enabled = true;
+                tcMain.Enabled = true;
+
+                btnSave.Enabled = true;
+                updateInvDisplay();
+
+                currentFileHash = tmp;
+            }
+            else
+            {
+                //do shit all
+            }
+        }
+        #endregion
 
         public void updateInvDisplay()
         {
@@ -942,7 +1062,7 @@ namespace WinTerrEdit
             //populate encoded mana data
             encodedManaData.InsertRange(0, new List<Byte> { (byte)ih.encodeData(playerMana[0])[0], (byte)ih.encodeData(playerMana[0])[1], 0x00, 0x00, (byte)ih.encodeData(playerMana[1])[0], (byte)ih.encodeData(playerMana[1])[1], 0x00, 0x00 });
 
-            //insert inventory data 
+            //insert inventory data
             int dataBeginOffset = nameEndOffset + inventoryOffset;
             save.RemoveRange(dataBeginOffset, 500);
             save.InsertRange(dataBeginOffset, encodedInvData);
@@ -996,72 +1116,6 @@ namespace WinTerrEdit
             }
 
             return save;
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            savePlayer();
-        }
-
-        public void savePlayer()
-        {
-            if (useOverwriteFile)
-            {
-                cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
-                isSaved = true;
-                saveNotifier sn = new saveNotifier();
-                sn.ShowDialog();
-            }
-            else
-            {
-                using (SaveFileDialog dlg = new SaveFileDialog())
-                {
-                    dlg.InitialDirectory = playerfolder;
-                    dlg.Title = "Save player file";
-                    dlg.Filter = "Terraria player | *.plr";
-
-                    if (dlg.ShowDialog() == DialogResult.OK)
-                    {
-                        string savepath = dlg.FileName;
-                        cr.encryptAndSave(reEncode().ToArray(), savepath);
-                        isSaved = true;
-                        saveNotifier sn = new saveNotifier();
-                        sn.ShowDialog();
-
-                        rawDecrypted.Clear();
-                        playerName = "";
-                        inv_main.Clear();
-                        playerHealth.Clear();
-                        playerMana.Clear();
-                        playerColours.Clear();
-                        nameEndOffset = 0;
-                        invSelectedIndex = 0;
-                        isSaved = true;
-                        unlockAllData.Clear();
-                        debugInvData.Clear();
-                        inv_main.Clear();
-                        inv_piggybank.Clear();
-                        inv_safe.Clear();
-                        inv_ammocoins.Clear();
-                        playerBuffs.Clear();
-
-                        lastReadPlrPath = dlg.FileName;
-
-                        //reload the saved file
-                        this.Text = "WinTerrEdit | (" + dlg.FileName.Split('\\')[dlg.FileName.Split('\\').Length - 1] + ")";
-
-                        loadData(dlg.FileName);
-                        //gbInvHold.Enabled = true;
-                        //gbColour.Enabled = true;
-                        //gbPlayer.Enabled = true;
-                        gb_slot_items.Enabled = true;
-                        gb_slot_buff.Enabled = true;
-                        gbItems.Enabled = true;
-                        gbBuffs.Enabled = true;
-                        btnReload.Enabled = true;
-                    }
-                }
-            }
         }
 
         private void item_Paint(object sender, PaintEventArgs e)
@@ -1196,9 +1250,8 @@ namespace WinTerrEdit
                 {
 
                 }
-            }      
+            }
         }
-
         private void cbBuffs_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(invSelectedIndex >= 0)
@@ -1229,9 +1282,8 @@ namespace WinTerrEdit
 
                     }
                 }
-            }       
+            }
         }
-
         private void cbPrefixes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(invSelectedIndex >= 0)
@@ -1276,7 +1328,7 @@ namespace WinTerrEdit
                 {
 
                 }
-            }        
+            }
         }
 
         private void nudQuant_ValueChanged(object sender, EventArgs e)
@@ -1309,7 +1361,6 @@ namespace WinTerrEdit
 
             }
         }
-
         private void nudDur_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -1787,47 +1838,6 @@ namespace WinTerrEdit
             {
                 //rarely throws IO error if WinTerrEdit reading the file and Terraria writing to the file happens at the same time.
                 return currentFileHash;
-            }
-        }
-
-        //method for automatically reloading the latest file
-        private void autoFunctionTimer_Tick(object sender, EventArgs e)
-        {
-            string tmp = calcMd5OfOpenFile();
-
-            if (tmp != currentFileHash)
-            {
-                rawDecrypted.Clear();
-                playerName = "";
-                inv_main.Clear();
-                playerHealth.Clear();
-                playerMana.Clear();
-                playerColours.Clear();
-                nameEndOffset = 0;
-                isSaved = true;
-                unlockAllData.Clear();
-                debugInvData.Clear();
-                inv_main.Clear();
-                inv_piggybank.Clear();
-                inv_safe.Clear();
-                inv_ammocoins.Clear();
-                playerBuffs.Clear();
-
-                loadData(lastReadPlrPath);
-                gb_slot_items.Enabled = true;
-                gb_slot_buff.Enabled = true;
-                gbItems.Enabled = true;
-                gbBuffs.Enabled = true;
-                tcMain.Enabled = true;
-
-                btnSave.Enabled = true;
-                updateInvDisplay();
-
-                currentFileHash = tmp;
-            }
-            else
-            {
-                //do shit all
             }
         }
 
