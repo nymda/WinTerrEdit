@@ -79,7 +79,7 @@ namespace WinTerrEdit
 
             foreach (string str in dataArray)
             {
-                Console.WriteLine(str);
+                Debug.WriteLine(str);
                 string[] split = str.Split(',');
                 completed.Add(new buff(str.Split(',')));
             }

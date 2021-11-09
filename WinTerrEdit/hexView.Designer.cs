@@ -44,7 +44,7 @@
             this.rbInt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbInt.AutoSize = true;
             this.rbInt.Checked = true;
-            this.rbInt.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbInt.Font = new System.Drawing.Font("Lucida Debug", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbInt.Location = new System.Drawing.Point(12, 559);
             this.rbInt.Name = "rbInt";
             this.rbInt.Size = new System.Drawing.Size(44, 15);
@@ -58,7 +58,7 @@
             // 
             this.rbHex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbHex.AutoSize = true;
-            this.rbHex.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbHex.Font = new System.Drawing.Font("Lucida Debug", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbHex.Location = new System.Drawing.Point(62, 559);
             this.rbHex.Name = "rbHex";
             this.rbHex.Size = new System.Drawing.Size(44, 15);
@@ -71,7 +71,7 @@
             // 
             this.rbStr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbStr.AutoSize = true;
-            this.rbStr.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbStr.Font = new System.Drawing.Font("Lucida Debug", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbStr.Location = new System.Drawing.Point(112, 559);
             this.rbStr.Name = "rbStr";
             this.rbStr.Size = new System.Drawing.Size(44, 15);
@@ -98,7 +98,7 @@
             // 
             this.rbInv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbInv.AutoSize = true;
-            this.rbInv.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbInv.Font = new System.Drawing.Font("Lucida Debug", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbInv.Location = new System.Drawing.Point(212, 559);
             this.rbInv.Name = "rbInv";
             this.rbInv.Size = new System.Drawing.Size(44, 15);
@@ -111,7 +111,7 @@
             // 
             this.rbHyb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbHyb.AutoSize = true;
-            this.rbHyb.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbHyb.Font = new System.Drawing.Font("Lucida Debug", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbHyb.Location = new System.Drawing.Point(162, 559);
             this.rbHyb.Name = "rbHyb";
             this.rbHyb.Size = new System.Drawing.Size(44, 15);
@@ -125,7 +125,7 @@
             this.tbOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbOut.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOut.Font = new System.Drawing.Font("Lucida Debug", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOut.Location = new System.Drawing.Point(12, 12);
             this.tbOut.Name = "tbOut";
             this.tbOut.Size = new System.Drawing.Size(500, 541);
@@ -135,7 +135,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Lucida Console", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Lucida Debug", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(351, 557);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 17);

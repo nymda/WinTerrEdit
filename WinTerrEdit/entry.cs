@@ -1066,44 +1066,44 @@ namespace WinTerrEdit
             int dataBeginOffset = nameEndOffset + inventoryOffset;
             save.RemoveRange(dataBeginOffset, 500);
             save.InsertRange(dataBeginOffset, encodedInvData);
-            Console.WriteLine("Inventory data: Removed 500 bytes, Inserted " + encodedInvData.Count() + " bytes");
+            Debug.WriteLine("Inventory data: Removed 500 bytes, Inserted " + encodedInvData.Count() + " bytes");
 
             int AmmmoDataBeginOffset = nameEndOffset + coinOffset;
             save.RemoveRange(AmmmoDataBeginOffset, 80);
             save.InsertRange(AmmmoDataBeginOffset, encodedAmmoData);
-            Console.WriteLine("Ammo data: Removed 80 bytes, Inserted " + encodedAmmoData.Count() + " bytes");
+            Debug.WriteLine("Ammo data: Removed 80 bytes, Inserted " + encodedAmmoData.Count() + " bytes");
 
             int PbnkDataBeginOffset = nameEndOffset + pigOffset;
             save.RemoveRange(PbnkDataBeginOffset, 360);
             save.InsertRange(PbnkDataBeginOffset, encodedBankData);
-            Console.WriteLine("Ammo data: Removed 360 bytes, Inserted " + encodedBankData.Count() + " bytes");
+            Debug.WriteLine("Ammo data: Removed 360 bytes, Inserted " + encodedBankData.Count() + " bytes");
 
             int SafeDataBeginOffset = nameEndOffset + safeOffset;
             save.RemoveRange(SafeDataBeginOffset, 360);
             save.InsertRange(SafeDataBeginOffset, encodedSafeData);
-            Console.WriteLine("Ammo data: Removed 360 bytes, Inserted " + encodedSafeData.Count() + " bytes");
+            Debug.WriteLine("Ammo data: Removed 360 bytes, Inserted " + encodedSafeData.Count() + " bytes");
 
             int ColourDataBeginOffset = nameEndOffset + colOffset;
             save.RemoveRange(ColourDataBeginOffset, 21);
             save.InsertRange(ColourDataBeginOffset, encodedColourData);
-            Console.WriteLine("Colour data: Removed 21 bytes, Inserted " + encodedColourData.Count() + " bytes");
+            Debug.WriteLine("Colour data: Removed 21 bytes, Inserted " + encodedColourData.Count() + " bytes");
 
             int HealthDataBeginOffset = nameEndOffset + 18;
             save.RemoveRange(HealthDataBeginOffset, 8);
             save.InsertRange(HealthDataBeginOffset, encodedHealthData);
-            Console.WriteLine("Health data: Removed 8 bytes, Inserted " + encodedHealthData.Count() + " bytes");
+            Debug.WriteLine("Health data: Removed 8 bytes, Inserted " + encodedHealthData.Count() + " bytes");
 
             int ManaDataBeginOffset = nameEndOffset + 26;
             save.RemoveRange(ManaDataBeginOffset, 8);
             save.InsertRange(ManaDataBeginOffset, encodedManaData);
-            Console.WriteLine("Mana data: Removed 8 bytes, Inserted " + encodedManaData.Count() + " bytes");
+            Debug.WriteLine("Mana data: Removed 8 bytes, Inserted " + encodedManaData.Count() + " bytes");
 
             if (doBuffs)
             {
                 int BuffDataBeginOffset = nameEndOffset + buffOffset;
                 save.RemoveRange(BuffDataBeginOffset, 176);
                 save.InsertRange(BuffDataBeginOffset, encodedBuffData);
-                Console.WriteLine("Buff data: Removed 176 bytes, Inserted " + encodedBuffData.Count() + " bytes");
+                Debug.WriteLine("Buff data: Removed 176 bytes, Inserted " + encodedBuffData.Count() + " bytes");
             }
 
             save[nameEndOffset + 9] = (byte)playerHS;
@@ -1478,58 +1478,68 @@ namespace WinTerrEdit
         {
             playerHealth[0] = (int)nudHealthCur.Value;
         }
-
         private void nudHealthMax_ValueChanged(object sender, EventArgs e)
         {
             playerHealth[1] = (int)nudHealthMax.Value;
         }
-
         private void nudManaCur_ValueChanged(object sender, EventArgs e)
         {
             playerMana[0] = (int)nudManaCur.Value;
             playerMana[0] = (int)nudManaCur.Value;
         }
-
         private void nudManaMax_ValueChanged(object sender, EventArgs e)
         {
             playerMana[1] = (int)nudManaMax.Value;
         }
 
+        public static class User32
+        {
+            public const int SW_HIDE = 0;
+            public const int SW_SHOW = 5;
+            public const int SW_SHOWNORMAL = 1;
+            public const int SW_SHOWMAXIMIZED = 3;
+            public const int SW_RESTORE = 9;
+
+            [DllImport("user32.dll")]
+            public static extern bool SetForegroundWindow(IntPtr hWnd);
+            [DllImport("user32.dll")]
+            public static extern bool AllowSetForegroundWindow(uint dwProcessId);
+            [DllImport("user32.dll")]
+            public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        }
+
+        #region Button click events
         private void btnHeal_Click(object sender, EventArgs e)
         {
             nudHealthCur.Value = nudHealthMax.Value;
         }
-
         private void gbFillMana_Click(object sender, EventArgs e)
         {
             nudManaCur.Value = nudManaMax.Value;
         }
-
         private void btnMaxHealth_Click(object sender, EventArgs e)
         {
             nudHealthMax.Value = 500;
             nudHealthCur.Value = 500;
         }
-
         private void gbMaximumMana_Click(object sender, EventArgs e)
         {
             nudManaMax.Value = 200;
             nudManaCur.Value = 200;
         }
-
         private void btnClear_Click(object sender, EventArgs e)
         {
             cbItem.SelectedItem = "Empty";
             cbPrefixes.SelectedIndex = 0;
             nudQuant.Value = 0;
         }
-
         private void BuffClearBtn_Click(object sender, EventArgs e)
         {
             cbBuffs.SelectedItem = "None";
             nudDur.Value = 0;
         }
-
+        #endregion
+        #region Other events
         private void entry_kDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -1769,23 +1779,8 @@ namespace WinTerrEdit
         {
             cbBuffs.SelectedItem = buffLV.SelectedItems[0].Text;
         }
-
-        public static class User32
-        {
-            public const int SW_HIDE = 0;
-            public const int SW_SHOW = 5;
-            public const int SW_SHOWNORMAL = 1;
-            public const int SW_SHOWMAXIMIZED = 3;
-            public const int SW_RESTORE = 9;
-
-            [DllImport("user32.dll")]
-            public static extern bool SetForegroundWindow(IntPtr hWnd);
-            [DllImport("user32.dll")]
-            public static extern bool AllowSetForegroundWindow(uint dwProcessId);
-            [DllImport("user32.dll")]
-            public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-        }
-
+        #endregion
+        #region Fields value changed events
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (textBox1.Text.Length > 2)
@@ -1821,6 +1816,17 @@ namespace WinTerrEdit
                 buffLV.Items.AddRange(lvis_buff.ToArray());
             }
         }
+
+        private void nudHair_ValueChanged(object sender, EventArgs e)
+        {
+            playerHS = (int)nudHair.Value;
+        }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+            playerName = tbName.Text;
+        }
+        #endregion
 
         public string calcMd5OfOpenFile()
         {
@@ -1889,19 +1895,9 @@ namespace WinTerrEdit
             }
         }
 
-        private void nudHair_ValueChanged(object sender, EventArgs e)
-        {
-            playerHS = (int)nudHair.Value;
-        }
-
-        private void tbName_TextChanged(object sender, EventArgs e)
-        {
-            playerName = tbName.Text;
-        }
-
         private void quant_leaveFocus(object sender, EventArgs e)
         {
-            Console.WriteLine("broke focus");
+            Debug.WriteLine("broke focus");
         }
 
         private void cbGamemode_SelectedIndexChanged(object sender, EventArgs e)
@@ -1923,10 +1919,11 @@ namespace WinTerrEdit
             }
         }
 
+        #region Menu click events
         void cm_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             ToolStripItem item = e.ClickedItem;
-            Console.WriteLine((sender as ContextMenuStrip).SourceControl.Name + ":" + item.Text);
+            Debug.WriteLine((sender as ContextMenuStrip).SourceControl.Name + ":" + item.Text);
 
             string elementName = (sender as ContextMenuStrip).SourceControl.Name;
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
@@ -1994,17 +1991,14 @@ namespace WinTerrEdit
         {
             loadPlayer();
         }
-
         private void bbToolStripMenuItem_Click(object sender, EventArgs e)
         {
             savePlayer();
         }
-
         private void ccToolStripMenuItem_Click(object sender, EventArgs e)
         {
             reloadPlayer();
         }
-
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int tmp_invSelectedIndex = invSelectedIndex;
@@ -2037,7 +2031,6 @@ namespace WinTerrEdit
             copyIndex = trueSelectedIndex;
             updateInvDisplay();
         }
-
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (copyBuffer != null)
@@ -2048,14 +2041,12 @@ namespace WinTerrEdit
                 updateInvDisplay();
             }
         }
-
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cbItem.SelectedItem = "Empty";
             cbPrefixes.SelectedIndex = 0;
             nudQuant.Value = 0;
         }
-
         private void toggleFavoriteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (tcMain.SelectedIndex == 0)
@@ -2064,7 +2055,6 @@ namespace WinTerrEdit
                 updateInvDisplay();
             }
         }
-
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Settings st = new Settings(useOverwriteFile, useAutoReloadFile, useExtendedName);
@@ -2100,17 +2090,16 @@ namespace WinTerrEdit
                 }
             }
         }
-
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             about ab = new about(aboutBoxContactData, WTEversion);
             ab.ShowDialog();
         }
-
         private void debugToolStripMenuItem_Click(object sender, EventArgs e)
         {
             hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, versionCode);
             hx.ShowDialog();
         }
+        #endregion
     }
 }
