@@ -66,6 +66,7 @@ namespace WinTerrEdit {
         public int playerHS = 0;
 
         string fileName = "-1";
+        bool doSaveAss = false;
         #endregion
         #endregion
         #region Displays
@@ -152,11 +153,11 @@ namespace WinTerrEdit {
             try { settings = rh.loadRegData(); }
             catch { }
 
-            if (settings[1] == '1')
+            if (settings[0] == '1')
             {
                 useAutoReloadFile = true;
             }
-            if (settings[2] == '1')
+            if (settings[1] == '1')
             {
                 useExtendedName = true;
             }
@@ -704,12 +705,15 @@ namespace WinTerrEdit {
             updateInvDisplay();
         }
         public void savePlayer() {
+            if (fileName == "-1" && doSaveAss) {
+                Native.MessageBoxInterface.Show("Meh", "", 0);
+                return;
+            }
             if (fileName != "-1")
             {
                 cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
                 isSaved = true;
-                saveNotifier sn = new saveNotifier();
-                sn.ShowDialog();
+                Native.MessageBoxInterface.Show("Meh", "", 0);
             }
             else
             {
@@ -724,8 +728,7 @@ namespace WinTerrEdit {
                         string savepath = dlg.FileName;
                         cr.encryptAndSave(reEncode().ToArray(), savepath);
                         isSaved = true;
-                        saveNotifier sn = new saveNotifier();
-                        sn.ShowDialog();
+                        Native.MessageBoxInterface.Show("Meh", "", 0);
 
                         rawDecrypted.Clear();
                         playerName = "";
@@ -1457,8 +1460,8 @@ namespace WinTerrEdit {
             else
             {
                 e.Cancel = true;
-                closeWarn cw = new closeWarn();
-                if (cw.ShowDialog() == DialogResult.OK)
+                var dialogResult = Native.MessageBoxInterface.Show("Changes wont be applied if you dont save.\nWould you like to exit?\n", "Warning", 0);
+                if (dialogResult == (int) DialogResult.OK)
                 {
                     rh.saveRegData(useAutoReloadFile, useExtendedName);
                     Environment.Exit(0);
@@ -2110,6 +2113,7 @@ namespace WinTerrEdit {
         #endregion
 
         void saveAsToolStripMenuItem_Click(object sender, EventArgs e) {
+            doSaveAss = true;
             savePlayer();
         }
     }

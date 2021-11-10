@@ -101,12 +101,6 @@
     <Compile Include="about.Designer.cs">
       <DependentUpon>about.cs</DependentUpon>
     </Compile>
-    <Compile Include="closeWarn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="closeWarn.Designer.cs">
-      <DependentUpon>closeWarn.cs</DependentUpon>
-    </Compile>
     <Compile Include="crypto.cs" />
     <Compile Include="entry.cs">
       <SubType>Form</SubType>
@@ -152,9 +146,6 @@
     </Compile>
     <EmbeddedResource Include="about.resx">
       <DependentUpon>about.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="closeWarn.resx">
-      <DependentUpon>closeWarn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="entry.resx">
       <DependentUpon>entry.cs</DependentUpon>
