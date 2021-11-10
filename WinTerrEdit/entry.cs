@@ -227,7 +227,9 @@ namespace WinTerrEdit {
             }
 
             st.Stop();
-            Debug.WriteLine($"Load took {st.ElapsedMilliseconds} ms ({st.ElapsedTicks})");
+            var loadMsg = $"Load took {st.ElapsedMilliseconds} ms ({st.ElapsedTicks} ticks)";
+            Debug.WriteLine(loadMsg);
+            Status = loadMsg;
             // Consider using Debug.Write(Line) to write output directly to VS debug output
             // (since its no console app)
 
@@ -243,6 +245,7 @@ namespace WinTerrEdit {
                 //LOADING FINISHED
                 ld.Close();
             }));
+
 
             Thread getContact = new Thread(() => aboutBoxContactData = getContactInfoFromExtServer());
             getContact.Start();
@@ -671,6 +674,7 @@ namespace WinTerrEdit {
             }
 
             btnSave.Enabled = true;
+            btnSaveASs.Enabled = true;
             invSelectedIndex = 0;
             //updateInvDisplay(); WHY?
             Status = "File loaded!";
@@ -2116,5 +2120,7 @@ namespace WinTerrEdit {
             doSaveAss = true;
             savePlayer();
         }
+
+        private void button1_Click(object sender, EventArgs e) => saveAsToolStripMenuItem_Click(null, null);
     }
 }

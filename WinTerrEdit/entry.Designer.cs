@@ -320,6 +320,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusMsg = new System.Windows.Forms.Label();
+            this.btnSaveASs = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudManaCur)).BeginInit();
@@ -841,7 +842,7 @@
             this.btnSave.Location = new System.Drawing.Point(6, 45);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(129, 22);
+            this.btnSave.Size = new System.Drawing.Size(84, 22);
             this.btnSave.TabIndex = 56;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -3899,6 +3900,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSaveASs);
             this.groupBox1.Controls.Add(this.btnLoad);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnReload);
@@ -4205,6 +4207,17 @@
             this.statusMsg.Size = new System.Drawing.Size(658, 16);
             this.statusMsg.TabIndex = 133;
             this.statusMsg.Text = "Status message will appear here!";
+            // 
+            // btnSaveASs
+            // 
+            this.btnSaveASs.Enabled = false;
+            this.btnSaveASs.Location = new System.Drawing.Point(96, 45);
+            this.btnSaveASs.Name = "btnSaveASs";
+            this.btnSaveASs.Size = new System.Drawing.Size(36, 23);
+            this.btnSaveASs.TabIndex = 63;
+            this.btnSaveASs.Text = "As...";
+            this.btnSaveASs.UseVisualStyleBackColor = true;
+            this.btnSaveASs.Click += new System.EventHandler(this.button1_Click);
             // 
             // entry
             // 
@@ -4753,6 +4766,7 @@
         System.Windows.Forms.ToolStripMenuItem toggleFavoriteToolStripMenuItem;
         System.Windows.Forms.Label statusMsg;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.Button btnSaveASs;
     }
 }
 
