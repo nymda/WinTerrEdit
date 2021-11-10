@@ -9,7 +9,7 @@ namespace WinTerrEdit
 {
     public class registryHandler
     {
-        public string loadRegData()
+        public Settings.SettingsStruct loadRegData()
         {
             var k = Registry.CurrentUser.OpenSubKey("Software\\WinTerrEdit", true);
             if(k == null)
@@ -18,12 +18,16 @@ namespace WinTerrEdit
                 RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\WinTerrEdit");
                 key.SetValue("Settings", "00");
                 key.Close();
-                return "00";
+                return new Settings.SettingsStruct(false, false);
             }
             else
             {
                 //key exists, read data
-                return (k.GetValue("Settings") as string);
+                string val = k.GetValue("Settings") as string;
+                if (val.Length > 2) {
+                    k.SetValue("Settings", val.Substring(0, 2));
+                }
+                return new Settings.SettingsStruct(val[0] == '1', val[1] == '1') ;
             }
         }
 

@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinTerrEdit.Properties;
 
@@ -131,19 +132,17 @@ namespace WinTerrEdit {
         }
         #endregion
 
+        loading loader;
         #region Methods
-        public entry()
-        {
+        public entry() {
             st.Start();
             InitializeComponent();
-            new Thread(new ThreadStart(delegate
-            {
-                Application.Run(ld = new loading(WTEversion));
-            })).Start();
+            loader = new loading(WTEversion);
+            Task.Run(() => { Application.Run(loader); });
         }
         void Entry_Load(object sender, EventArgs e)
         {
-            string settings = "000";
+            Settings.SettingsStruct settings;
             cm.Items.Add("Copy");
             cm.Items.Add("Paste");
             cm.Items.Add("Delete");
@@ -151,16 +150,10 @@ namespace WinTerrEdit {
             cm.ItemClicked += new ToolStripItemClickedEventHandler(cm_ItemClicked);
 
             try { settings = rh.loadRegData(); }
-            catch { }
+            catch { settings = new Settings.SettingsStruct(false, false); }
 
-            if (settings[0] == '1')
-            {
-                useAutoReloadFile = true;
-            }
-            if (settings[1] == '1')
-            {
-                useExtendedName = true;
-            }
+            useAutoReloadFile = settings.useAutoReloadFile;
+            useExtendedName = settings.useExtendedName;
 
             btnReload.Image = Resources.crappyreload;
 
@@ -226,12 +219,6 @@ namespace WinTerrEdit {
                 cnt++;
             }
 
-            st.Stop();
-            var loadMsg = $"Load took {st.ElapsedMilliseconds} ms ({st.ElapsedTicks} ticks)";
-            Debug.WriteLine(loadMsg);
-            Status = loadMsg;
-            // Consider using Debug.Write(Line) to write output directly to VS debug output
-            // (since its no console app)
 
             itemLV.Sorting = SortOrder.Ascending;
             itemLV.Sort();
@@ -240,15 +227,21 @@ namespace WinTerrEdit {
             buffLV.Sort();
             buffLV.EndUpdate();
 
-            this.Invoke(new MethodInvoker(delegate ()
-            {
-                //LOADING FINISHED
-                ld.Close();
+            Task.Run(() => { aboutBoxContactData = getContactInfoFromExtServer(); });
+
+            st.Stop();
+            this.Invoke(new MethodInvoker(delegate () {
+                loader.Close();
+                loader = null;
             }));
+            var loadMsg = $"Load took {st.ElapsedMilliseconds} ms ({st.ElapsedTicks} ticks)";
+            Debug.WriteLine(loadMsg);
+            Status = loadMsg;
+            // Consider using Debug.Write(Line) to write output directly to VS debug output
+            // (since its no console app)
 
+            Thread.Sleep(new Random().Next(150, 750)); // To make it showing not so instantly
 
-            Thread getContact = new Thread(() => aboutBoxContactData = getContactInfoFromExtServer());
-            getContact.Start();
 
             //just show the fucking form to the user
             User32.AllowSetForegroundWindow((uint)Process.GetCurrentProcess().Id);
@@ -605,6 +598,12 @@ namespace WinTerrEdit {
             #endregion
             #endregion
         }
+
+        #region C# Events
+        public delegate void EventsHandler();
+        public event EventsHandler OnLoadComplete;
+        void invokeOnLoadEvent() => OnLoadComplete?.Invoke();
+        #endregion
 
         #region Player file
         void btnLoad_Click(object sender, EventArgs e) => loadPlayer();
@@ -1572,8 +1571,8 @@ namespace WinTerrEdit {
                 Settings st = new Settings(useAutoReloadFile, useExtendedName);
                 if (st.ShowDialog() == DialogResult.OK)
                 {
-                    useAutoReloadFile = st.useAutoReloadFile;
-                    useExtendedName = st.useExtendedName;
+                    useAutoReloadFile = st.st.useAutoReloadFile;
+                    useExtendedName = st.st.useExtendedName;
 
                     if (useAutoReloadFile)
                     {
@@ -1894,23 +1893,29 @@ namespace WinTerrEdit {
 
         public string getContactInfoFromExtServer()
         {
+            const string offlineVal = "Want to contact me?\n" +  // Dont return nothing without internet connection. NEVER.
+                                      "        Discord: Knebb#8081\n" +
+                                      "        Telegram: @knebby";
             try
             {
                 WebClient w = new WebClient();
                 w.Headers.Add("user-agent", "Internal WTE request | " + WTEversion);
-                string _tmp = w.DownloadString(@"http://knedit.pw/WTE_Contact_Data_Tmp/");
+                string _tmp = w.DownloadString("http://knedit.pw/WTE_Contact_Data_Tmp/");
                 if (_tmp[0] == 'W')
                 {
+                    Debug.WriteLine(_tmp);
                     return _tmp;
                 }
                 else
                 {
-                    throw new Exception("corrupt data");
+                    return offlineVal + "\n" +
+                           "Note: The data got from server was corrupted.\nPlease, create an issue in GitHub with screenshot of this message.\n" +
+                           $"Data from server: {_tmp.Replace("\n", "\\n")}";
                 }
             }
             catch
             {
-                return "Unknown server error :(";
+                return offlineVal;
             }
         }
 
@@ -2073,8 +2078,8 @@ namespace WinTerrEdit {
             Settings st = new Settings(useAutoReloadFile, useExtendedName);
             if (st.ShowDialog() == DialogResult.OK)
             {
-                useAutoReloadFile = st.useAutoReloadFile;
-                useExtendedName = st.useExtendedName;
+                useAutoReloadFile = st.st.useAutoReloadFile;
+                useExtendedName = st.st.useExtendedName;
 
                 if (useAutoReloadFile)
                 {
