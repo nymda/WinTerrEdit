@@ -2,6 +2,7 @@
 
 ![](https://img.shields.io/github/downloads/Nymda/WinTerrEdit/total?style=flat-square) ![](https://img.shields.io/github/v/release/Nymda/WinTerrEdit?style=flat-square) ![](https://img.shields.io/discord/760067342637465620?style=flat-square)
 
+Thanks [b1ek](https://github.com/b1ek) for fixing a lot of things.
 
 I have now created a [discord server](https://discord.gg/2xVTgwH)     
 Consider donating BTC if you like my software <3 ```3G6rnGKDeBScHdKTfAcyzx1MtiPgoPhEz5```    
