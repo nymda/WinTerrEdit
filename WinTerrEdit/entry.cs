@@ -10,54 +10,50 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinTerrEdit.Properties;
 
-namespace WinTerrEdit
-{
-    public partial class entry : Form
-    {
+namespace WinTerrEdit {
+    public partial class entry : Form {
+        #region Summary
         /// <summary>
-        /// 
-        /// WinTerrEdit - an open source terraria character editor that i never considered people might use. 
-        /// 
+        ///
+        /// WinTerrEdit - an open source terraria character editor that i never considered people might use.
+        ///
         /// This is quickly becoming a massive, mostly unmanagable mess. This whole project desperatly needs a full recode.
         /// Lasciate ogne speranza, voi ch'intrate
-        /// 
+        ///
         /// </summary>
 
         /// <note>
-        /// the combobox "cbItem" is no longer nessicary on the UI, however, its unctionality is integeral to the program. 
-        /// dont delete cbItem, it is the glue holding everything together. 
+        /// the combobox "cbItem" is no longer nessicary on the UI, however, its unctionality is integeral to the program.
+        /// dont delete cbItem, it is the glue holding everything together.
         /// </note>
+        #endregion
 
+        #region Fields
+        #region General
         //general stuff
         itemHandler ih = new itemHandler(true);
         public List<Byte> rawDecrypted = new List<Byte> { };
         public readonly string playerfolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\Terraria\\Players";
         public string lastReadPlrPath = "";
         public string currentFileHash = "";
-
-        //version
-        public const string WTEversion = "1.10.4-B";
-
+        #endregion
+        #region Settings
         //bools controling settings
-        public bool useOverwriteFile = false;
         public bool useAutoReloadFile = false;
         public bool useExtendedName = false;
-
+        #endregion
+        #region Player
+        #region Static
         //static player variables
         public string playerName = "";
         public gamemodes.gamemode playerMode;
         public int versionCode;
-
-        //displays
-        public List<PictureBox> pbs_inventory = new List<PictureBox> { };
-        public List<PictureBox> pbs_piggybank = new List<PictureBox> { };
-        public List<PictureBox> pbs_safe = new List<PictureBox> { };
-        public List<PictureBox> pbs_ammocoins = new List<PictureBox> { };
-        public List<PictureBox> pbs_buffs = new List<PictureBox> { };
-
+        #endregion
+        #region Modifiable
         //modifiable player variables
         public List<invItem> inv_main = new List<invItem> { };
         public List<invItem> inv_piggybank = new List<invItem> { };
@@ -70,6 +66,21 @@ namespace WinTerrEdit
         public List<Color> playerColours = new List<Color> { }; //hair, skin, eyes, shirt, undershirt, pants, shoes
         public int playerHS = 0;
 
+        string fileName = "-1";
+        bool doSaveAss = false;
+        #endregion
+        #endregion
+        #region Displays
+        //displays
+        public List<PictureBox> pbs_inventory = new List<PictureBox> { };
+        public List<PictureBox> pbs_piggybank = new List<PictureBox> { };
+        public List<PictureBox> pbs_safe = new List<PictureBox> { };
+        public List<PictureBox> pbs_ammocoins = new List<PictureBox> { };
+        public List<PictureBox> pbs_buffs = new List<PictureBox> { };
+        #endregion
+        #region Other
+        //version
+        public const string WTEversion = "1.10.4-B";
         public invItem copyBuffer;
         public int copyIndex = -1;
 
@@ -102,26 +113,36 @@ namespace WinTerrEdit
 
         //conext menus
         public ContextMenuStrip cm = new ContextMenuStrip();
-
+        #endregion
+        #region Debug and error handling
         //debug and error handling
         public int stage = 0;
         public string error = "";
         public bool doBuffs = true;
         public bool loading_complete = false;
+        #endregion
+        #endregion
 
+        #region Accessors
+        public string Status {
+            get => statusMsg.Text;
+            set {
+                statusMsg.Text = value;
+            }
+        }
+        #endregion
 
-        public entry()
-        {
+        loading loader;
+        #region Methods
+        public entry() {
             st.Start();
             InitializeComponent();
-            new Thread(new ThreadStart(delegate
-            {
-                Application.Run(ld = new loading(WTEversion));
-            })).Start();
+            loader = new loading(WTEversion);
+            Task.Run(() => { Application.Run(loader); });
         }
-        private void Entry_Load(object sender, EventArgs e)
+        void Entry_Load(object sender, EventArgs e)
         {
-            string settings = "000";
+            Settings.SettingsStruct settings;
             cm.Items.Add("Copy");
             cm.Items.Add("Paste");
             cm.Items.Add("Delete");
@@ -129,20 +150,10 @@ namespace WinTerrEdit
             cm.ItemClicked += new ToolStripItemClickedEventHandler(cm_ItemClicked);
 
             try { settings = rh.loadRegData(); }
-            catch { }
+            catch { settings = new Settings.SettingsStruct(false, false); }
 
-            if (settings[0] == '1')
-            {
-                useOverwriteFile = true;
-            }
-            if (settings[1] == '1')
-            {
-                useAutoReloadFile = true;
-            }
-            if (settings[2] == '1')
-            {
-                useExtendedName = true;
-            }
+            useAutoReloadFile = settings.useAutoReloadFile;
+            useExtendedName = settings.useExtendedName;
 
             btnReload.Image = Resources.crappyreload;
 
@@ -208,8 +219,6 @@ namespace WinTerrEdit
                 cnt++;
             }
 
-            st.Stop();
-            Console.WriteLine("load took " + st.Elapsed);
 
             itemLV.Sorting = SortOrder.Ascending;
             itemLV.Sort();
@@ -218,14 +227,21 @@ namespace WinTerrEdit
             buffLV.Sort();
             buffLV.EndUpdate();
 
-            this.Invoke(new MethodInvoker(delegate ()
-            {
-                //LOADING FINISHED
-                ld.Close();
-            }));
+            Task.Run(() => { aboutBoxContactData = getContactInfoFromExtServer(); });
 
-            Thread getContact = new Thread(() => aboutBoxContactData = getContactInfoFromExtServer());
-            getContact.Start();
+            st.Stop();
+            this.Invoke(new MethodInvoker(delegate () {
+                loader.Close();
+                loader = null;
+            }));
+            var loadMsg = $"Load took {st.ElapsedMilliseconds} ms ({st.ElapsedTicks} ticks)";
+            Debug.WriteLine(loadMsg);
+            Status = loadMsg;
+            // Consider using Debug.Write(Line) to write output directly to VS debug output
+            // (since its no console app)
+
+            Thread.Sleep(new Random().Next(150, 750)); // To make it showing not so instantly
+
 
             //just show the fucking form to the user
             User32.AllowSetForegroundWindow((uint)Process.GetCurrentProcess().Id);
@@ -255,6 +271,8 @@ namespace WinTerrEdit
             currentFileHash = calcMd5OfOpenFile();
             byte[] decrypted = cr.decryptFile(path);
 
+            #region Stages
+            #region Stage 1
             //decryption complete
             stage = 1;
 
@@ -302,7 +320,8 @@ namespace WinTerrEdit
                 safeOffset = 1203;
                 buffOffset = 2284; //2284
             }
-
+            #endregion
+            #region Stage 2
             //mana and name has been found, NEO has been set
             stage = 2;
 
@@ -325,7 +344,8 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
-
+            #endregion
+            #region Stage 3
             //inventory data has been found
             stage = 3;
 
@@ -348,7 +368,8 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
-
+            #endregion
+            #region Stage 4
             //piggybank data has been found
             stage = 4;
 
@@ -371,7 +392,8 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
-
+            #endregion
+            #region Stage 5
             //safe data has been found
             stage = 5;
 
@@ -394,7 +416,8 @@ namespace WinTerrEdit
                     extCounter = 0;
                 }
             }
-
+            #endregion
+            #region Stage 6
             //coins data has been found
             stage = 6;
 
@@ -421,7 +444,8 @@ namespace WinTerrEdit
                 }
                 nudDur.Value = playerBuffs[0].duration;
             }
-
+            #endregion
+            #region Stage 7
             //buff data has been found
             stage = 7;
 
@@ -448,7 +472,8 @@ namespace WinTerrEdit
             undershirtPnl.BackColor = playerColours[4];
             pantsPnl.BackColor = playerColours[5];
             shoesPnl.BackColor = playerColours[6];
-
+            #endregion
+            #region Stage 8
             //colour data has been found and shown in UI
             stage = 8;
 
@@ -482,7 +507,8 @@ namespace WinTerrEdit
 
             nudHealthCur.Value = phc;
             nudHealthMax.Value = phm;
-
+            #endregion
+            #region Stage 9
             //health data has been set and shown in UI
             stage = 9;
 
@@ -516,7 +542,8 @@ namespace WinTerrEdit
 
             nudManaCur.Value = playerMana[0];
             nudManaMax.Value = playerMana[1];
-
+            #endregion
+            #region Stage 10
             //mana data has been set and shown in UI
             stage = 10;
 
@@ -530,7 +557,8 @@ namespace WinTerrEdit
             playerHS = hs;
             nudHair.Value = hs;
             cbGamemode.SelectedIndex = (int)playerMode;
-
+            #endregion
+            #region Stage 11
             //hairstyle and gamemode has been shown in UI
             stage = 11;
 
@@ -557,7 +585,8 @@ namespace WinTerrEdit
                     nudDur.Value = playerBuffs[invSelectedIndex].duration;
                     break;
             }
-
+            #endregion
+            #region Stage 12
             //other UI data has been set
             stage = 12;
 
@@ -566,12 +595,20 @@ namespace WinTerrEdit
             {
                 MessageBox.Show("This player contains \"Unknown\" items. These are items which have a quantity or prefix but no ID. This may be caused by a game bug or (more likely) a mod. Be careful when editing these items.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            #endregion
+            #endregion
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
-            loadPlayer();
-        }
+        #region C# Events
+        public delegate void EventsHandler();
+        public event EventsHandler OnLoadComplete;
+        void invokeOnLoadEvent() => OnLoadComplete?.Invoke();
+        #endregion
+
+        #region Player file
+        void btnLoad_Click(object sender, EventArgs e) => loadPlayer();
+        void btnReload_Click(object sender, EventArgs e) => reloadPlayer();
+        void btnSave_Click(object sender, EventArgs e) => savePlayer();
 
         public void loadPlayer()
         {
@@ -585,6 +622,7 @@ namespace WinTerrEdit
                 {
                     try
                     {
+                        #region Reset
                         //reset variables
                         rawDecrypted.Clear();
                         playerName = "";
@@ -603,11 +641,14 @@ namespace WinTerrEdit
                         inv_safe.Clear();
                         inv_ammocoins.Clear();
                         playerBuffs.Clear();
+                        #endregion
 
                         lastReadPlrPath = dlg.FileName;
                         this.Text = "WinTerrEdit | (" + dlg.SafeFileName + ")";
 
                         loadData(dlg.FileName);
+                        Status = "Loading file...";
+                        #region Enable all elements
                         //gbInvHold.Enabled = true;
                         //gbColour.Enabled = true;
                         //gbPlayer.Enabled = true;
@@ -617,14 +658,13 @@ namespace WinTerrEdit
                         gbItems.Enabled = true;
                         gbBuffs.Enabled = true;
                         btnReload.Enabled = true;
+                        #endregion
                         updateInvDisplay();
                         if(tcMain.SelectedIndex == 0)
-                        {
                             item_Click(Pb1, null);
-                        }
+                        fileName = dlg.FileName;
                     }
-                    catch (Exception ex)
-                    {
+                    catch (Exception ex) {
                         errorReporter er = new errorReporter(stage.ToString(), ex.Message, Convert.ToBase64String(File.ReadAllBytes(lastReadPlrPath)));
                         er.ShowDialog();
                         //MessageBox.Show(String.Format("There was an issue loading this player. It may be corrupted or invalid. \n\nSTAGE: {0} \nERROR: {1}", stage, ex.Message), "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -633,15 +673,11 @@ namespace WinTerrEdit
             }
 
             btnSave.Enabled = true;
+            btnSaveASs.Enabled = true;
             invSelectedIndex = 0;
-            updateInvDisplay();
+            //updateInvDisplay(); WHY?
+            Status = "File loaded!";
         }
-
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            reloadPlayer();
-        }
-
         public void reloadPlayer()
         {
             rawDecrypted.Clear();
@@ -671,7 +707,110 @@ namespace WinTerrEdit
             btnSave.Enabled = true;
             updateInvDisplay();
         }
+        public void savePlayer() {
+            if (fileName == "-1" && doSaveAss) {
+                Native.MessageBoxInterface.Show("Meh", "", 0);
+                return;
+            }
+            if (fileName != "-1")
+            {
+                cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
+                isSaved = true;
+                Native.MessageBoxInterface.Show("Meh", "", 0);
+            }
+            else
+            {
+                using (SaveFileDialog dlg = new SaveFileDialog())
+                {
+                    dlg.InitialDirectory = playerfolder;
+                    dlg.Title = "Save player file";
+                    dlg.Filter = "Terraria player | *.plr";
 
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        string savepath = dlg.FileName;
+                        cr.encryptAndSave(reEncode().ToArray(), savepath);
+                        isSaved = true;
+                        Native.MessageBoxInterface.Show("Meh", "", 0);
+
+                        rawDecrypted.Clear();
+                        playerName = "";
+                        inv_main.Clear();
+                        playerHealth.Clear();
+                        playerMana.Clear();
+                        playerColours.Clear();
+                        nameEndOffset = 0;
+                        invSelectedIndex = 0;
+                        isSaved = true;
+                        unlockAllData.Clear();
+                        debugInvData.Clear();
+                        inv_main.Clear();
+                        inv_piggybank.Clear();
+                        inv_safe.Clear();
+                        inv_ammocoins.Clear();
+                        playerBuffs.Clear();
+
+                        lastReadPlrPath = dlg.FileName;
+
+                        //reload the saved file
+                        this.Text = "WinTerrEdit | (" + dlg.FileName.Split('\\')[dlg.FileName.Split('\\').Length - 1] + ")";
+
+                        loadData(dlg.FileName);
+                        //gbInvHold.Enabled = true;
+                        //gbColour.Enabled = true;
+                        //gbPlayer.Enabled = true;
+                        gb_slot_items.Enabled = true;
+                        gb_slot_buff.Enabled = true;
+                        gbItems.Enabled = true;
+                        gbBuffs.Enabled = true;
+                        btnReload.Enabled = true;
+                    }
+                }
+            }
+        }
+
+        //method for automatically reloading the latest file
+        void autoFunctionTimer_Tick(object sender, EventArgs e)
+        {
+            string tmp = calcMd5OfOpenFile();
+
+            if (tmp != currentFileHash)
+            {
+                rawDecrypted.Clear();
+                playerName = "";
+                inv_main.Clear();
+                playerHealth.Clear();
+                playerMana.Clear();
+                playerColours.Clear();
+                nameEndOffset = 0;
+                isSaved = true;
+                unlockAllData.Clear();
+                debugInvData.Clear();
+                inv_main.Clear();
+                inv_piggybank.Clear();
+                inv_safe.Clear();
+                inv_ammocoins.Clear();
+                playerBuffs.Clear();
+
+                loadData(lastReadPlrPath);
+                gb_slot_items.Enabled = true;
+                gb_slot_buff.Enabled = true;
+                gbItems.Enabled = true;
+                gbBuffs.Enabled = true;
+                tcMain.Enabled = true;
+
+                btnSave.Enabled = true;
+                updateInvDisplay();
+
+                currentFileHash = tmp;
+            }
+            else
+            {
+                //do shit all
+            }
+        }
+        #endregion
+        #region Uncathegorized events
         public void updateInvDisplay()
         {
             //hardcoded numbers EEEEEEEEVERYWHEREEEE
@@ -767,7 +906,7 @@ namespace WinTerrEdit
             }
         }
 
-        private void item_Click(object sender, EventArgs e)
+        void item_Click(object sender, EventArgs e)
         {
             try
             {
@@ -942,48 +1081,48 @@ namespace WinTerrEdit
             //populate encoded mana data
             encodedManaData.InsertRange(0, new List<Byte> { (byte)ih.encodeData(playerMana[0])[0], (byte)ih.encodeData(playerMana[0])[1], 0x00, 0x00, (byte)ih.encodeData(playerMana[1])[0], (byte)ih.encodeData(playerMana[1])[1], 0x00, 0x00 });
 
-            //insert inventory data 
+            //insert inventory data
             int dataBeginOffset = nameEndOffset + inventoryOffset;
             save.RemoveRange(dataBeginOffset, 500);
             save.InsertRange(dataBeginOffset, encodedInvData);
-            Console.WriteLine("Inventory data: Removed 500 bytes, Inserted " + encodedInvData.Count() + " bytes");
+            Debug.WriteLine("Inventory data: Removed 500 bytes, Inserted " + encodedInvData.Count() + " bytes");
 
             int AmmmoDataBeginOffset = nameEndOffset + coinOffset;
             save.RemoveRange(AmmmoDataBeginOffset, 80);
             save.InsertRange(AmmmoDataBeginOffset, encodedAmmoData);
-            Console.WriteLine("Ammo data: Removed 80 bytes, Inserted " + encodedAmmoData.Count() + " bytes");
+            Debug.WriteLine("Ammo data: Removed 80 bytes, Inserted " + encodedAmmoData.Count() + " bytes");
 
             int PbnkDataBeginOffset = nameEndOffset + pigOffset;
             save.RemoveRange(PbnkDataBeginOffset, 360);
             save.InsertRange(PbnkDataBeginOffset, encodedBankData);
-            Console.WriteLine("Ammo data: Removed 360 bytes, Inserted " + encodedBankData.Count() + " bytes");
+            Debug.WriteLine("Ammo data: Removed 360 bytes, Inserted " + encodedBankData.Count() + " bytes");
 
             int SafeDataBeginOffset = nameEndOffset + safeOffset;
             save.RemoveRange(SafeDataBeginOffset, 360);
             save.InsertRange(SafeDataBeginOffset, encodedSafeData);
-            Console.WriteLine("Ammo data: Removed 360 bytes, Inserted " + encodedSafeData.Count() + " bytes");
+            Debug.WriteLine("Ammo data: Removed 360 bytes, Inserted " + encodedSafeData.Count() + " bytes");
 
             int ColourDataBeginOffset = nameEndOffset + colOffset;
             save.RemoveRange(ColourDataBeginOffset, 21);
             save.InsertRange(ColourDataBeginOffset, encodedColourData);
-            Console.WriteLine("Colour data: Removed 21 bytes, Inserted " + encodedColourData.Count() + " bytes");
+            Debug.WriteLine("Colour data: Removed 21 bytes, Inserted " + encodedColourData.Count() + " bytes");
 
             int HealthDataBeginOffset = nameEndOffset + 18;
             save.RemoveRange(HealthDataBeginOffset, 8);
             save.InsertRange(HealthDataBeginOffset, encodedHealthData);
-            Console.WriteLine("Health data: Removed 8 bytes, Inserted " + encodedHealthData.Count() + " bytes");
+            Debug.WriteLine("Health data: Removed 8 bytes, Inserted " + encodedHealthData.Count() + " bytes");
 
             int ManaDataBeginOffset = nameEndOffset + 26;
             save.RemoveRange(ManaDataBeginOffset, 8);
             save.InsertRange(ManaDataBeginOffset, encodedManaData);
-            Console.WriteLine("Mana data: Removed 8 bytes, Inserted " + encodedManaData.Count() + " bytes");
+            Debug.WriteLine("Mana data: Removed 8 bytes, Inserted " + encodedManaData.Count() + " bytes");
 
             if (doBuffs)
             {
                 int BuffDataBeginOffset = nameEndOffset + buffOffset;
                 save.RemoveRange(BuffDataBeginOffset, 176);
                 save.InsertRange(BuffDataBeginOffset, encodedBuffData);
-                Console.WriteLine("Buff data: Removed 176 bytes, Inserted " + encodedBuffData.Count() + " bytes");
+                Debug.WriteLine("Buff data: Removed 176 bytes, Inserted " + encodedBuffData.Count() + " bytes");
             }
 
             save[nameEndOffset + 9] = (byte)playerHS;
@@ -998,73 +1137,7 @@ namespace WinTerrEdit
             return save;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            savePlayer();
-        }
-
-        public void savePlayer()
-        {
-            if (useOverwriteFile)
-            {
-                cr.encryptAndSave(reEncode().ToArray(), lastReadPlrPath);
-                isSaved = true;
-                saveNotifier sn = new saveNotifier();
-                sn.ShowDialog();
-            }
-            else
-            {
-                using (SaveFileDialog dlg = new SaveFileDialog())
-                {
-                    dlg.InitialDirectory = playerfolder;
-                    dlg.Title = "Save player file";
-                    dlg.Filter = "Terraria player | *.plr";
-
-                    if (dlg.ShowDialog() == DialogResult.OK)
-                    {
-                        string savepath = dlg.FileName;
-                        cr.encryptAndSave(reEncode().ToArray(), savepath);
-                        isSaved = true;
-                        saveNotifier sn = new saveNotifier();
-                        sn.ShowDialog();
-
-                        rawDecrypted.Clear();
-                        playerName = "";
-                        inv_main.Clear();
-                        playerHealth.Clear();
-                        playerMana.Clear();
-                        playerColours.Clear();
-                        nameEndOffset = 0;
-                        invSelectedIndex = 0;
-                        isSaved = true;
-                        unlockAllData.Clear();
-                        debugInvData.Clear();
-                        inv_main.Clear();
-                        inv_piggybank.Clear();
-                        inv_safe.Clear();
-                        inv_ammocoins.Clear();
-                        playerBuffs.Clear();
-
-                        lastReadPlrPath = dlg.FileName;
-
-                        //reload the saved file
-                        this.Text = "WinTerrEdit | (" + dlg.FileName.Split('\\')[dlg.FileName.Split('\\').Length - 1] + ")";
-
-                        loadData(dlg.FileName);
-                        //gbInvHold.Enabled = true;
-                        //gbColour.Enabled = true;
-                        //gbPlayer.Enabled = true;
-                        gb_slot_items.Enabled = true;
-                        gb_slot_buff.Enabled = true;
-                        gbItems.Enabled = true;
-                        gbBuffs.Enabled = true;
-                        btnReload.Enabled = true;
-                    }
-                }
-            }
-        }
-
-        private void item_Paint(object sender, PaintEventArgs e)
+        void item_Paint(object sender, PaintEventArgs e)
         {
             string elementName = (sender as PictureBox).Name;
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
@@ -1085,12 +1158,12 @@ namespace WinTerrEdit
             }
         }
 
-        private void gb_slot_Enter(object sender, EventArgs e)
+        void gb_slot_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void cbItem_SelectedIndexChanged(object sender, EventArgs e)
+        void cbItem_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(invSelectedIndex >= 0)
             {
@@ -1196,10 +1269,9 @@ namespace WinTerrEdit
                 {
 
                 }
-            }      
+            }
         }
-
-        private void cbBuffs_SelectedIndexChanged(object sender, EventArgs e)
+        void cbBuffs_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(invSelectedIndex >= 0)
             {
@@ -1229,10 +1301,9 @@ namespace WinTerrEdit
 
                     }
                 }
-            }       
+            }
         }
-
-        private void cbPrefixes_SelectedIndexChanged(object sender, EventArgs e)
+        void cbPrefixes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(invSelectedIndex >= 0)
             {
@@ -1276,10 +1347,10 @@ namespace WinTerrEdit
                 {
 
                 }
-            }        
+            }
         }
 
-        private void nudQuant_ValueChanged(object sender, EventArgs e)
+        void nudQuant_ValueChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1309,8 +1380,7 @@ namespace WinTerrEdit
 
             }
         }
-
-        private void nudDur_ValueChanged(object sender, EventArgs e)
+        void nudDur_ValueChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1324,7 +1394,7 @@ namespace WinTerrEdit
             }
         }
 
-        private void ScrollHandlerFunction(object sender, MouseEventArgs e)
+        void ScrollHandlerFunction(object sender, MouseEventArgs e)
         {
             HandledMouseEventArgs handledArgs = e as HandledMouseEventArgs;
             handledArgs.Handled = true;
@@ -1383,26 +1453,26 @@ namespace WinTerrEdit
             }
         }
 
-        private void onClose(object sender, FormClosingEventArgs e)
+        void onClose(object sender, FormClosingEventArgs e)
         {
             if (isSaved)
             {
-                rh.saveRegData(useOverwriteFile, useAutoReloadFile, useExtendedName);
+                rh.saveRegData(useAutoReloadFile, useExtendedName);
                 Environment.Exit(0);
             }
             else
             {
                 e.Cancel = true;
-                closeWarn cw = new closeWarn();
-                if (cw.ShowDialog() == DialogResult.OK)
+                var dialogResult = Native.MessageBoxInterface.Show("Changes wont be applied if you dont save.\nWould you like to exit?\n", "Warning", 0);
+                if (dialogResult == (int) DialogResult.OK)
                 {
-                    rh.saveRegData(useOverwriteFile, useAutoReloadFile, useExtendedName);
+                    rh.saveRegData(useAutoReloadFile, useExtendedName);
                     Environment.Exit(0);
                 }
             }
         }
 
-        private void colourSelecter_Click(object sender, EventArgs e)
+        void colourSelecter_Click(object sender, EventArgs e)
         {
             int extCount = pnCollection.IndexOf(sender as Panel);
             colourSelecter.Color = playerColours[extCount];
@@ -1423,63 +1493,73 @@ namespace WinTerrEdit
             }
         }
 
-        private void nudHealthCur_ValueChanged(object sender, EventArgs e)
+        void nudHealthCur_ValueChanged(object sender, EventArgs e)
         {
             playerHealth[0] = (int)nudHealthCur.Value;
         }
-
-        private void nudHealthMax_ValueChanged(object sender, EventArgs e)
+        void nudHealthMax_ValueChanged(object sender, EventArgs e)
         {
             playerHealth[1] = (int)nudHealthMax.Value;
         }
-
-        private void nudManaCur_ValueChanged(object sender, EventArgs e)
+        void nudManaCur_ValueChanged(object sender, EventArgs e)
         {
             playerMana[0] = (int)nudManaCur.Value;
             playerMana[0] = (int)nudManaCur.Value;
         }
-
-        private void nudManaMax_ValueChanged(object sender, EventArgs e)
+        void nudManaMax_ValueChanged(object sender, EventArgs e)
         {
             playerMana[1] = (int)nudManaMax.Value;
         }
+        #endregion
+        public static class User32
+        {
+            public const int SW_HIDE = 0;
+            public const int SW_SHOW = 5;
+            public const int SW_SHOWNORMAL = 1;
+            public const int SW_SHOWMAXIMIZED = 3;
+            public const int SW_RESTORE = 9;
 
-        private void btnHeal_Click(object sender, EventArgs e)
+            [DllImport("user32.dll")]
+            public static extern bool SetForegroundWindow(IntPtr hWnd);
+            [DllImport("user32.dll")]
+            public static extern bool AllowSetForegroundWindow(uint dwProcessId);
+            [DllImport("user32.dll")]
+            public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        }
+
+        #region Button click events
+        void btnHeal_Click(object sender, EventArgs e)
         {
             nudHealthCur.Value = nudHealthMax.Value;
         }
-
-        private void gbFillMana_Click(object sender, EventArgs e)
+        void gbFillMana_Click(object sender, EventArgs e)
         {
             nudManaCur.Value = nudManaMax.Value;
         }
-
-        private void btnMaxHealth_Click(object sender, EventArgs e)
+        void btnMaxHealth_Click(object sender, EventArgs e)
         {
             nudHealthMax.Value = 500;
             nudHealthCur.Value = 500;
         }
-
-        private void gbMaximumMana_Click(object sender, EventArgs e)
+        void gbMaximumMana_Click(object sender, EventArgs e)
         {
             nudManaMax.Value = 200;
             nudManaCur.Value = 200;
         }
-
-        private void btnClear_Click(object sender, EventArgs e)
+        void btnClear_Click(object sender, EventArgs e)
         {
             cbItem.SelectedItem = "Empty";
             cbPrefixes.SelectedIndex = 0;
             nudQuant.Value = 0;
         }
-
-        private void BuffClearBtn_Click(object sender, EventArgs e)
+        void BuffClearBtn_Click(object sender, EventArgs e)
         {
             cbBuffs.SelectedItem = "None";
             nudDur.Value = 0;
         }
-
-        private void entry_kDown(object sender, KeyEventArgs e)
+        #endregion
+        #region Other events
+        void entry_kDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
@@ -1488,12 +1568,11 @@ namespace WinTerrEdit
             }
             if (e.KeyCode == Keys.F2)
             {
-                Settings st = new Settings(useOverwriteFile, useAutoReloadFile, useExtendedName);
+                Settings st = new Settings(useAutoReloadFile, useExtendedName);
                 if (st.ShowDialog() == DialogResult.OK)
                 {
-                    useOverwriteFile = st.useOverwriteFile;
-                    useAutoReloadFile = st.useAutoReloadFile;
-                    useExtendedName = st.useExtendedName;
+                    useAutoReloadFile = st.st.useAutoReloadFile;
+                    useExtendedName = st.st.useExtendedName;
 
                     if (useAutoReloadFile)
                     {
@@ -1613,7 +1692,7 @@ namespace WinTerrEdit
             }
         }
 
-        private void ndq_keydown(object sender, KeyEventArgs e)
+        void ndq_keydown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control || e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.NumPad5 || e.KeyCode == Keys.Alt)
             {
@@ -1645,7 +1724,7 @@ namespace WinTerrEdit
 
         }
 
-        private void lb_activ(object sender, EventArgs e)
+        void lb_activ(object sender, EventArgs e)
         {
             cbItem.SelectedItem = itemLV.SelectedItems[0].Text;
             string titleText;
@@ -1714,28 +1793,13 @@ namespace WinTerrEdit
             }
         }
 
-        private void blb_activ(object sender, EventArgs e)
+        void blb_activ(object sender, EventArgs e)
         {
             cbBuffs.SelectedItem = buffLV.SelectedItems[0].Text;
         }
-
-        public static class User32
-        {
-            public const int SW_HIDE = 0;
-            public const int SW_SHOW = 5;
-            public const int SW_SHOWNORMAL = 1;
-            public const int SW_SHOWMAXIMIZED = 3;
-            public const int SW_RESTORE = 9;
-
-            [DllImport("user32.dll")]
-            public static extern bool SetForegroundWindow(IntPtr hWnd);
-            [DllImport("user32.dll")]
-            public static extern bool AllowSetForegroundWindow(uint dwProcessId);
-            [DllImport("user32.dll")]
-            public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        #endregion
+        #region Fields value changed events
+        void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (textBox1.Text.Length > 2)
             {
@@ -1753,7 +1817,7 @@ namespace WinTerrEdit
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (textBox2.Text.Length > 2)
             {
@@ -1770,6 +1834,17 @@ namespace WinTerrEdit
                 buffLV.Items.AddRange(lvis_buff.ToArray());
             }
         }
+
+        void nudHair_ValueChanged(object sender, EventArgs e)
+        {
+            playerHS = (int)nudHair.Value;
+        }
+
+        void tbName_TextChanged(object sender, EventArgs e)
+        {
+            playerName = tbName.Text;
+        }
+        #endregion
 
         public string calcMd5OfOpenFile()
         {
@@ -1790,48 +1865,7 @@ namespace WinTerrEdit
             }
         }
 
-        //method for automatically reloading the latest file
-        private void autoFunctionTimer_Tick(object sender, EventArgs e)
-        {
-            string tmp = calcMd5OfOpenFile();
-
-            if (tmp != currentFileHash)
-            {
-                rawDecrypted.Clear();
-                playerName = "";
-                inv_main.Clear();
-                playerHealth.Clear();
-                playerMana.Clear();
-                playerColours.Clear();
-                nameEndOffset = 0;
-                isSaved = true;
-                unlockAllData.Clear();
-                debugInvData.Clear();
-                inv_main.Clear();
-                inv_piggybank.Clear();
-                inv_safe.Clear();
-                inv_ammocoins.Clear();
-                playerBuffs.Clear();
-
-                loadData(lastReadPlrPath);
-                gb_slot_items.Enabled = true;
-                gb_slot_buff.Enabled = true;
-                gbItems.Enabled = true;
-                gbBuffs.Enabled = true;
-                tcMain.Enabled = true;
-
-                btnSave.Enabled = true;
-                updateInvDisplay();
-
-                currentFileHash = tmp;
-            }
-            else
-            {
-                //do shit all
-            }
-        }
-
-        private void tabs_selectedChanged(object sender, EventArgs e)
+        void tabs_selectedChanged(object sender, EventArgs e)
         {
             selectedTab = tcMain.SelectedIndex;
             updateInvDisplay();
@@ -1859,42 +1893,35 @@ namespace WinTerrEdit
 
         public string getContactInfoFromExtServer()
         {
+            const string offlineVal = "Want to contact me?\n" +  // Dont return nothing without internet connection. NEVER.
+                                      "        Discord: Knebb#8081\n" +
+                                      "        Telegram: @knebby";
             try
             {
                 WebClient w = new WebClient();
                 w.Headers.Add("user-agent", "Internal WTE request | " + WTEversion);
-                string _tmp = w.DownloadString(@"http://knedit.pw/WTE_Contact_Data_Tmp/");
+                string _tmp = w.DownloadString("http://knedit.pw/WTE_Contact_Data_Tmp/");
                 if (_tmp[0] == 'W')
                 {
+                    Debug.WriteLine(_tmp);
                     return _tmp;
                 }
                 else
                 {
-                    throw new Exception("corrupt data");
+                    return offlineVal + "\n" +
+                           "Note: The data got from server was corrupted.\nPlease, create an issue in GitHub with screenshot of this message.\n" +
+                           $"Data from server: {_tmp.Replace("\n", "\\n")}";
                 }
             }
             catch
             {
-                return "Unknown server error :(";
+                return offlineVal;
             }
         }
 
-        private void nudHair_ValueChanged(object sender, EventArgs e)
-        {
-            playerHS = (int)nudHair.Value;
-        }
+        void quant_leaveFocus(object sender, EventArgs e) => Debug.WriteLine("Broke focus");
 
-        private void tbName_TextChanged(object sender, EventArgs e)
-        {
-            playerName = tbName.Text;
-        }
-
-        private void quant_leaveFocus(object sender, EventArgs e)
-        {
-            Console.WriteLine("broke focus");
-        }
-
-        private void cbGamemode_SelectedIndexChanged(object sender, EventArgs e)
+        void cbGamemode_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cbGamemode.SelectedIndex)
             {
@@ -1913,10 +1940,11 @@ namespace WinTerrEdit
             }
         }
 
+        #region Menu click events
         void cm_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             ToolStripItem item = e.ClickedItem;
-            Console.WriteLine((sender as ContextMenuStrip).SourceControl.Name + ":" + item.Text);
+            Debug.WriteLine((sender as ContextMenuStrip).SourceControl.Name + ":" + item.Text);
 
             string elementName = (sender as ContextMenuStrip).SourceControl.Name;
             string[] npart = elementName.Split(new string[] { "b" }, StringSplitOptions.None);
@@ -1980,22 +2008,16 @@ namespace WinTerrEdit
             }
         }
 
-        private void aaToolStripMenuItem_Click(object sender, EventArgs e)
+        void aaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadPlayer();
         }
-
-        private void bbToolStripMenuItem_Click(object sender, EventArgs e)
+        void bbToolStripMenuItem_Click(object sender, EventArgs e)
         {
             savePlayer();
         }
-
-        private void ccToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            reloadPlayer();
-        }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        void ccToolStripMenuItem_Click(object sender, EventArgs e) => reloadPlayer();
+        void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int tmp_invSelectedIndex = invSelectedIndex;
             int tmp_true = tmp_invSelectedIndex;
@@ -2027,8 +2049,7 @@ namespace WinTerrEdit
             copyIndex = trueSelectedIndex;
             updateInvDisplay();
         }
-
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (copyBuffer != null)
             {
@@ -2038,15 +2059,13 @@ namespace WinTerrEdit
                 updateInvDisplay();
             }
         }
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cbItem.SelectedItem = "Empty";
             cbPrefixes.SelectedIndex = 0;
             nudQuant.Value = 0;
         }
-
-        private void toggleFavoriteToolStripMenuItem_Click(object sender, EventArgs e)
+        void toggleFavoriteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (tcMain.SelectedIndex == 0)
             {
@@ -2054,15 +2073,13 @@ namespace WinTerrEdit
                 updateInvDisplay();
             }
         }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Settings st = new Settings(useOverwriteFile, useAutoReloadFile, useExtendedName);
+            Settings st = new Settings(useAutoReloadFile, useExtendedName);
             if (st.ShowDialog() == DialogResult.OK)
             {
-                useOverwriteFile = st.useOverwriteFile;
-                useAutoReloadFile = st.useAutoReloadFile;
-                useExtendedName = st.useExtendedName;
+                useAutoReloadFile = st.st.useAutoReloadFile;
+                useExtendedName = st.st.useExtendedName;
 
                 if (useAutoReloadFile)
                 {
@@ -2090,17 +2107,25 @@ namespace WinTerrEdit
                 }
             }
         }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             about ab = new about(aboutBoxContactData, WTEversion);
             ab.ShowDialog();
         }
-
-        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
+        void debugToolStripMenuItem_Click(object sender, EventArgs e)
         {
             hexView hx = new hexView(debugInvData, rawDecrypted.ToArray(), nameEndOffset, versionCode);
             hx.ShowDialog();
         }
+        #endregion
+
+        #endregion
+
+        void saveAsToolStripMenuItem_Click(object sender, EventArgs e) {
+            doSaveAss = true;
+            savePlayer();
+        }
+
+        private void button1_Click(object sender, EventArgs e) => saveAsToolStripMenuItem_Click(null, null);
     }
 }

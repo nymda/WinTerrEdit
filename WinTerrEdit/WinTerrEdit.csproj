@@ -57,13 +57,14 @@
     <ApplicationIcon>rainbowBrick.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>knedit_software.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>87F2D1946ABEE0A432A752482F666653F32AF7CD</ManifestCertificateThumbprint>
@@ -72,7 +73,7 @@
     <ManifestKeyFile>WinTerrEdit_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -99,12 +100,6 @@
     </Compile>
     <Compile Include="about.Designer.cs">
       <DependentUpon>about.cs</DependentUpon>
-    </Compile>
-    <Compile Include="closeWarn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="closeWarn.Designer.cs">
-      <DependentUpon>closeWarn.cs</DependentUpon>
     </Compile>
     <Compile Include="crypto.cs" />
     <Compile Include="entry.cs">
@@ -134,6 +129,7 @@
     <Compile Include="loading.Designer.cs">
       <DependentUpon>loading.cs</DependentUpon>
     </Compile>
+    <Compile Include="Native.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -142,12 +138,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="registry.cs" />
-    <Compile Include="saveNotifier.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="saveNotifier.Designer.cs">
-      <DependentUpon>saveNotifier.cs</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,9 +146,6 @@
     </Compile>
     <EmbeddedResource Include="about.resx">
       <DependentUpon>about.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="closeWarn.resx">
-      <DependentUpon>closeWarn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="entry.resx">
       <DependentUpon>entry.cs</DependentUpon>
@@ -177,15 +164,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="saveNotifier.resx">
-      <DependentUpon>saveNotifier.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
-    <None Include="knedit_software.pfx" />
-    <None Include="knedit_software_key2.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -196,7 +178,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="WinTerrEdit_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

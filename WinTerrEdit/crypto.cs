@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace WinTerrEdit
 {
     /// <summary>
-    /// 
+    ///
     /// handles all the cryptography for the .plr files
-    /// 
+    ///
     /// </summary>
     class crypto
     {
-        private const string EncryptionKey = "h3y_gUyZ";
+        const string EncryptionKey = "h3y_gUyZ";
         public FileInfo fi;
 
         public byte[] decryptFile(string path)

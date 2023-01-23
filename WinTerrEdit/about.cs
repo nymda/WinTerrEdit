@@ -27,7 +27,7 @@ namespace WinTerrEdit
         ToolTip tt = new ToolTip();
         Bitmap discord = new Bitmap(1, 1);
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://www.gnu.org/licenses/");
         }
@@ -44,7 +44,7 @@ namespace WinTerrEdit
         public Graphics tmp;
 
 
-        private void about_Load(object sender, EventArgs e)
+        void about_Load(object sender, EventArgs e)
         {
             label2.Text = cont;
             this.Text = "about | Release " + version;
@@ -54,14 +54,14 @@ namespace WinTerrEdit
             discordRainbow.Start();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        void pictureBox1_Click(object sender, EventArgs e)
         {
             Process.Start("https://discord.com/invite/2xVTgwH");
         }
 
         public int i = 0;
 
-        private void discordRainbow_Tick(object sender, EventArgs e)
+        void discordRainbow_Tick(object sender, EventArgs e)
         {
             if (i == 32)
             {
@@ -79,7 +79,7 @@ namespace WinTerrEdit
             pictureBox1.Image = discord;
         }
 
-        private void discord_paint(object sender, PaintEventArgs e)
+        void discord_paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawEllipse(tblack, 0, 0, 44, 44);
         }

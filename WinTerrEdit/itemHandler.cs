@@ -119,7 +119,7 @@ namespace WinTerrEdit
                 item = handler.searchItemByID(id);
             }
 
-            //Console.WriteLine(item.name + ":" + isFavorite);
+            //Debug.WriteLine(item.name + ":" + isFavorite);
         }
 
         //returns the inventory item as a set of 10 bytes for reinserting into raw data

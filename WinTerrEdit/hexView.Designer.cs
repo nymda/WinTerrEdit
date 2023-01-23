@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(hexView));
             this.rbInt = new System.Windows.Forms.RadioButton();
@@ -37,6 +37,8 @@
             this.rbHyb = new System.Windows.Forms.RadioButton();
             this.tbOut = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // rbInt
@@ -44,10 +46,10 @@
             this.rbInt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbInt.AutoSize = true;
             this.rbInt.Checked = true;
-            this.rbInt.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbInt.Location = new System.Drawing.Point(12, 559);
+            this.rbInt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbInt.Location = new System.Drawing.Point(12, 554);
             this.rbInt.Name = "rbInt";
-            this.rbInt.Size = new System.Drawing.Size(44, 15);
+            this.rbInt.Size = new System.Drawing.Size(43, 17);
             this.rbInt.TabIndex = 2;
             this.rbInt.TabStop = true;
             this.rbInt.Text = "INT";
@@ -58,10 +60,10 @@
             // 
             this.rbHex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbHex.AutoSize = true;
-            this.rbHex.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbHex.Location = new System.Drawing.Point(62, 559);
+            this.rbHex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbHex.Location = new System.Drawing.Point(62, 554);
             this.rbHex.Name = "rbHex";
-            this.rbHex.Size = new System.Drawing.Size(44, 15);
+            this.rbHex.Size = new System.Drawing.Size(47, 17);
             this.rbHex.TabIndex = 3;
             this.rbHex.Text = "HEX";
             this.rbHex.UseVisualStyleBackColor = true;
@@ -71,10 +73,10 @@
             // 
             this.rbStr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbStr.AutoSize = true;
-            this.rbStr.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbStr.Location = new System.Drawing.Point(112, 559);
+            this.rbStr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbStr.Location = new System.Drawing.Point(112, 554);
             this.rbStr.Name = "rbStr";
-            this.rbStr.Size = new System.Drawing.Size(44, 15);
+            this.rbStr.Size = new System.Drawing.Size(47, 17);
             this.rbStr.TabIndex = 4;
             this.rbStr.Text = "STR";
             this.rbStr.UseVisualStyleBackColor = true;
@@ -86,7 +88,7 @@
             this.cbConstSize.AutoSize = true;
             this.cbConstSize.Checked = true;
             this.cbConstSize.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbConstSize.Location = new System.Drawing.Point(432, 557);
+            this.cbConstSize.Location = new System.Drawing.Point(432, 554);
             this.cbConstSize.Name = "cbConstSize";
             this.cbConstSize.Size = new System.Drawing.Size(80, 17);
             this.cbConstSize.TabIndex = 5;
@@ -98,10 +100,10 @@
             // 
             this.rbInv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbInv.AutoSize = true;
-            this.rbInv.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbInv.Location = new System.Drawing.Point(212, 559);
+            this.rbInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbInv.Location = new System.Drawing.Point(212, 554);
             this.rbInv.Name = "rbInv";
-            this.rbInv.Size = new System.Drawing.Size(44, 15);
+            this.rbInv.Size = new System.Drawing.Size(43, 17);
             this.rbInv.TabIndex = 7;
             this.rbInv.Text = "INV";
             this.rbInv.UseVisualStyleBackColor = true;
@@ -111,10 +113,10 @@
             // 
             this.rbHyb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbHyb.AutoSize = true;
-            this.rbHyb.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbHyb.Location = new System.Drawing.Point(162, 559);
+            this.rbHyb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbHyb.Location = new System.Drawing.Point(162, 554);
             this.rbHyb.Name = "rbHyb";
-            this.rbHyb.Size = new System.Drawing.Size(44, 15);
+            this.rbHyb.Size = new System.Drawing.Size(47, 17);
             this.rbHyb.TabIndex = 8;
             this.rbHyb.Text = "HYB";
             this.rbHyb.UseVisualStyleBackColor = true;
@@ -125,18 +127,18 @@
             this.tbOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbOut.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOut.Location = new System.Drawing.Point(12, 12);
             this.tbOut.Name = "tbOut";
-            this.tbOut.Size = new System.Drawing.Size(500, 541);
+            this.tbOut.Size = new System.Drawing.Size(500, 538);
             this.tbOut.TabIndex = 9;
             this.tbOut.Text = "";
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Lucida Console", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(351, 557);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(351, 554);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 17);
             this.button1.TabIndex = 10;
@@ -144,11 +146,36 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(261, 556);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(31, 13);
+            this.linkLabel1.TabIndex = 11;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Copy";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabel2.Location = new System.Drawing.Point(290, 556);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel2.TabIndex = 12;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Save as...";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
             // hexView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 583);
+            this.ClientSize = new System.Drawing.Size(524, 580);
+            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbOut);
             this.Controls.Add(this.rbHyb);
@@ -167,13 +194,15 @@
         }
 
         #endregion
-        private System.Windows.Forms.RadioButton rbInt;
-        private System.Windows.Forms.RadioButton rbHex;
-        private System.Windows.Forms.RadioButton rbStr;
-        private System.Windows.Forms.CheckBox cbConstSize;
-        private System.Windows.Forms.RadioButton rbInv;
-        private System.Windows.Forms.RadioButton rbHyb;
-        private System.Windows.Forms.RichTextBox tbOut;
-        private System.Windows.Forms.Button button1;
+        System.Windows.Forms.RadioButton rbInt;
+        System.Windows.Forms.RadioButton rbHex;
+        System.Windows.Forms.RadioButton rbStr;
+        System.Windows.Forms.CheckBox cbConstSize;
+        System.Windows.Forms.RadioButton rbInv;
+        System.Windows.Forms.RadioButton rbHyb;
+        System.Windows.Forms.RichTextBox tbOut;
+        System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }

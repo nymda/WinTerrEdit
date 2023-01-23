@@ -15,7 +15,7 @@ namespace WinTerrEdit
     public partial class loading : Form
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse );
+        static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse );
 
         public string str = "Loading assets, please wait";
         public string add = "";
@@ -34,14 +34,13 @@ namespace WinTerrEdit
 
         public string version;
 
-        public loading(string version)
-        {
+        public loading(string version) {
             InitializeComponent();
             this.version = version;
             //Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
-        private void loading_Load(object sender, EventArgs e)
+        void loading_Load(object sender, EventArgs e)
         {
             tmp = this.CreateGraphics();
             label1.Text = "Loading | WTE " + version;
@@ -49,7 +48,7 @@ namespace WinTerrEdit
             timer2.Start();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        void timer1_Tick(object sender, EventArgs e)
         {
             if(count == 4)
             {
@@ -65,11 +64,11 @@ namespace WinTerrEdit
             count++;
         }
 
-        //  ,adPPYba,    ,adPPYba,    8b,dPPYba,   8b,dPPYba,   
-        // a8"     ""   a8"     "8a   88P'   "Y8   88P'   `"8a  
-        // 8b           8b       d8   88           88       88  
-        // "8a,   ,aa   "8a,   ,a8"   88           88       88  
-        //  `"Ybbd8"'    `"YbbdP"'    88           88       88  
+        //  ,adPPYba,    ,adPPYba,    8b,dPPYba,   8b,dPPYba,
+        // a8"     ""   a8"     "8a   88P'   "Y8   88P'   `"8a
+        // 8b           8b       d8   88           88       88
+        // "8a,   ,aa   "8a,   ,a8"   88           88       88
+        //  `"Ybbd8"'    `"YbbdP"'    88           88       88
 
         public Bitmap getCorn()
         {
@@ -85,7 +84,7 @@ namespace WinTerrEdit
         }
 
         public int i = -32;
-        private void timer2_Tick(object sender, EventArgs e)
+        void timer2_Tick(object sender, EventArgs e)
         {
             if (i == 32)
             {
@@ -113,7 +112,7 @@ namespace WinTerrEdit
             //tmp.DrawImage(corn, 0, -1);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -13,43 +13,39 @@ namespace WinTerrEdit
 {
     public partial class Settings : Form
     {
-        public bool useOverwriteFile { get; set; }
-        public bool useAutoReloadFile { get; set; }
-        public bool useExtendedName { get; set; }
+        public struct SettingsStruct {
+            public bool useAutoReloadFile;
+            public bool useExtendedName;
+            public SettingsStruct(bool useARF, bool useEN) {
+                useAutoReloadFile = useARF;
+                useExtendedName = useEN;
+            }
+        }
 
-        public Settings(bool useOverwriteFile, bool useAutoReloadFile, bool useExtendedName)
-        {
+        SettingsStruct settingsStruct;
+        public SettingsStruct st { get => settingsStruct; }
+
+        public Settings(bool useAutoReloadFile, bool useExtendedName) {
             InitializeComponent();
-            this.useOverwriteFile = useOverwriteFile;
-            this.useAutoReloadFile = useAutoReloadFile;
-            this.useExtendedName = useExtendedName;
+            settingsStruct.useAutoReloadFile = useAutoReloadFile;
+            settingsStruct.useExtendedName = useExtendedName;
         }
 
-        private void Settings_Load(object sender, EventArgs e)
-        {
-            cbUseOverwrite.Checked = useOverwriteFile;
-            cbAutoReload.Checked = useAutoReloadFile;
-            cbExtendedName.Checked = useExtendedName;
+        void Settings_Load(object sender, EventArgs e) {
+            cbAutoReload.Checked = settingsStruct.useAutoReloadFile;
+            cbExtendedName.Checked = settingsStruct.useExtendedName;
         }
 
-        private void onFormClose(object sender, FormClosedEventArgs e)
-        {
+        void onFormClose(object sender, FormClosedEventArgs e) {
             this.DialogResult = DialogResult.OK;
         }
 
-        private void cbUseOverwrite_CheckedChanged(object sender, EventArgs e)
-        {
-            useOverwriteFile = cbUseOverwrite.Checked;
+        void cbAutoReload_CheckedChanged(object sender, EventArgs e) {
+            settingsStruct.useAutoReloadFile = cbAutoReload.Checked;
         }
 
-        private void cbAutoReload_CheckedChanged(object sender, EventArgs e)
-        {
-            useAutoReloadFile = cbAutoReload.Checked;
-        }
-
-        private void cbExtendedName_CheckedChanged(object sender, EventArgs e)
-        {
-            useExtendedName = cbExtendedName.Checked;
+        void cbExtendedName_CheckedChanged(object sender, EventArgs e) {
+            settingsStruct.useExtendedName = cbExtendedName.Checked;
         }
     }
 }

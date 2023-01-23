@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.cbUseOverwrite = new System.Windows.Forms.CheckBox();
@@ -40,28 +40,30 @@
             // cbUseOverwrite
             // 
             this.cbUseOverwrite.AutoSize = true;
+            this.cbUseOverwrite.Enabled = false;
             this.cbUseOverwrite.Location = new System.Drawing.Point(12, 12);
             this.cbUseOverwrite.Name = "cbUseOverwrite";
             this.cbUseOverwrite.Size = new System.Drawing.Size(102, 17);
             this.cbUseOverwrite.TabIndex = 0;
             this.cbUseOverwrite.Text = "Overwrite player";
             this.cbUseOverwrite.UseVisualStyleBackColor = true;
-            this.cbUseOverwrite.CheckedChanged += new System.EventHandler(this.cbUseOverwrite_CheckedChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Enabled = false;
             this.label1.Location = new System.Drawing.Point(9, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 39);
+            this.label1.Size = new System.Drawing.Size(250, 52);
             this.label1.TabIndex = 1;
             this.label1.Text = "Automatically overwrites the origional .PLR file\r\nwhen the \"Save\" button is click" +
-    "ed. Does not show\r\nthe save file window.\r\n";
+    "ed. Does not show\r\nthe save file window.\r\n(this option is deprecated. Use Save (" +
+    "as...) instead.)";
             // 
             // cbAutoReload
             // 
             this.cbAutoReload.AutoSize = true;
-            this.cbAutoReload.Location = new System.Drawing.Point(12, 88);
+            this.cbAutoReload.Location = new System.Drawing.Point(12, 98);
             this.cbAutoReload.Name = "cbAutoReload";
             this.cbAutoReload.Size = new System.Drawing.Size(111, 17);
             this.cbAutoReload.TabIndex = 2;
@@ -72,7 +74,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 108);
+            this.label2.Location = new System.Drawing.Point(9, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(242, 39);
             this.label2.TabIndex = 3;
@@ -81,7 +83,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 170);
+            this.label3.Location = new System.Drawing.Point(9, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(221, 26);
             this.label3.TabIndex = 5;
@@ -90,7 +92,7 @@
             // cbExtendedName
             // 
             this.cbExtendedName.AutoSize = true;
-            this.cbExtendedName.Location = new System.Drawing.Point(12, 150);
+            this.cbExtendedName.Location = new System.Drawing.Point(12, 160);
             this.cbExtendedName.Name = "cbExtendedName";
             this.cbExtendedName.Size = new System.Drawing.Size(121, 17);
             this.cbExtendedName.TabIndex = 4;
@@ -102,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 213);
+            this.ClientSize = new System.Drawing.Size(271, 216);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbExtendedName);
             this.Controls.Add(this.label2);
@@ -124,11 +126,11 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox cbUseOverwrite;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox cbAutoReload;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox cbExtendedName;
+        System.Windows.Forms.CheckBox cbUseOverwrite;
+        System.Windows.Forms.Label label1;
+        System.Windows.Forms.CheckBox cbAutoReload;
+        System.Windows.Forms.Label label2;
+        System.Windows.Forms.Label label3;
+        System.Windows.Forms.CheckBox cbExtendedName;
     }
 }

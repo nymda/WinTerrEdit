@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,13 +26,13 @@ namespace WinTerrEdit
             this.invDat = invDat;
             this.versionCode = versionCode;
         }
-        private void hexView_Load(object sender, EventArgs e)
+        void hexView_Load(object sender, EventArgs e)
         {
-            this.Text = "| NEO " + NEO + " | VERS " + versionCode + " |";   
+            this.Text = "| NEO " + NEO + " | VERS " + versionCode + " |";
             update();
         }
 
-        private void rb_CheckedChanged(object sender, EventArgs e)
+        void rb_CheckedChanged(object sender, EventArgs e)
         {
             update();
         }
@@ -81,7 +82,9 @@ namespace WinTerrEdit
                     }
                     else
                     {
-                        tmpChar.Add('?');
+                        var chars = "\\x" + Convert.ToByte(tmp).ToString("x2");
+                        foreach (var itm in chars)
+                            tmpChar.Add(itm);
                     }
                 }
                 output = string.Join("", tmpChar);
@@ -113,7 +116,7 @@ namespace WinTerrEdit
                         sb.AppendLine(string.Join(",", i));
                     }
                     output = sb.ToString();
-                }          
+                }
             }
             if (rbHyb.Checked)
             {
@@ -178,9 +181,24 @@ namespace WinTerrEdit
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void button1_Click(object sender, EventArgs e)
         {
             colourSections();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+            Native.UserInterface.SetClipboardText(tbOut.Text);
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
+                File.WriteAllText(saveFileDialog1.FileName, tbOut.Text);
+            }
         }
     }
 }
